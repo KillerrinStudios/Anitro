@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Files>
+  <file>\Anitro.WindowsPhone.exe</file>
+  <file>\Newtonsoft.Json.dll</file>
+  <file>\BugSense-Windows.Universal.dll</file>
+  <file>\Microsoft.Advertising.Mobile.Common.winmd</file>
+  <file>\Microsoft.Advertising.Mobile.Display.winmd</file>
+  <file>\Microsoft.Advertising.Mobile.UI.winmd</file>
+  <file>\Microsoft.Threading.Tasks.dll</file>
+  <file>\Microsoft.Threading.Tasks.Extensions.dll</file>
+</Files>

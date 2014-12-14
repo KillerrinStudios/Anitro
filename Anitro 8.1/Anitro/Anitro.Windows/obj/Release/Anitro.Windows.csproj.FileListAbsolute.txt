@@ -1,0 +1,242 @@
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Anitro.Windows.csprojResolveAssemblyReference.cache
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\App.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\App.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MainPage.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MainPage.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\SearchPage.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\SearchPage.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Recent.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Recent.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Search.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Search.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\UIThemes.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\UIThemes.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\XamlTypeInfo.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\App.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MainPage.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\SearchPage.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Recent.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Search.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\UIThemes.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\App.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MainPage.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\SearchPage.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Recent.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Search.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\UIThemes.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\XamlSaveStateFile.xml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimeLibraryPage.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimeLibraryPage.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimePage.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimePage.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Activity Feed.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Activity Feed.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Favourites.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Favourites.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Library.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Library.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UserStatsPage.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UserStatsPage.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimeLibraryPage.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimePage.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Activity Feed.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Favourites.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Library.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UserStatsPage.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimeLibraryPage.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimePage.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Activity Feed.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Favourites.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Library.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UserStatsPage.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\App.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\UIThemes.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AnimeLibraryPage.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AnimePage.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MainPage.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\SearchPage.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Activity Feed.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Anime Favourites.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Anime Library.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Recent.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Search.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\UserStatsPage.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.xr.xml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.exe
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.pdb
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\resources.pri
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AppxManifest.xml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.build.appxrecipe
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Callisto.dll
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Callisto.xml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MyToolkit.dll
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MyToolkit.Extended.dll
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Newtonsoft.Json.dll
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MyToolkit.xml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MyToolkit.Extended.xml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MyToolkit.Extended.pri
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Newtonsoft.Json.xml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Anitro.Windows.exe
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Anitro.Windows.pdb
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Anitro.Windows.csproj.GenerateResource.Cache
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\priconfig.xml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\priconfig.xml.intermediate
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\layout.resfiles
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\layout.resfiles.intermediate
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\resources.resfiles
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\resources.resfiles.intermediate
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\pri.resfiles
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\pri.resfiles.intermediate
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\qualifiers.txt
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\qualifiers.txt.intermediate
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MultipleQualifiersPerDimensionFound.txt
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MyToolkit.Extended.pri.xml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\ProjectArchitectures.txt
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AboutSettingsPane.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AboutSettingsPane.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoginSettingsPane.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoginSettingsPane.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\OptionsSettingsPane.g.i.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\OptionsSettingsPane.g.cs
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AboutSettingsPane.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoginSettingsPane.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\OptionsSettingsPane.xaml
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AboutSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoginSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\OptionsSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AboutSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\LoginSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows Phone\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\OptionsSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\UIThemes.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\App.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AboutSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AnimePage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\LoginSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MainPage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\SearchPage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\OptionsSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Activity Feed.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Anime Favourites.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Anime Library.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Recent.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Search.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.xr.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.exe
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.pdb
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\resources.pri
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AppxManifest.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.build.appxrecipe
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Callisto.dll
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Callisto.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\BugSense-Windows.Universal.dll
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MyToolkit.dll
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MyToolkit.Extended.dll
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Newtonsoft.Json.dll
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MyToolkit.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MyToolkit.Extended.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MyToolkit.Extended.pri
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Newtonsoft.Json.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Anitro.Windows.csprojResolveAssemblyReference.cache
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\App.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\App.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AboutSettingsPane.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AboutSettingsPane.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimePage.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimePage.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoginSettingsPane.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoginSettingsPane.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MainPage.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MainPage.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\SearchPage.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\SearchPage.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\OptionsSettingsPane.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\OptionsSettingsPane.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Activity Feed.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Activity Feed.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Favourites.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Favourites.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Library.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Library.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Recent.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Recent.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Search.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Search.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\UIThemes.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\UIThemes.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\XamlTypeInfo.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\App.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AboutSettingsPane.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimePage.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoginSettingsPane.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MainPage.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\SearchPage.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\OptionsSettingsPane.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Activity Feed.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Favourites.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Library.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Recent.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Search.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\UIThemes.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\App.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AboutSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AnimePage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoginSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MainPage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\SearchPage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\OptionsSettingsPane.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Activity Feed.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Favourites.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Anime Library.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Recent.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\Search.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Themes\UIThemes.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\XamlSaveStateFile.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Anitro.Windows.exe
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Anitro.Windows.pdb
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\Anitro.Windows.csproj.GenerateResource.Cache
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\priconfig.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\priconfig.xml.intermediate
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\layout.resfiles
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\layout.resfiles.intermediate
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\resources.resfiles
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\resources.resfiles.intermediate
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\pri.resfiles
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\pri.resfiles.intermediate
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\qualifiers.txt
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\qualifiers.txt.intermediate
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MultipleQualifiersPerDimensionFound.txt
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\MyToolkit.Extended.pri.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\ProjectArchitectures.txt
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LibraryPage.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LibraryPage.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoggedOutPage.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoggedOutPage.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UnlockAnitroFlyout.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UnlockAnitroFlyout.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UserDashboardPage.g.i.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UserDashboardPage.g.cs
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LibraryPage.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoggedOutPage.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UserDashboardPage.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LibraryPage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\LoggedOutPage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UserDashboardPage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UnlockAnitroFlyout.xaml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\UnlockAnitroFlyout.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\defaultAdSettings.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\LibraryPage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\LoggedOutPage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\UnlockAnitroFlyout.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\UserDashboardPage.xbf
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Microsoft.Advertising.WinRT.UI.winmd
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Microsoft.Advertising.WinRT.UI.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MicrosoftAdvertising.winmd
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MicrosoftAdvertising.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AdRotator.Core.dll
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AdRotator.dll
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Microsoft.Threading.Tasks.dll
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AdRotator.pri
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Microsoft.Threading.Tasks.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\AdRotator.pri.xml

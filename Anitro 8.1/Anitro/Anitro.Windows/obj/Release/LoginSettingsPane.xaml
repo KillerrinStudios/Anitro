@@ -1,0 +1,36 @@
+﻿<SettingsFlyout x:ConnectionId='1'
+    x:Class="Anitro.LoginSettingsPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Anitro"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    IconSource="Assets/SmallLogo.png"
+    Title="Login"
+                                        
+    d:DesignWidth="346">
+
+    <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+        <TextBlock x:Name="loginErrors" Text="Please Log in" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="50" Width="Auto" />
+
+        <TextBox x:ConnectionId='2' x:Name="usernameBox" PlaceholderText="Username" VerticalAlignment="Bottom" Margin="0,0,0,10" InputScope="EmailSmtpAddress"                          />
+        <PasswordBox x:ConnectionId='3' x:Name="passwordBox" PlaceholderText="Password" Password="" VerticalAlignment="Bottom" Margin="0,0,0,10"                           IsPasswordRevealButtonEnabled="True" />
+        
+        <StackPanel x:Name="buttonStackPanel" Orientation="Horizontal">
+            <Button x:ConnectionId='4' x:Name="LoginButton" Content="login" HorizontalAlignment="Center" Margin="0,0,10,0" VerticalAlignment="Top" Width="208"                          />
+            <ProgressRing x:Name="ApplicationProgressBar" HorizontalAlignment="Right" VerticalAlignment="Center" IsActive="False"/>
+        </StackPanel>
+
+        <HyperlinkButton Content="Need an account?"
+					FontSize="20"
+					HorizontalAlignment="Left"
+					HorizontalContentAlignment="Left"
+					VerticalAlignment="Top"
+					NavigateUri="http://hummingbird.me/users/sign_up" 
+					Margin="10,0,0,0"/>
+    </StackPanel>
+</SettingsFlyout>
+

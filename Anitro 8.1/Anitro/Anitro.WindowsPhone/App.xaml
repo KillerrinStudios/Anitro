@@ -1,0 +1,23 @@
+﻿<Application
+    x:Class="Anitro.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Anitro"
+    xmlns:CustomThemes="using:Anitro.Themes"
+    xmlns:Converters="using:Anitro.Converters">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/UIThemes.xaml" />
+                
+                <ResourceDictionary Source="Themes/Activity Feed.xaml" />
+                <ResourceDictionary Source="Themes/Anime Library.xaml" />
+                <ResourceDictionary Source="Themes/Anime Favourites.xaml" />
+                <ResourceDictionary Source="Themes/Search.xaml" />
+                <ResourceDictionary Source="Themes/Recent.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,231 @@
+﻿<Page
+	x:Class="Anitro.AnimePage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Anitro"
+    xmlns:Converters="using:Anitro.Converters"
+	xmlns:callisto="using:Callisto"
+	xmlns:MyToolkitControls="using:MyToolkit.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:UI="using:Microsoft.Advertising.WinRT.UI"
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+	<Page.BottomAppBar>
+		<CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="pinButton" x:Uid="Pin" Icon="Pin" Label="pin" Click="Pin_Clicked" Visibility="Visible"/>
+                <AppBarButton x:Name="unpinButton" x:Uid="UnPin" Icon="UnPin" Label="unpin" Click="UnPin_Clicked" Visibility="Collapsed"/>
+
+                <AppBarButton x:Name="favouriteButton" x:Uid="Favourite" Icon="Favorite" Label="favourite" Click="Favourite_Clicked" Visibility="Collapsed"/>
+				<AppBarButton x:Name="unfavouriteButton" x:Uid="UnFavourite" Icon="UnFavorite" Label="unfavourite" Click="UnFavourite_Clicked" Visibility="Collapsed"/>
+
+                <AppBarButton x:Name="saveButton" x:Uid="Save" Icon="Save" Label="save" Click="Save_Clicked" Visibility="Collapsed"/>
+            </CommandBar.PrimaryCommands>
+			<CommandBar.SecondaryCommands>
+				<AppBarButton x:Name="openIEButton"  x:Uid="OpenIE" Icon="World" Label="open in browser" Click="OpenIE_Clicked" />
+				<AppBarButton x:Name="setLockscreen" Visibility="Collapsed" x:Uid="OpenIE" Icon="Like" Label="set as lockscreen" Click="SetAsLockscreen_Clicked" />
+			</CommandBar.SecondaryCommands>
+		</CommandBar>
+	</Page.BottomAppBar>
+
+	<Grid Loaded="topLevelGrid_Loaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+		
+		
+		<Image x:Name="BackgroundImage" Opacity="0.65" Height="Auto" Width="Auto">
+			<Image.Source>
+				<BitmapImage CreateOptions="None"/>
+			</Image.Source>
+		</Image>
+		<Rectangle Fill="#A5000000" Width="Auto" Height="Auto"/>
+		
+		
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+
+			<!--TitlePanel contains the name of the application and page title-->
+            <StackPanel Grid.Row="0" Margin="25,20,0,0" Orientation="Horizontal">
+				<Button x:Name="backButton" Margin="0,0,20,0" Click="backButton_Click"
+						Style="{StaticResource NavigationBackButtonNormalStyle}"
+						VerticalAlignment="Top"
+						AutomationProperties.Name="Back"
+						AutomationProperties.AutomationId="BackButton"
+						AutomationProperties.ItemType="Navigation Button"/>
+				<TextBlock x:Name="pageHeader" Loaded="animeTitle_Loaded" Text="Anime" FontSize="58" VerticalAlignment="Center" Margin="9,0,20,0" Foreground="{StaticResource TitleBrush}" Style="{StaticResource HeaderTextBlockStyle}"/>
+
+				<ProgressRing x:Name="ApplicationProgressBar" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,50,0" Height="32" Width="32" IsActive="False"/>
+			</StackPanel>
+
+			<!--ContentPanel - place additional content here-->
+			<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="1*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Hub x:Name="pagePivot" Loaded="hub_Loaded" Header="" DefaultSectionIndex="0" Visibility="Visible" 
+				 Margin="0,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Stretch"
+				 Grid.Column="0" Grid.Row="0">
+
+					<HubSection x:Name="animePivotItem" Height="Auto" Width="965" CacheMode="{x:Null}" IsHitTestVisible="False">
+						<HubSection.Header>
+							<TextBlock Text="{Binding}" Margin="0,0,0,0" FontSize="72" Foreground="Transparent" />
+						</HubSection.Header>
+
+						<DataTemplate>
+							<Grid Loaded="animeGridLoaded" Margin="0,-115,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+								<StackPanel Orientation="Vertical">
+									<StackPanel Orientation="Vertical" Margin="0,0,0,0">
+										<!--<TextBlock x:Name="animeTitle" Text="Anime" Margin="0,0,0,0" FontSize="72" Foreground="{StaticResource TitleBrush}" />-->
+										<TextBlock x:Name="animeSecondaryHeader" Loaded="animeSecondaryHeader_loaded" Text="" Margin="20,-25,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}"/>
+									</StackPanel>
+
+
+									<StackPanel Orientation="Vertical" Margin="20,20,0,0" Width="350" HorizontalAlignment="Left">
+										<StackPanel Orientation="Horizontal">
+											<Image x:Name="coverImage" Margin="0,0,0,0" Width="200" Height="290" HorizontalAlignment="Left" 
+											   Loaded="coverImage_Loaded">
+												<Image.Source>
+													<BitmapImage UriSource="{Binding anime.cover_image}" CreateOptions="None" />
+												</Image.Source>
+											</Image>
+
+											<StackPanel x:Name="animeStatsBar" Loaded="animeStatsBar_loaded" Orientation="Vertical" HorizontalAlignment="Left" Margin="20,0,0,0" Width="Auto">
+												<TextBlock x:Name="animeStatus" Text="Airing" Loaded="animeStatus_loaded" FontSize="16" Width="Auto" Height="Auto" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+												<TextBlock x:Name="animeShowType" Text="TV" Loaded="animeShowType_loaded" FontSize="16" Width="Auto" Height="Auto" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+												<TextBlock x:Name="animeEpisodeCount" Text="0" Loaded="animeEpisodeCount_loaded" FontSize="16" Width="Auto" Height="Auto" Foreground="{StaticResource ContentBrush}"/>
+
+												<ListBox x:Name="animeGenresListBox" Margin="0,10,0,0"  Loaded="animeGenres_Listbox_Loaded" Background="Transparent" IsHitTestVisible="False">
+													<ListBox.ItemTemplate>
+														<DataTemplate>
+															<Grid Margin="0,-10,0,0">
+																<StackPanel Orientation="Horizontal">
+																	<TextBlock Text="{Binding}" FontSize="14" LineStackingStrategy="BaselineToBaseline" LineHeight="2" Foreground="{StaticResource ContentBrush}" />
+																</StackPanel>
+															</Grid>
+														</DataTemplate>
+													</ListBox.ItemTemplate>
+												</ListBox>
+											</StackPanel>
+										</StackPanel>
+									</StackPanel>
+
+                                    <ScrollViewer x:Name="animeDescriptionScrollViewer" Margin="0,0,0,0" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                        <!--                                                                                        Width="Auto" Height="429" -->
+                                        <StackPanel x:Name="animeSynopsisStackpanel"  Orientation="Vertical" Margin="0,15,-0.333,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <TextBlock x:Name="animeSynopsisHeader" Text="Synopsis" FontSize="24" Width="Auto" Height="Auto" Margin="0,0,0,0" TextWrapping="Wrap" Foreground="{StaticResource ContentBrush}"/>
+                                            <TextBlock x:Name="animeSynopsis" Loaded="animeSynopsis_loaded" Text="Synopsis" FontSize="18" Width="Auto" Height="Auto" Margin="0,10,0,0" TextWrapping="Wrap" Foreground="{StaticResource ContentBrush}"/>
+                                            
+                                            <UI:AdControl x:Name="adControl"
+							                    Loaded="AdControl_Loaded"
+							                    ErrorOccurred="AdControl_ErrorOccured"
+							                    ApplicationId="e4487080-07e5-4855-899a-a5ba5df17371"
+							                    AdUnitId="186550"
+							                    HorizontalAlignment="Left"
+							                    Height="220"
+							                    IsAutoRefreshEnabled="True"
+							                    Margin="0,0,0,0" 
+							                    VerticalAlignment="Bottom" 
+							                    Width="320"/>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </StackPanel>
+							</Grid>
+						</DataTemplate>
+					</HubSection>
+
+					<HubSection x:Name="libraryPivotItem" CacheMode="{x:Null}" Margin="0,-115,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+						<HubSection.Header>
+							<TextBlock Text="library" FontSize="72" Foreground="{StaticResource TitleBrush}" />
+						</HubSection.Header>
+
+						<DataTemplate>
+							<Grid Loaded="libraryGrid_Loaded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+								<!--                                                                                Height="458"-->
+								<ScrollViewer x:Name="libraryScrollViewer" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+									<StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="0,0,0,0">
+										<StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,0">
+											<TextBlock x:Name="libraryLastWatched" Loaded="libraryLastWatched_loaded" Text="last watched" FontSize="12" Width="Auto" Height="Auto" Foreground="{StaticResource ContentBrush}"/>
+
+											<StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+												<StackPanel Orientation="Vertical" Width="110" VerticalAlignment="Center" Margin="0,0,5,0">
+													<TextBlock x:Name="ratingText" Loaded="ratingText_loaded" Text="rating" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+													<TextBlock x:Name="libraryRating" Loaded="libraryRating_loaded" Text="0/5" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+												</StackPanel>
+
+												<Button x:Name="ratingDecrementButton" Content="-" Width="50" Height="50" Margin="20,0,0,0" VerticalAlignment="Center" Click="decrimentRatingByHalf" BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+												<Button x:Name="ratingIncrimentButton" Content="+" Width="50" Height="50" Margin="5,0,0,0" VerticalAlignment="Center" Click="incrementRatingByHalf" BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+											</StackPanel>
+										</StackPanel>
+
+										<StackPanel Orientation="Vertical" Margin="0,20,0,0" Width="320">
+											<ComboBox x:Name="LibraryPicker" Header="library" Loaded="LibraryPicker_loaded" PlaceholderText="None" HorizontalAlignment="Stretch"
+											  BorderBrush="{StaticResource ContentBrush}" Foreground="Black"
+											  SelectedIndex="0" SelectionChanged="LibraryPicker_SelectionChanged">
+												<x:String>None</x:String>
+												<x:String>Currently Watching</x:String>
+												<x:String>Plan To Watch</x:String>
+												<x:String>Completed</x:String>
+												<x:String>On Hold</x:String>
+												<x:String>Dropped</x:String>
+											</ComboBox>
+										</StackPanel>
+
+										<StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+											<StackPanel Orientation="Vertical" Width="110" VerticalAlignment="Center" Margin="0,0,5,0">
+												<TextBlock x:Name="libraryEpisodesWatchedText" Loaded="libraryEpisodesWatchedText_loaded" Text="watched" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+												<TextBlock x:Name="libraryEpisodesWatched" Loaded="libraryEpisodesWatched_loaded" Text="0/0" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+											</StackPanel>
+
+											<Button x:Name="episodeDecrementButton" Content="-" Width="50" Height="50" Margin="40,0,0,0" VerticalAlignment="Center" Click="decrimentEpisodeWatchedBy1" BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+											<Button x:Name="episodeIncrimentButton" Content="+" Width="50" Height="50" Margin="5,0,0,0" VerticalAlignment="Center" Click="incrementEpisodeWatchedBy1" BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+										</StackPanel>
+
+										<StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+											<StackPanel Orientation="Vertical" Width="110" VerticalAlignment="Center" Margin="0,0,5,0">
+												<TextBlock x:Name="libraryRewatchedTimesText" Loaded="libraryRewatchedTimesText_loaded" Text="rewatched" FontSize="16" HorizontalAlignment="Center" Margin="0,00,0,0" Foreground="{StaticResource ContentBrush}"/>
+												<TextBlock x:Name="libraryRewatchedTimes" Loaded="libraryRewatchedTimes_loaded" Text="0"  FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+											</StackPanel>
+
+											<Button x:Name="rewatchingDecrementButton" Content="-" Width="50" Height="50" Margin="40,0,0,0" VerticalAlignment="Center" Click="decrimentRewatchedTimesBy1" BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+											<Button x:Name="rewatchingIncrimentButton" Content="+" Width="50" Height="50" Margin="5,0,0,0" VerticalAlignment="Center" Click="incrementRewatchedTimesBy1" BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+										</StackPanel>
+
+										<StackPanel Orientation="Vertical" Margin="0,20,0,0">
+											<ToggleSwitch x:Name="libraryPrivate" Header="private" Loaded="libraryPrivate_loaded" Toggled="libraryPrivate_Toggled">
+												<ToggleSwitch.HeaderTemplate>
+													<DataTemplate>
+														<TextBlock Text="{Binding}" />
+													</DataTemplate>
+												</ToggleSwitch.HeaderTemplate>
+											</ToggleSwitch>
+
+											<ToggleSwitch x:Name="libraryRewatching_Switch" Header="rewatching" Loaded="libraryRewatching_Switch_loaded" Toggled="libraryRewatching_Toggled">
+												<ToggleSwitch.HeaderTemplate>
+													<DataTemplate>
+														<TextBlock Text="{Binding}" />
+													</DataTemplate>
+												</ToggleSwitch.HeaderTemplate>
+											</ToggleSwitch>
+										</StackPanel>
+
+										<TextBox x:Name="notesTextBox" Margin="0,20,0,0" HorizontalAlignment="Stretch" Height="300"
+												 PlaceholderText="notes" Text="" TextWrapping="Wrap"
+												 Loaded="notesTextBox_loaded" KeyDown="notesEnterEvent" LostFocus="notesLostFocus"
+												 Background="White" Foreground="Black"/>
+									</StackPanel>
+								</ScrollViewer>
+							</Grid>
+						</DataTemplate>
+					</HubSection>
+				</Hub>
+			</Grid>
+		</Grid>
+	</Grid>
+</Page>
