@@ -1,0 +1,13 @@
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\Bin\Debug\Hummingbird API.dll
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\Bin\Debug\Hummingbird API.pdb
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\Bin\Debug\Newtonsoft.Json.dll
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\Bin\Debug\System.Net.Http.dll
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\Bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\Bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\Bin\Debug\Newtonsoft.Json.xml
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\Bin\Debug\System.Net.Http.xml
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\Bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\Bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\obj\Debug\Hummingbird API.dll
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\obj\Debug\Hummingbird API.pdb
+C:\Users\killer rin\Programming\Windows Phone\Anitro\AnitroAPI\obj\Debug\Anitro API.csprojResolveAssemblyReference.cache
