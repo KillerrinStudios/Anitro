@@ -195,9 +195,9 @@ namespace Anitro
 
             ((GridView)sender).SelectedItem = null;
 
-            if (!string.IsNullOrEmpty(selected.slug))
+            if (!string.IsNullOrEmpty(selected.ServiceID))
             {
-                AnimePageParameter pageParam = new AnimePageParameter(selected.slug, AnimePageParameter.ComingFrom.Search);
+                AnimePageParameter pageParam = new AnimePageParameter(selected.ServiceID, AnimePageParameter.ComingFrom.Search);
                 Frame.Navigate(typeof(AnimePage), pageParam);
             }
         }
@@ -228,7 +228,7 @@ namespace Anitro
 
                 foreach (Anime a in localSearch)
                 {
-                    suggestionCollection.AppendQuerySuggestion(a.title);
+                    suggestionCollection.AppendQuerySuggestion(a.RomanjiTitle);
                 }
 
                 searchResults = localSearch;

@@ -11,15 +11,22 @@ namespace Anitro.Data_Structures
         All,
         APISupported,
 
-        // API Supported
+        // Anime
         CurrentlyWatching,
         PlanToWatch,
+
+        // Manga
+        CurrentlyReading,
+        PlanToRead,
+
+        // Universal
         Completed,
         OnHold,
         Dropped,
 
         // Extra
         Favourites,
-        Recent
+        Recent,
+        Search,
     }
 }

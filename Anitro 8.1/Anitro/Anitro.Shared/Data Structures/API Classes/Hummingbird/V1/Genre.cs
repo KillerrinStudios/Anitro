@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Anitro.Data_Structures.API_Classes
+namespace Anitro.Data_Structures.API_Classes.Hummingbird.V1
 {
     public class Genre
     {

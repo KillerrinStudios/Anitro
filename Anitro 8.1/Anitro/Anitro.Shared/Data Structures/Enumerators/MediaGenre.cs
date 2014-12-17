@@ -4,8 +4,11 @@ using System.Text;
 
 namespace Anitro.Data_Structures.Enumerators
 {
-    public enum AnimeGenre
+    public enum MediaGenre
     {
+        None,
+        Unknown,
+
         Action,
         Adventure,
         AnimeInfluenced,

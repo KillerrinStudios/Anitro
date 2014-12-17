@@ -24,7 +24,7 @@ namespace Anitro
 
                 ((ListBox)sender).SelectedItem = null;
 
-                if (!string.IsNullOrEmpty(selected.anime.slug))//Consts.settings.userName)
+                if (!string.IsNullOrEmpty(selected.Anime.ServiceID))//Consts.settings.userName)
                 {
 #if WINDOWS_PHONE_APP
                     // Remove the Event Handler for a safe transition
@@ -32,7 +32,7 @@ namespace Anitro
 #endif
 
                     Consts.UpdateLoggedInUser(pageParameter.user);
-                    AnimePageParameter sendParameter = new AnimePageParameter(selected.anime.slug, AnimePageParameter.ComingFrom.LibraryPage);
+                    AnimePageParameter sendParameter = new AnimePageParameter(selected.Anime.ServiceID, AnimePageParameter.ComingFrom.LibraryPage);
                     Frame.Navigate(typeof(AnimePage), sendParameter);
                 }
             }
@@ -46,14 +46,14 @@ namespace Anitro
 
             ((GridView)sender).SelectedItem = null;
 
-            if (!string.IsNullOrEmpty(selected.anime.slug))
+            if (!string.IsNullOrEmpty(selected.Anime.ServiceID))
             {
 #if WINDOWS_PHONE_APP
                 // Remove the Event Handler for a safe transition
                 Windows.Phone.UI.Input.HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
 #endif
                 Consts.UpdateLoggedInUser(pageParameter.user);
-                AnimePageParameter sendParameter = new AnimePageParameter(selected.anime.slug, AnimePageParameter.ComingFrom.Favourites);
+                AnimePageParameter sendParameter = new AnimePageParameter(selected.Anime.ServiceID, AnimePageParameter.ComingFrom.Favourites);
                 Frame.Navigate(typeof(AnimePage), sendParameter);
             }
         }
@@ -65,14 +65,14 @@ namespace Anitro
 
             ((GridView)sender).SelectedItem = null;
 
-            if (!string.IsNullOrEmpty(selected.anime.slug))
+            if (!string.IsNullOrEmpty(selected.Anime.ServiceID))
             {
 #if WINDOWS_PHONE_APP
                 // Remove the Event Handler for a safe transition
                 Windows.Phone.UI.Input.HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
 #endif
                 Consts.UpdateLoggedInUser(pageParameter.user);
-                AnimePageParameter sendParameter = new AnimePageParameter(selected.anime.slug, AnimePageParameter.ComingFrom.Recent);
+                AnimePageParameter sendParameter = new AnimePageParameter(selected.Anime.ServiceID, AnimePageParameter.ComingFrom.Recent);
                 Frame.Navigate(typeof(AnimePage), sendParameter);
             }
         }

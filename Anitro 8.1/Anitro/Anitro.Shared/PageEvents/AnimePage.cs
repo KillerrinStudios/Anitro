@@ -33,6 +33,7 @@ namespace Anitro
             me = this;
         }
 
+        #region Control Loaded
         private void AdControl_Loaded(object sender, RoutedEventArgs e)
         {
             adControl = (sender as AdControl);
@@ -42,6 +43,7 @@ namespace Anitro
         {
             Debug.WriteLine("AdControl error (" + ((AdControl)sender).Name + "): " + e.Error + " ErrorCode: " + e.ErrorCode.ToString());
         }
+        #endregion
 
         #region Message Box
         private void NotConnected_CommandInvokedHandler(IUICommand command)
@@ -86,17 +88,17 @@ namespace Anitro
             try
             {
 #if WINDOWS_PHONE_APP
-                bool result = await SecondaryTileHelper.CreateTile(libraryObject.anime.slug,
-                                                                   libraryObject.anime.title,
-                                                                   new AnitroLaunchArgs(AnitroLaunchType.Anime, libraryObject.anime.slug),
-                                                                   libraryObject.anime.cover_image_uri,
+                bool result = await SecondaryTileHelper.CreateTile(libraryObject.Anime.ServiceID,
+                                                                   libraryObject.Anime.RomanjiTitle,
+                                                                   new AnitroLaunchArgs(AnitroLaunchType.Anime, libraryObject.Anime.ServiceID),
+                                                                   libraryObject.Anime.cover_image_uri,
                                                                    TileSize.Default);
 #else
                 bool result = await SecondaryTileHelper.CreateTile(sender,
-                                                                   libraryObject.anime.slug,
-                                                                   libraryObject.anime.title,
-                                                                   new AnitroLaunchArgs(AnitroLaunchType.Anime, libraryObject.anime.slug),
-                                                                   libraryObject.anime.cover_image_uri,
+                                                                   libraryObject.Anime.ServiceID,
+                                                                   libraryObject.Anime.RomanjiTitle,
+                                                                   new AnitroLaunchArgs(AnitroLaunchType.Anime, libraryObject.Anime.ServiceID),
+                                                                   libraryObject.Anime.CoverImageUrl,
                                                                    TileSize.Default);
 #endif
 
@@ -112,7 +114,7 @@ namespace Anitro
         {
             if (!contentLoaded) return;
 
-            bool result = await SecondaryTileHelper.RemoveTile(libraryObject.anime.slug, SecondaryTileHelper.GetElementRect((FrameworkElement)sender));
+            bool result = await SecondaryTileHelper.RemoveTile(libraryObject.Anime.ServiceID, SecondaryTileHelper.GetElementRect((FrameworkElement)sender));
 
             if (result)
             {
@@ -126,7 +128,7 @@ namespace Anitro
             if (!contentLoaded) return;
 
             Debug.WriteLine("Launching Anitro Lockscreen");
-            var uri = Consts.CreateAnitroCompanionUri(libraryObject.anime.slug);
+            var uri = Consts.CreateAnitroCompanionUri(libraryObject.Anime.ServiceID);
 
             Debug.WriteLine("Launching Uri");
             var success = await Windows.System.Launcher.LaunchUriAsync(uri, Consts.AnitroCompanionLauncherOptions);
@@ -149,7 +151,7 @@ namespace Anitro
         {
             if (!contentLoaded) return;
 
-            var uri = new Uri(libraryObject.anime.url, UriKind.Absolute);
+            var uri = libraryObject.Anime.WebUrl;
 
             var options = new Windows.System.LauncherOptions();
             options.TreatAsUntrusted = false;
@@ -197,7 +199,7 @@ namespace Anitro
             if (!objectChanged) { return; }
 
             Debug.WriteLine("UpdateLibrary(): Entering");
-            if (libraryObject.status == "" || libraryObject.status == "favourites" || libraryObject.status == "search" || libraryObject.status == "none" || libraryObject.status == "recent") { Debug.WriteLine("UpdateLibrary(): Can't update library"); }
+            if (libraryObject.Status == LibrarySelection.Favourites || libraryObject.Status == LibrarySelection.Search|| libraryObject.Status == LibrarySelection.None || libraryObject.Status == LibrarySelection.Recent) { Debug.WriteLine("UpdateLibrary(): Can't update library"); }
             else
             {
                 Consts.LoggedInUser.animeLibrary.savingOrUpdatingLibrary = true;
@@ -210,17 +212,10 @@ namespace Anitro
 
                         Debug.WriteLine("UpdateLibrary(): updating library on server...");
 
-                        bool updateRating = (originalRatingText != libraryObject.rating.value);
+                        bool updateRating = (originalRatingText != libraryObject.Rating.ToString());
 
-                        await APIv1.Post.LibraryUpdate(libraryObject, updateRating, false);//.anime.slug,
-                        //libraryObject.status,
-                        //libraryObject.@private.ToString(),
-                        //libraryObject.rating.value,
-                        //Convert.ToInt32(libraryObject.rewatched_times),
-                        //libraryObject.notes.ToString(),
-                        //Convert.ToInt32(libraryObject.episodes_watched),
-                        //false,
-                        //false);
+                        await APIv1.Post.LibraryUpdate(libraryObject, updateRating, false);
+
                     }
                 }
                 catch (Exception)
@@ -231,7 +226,7 @@ namespace Anitro
 
                 // Even if it excepts, 9/10 it has already posted, so lets save and leave
                 Debug.WriteLine("Updating Local Storage");
-                Consts.LoggedInUser.animeLibrary.UpdateLibrary(Data_Structures.Library.GetLibrarySelectionFromStatus(libraryObject), libraryObject, false);
+                Consts.LoggedInUser.animeLibrary.UpdateLibrary(libraryObject.Status, libraryObject, false);
                 //Consts.LoggedInUser.Save();
 
                 // Re-allow people to exit again
@@ -247,7 +242,7 @@ namespace Anitro
             if (!objectChanged) { return; }
             if (!animeRemoved) { return; }
 
-            Debug.WriteLine("Removing " + libraryObject.anime.slug + " from Library");
+            Debug.WriteLine("Removing " + libraryObject.Anime.ServiceID + " from Library");
             Consts.LoggedInUser.animeLibrary.savingOrUpdatingLibrary = true;
 
             try
@@ -256,13 +251,13 @@ namespace Anitro
                 {
                     XamlControlHelper.ChangeProgressIndicator(ApplicationProgressBar, true);
 
-                    await APIv1.Post.LibraryRemove(libraryObject.anime.slug, false);
+                    await APIv1.Post.LibraryRemove(libraryObject.Anime.ServiceID, false);
                 }
             }
             catch (Exception) { }
 
             // Pre-emptively remove
-            LibrarySelection remSel = Consts.LoggedInUser.animeLibrary.FindWhereExistsInLibrary(libraryObject.anime.slug);
+            LibrarySelection remSel = Consts.LoggedInUser.animeLibrary.FindWhereExistsInLibrary(libraryObject.Anime.ServiceID);
 
             Debug.WriteLine("LibrarySelection: " + remSel.ToString());
 
@@ -275,7 +270,7 @@ namespace Anitro
 
                 foreach (LibraryObject lO in Consts.LoggedInUser.animeLibrary.OnHold)
                 {
-                    Debug.WriteLine(lO.anime.slug);
+                    Debug.WriteLine(lO.Anime.ServiceID);
                 }
             }
 
@@ -293,31 +288,32 @@ namespace Anitro
 
             if (!contentLoaded) { return; }
             if (!Consts.LoggedInUser.IsLoggedIn) { return; }
+            if (LibraryPicker == null) { return; }
             if (LibraryPicker.SelectedItem == null) { return; }
 
             try
             {
-                string previousStatus = libraryObject.status;
+                LibrarySelection previousStatus = libraryObject.Status;
 
                 switch (LibraryPicker.SelectedIndex)
                 {
                     case 0: //<sys:String>None</sys:String>
-                        libraryObject.status = "";
+                        libraryObject.Status = LibrarySelection.None;
                         break;
                     case 1: //<sys:String>Currently Watching</sys:String>
-                        libraryObject.status = "currently-watching";
+                        libraryObject.Status = LibrarySelection.CurrentlyWatching;
                         break;
                     case 2: //<sys:String>Plan To Watch</sys:String>
-                        libraryObject.status = "plan-to-watch";
+                        libraryObject.Status = LibrarySelection.PlanToWatch;
                         break;
                     case 3: //<sys:String>Completed</sys:String>
-                        libraryObject.status = "completed";
+                        libraryObject.Status = LibrarySelection.Completed;
                         break;
                     case 4: //<sys:String>On Hold</sys:String>
-                        libraryObject.status = "on-hold";
+                        libraryObject.Status = LibrarySelection.OnHold;
                         break;
                     case 5: //<sys:String>Dropped</sys:String>
-                        libraryObject.status = "dropped";
+                        libraryObject.Status = LibrarySelection.Dropped;
                         break;
                     default:
                         break;
@@ -333,13 +329,13 @@ namespace Anitro
                     {
                         AnimeRemoved(false);
                         AnimeUpdated(true);
-                        Consts.LoggedInUser.animeLibrary.SwitchLibraries(Data_Structures.Library.GetLibrarySelectionFromStatus(libraryObject), libraryObject);
+                        Consts.LoggedInUser.animeLibrary.SwitchLibraries(libraryObject.Status, libraryObject);
                         await Consts.LoggedInUser.Save();
                     }
                     else if (LibraryPicker.SelectedIndex == 0)
                     {
-                        if (!Consts.LoggedInUser.animeLibrary.DoesExistInLibrary(Consts.LoggedInUser.animeLibrary.FindWhereExistsInLibrary(libraryObject.anime.slug),
-                                                                                libraryObject.anime.slug))
+                        if (!Consts.LoggedInUser.animeLibrary.DoesExistInLibrary(Consts.LoggedInUser.animeLibrary.FindWhereExistsInLibrary(libraryObject.Anime.ServiceID),
+                                                                                libraryObject.Anime.ServiceID))
                         {
                             return;
                         }
@@ -358,7 +354,7 @@ namespace Anitro
         private void libraryPrivate_Toggled(object sender, RoutedEventArgs e)
         {
             AnimeUpdated(true);
-            libraryObject.@private = libraryPrivate.IsOn;
+            libraryObject.Private = libraryPrivate.IsOn;
             //UpdateLibrary();
         }
 
@@ -366,9 +362,9 @@ namespace Anitro
         {
             AnimeUpdated(true);
 #if WINDOWS_PHONE_APP
-            libraryObject.rewatching = libraryRewatching.IsOn;
+            libraryObject.Rewatching = libraryRewatching.IsOn;
 #else
-            libraryObject.rewatching = libraryRewatching_Switch.IsOn;
+            libraryObject.Rewatching = libraryRewatching_Switch.IsOn;
 #endif
             //UpdateLibrary();
         }
@@ -377,22 +373,18 @@ namespace Anitro
         {
             AnimeUpdated(true);
 
-            int rewatchedTimes = Convert.ToInt32(libraryObject.rewatched_times);
-
-            libraryObject.rewatched_times = Convert.ToString(++rewatchedTimes);
-            libraryRewatchedTimes.Text = libraryObject.rewatched_times.ToString();
+            libraryObject.IncrimentRewatchedCount();
+            libraryRewatchedTimes.Text = libraryObject.RewatchedTimes.ToString();
             //UpdateLibrary();
         }
 
         private void decrimentRewatchedTimesBy1(object sender, RoutedEventArgs e)
         {
+            if (libraryObject.RewatchedTimes <= 0) { return; }
             AnimeUpdated(true);
 
-            int rewatchedTimes = Convert.ToInt32(libraryObject.rewatched_times);
-
-            if (rewatchedTimes <= 0) { return; }
-            libraryObject.rewatched_times = Convert.ToString(--rewatchedTimes);
-            libraryRewatchedTimes.Text = libraryObject.rewatched_times.ToString();
+            libraryObject.DecrimentRewatchedCount();
+            libraryRewatchedTimes.Text = libraryObject.RewatchedTimes.ToString();
             //UpdateLibrary();
         }
 
@@ -400,12 +392,8 @@ namespace Anitro
         {
             AnimeUpdated(true);
 
-            int wCount = Convert.ToInt32(libraryObject.episodes_watched);
-            int epCount;
-
-            string epCountAsStr = libraryObject.anime.episode_count;
-            if (string.IsNullOrEmpty(epCountAsStr) || epCountAsStr.Contains("?") || epCountAsStr.StartsWith("0")) epCount = 0;
-            else { epCount = Convert.ToInt32(libraryObject.anime.episode_count); }
+            int wCount = libraryObject.EpisodesWatched;
+            int epCount = libraryObject.Anime.EpisodeCount;
 
             bool skipLibChange = false;
             if (epCount == 0) { skipLibChange = true; }
@@ -417,7 +405,9 @@ namespace Anitro
             }
             else
             {
-                libraryObject.episodes_watched = Convert.ToString(++wCount);
+                libraryObject.IncrimentEpisodesWatched();
+                wCount = libraryObject.EpisodesWatched;
+
                 if (epCount == 0) { libraryEpisodesWatched.Text = wCount + "/" + "?"; }
                 else { libraryEpisodesWatched.Text = wCount + "/" + epCount; }
                 //UpdateLibrary();
@@ -431,18 +421,17 @@ namespace Anitro
         {
             AnimeUpdated(true);
 
-
-            int wCount = Convert.ToInt32(libraryObject.episodes_watched);
-            int epCount;
-
-            if (libraryObject.anime.episode_count.Contains("?")) epCount = 0;
-            else { epCount = Convert.ToInt32(libraryObject.anime.episode_count); }
+            int wCount = libraryObject.EpisodesWatched;
+            int epCount = libraryObject.Anime.EpisodeCount;
 
             if (wCount <= 0) { return; }
             if (wCount >= epCount) { LibraryPicker.SelectedIndex = 1; }
 
 
-            libraryObject.episodes_watched = Convert.ToString(--wCount);
+
+            libraryObject.DecrementEpisodesWatched();
+            wCount = libraryObject.EpisodesWatched;
+
             if (epCount == 0) { libraryEpisodesWatched.Text = wCount + "/" + "?"; }
             else { libraryEpisodesWatched.Text = wCount + "/" + epCount; }
             //UpdateLibrary();
@@ -461,9 +450,8 @@ namespace Anitro
         {
             Debug.WriteLine("Notes Lost Focus");
 
-            libraryObject.notes = notesTextBox.Text;
-            if (notesTextBox.Text == "") { libraryObject.notes_present = false; }
-            else { libraryObject.notes_present = true; AnimeUpdated(true); }
+            libraryObject.Notes = notesTextBox.Text;
+            if (notesTextBox.Text != "") { AnimeUpdated(true); }
 
             //UpdateLibrary();
         }
@@ -473,13 +461,13 @@ namespace Anitro
             AnimeUpdated(true);
             //libraryRating.Value += 0.5;
 
-            double rating = libraryObject.rating.valueAsDouble;
+            double rating = libraryObject.Rating;
             rating += 0.5;
 
             if (rating > 5) rating = 5;
-            libraryObject.rating.valueAsDouble = rating;
+            libraryObject.Rating = rating;
 
-            libraryRating.Text = libraryObject.rating.value + "/5";
+            libraryRating.Text = libraryObject.Rating + "/5";
         }
 
         private void decrimentRatingByHalf(object sender, RoutedEventArgs e)
@@ -487,13 +475,13 @@ namespace Anitro
             AnimeUpdated(true);
             //libraryRating.Value -= 0.5;
 
-            double rating = libraryObject.rating.valueAsDouble;
+            double rating = libraryObject.Rating;
             rating -= 0.5;
 
             if (rating < 0) rating = 0;
-            libraryObject.rating.valueAsDouble = rating;
+            libraryObject.Rating = rating;
 
-            libraryRating.Text = libraryObject.rating.value + "/5";
+            libraryRating.Text = libraryObject.Rating + "/5";
         }
         #endregion
     }

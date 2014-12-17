@@ -18,6 +18,7 @@ using Microsoft.Advertising.Mobile.UI;
 using Microsoft.Advertising.Mobile.Common;
 #else
 using Microsoft.Advertising.WinRT.UI;
+using System.Collections.ObjectModel;
 //using Microsoft.Advertising.WinRT.Common;
 #endif
 
@@ -40,7 +41,7 @@ namespace Anitro
                 userID_TextBlock.Text = "UserID: " + Consts.LoggedInUser.UserInfo.id.ToString();
             }
             catch (Exception) { }
-
+            
             bool hidewifu = false;
             try
             {
@@ -51,93 +52,109 @@ namespace Anitro
                 else
                 {
                     // Waifu
-                    waifuHusbando_TextBlock.Text = pageParameter.user.UserInfo.waifu_or_husbando;
+                    try {
+                        waifuHusbando_TextBlock.Text = pageParameter.user.UserInfo.waifu_or_husbando;
+                    }
+                    catch (Exception) { }
+
                     waifu_Image.Source = new BitmapImage(pageParameter.user.UserInfo.GetWaifuPictureURI());
                     waifuName_TextBlock.Text = pageParameter.user.UserInfo.waifu;
 
                     // Waifu Show
                     // See if the Show exists within the library
-                    if (pageParameter.user.animeLibrary.DoesExistInLibrary(LibrarySelection.All, pageParameter.user.UserInfo.waifu_slug))
-                    {
+                    if (pageParameter.user.animeLibrary.DoesExistInLibrary(LibrarySelection.All, pageParameter.user.UserInfo.waifu_slug)) {
                         var anime = pageParameter.user.animeLibrary.GetObjectInLibrary(LibrarySelection.All, pageParameter.user.UserInfo.waifu_slug);
 
-                        waifuShow_Image.Source = new BitmapImage(new Uri(anime.anime.cover_image, UriKind.Absolute));
-                        waifuShowName_TextBlock.Text = anime.anime.title;
+                        waifuShow_Image.Source = new BitmapImage(anime.Anime.CoverImageUrl);
+                        waifuShowName_TextBlock.Text = anime.Anime.RomanjiTitle;
+
+                        // Fix the slug
+                        pageParameter.user.UserInfo.waifu_slug = anime.Anime.ServiceID;
                     }
-                    else
-                    {
-                        waifuShowName_TextBlock.Text = Helpers.ConvertToAPIConpliantString(pageParameter.user.UserInfo.waifu_slug, '-', ' ');
+                    else {
+                        // Brute Force Search for Shows
+                        ObservableCollection<Anitro.Data_Structures.API_Classes.Anime> search = pageParameter.user.animeLibrary.Search(pageParameter.user.UserInfo.waifu_slug);
+                        if (search.Count > 0) {
+                            waifuShowName_TextBlock.Text = search[0].RomanjiTitle;
+                            waifuShow_Image.Source = new BitmapImage(search[0].CoverImageUrl);
+
+                            // Fix the slug
+                            pageParameter.user.UserInfo.waifu_slug = search[0].ServiceID;
+                        }
+                        else {
+                            waifuShowName_TextBlock.Text = Helpers.ConvertToAPIConpliantString(pageParameter.user.UserInfo.waifu_slug, '-', ' ');
+                        }
                     }
                 }
             }
             catch (Exception) { hidewifu = true; }
 
             // Hide it to remove placeholder data
-            if (hidewifu)
-            {
-                waifuHusbando_TextBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                waifu_Image.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                waifuName_TextBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                waifuShow_Image.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                waifuShowName_TextBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            if (hidewifu) {
+                // ToDo: Fix the crash which happens when the app loads in snapped mode
+                // Fix: Solve for Null Refrence Error of Controls
+                try {
+                    waifuHusbando_TextBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    waifu_Image.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    waifuName_TextBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    waifuShow_Image.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    waifuShowName_TextBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                }
+                catch (Exception) { }
             }
 
-
-            total_AnimeWatched_TextBlock.Text = pageParameter.user.UserInfo.anime_watched.ToString();
+            // ToDo: Fix the crash which happens when the app loads in snapped mode
+            // Fix: Solve for Null Refrence Error of Controls
+            try {
+                total_AnimeWatched_TextBlock.Text = pageParameter.user.UserInfo.anime_watched.ToString();
+            }
+            catch (Exception) { }
 
             // Grab the genre to make it easier
             List<Anitro.Data_Structures.API_Classes.TopGenres> genre = pageParameter.user.UserInfo.top_genres;
 
             // Set the Genre Values
             #region Bind Genre Values
-            try
-            {
-                genre1_TextBlock.Text = genre[0].genre.name;
+            // ToDo: Fix the crash which happens when the app loads in snapped mode
+            // Fix: Solve for Null Refrence Error of Controls
+            try {
+                genre1_TextBlock.Text = genre[0].genre.ToString();
                 num_Genre1_TextBlock.Text = genre[0].num.ToString();
             }
-            catch (Exception)
-            {
-                num_Genre1_TextBlock.Text = " ";
+            catch (Exception) {
+                //num_Genre1_TextBlock.Text = " ";
             }
 
-            try
-            {
-                genre2_TextBlock.Text = genre[1].genre.name;
+            try {
+                genre2_TextBlock.Text = genre[1].genre.ToString(); ;
                 num_Genre2_TextBlock.Text = genre[1].num.ToString();
             }
-            catch (Exception)
-            {
-                num_Genre2_TextBlock.Text = " ";
+            catch (Exception) {
+                //num_Genre2_TextBlock.Text = " ";
             }
 
-            try
-            {
-                genre3_TextBlock.Text = genre[2].genre.name;
+            try {
+                genre3_TextBlock.Text = genre[2].genre.ToString();
                 num_Genre3_TextBlock.Text = genre[2].num.ToString();
             }
-            catch (Exception)
-            {
-                num_Genre3_TextBlock.Text = " ";
+            catch (Exception) {
+                //num_Genre3_TextBlock.Text = " ";
             }
 
-            try
-            {
-                genre4_TextBlock.Text = genre[3].genre.name;
+            try {
+                genre4_TextBlock.Text = genre[3].genre.ToString();
                 num_Genre4_TextBlock.Text = genre[3].num.ToString();
             }
-            catch (Exception)
-            {
-                num_Genre4_TextBlock.Text = " ";
+            catch (Exception) {
+                //num_Genre4_TextBlock.Text = " ";
             }
 
-            try
-            {
-                genre5_TextBlock.Text = genre[4].genre.name;
+            try {
+                genre5_TextBlock.Text = genre[4].genre.ToString();
                 num_Genre5_TextBlock.Text = genre[4].num.ToString();
             }
-            catch (Exception)
-            {
-                num_Genre5_TextBlock.Text = " ";
+            catch (Exception) {
+                //num_Genre5_TextBlock.Text = " ";
             }
             #endregion
         }
@@ -168,7 +185,7 @@ namespace Anitro
             try
             {
                 if (((ListBox)sender).SelectedItem == null) { return; }
-                Anitro.Data_Structures.API_Classes.V1.ActivityFeedObject selected = ((ListBox)sender).SelectedItem as Anitro.Data_Structures.API_Classes.V1.ActivityFeedObject;
+                Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject selected = ((ListBox)sender).SelectedItem as Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject;
 
                 ((ListBox)sender).SelectedItem = null;
 
@@ -301,11 +318,17 @@ namespace Anitro
         private void WaifuShow_Image_Loaded(object sender, RoutedEventArgs e)
         {
             waifuShow_Image = (sender as Image);
+
+            waifu_Image.Source = new BitmapImage(pageParameter.user.UserInfo.GetWaifuPictureURI());
         }
 
         private void WaifuName_TextBlock_Loaded(object sender, RoutedEventArgs e)
         {
             waifuName_TextBlock = (sender as TextBlock);
+
+            if (!string.IsNullOrWhiteSpace(pageParameter.user.UserInfo.waifu)) {
+                waifuName_TextBlock.Text = pageParameter.user.UserInfo.waifu;
+            }
         }
 
         private void Waifu_Image_Loaded(object sender, RoutedEventArgs e)
@@ -316,6 +339,13 @@ namespace Anitro
         private void WaifuHusbando_TextBlock_Loaded(object sender, RoutedEventArgs e)
         {
             waifuHusbando_TextBlock = (sender as TextBlock);
+
+            if (!string.IsNullOrWhiteSpace(pageParameter.user.UserInfo.waifu_or_husbando)) {
+                try {
+                    waifuHusbando_TextBlock.Text = pageParameter.user.UserInfo.waifu_or_husbando;
+                }
+                catch (Exception) { }
+            }
         }
 
         #region Genres

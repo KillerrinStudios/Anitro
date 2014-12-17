@@ -29,7 +29,7 @@ namespace Anitro.Data_Structures.Structures
 
         public AnimePageParameter(LibraryObject libObj, ComingFrom _comingFrom)
         {
-            slug = libraryObject.anime.slug;
+            slug = libraryObject.Anime.ServiceID;
             libraryObject = libObj;
             comingFrom = _comingFrom;
         }

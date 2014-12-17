@@ -8,7 +8,7 @@
             <StackPanel Orientation="Vertical" Width="150" Height="250">
                 <Image Width="150" Height="250">
                     <Image.Source>
-                        <BitmapImage UriSource="{Binding anime.cover_image}" CreateOptions="None" />
+                        <BitmapImage UriSource="{Binding Anime.CoverImageUrlString}" CreateOptions="None" />
                     </Image.Source>
                 </Image>
             </StackPanel>

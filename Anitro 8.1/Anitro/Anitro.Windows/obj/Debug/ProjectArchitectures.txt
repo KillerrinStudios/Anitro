@@ -1,1 +1,1 @@
-C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Windows\Anitro.Windows.csproj;neutral
+D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\Anitro.Windows.csproj;neutral

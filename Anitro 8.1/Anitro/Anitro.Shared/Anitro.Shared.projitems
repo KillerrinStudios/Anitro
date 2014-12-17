@@ -31,19 +31,23 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\RelativeDateTimeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\ActivityFeed.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Anime.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Genre.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\APIConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\Anime.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\Genre.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\LibraryList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\LibraryObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\Rating.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\StatusFeed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\UserInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V2\Anime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\LibraryList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\LibraryObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Rating.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\UserInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\V1\Anime.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\V1\Genre.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\V1\LibraryObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\V1\Rating.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\V1\StatusFeed.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\V2\Anime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\ActivityFeedSelection.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\AnimeGenres.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\AiringStatus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\MediaGenre.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\MediaType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\OnlineService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\AnitroClientOSType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\APIResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\APIType.cs" />
@@ -83,7 +87,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\StatusFeed\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\StatusFeed\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\CancelledEarcon.wav" />

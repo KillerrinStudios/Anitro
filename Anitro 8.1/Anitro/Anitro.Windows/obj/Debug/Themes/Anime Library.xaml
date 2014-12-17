@@ -7,7 +7,7 @@
 		<StackPanel Orientation="Horizontal" Margin="0,-25,0,-40" VerticalAlignment="Top" Width="400" Height="200">
 			<Image Width="100" Height="200" Margin="0,-10,0,0">
 				<Image.Source>
-					<BitmapImage UriSource="{Binding anime.cover_image}" CreateOptions="None" />
+                    <BitmapImage UriSource="{Binding Anime.CoverImageUrlString}" CreateOptions="None" />
 				</Image.Source>
 			</Image>
 
@@ -24,38 +24,26 @@
 					</Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Row="0">
-                        <TextBlock Text="{Binding anime.title}" Margin="0,0,0,0" Width="600" FontSize="20" Foreground="{StaticResource TitleBrush}"/>
-					    <TextBlock Text="{Binding anime.alternate_title}" Margin="0,-5,0,0" Width="600" FontSize="20" Foreground="{StaticResource ContentBrush}"/>
+                        <TextBlock Text="{Binding Anime.RomanjiTitle}" Margin="0,0,0,0" Width="600" FontSize="20" Foreground="{StaticResource TitleBrush}"/>
+					    <TextBlock Text="{Binding Anime.EnglishTitle}" Margin="0,-5,0,0" Width="600" FontSize="20" Foreground="{StaticResource ContentBrush}"/>
                     </StackPanel>
-                    
+
                     <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,5,0,0">
                         <TextBlock Margin="0,0,0,0" Width="auto" FontSize="18" Foreground="{StaticResource ContentBrush}">
 													<Run Text="rating: " />
-													<Run Text="{Binding rating.value}" />
+													<Run Text="{Binding Rating}" />
 													<Run Text="/" />
 													<Run Text="5" />
                         </TextBlock>
 
                         <TextBlock Margin="0,0,0,0" Width="auto" FontSize="18" Foreground="{StaticResource ContentBrush}">
 													<Run Text="watched: " />
-													<Run Text="{Binding episodes_watched}" />
+													<Run Text="{Binding EpisodesWatched}" />
 													<Run Text="/" />
-													<Run Text="{Binding anime.episode_count}" />
+													<Run Text="{Binding Anime.EpisodeCount}" />
                         </TextBlock>
-                        <!--
-						<TextBlock Margin="0,0,0,0" Width="auto" FontSize="12" Foreground="{StaticResource ContentBrush}">
-													<Run Text="rewatched: " />
-													<Run Text="{Binding rewatched_times}" />
-						</TextBlock>
-						-->
-						
-					</StackPanel>
-
-					<!--                                                 -130,2,0,0  
-					<Rating Grid.Row="3" Grid.Column="1" Margin="-720,2,0,0" Width="133.75" Height="26.75" RatingItemCount="5" Value="{Binding rating.valueAsDouble}" ShowSelectionHelper="False" ReadOnly="True" Background="{StaticResource TransparentBrush}" FilledItemStyle="{StaticResource AnitroColouredStars}" />
-					-->
-					
-				</Grid>
+                    </StackPanel>
+                </Grid>
 			</StackPanel>
 		</StackPanel>
 	</DataTemplate>

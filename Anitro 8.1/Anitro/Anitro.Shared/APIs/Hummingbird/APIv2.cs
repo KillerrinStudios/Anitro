@@ -60,11 +60,12 @@ namespace Anitro.APIs.Hummingbird
                         //Debug.WriteLine(responseAsString);
                         
                         JObject o = JObject.Parse(responseAsString); // This would be the string you defined above
-                        Data_Structures.API_Classes.UserInfoRootObject userInfo = JsonConvert.DeserializeObject<Data_Structures.API_Classes.UserInfoRootObject>(o.ToString()); ;
+                        Anitro.Data_Structures.API_Classes.Hummingbird.V1.UserInfoRootObject userInfo = JsonConvert.DeserializeObject<Anitro.Data_Structures.API_Classes.Hummingbird.V1.UserInfoRootObject>(o.ToString()); ;
 
                         Debug.WriteLine("GetAnime(): Exiting");
 
                         args = new APICompletedEventArgs(APIResponse.Successful, APIType.UserInfo, userInfo);
+
                         if (fireEventOff)
                         {
                             APICompletedEventHandler(args.UserState, args);

@@ -214,7 +214,7 @@ namespace Anitro
 
                 foreach (Anime a in localSearch)
                 {
-                    suggestionCollection.AppendQuerySuggestion(a.title);
+                    suggestionCollection.AppendQuerySuggestion(a.RomanjiTitle);
                 }
             }
         }

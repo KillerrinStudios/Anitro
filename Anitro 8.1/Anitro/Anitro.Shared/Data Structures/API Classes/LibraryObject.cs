@@ -1,92 +1,130 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Anitro.Data_Structures.Enumerators;
 
 namespace Anitro.Data_Structures.API_Classes
 {
     public class LibraryObject
     {
-        public string episodes_watched { get; set; } // int
-        public string last_watched { get; set; }
-        public string rewatched_times { get; set; } // int
-        public object notes { get; set; } //string
-        public object notes_present { get; set; } //bool
-        public string status { get; set; }
-        public string id { get; set; }
-        public bool @private { get; set; }
-        public object rewatching { get; set; } //bool
-        public Anime anime { get; set; }
-        public Rating rating { get; set; }
+        #region Properties
+        public int RewatchedTimes { get; set; } 
+        public int EpisodesWatched { get; set; }
 
+        public bool Private { get; set; }
+        public bool Rewatching { get; set; }
+
+        public double Rating { get; set; }
+
+        public string Notes { get; set; }
+
+        public DateTime LastWatched { get; set; }
+        public LibrarySelection Status { get; set; }
+
+        public Anime Anime { get; set; }
+        #endregion
+
+        #region Helper Methods
         public void IncrimentEpisodesWatched(int ammount = 1)
         {
-            int watchedCount = Convert.ToInt32(episodes_watched);
-            int epCount;
-
-            string epCountAsStr = anime.episode_count;
-            if (string.IsNullOrEmpty(epCountAsStr) || epCountAsStr.Contains("?") || epCountAsStr.StartsWith("0")) epCount = 0;
-            else { epCount = Convert.ToInt32(anime.episode_count); }
-
+            int watchedCount = EpisodesWatched;
+            int epCount = Anime.EpisodeCount;
 
             int newWatchedCount;
             if ((watchedCount + ammount) >= epCount) newWatchedCount = epCount;
             else newWatchedCount = watchedCount + ammount;
 
-            episodes_watched = Convert.ToString(newWatchedCount);
+            EpisodesWatched = newWatchedCount;
         }
         public void DecrementEpisodesWatched(int ammount = 1)
         {
-            int watchedCount = Convert.ToInt32(episodes_watched);
-            int epCount;
-
-            string epCountAsStr = anime.episode_count;
-            if (string.IsNullOrEmpty(epCountAsStr) || epCountAsStr.Contains("?") || epCountAsStr.StartsWith("0")) epCount = 0;
-            else { epCount = Convert.ToInt32(anime.episode_count); }
-
+            int watchedCount = EpisodesWatched;
+            int epCount = Anime.EpisodeCount;
 
             int newWatchedCount;
             if ((watchedCount - ammount) <= 0) newWatchedCount = 0;
             else newWatchedCount = watchedCount - ammount;
 
-            episodes_watched = Convert.ToString(newWatchedCount);
+            EpisodesWatched = newWatchedCount;
         }
 
         public void IncrimentRewatchedCount(int ammount = 1)
         {
-            int rewatchedTimes = Convert.ToInt32(rewatched_times);
-            rewatched_times = Convert.ToString(rewatchedTimes + ammount);
+            RewatchedTimes += ammount;
         }
         public void DecrimentRewatchedCount(int ammount = 1)
         {
-            int rewatchedTimes = Convert.ToInt32(rewatched_times);
-
-            if (rewatchedTimes <= 0) { return; }
-
-            int newWatchedCount;
-            if ((rewatchedTimes - ammount) <= 0) newWatchedCount = 0;
-            else newWatchedCount = rewatchedTimes - ammount;
-
-            rewatched_times = Convert.ToString(newWatchedCount);
+            RewatchedTimes -= ammount;
         }
+        #endregion
 
-        public LibraryObject(Anime _anime)
+        #region Constructors
+        public LibraryObject(Anitro.Data_Structures.API_Classes.Hummingbird.V1.LibraryObject o)
         {
-            episodes_watched = "0"; 
-            last_watched = "";
-            rewatched_times = "0";
-            notes = "";
-            notes_present = false;
-            status = "";
-            id = "";
-            @private = false;
-            rewatching = false;
-            anime = _anime;
-            rating = new Rating
-            {
-                type = "",
-                value = "0.0",
-                valueAsDouble = 0.0,
-            };
+            try {
+                EpisodesWatched = Convert.ToInt32(o.episodes_watched); ;
+            }
+            catch (Exception) { EpisodesWatched = 0; }
+
+            string animeLastWatched = o.last_watched.Substring(0, o.last_watched.Length - 1);
+            LastWatched = DateTime.Parse(animeLastWatched);
+
+            try {
+                RewatchedTimes = Convert.ToInt32(o.rewatched_times);
+            }
+            catch (Exception) { RewatchedTimes = 0; }
+
+            if (o.notes == null) { Notes = ""; }
+            else { Notes = o.notes.ToString(); }
+
+            Status = APIConverter.StringToLibrarySelection(o.status);
+            Private = o.@private;
+
+            if (o.rewatching == null) Rewatching = false;
+            else Rewatching = (bool)o.rewatching;
+
+            Anime = new Anime(o.anime);
+            Rating = o.rating.valueAsDouble;
         }
+
+        public LibraryObject(Anitro.Data_Structures.API_Classes.Hummingbird.V1.Anime a)
+        {
+            EpisodesWatched = 0;
+            LastWatched = new DateTime();
+            RewatchedTimes = 0;
+            Notes = "";
+            Status = LibrarySelection.None;
+            Private = false;
+            Rewatching = false;
+            Anime = new Anime(a);
+            Rating = 0.0;
+        }
+
+        public LibraryObject(API_Classes.Anime a)
+        {
+            EpisodesWatched = 0;
+            LastWatched = new DateTime();
+            RewatchedTimes = 0;
+            Notes = "";
+            Status = LibrarySelection.None;
+            Private = false;
+            Rewatching = false;
+            Anime = a;
+            Rating = 0.0;
+        }
+
+        public LibraryObject()
+        {
+            EpisodesWatched = 0;
+            LastWatched = new DateTime();
+            RewatchedTimes = 0;
+            Notes = "";
+            Status = LibrarySelection.None;
+            Private = false;
+            Rewatching = false;
+            Anime = new Anime();
+            Rating = 0.0;
+        }
+        #endregion
     }
 }

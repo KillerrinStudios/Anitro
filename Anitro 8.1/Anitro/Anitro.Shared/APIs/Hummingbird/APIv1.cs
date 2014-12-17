@@ -29,16 +29,16 @@ namespace Anitro.APIs.Hummingbird
         {
             public static class Parsers
             {
-                public static bool ParseActivityFeed(ref User user, Anitro.Data_Structures.API_Classes.V1.ActivityFeedList aF)
+                public static bool ParseActivityFeed(ref User user, Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedList aF)
                 {
                     Debug.WriteLine("ParseActivityFeed(): Entering");
                     try
                     {
                         //StorageTools.SaveFileFromServer(new Uri(aF.status_feed[0].user.avatar, UriKind.Absolute), StorageTools.StorageConsts.AvatarImage);
 
-                        foreach (Anitro.Data_Structures.API_Classes.V1.StatusFeedObject sFO in aF.status_feed)
+                        foreach (Anitro.Data_Structures.API_Classes.Hummingbird.V1.StatusFeedObject sFO in aF.status_feed)
                         {
-                            Anitro.Data_Structures.API_Classes.V1.ActivityFeedObject temp = new Anitro.Data_Structures.API_Classes.V1.ActivityFeedObject { };
+                            Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject temp = new Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject { };
                             string contentString;
 
                             if (string.IsNullOrEmpty(user.AvatarURL))//Consts.settings.userAvatar))
@@ -90,7 +90,7 @@ namespace Anitro.APIs.Hummingbird
 
                                     string storyImageString = "";
 
-                                    temp = new Anitro.Data_Structures.API_Classes.V1.ActivityFeedObject
+                                    temp = new Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject
                                     {
                                         slug = sFO.media.slug,
                                         storyImage = sFO.media.cover_image,
@@ -105,7 +105,7 @@ namespace Anitro.APIs.Hummingbird
                                     string tts2 = sFO.updated_at.Substring(0, sFO.updated_at.Length - 1);
                                     string[] tS2 = tts2.Split('T');
 
-                                    temp = new Anitro.Data_Structures.API_Classes.V1.ActivityFeedObject
+                                    temp = new Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject
                                     {
                                         storyImage = sFO.poster.avatar, //storyimage, //sFO.user.avatar,
                                         header = sFO.poster.name, //sFO.user.name,
@@ -117,7 +117,7 @@ namespace Anitro.APIs.Hummingbird
                                     string tts3 = sFO.updated_at.Substring(0, sFO.updated_at.Length - 1);
                                     string[] tS3 = tts3.Split('T');
 
-                                    temp = new Anitro.Data_Structures.API_Classes.V1.ActivityFeedObject
+                                    temp = new Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject
                                     {
                                         storyImage = sFO.user.avatar, //storyimage, //sFO.user.avatar,
                                         header = sFO.user.name, //sFO.user.name,
@@ -141,10 +141,6 @@ namespace Anitro.APIs.Hummingbird
                 }
                 public static List<Anime> ParseSearchResult(string searchResponseAsString)
                 {
-                    ///
-                    /// If Errors arrise, convert back to an async which returns a Task<List<Anime>>
-                    /// 
-
                     Debug.WriteLine("ParseSearchResult(): Entering");
                     //Debug.WriteLine(searchResponseAsString);
 
@@ -156,28 +152,19 @@ namespace Anitro.APIs.Hummingbird
 
                         JObject o = JObject.Parse(response); // This would be the string you defined above
                         //Debug.WriteLine("Parsed");
-                        AnimeList ani = JsonConvert.DeserializeObject<AnimeList>(o.ToString());
+                        Anitro.Data_Structures.API_Classes.Hummingbird.V1.AnimeList ani = JsonConvert.DeserializeObject<Anitro.Data_Structures.API_Classes.Hummingbird.V1.AnimeList>(o.ToString());
                         //Debug.WriteLine("Parsing Lib parsed");
 
-                        //foreach (Anime a in ani.anime)
-                        //{
-                        //    a.cover_image_uri = new Uri(a.cover_image, UriKind.Absolute);
-                        //}
-
                         Debug.WriteLine("ParseSearchResult(): Exiting");
-                        return ani.anime;
+                        return APIConverter.AnimeList(ani);
                     }
                 }
-                public static List<Anitro.Data_Structures.API_Classes.Anime> ParseFavouritesResult(string searchResponseAsString)
+                public static List<Anime> ParseFavouritesResult(string searchResponseAsString)
                 {
-                    ///
-                    /// If Errors arrise, convert back to an async which returns a Task<List<Anime>>
-                    /// 
-
                     Debug.WriteLine("ParseFavouritesResult(): Entering");
                     //Debug.WriteLine(searchResponseAsString);
 
-                    if (String.IsNullOrWhiteSpace(searchResponseAsString)) { Debug.WriteLine("ParseFavouritesResult(): String is null or empty"); return new List<Anitro.Data_Structures.API_Classes.Anime>(); }
+                    if (String.IsNullOrWhiteSpace(searchResponseAsString)) { Debug.WriteLine("ParseFavouritesResult(): String is null or empty"); return new List<Anime>(); }
                     else
                     {
                         Debug.WriteLine("ParseFavouritesResult(): String is Populated");
@@ -186,12 +173,11 @@ namespace Anitro.APIs.Hummingbird
                         JObject o = JObject.Parse(response); // This would be the string you defined above
                         //Debug.WriteLine("Parsed");
 
-                        Anitro.Data_Structures.API_Classes.AnimeList ani = JsonConvert.DeserializeObject<Anitro.Data_Structures.API_Classes.AnimeList>(o.ToString());
+                        Anitro.Data_Structures.API_Classes.Hummingbird.V1.AnimeList ani = JsonConvert.DeserializeObject<Anitro.Data_Structures.API_Classes.Hummingbird.V1.AnimeList>(o.ToString());
                         //Debug.WriteLine("Parsing Lib parsed");
 
-
                         Debug.WriteLine("ParseFavouritesResult(): Exiting");
-                        return ani.anime;
+                        return APIConverter.AnimeList(ani);
                     }
                 }
                 public static async Task<bool> ParseAnimeLibrary(string responseAsString, LibrarySelection status) //async Task<List<LibraryObject>>
@@ -214,34 +200,27 @@ namespace Anitro.APIs.Hummingbird
 
                         JObject o = JObject.Parse(response); // This would be the string you defined above
                         //Debug.WriteLine("Parsed");
-                        LibraryList lib = JsonConvert.DeserializeObject<LibraryList>(o.ToString()); ;
+                        Anitro.Data_Structures.API_Classes.Hummingbird.V1.LibraryList lib = JsonConvert.DeserializeObject<Anitro.Data_Structures.API_Classes.Hummingbird.V1.LibraryList>(o.ToString()); ;
                         //Debug.WriteLine("Parsing Lib parsed");
 
-                        foreach (LibraryObject lO in lib.library)
+                        foreach (var lO in lib.library)
                         {
                             Debug.WriteLine("Parsed: " + lO.anime.title + " | " + lO.status);
-                            LibraryObject tempAnimeObject = lO;
+                            Anitro.Data_Structures.API_Classes.Hummingbird.V1.LibraryObject tempAnimeObj = lO;
 
-                            //Set Genres and URI
-                            //-- Set the URIs
-                            //tempAnimeObject.anime.cover_image_uri = new Uri(tempAnimeObject.anime.cover_image, UriKind.Absolute);
+                            tempAnimeObj.anime.genres = new List<Anitro.Data_Structures.API_Classes.Hummingbird.V1.Genre> { new Anitro.Data_Structures.API_Classes.Hummingbird.V1.Genre { name = "" } };
 
-                            //-- Get Genres
-                            //Task<Anime> temp = GetAnime(tempAnimeObject.anime.slug);
-                            //await temp;
-                            //tempAnimeObject.anime.genres = temp.Result.genres;
-                            tempAnimeObject.anime.genres = new List<Genre> { new Genre { name = "" } };
+                            if (!String.IsNullOrEmpty(tempAnimeObj.rating.value)) { tempAnimeObj.rating.valueAsDouble = System.Convert.ToDouble(tempAnimeObj.rating.value); }
+                            else { tempAnimeObj.rating.valueAsDouble = 0.0; }
 
-                            if (!String.IsNullOrEmpty(tempAnimeObject.rating.value)) { tempAnimeObject.rating.valueAsDouble = System.Convert.ToDouble(tempAnimeObject.rating.value); }
-                            else { tempAnimeObject.rating.valueAsDouble = 0.0; }
-
-                            //library.Add(tempAnimeObject);
+                            LibraryObject tempAnimeObject = new LibraryObject(tempAnimeObj);
 
                             switch (status)
                             {
                                 case LibrarySelection.All:
                                 case LibrarySelection.None:
-                                    user.animeLibrary.AddToLibrary(Anitro.Data_Structures.Library.GetLibrarySelectionFromStatus(tempAnimeObject.status),
+                                    user.animeLibrary.AddToLibrary(
+                                                        tempAnimeObject.Status,
                                                         tempAnimeObject,
                                                         false,
                                                         false);
@@ -343,6 +322,12 @@ namespace Anitro.APIs.Hummingbird
                         case APIResponse.Successful:
                             Debug.WriteLine("AllUserInfo(): UserInfo Recieved Successfully!");
                             userinfo = (userEventArgs.ResultObject as Data_Structures.API_Classes.UserInfo);
+                            
+                            //Debug.WriteLine(userinfo.name);
+                            //Debug.WriteLine(userinfo.waifu);
+                            //Debug.WriteLine(userinfo.waifu_slug);
+                            //Debug.WriteLine(userinfo.waifu_char_id);
+
                             break;
                         default:
                             Debug.WriteLine("AllUserInfo(): UserInfo Failed");
@@ -356,12 +341,18 @@ namespace Anitro.APIs.Hummingbird
                     {
                         Debug.WriteLine("Getting Undocumented UserInfo");
                         undoc_userEventArgs = await APIv2.Get.UserInfo(userName, false);
-                        switch (userEventArgs.Result)
+                        Debug.WriteLine("Recieved Undocumented User Info");
+
+                        //Debug.WriteLine(undoc_userEventArgs.Result.ToString());
+                        //if (undoc_userEventArgs.Result == APIResponse.Successful)
+                        //    Debug.WriteLine("Successful");
+
+                        switch (undoc_userEventArgs.Result)
                         {
                             case APIResponse.Successful:
                                 Debug.WriteLine("AllUserInfo(): Undocumented_UserInfo Recieved Successfully!");
-                                UserInfo undoc_UserInfo = (undoc_userEventArgs.ResultObject as Data_Structures.API_Classes.UserInfoRootObject).user_info;
-                                userinfo.AddUnDocumentedToDocumented(undoc_UserInfo);
+                                Anitro.Data_Structures.API_Classes.Hummingbird.V1.UserInfo undoc_UserInfo = (undoc_userEventArgs.ResultObject as Anitro.Data_Structures.API_Classes.Hummingbird.V1.UserInfoRootObject).user_info;
+                                userinfo.AddUnDocumentedToDocumented(new UserInfo(undoc_UserInfo));
 
                                 FeedbackEventHandler(null, new APIFeedbackEventArgs("Extra User Info Succeeded"));
                                 break;
@@ -414,21 +405,25 @@ namespace Anitro.APIs.Hummingbird
 
                     if (response.IsSuccessStatusCode)
                     {
+                        Debug.WriteLine("Response is Success Code");
+
                         // Just as an example I'm turning the response into a string here
                         string responseAsString = await response.Content.ReadAsStringAsync();
 
                         //Debug.WriteLine(responseAsString);
 
                         JObject o = JObject.Parse(responseAsString); // This would be the string you defined above
-                        Data_Structures.API_Classes.UserInfo userInfo = JsonConvert.DeserializeObject<Data_Structures.API_Classes.UserInfo>(o.ToString()); ;
+                        Anitro.Data_Structures.API_Classes.Hummingbird.V1.UserInfo userInfo = JsonConvert.DeserializeObject<Anitro.Data_Structures.API_Classes.Hummingbird.V1.UserInfo>(o.ToString()); ;
 
-                        Debug.WriteLine("GetAnime(): Exiting");
+                        Debug.WriteLine("UserInfo(): Converting to Universal Data Structure");
 
-                        args = new APICompletedEventArgs(APIResponse.Successful, APIType.UserInfo, userInfo);
+                        args = new APICompletedEventArgs(APIResponse.Successful, APIType.UserInfo, new UserInfo(userInfo));
                         if (fireEventOff)
                         {
                             APICompletedEventHandler(args.UserState, args);
                         }
+
+                        Debug.WriteLine("UserInfo(): Exiting");
                         return args;
                     }
                 }
@@ -486,12 +481,12 @@ namespace Anitro.APIs.Hummingbird
                     //Debug.WriteLine(responseAsString);
 
                     JObject o = JObject.Parse(responseAsString); // This would be the string you defined above
-                    Anime animeObject = JsonConvert.DeserializeObject<Anime>(o.ToString()); ;
+                    Anitro.Data_Structures.API_Classes.Hummingbird.V1.Anime animeObject = JsonConvert.DeserializeObject<Anitro.Data_Structures.API_Classes.Hummingbird.V1.Anime>(o.ToString()); ;
 
                     Debug.WriteLine("GetAnime(): Exiting");
 
                     args = new APICompletedEventArgs(APIResponse.Successful, APIType.GetAnime);
-                    APICompletedEventHandler(animeObject, args);
+                    APICompletedEventHandler(new Anime(animeObject), args);
                     return;
                 }
                 args = new APICompletedEventArgs(APIResponse.Failed, APIType.GetAnime);
@@ -524,10 +519,11 @@ namespace Anitro.APIs.Hummingbird
                     //Debug.WriteLine(responseAsString + "\n\n");
 
                     List<Anime> animeList = Parsers.ParseSearchResult(responseAsString);
+                    Debug.WriteLine("Search Parsed");
 
                     foreach (Anime a in animeList)
                     {
-                        Debug.WriteLine(a.title);
+                        Debug.WriteLine(a.RomanjiTitle);
                     }
 
                     args = new APICompletedEventArgs(APIResponse.Successful, APIType.Search);
@@ -574,7 +570,7 @@ namespace Anitro.APIs.Hummingbird
                     //Debug.WriteLine(responseAsString);
 
                     JObject o = JObject.Parse(responseAsString); // This would be the string you defined above
-                    Data_Structures.API_Classes.V1.ActivityFeedList activityFeed = JsonConvert.DeserializeObject<Data_Structures.API_Classes.V1.ActivityFeedList>(o.ToString());
+                    Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedList activityFeed = JsonConvert.DeserializeObject<Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedList>(o.ToString());
 
 
                     bool parseResult = Parsers.ParseActivityFeed(ref user, activityFeed);
@@ -605,7 +601,7 @@ namespace Anitro.APIs.Hummingbird
             {
                 APICompletedEventArgs args;
 
-                string statusString = Anitro.Data_Structures.Library.GetStatusFromLibrarySelection(status);
+                string statusString = APIConverter.LibrarySelectionToString(status);
 
                 Debug.WriteLine("GetLibrary(): Entering");
 
@@ -693,11 +689,11 @@ namespace Anitro.APIs.Hummingbird
 
                     //Debug.WriteLine(responseAsString);
 
-                    List<Anitro.Data_Structures.API_Classes.Anime> animeList = Parsers.ParseFavouritesResult(responseAsString);
+                    List<Anime> animeList = Parsers.ParseFavouritesResult(responseAsString);
 
-                    foreach (Anitro.Data_Structures.API_Classes.Anime a in animeList)
+                    foreach (Anime a in animeList)
                     {
-                        Debug.WriteLine("GetFavourites(): " + a.title);
+                        Debug.WriteLine("GetFavourites(): " + a.RomanjiTitle);
                     }
 
                     args = new APICompletedEventArgs(APIResponse.Successful, APIType.GetFavourites, animeList);
@@ -978,7 +974,7 @@ namespace Anitro.APIs.Hummingbird
                     string responseAsString = await response.Content.ReadAsStringAsync();//.Result;
 
                     DateTime dT = DateTime.UtcNow;
-                    Anitro.Data_Structures.API_Classes.V1.ActivityFeedObject temp = new Anitro.Data_Structures.API_Classes.V1.ActivityFeedObject
+                    Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject temp = new Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject
                     {
                         storyImage = Consts.LoggedInUser.AvatarURL,//Consts.settings.userAvatar,
                         header = Consts.LoggedInUser.Username,//Consts.settings.userName,
@@ -1004,28 +1000,30 @@ namespace Anitro.APIs.Hummingbird
                 Debug.WriteLine("PostLibraryUpdate(LibraryObject libraryObject): Entering");
                 APICompletedEventArgs args;
 
-                if (libraryObject.notes == null) { libraryObject.notes = ""; }
+                if (libraryObject.Notes == null) { libraryObject.Notes = ""; }
+                bool incrimentEpisodes = false;
 
                 Debug.WriteLine("Posting: ");
-                Debug.WriteLine(libraryObject.anime.slug);
-                Debug.WriteLine(libraryObject.status);
-                Debug.WriteLine(libraryObject.@private.ToString());
-                Debug.WriteLine(libraryObject.rating.value);
-                Debug.WriteLine(Convert.ToInt32(libraryObject.rewatched_times));
-                Debug.WriteLine(libraryObject.notes.ToString());
-                Debug.WriteLine(Convert.ToInt32(libraryObject.episodes_watched));
-                Debug.WriteLine(false);
+                Debug.WriteLine(libraryObject.Anime.ServiceID);
+                Debug.WriteLine(libraryObject.Status.ToString());
+                Debug.WriteLine(libraryObject.Private.ToString());
+                Debug.WriteLine(libraryObject.Rating);
+                Debug.WriteLine(Convert.ToInt32(libraryObject.RewatchedTimes));
+                Debug.WriteLine(libraryObject.Notes.ToString());
+                Debug.WriteLine(Convert.ToInt32(libraryObject.EpisodesWatched));
+                Debug.WriteLine(incrimentEpisodes);
 
-                args = await LibraryUpdate(libraryObject.anime.slug,
-                                                libraryObject.status,
-                                                libraryObject.@private.ToString(),
-                                                libraryObject.rating.value,
-                                                Convert.ToInt32(libraryObject.rewatched_times),
-                                                libraryObject.notes.ToString(),
-                                                Convert.ToInt32(libraryObject.episodes_watched),
-                                                false,
-                                                updateRating,
-                                                false);
+
+                args = await LibraryUpdate(libraryObject.Anime.ServiceID,
+                                           APIConverter.LibrarySelectionToString(libraryObject.Status),
+                                           libraryObject.Private.ToString(),
+                                           libraryObject.Rating.ToString(),
+                                           libraryObject.RewatchedTimes,
+                                           libraryObject.Notes,
+                                           libraryObject.EpisodesWatched,
+                                           incrimentEpisodes,
+                                           updateRating,
+                                           false);
 
                 if (args.Result == APIResponse.Successful)
                 {
@@ -1074,7 +1072,7 @@ namespace Anitro.APIs.Hummingbird
                     LibrarySelection libSel = Consts.LoggedInUser.animeLibrary.FindWhereExistsInLibrary(anime);
                     LibraryObject libObj = Consts.LoggedInUser.animeLibrary.GetObjectInLibrary(LibrarySelection.APISupported, anime);
 
-                    Debug.WriteLine("Current Rating: " + libObj.rating.value);
+                    Debug.WriteLine("Current Rating: " + libObj.Rating);
                     Debug.WriteLine("Changed Value: " + rating);
 
 

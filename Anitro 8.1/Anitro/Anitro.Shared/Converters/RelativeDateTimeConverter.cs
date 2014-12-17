@@ -17,7 +17,9 @@ namespace Anitro.Converters
 
         public static string CalculateConversion(DateTime utcValue)
         {
+            //Debug.WriteLine("RelativeDateTimeConverter:CalculateConversion(" + utcValue.ToString() + ")");
             var difference = DateTime.UtcNow - utcValue;
+            //Debug.WriteLine("Difference Calculated");
 
             string result = "";
             if (difference.TotalSeconds < 2.0)
@@ -47,6 +49,8 @@ namespace Anitro.Converters
 
                 // And because no one cares once its past a certain point, just display a year
             else result = utcValue.ToString();
+
+            //Debug.WriteLine(result.ToString());
 
             return result;
         }

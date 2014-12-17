@@ -66,6 +66,7 @@ namespace Anitro
         TextBlock libraryRating;
         TextBlock libraryLastWatched;
         TextBlock libraryEpisodesWatched;
+        TextBlock libraryEpisodesWatchedText;
         TextBlock animeSynopsis;
         TextBlock animeStatus;
         TextBlock animeShowType;
@@ -168,10 +169,6 @@ namespace Anitro
 
             Frame.GoBack();
         }
-        private void ChangeProgressBar(bool isEnabled)
-        {
-            ApplicationProgressBar.IsActive = isEnabled;
-        }
 
         private async void BindAndDisplay(AnimePageParameter _parameter)
         {
@@ -193,7 +190,7 @@ namespace Anitro
                 BackgroundImage.Width = Window.Current.Bounds.Width;
                 BackgroundImage.Height = Window.Current.Bounds.Height;
 
-                //BackgroundImage.Source = new BitmapImage(new Uri(libraryObject.anime.cover_image, UriKind.Absolute));
+                //BackgroundImage.Source = new BitmapImage(new Uri(libraryObject.Anime.cover_image, UriKind.Absolute));
             }
             catch (Exception) { }
 
@@ -212,7 +209,7 @@ namespace Anitro
             }
 
             // Check if it is pinned or not
-            if (SecondaryTileHelper.DoesTileExist(libraryObject.anime.slug))
+            if (SecondaryTileHelper.DoesTileExist(libraryObject.Anime.ServiceID))
             {
                 pinButton.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 unpinButton.Visibility = Windows.UI.Xaml.Visibility.Visible;
@@ -226,12 +223,12 @@ namespace Anitro
             // Set the Content
             #region Content
             Debug.WriteLine("Anime Title");
-            animeTitle.Text = libraryObject.anime.title;
+            animeTitle.Text = libraryObject.Anime.RomanjiTitle;
 
             try
             {
                 Debug.WriteLine("Cover Image");
-                coverImage.Source = new BitmapImage(new Uri(libraryObject.anime.cover_image, UriKind.Absolute));
+                coverImage.Source = new BitmapImage(libraryObject.Anime.CoverImageUrl);
             }
             catch (Exception) { }
 
@@ -239,17 +236,17 @@ namespace Anitro
 
             try
             {
-                animeSecondaryHeader.Text = libraryObject.anime.alternate_title;
+                animeSecondaryHeader.Text = libraryObject.Anime.EnglishTitle;
             }
             catch (Exception) { animeSecondaryHeader.Text = ""; };
 
             List<string> genreInfoList = new List<string>() { };
-            for (int i = 0; i < libraryObject.anime.genres.Count; i++)
+            foreach (var genre in libraryObject.Anime.Genres) //int i = 0; i < libraryObject.Anime.Genres.Count; i++)
             {
                 try
                 {
-                    Debug.WriteLine("Genre");
-                    genreInfoList.Add(libraryObject.anime.genres[i].name);
+                    Debug.WriteLine("GenreInAnime: " + genre.ToString());
+                    genreInfoList.Add(genre.ToString().AddSpacesToSentence()); //libraryObject.Anime.Genres[i].ToString());
                 }
                 catch (Exception) { }
             }
@@ -259,113 +256,130 @@ namespace Anitro
 
             #region Stats Bar
             Debug.WriteLine("Episode Count");
-            if (libraryObject.anime.episode_count == "0") { animeEpisodeCount.Text = "Episodes: " + "?"; }
-            else { animeEpisodeCount.Text = "Episodes: " + libraryObject.anime.episode_count; }
+            if (libraryObject.Anime.EpisodeCountString == "0") { animeEpisodeCount.Text = "Episodes: " + "?"; }
+            else { animeEpisodeCount.Text = "Episodes: " + libraryObject.Anime.EpisodeCount; }
             animeEpisodeCount.TextWrapping = TextWrapping.Wrap;
 
             Debug.WriteLine("Anime Status");
-            animeStatus.Text = libraryObject.anime.status;
+            animeStatus.Text = libraryObject.Anime.AiringStatus.ToString().AddSpacesToSentence();
             animeStatus.TextWrapping = TextWrapping.Wrap;
 
             Debug.WriteLine("Show Type");
-            animeShowType.Text = libraryObject.anime.show_type;
+            animeShowType.Text = libraryObject.Anime.MediaType.ToString();
             animeShowType.TextWrapping = TextWrapping.Wrap;
 
             animeStatsBar.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center;
             #endregion
 
             Debug.WriteLine("Synopsis");
-            animeSynopsis.Text = libraryObject.anime.synopsis;
+            animeSynopsis.Text = libraryObject.Anime.Synopsis;
             animeSynopsis.TextWrapping = TextWrapping.Wrap;
 
 
             /// 
             /// Library Set
             ///
-
-            if (!(string.IsNullOrEmpty(libraryObject.last_watched) || string.IsNullOrWhiteSpace(libraryObject.last_watched)))
-            {
-                Debug.WriteLine("AnimeLastWatched");
-                string animeLastWatched = libraryObject.last_watched.Substring(0, libraryObject.last_watched.Length - 1);
-                DateTime dateTimeLastWatched = DateTime.Parse(animeLastWatched); // string[] last_watchedSplit = animeLastWatched.Split('T');
-
-                libraryLastWatched.Text = "last watched: " + RelativeDateTimeConverter.CalculateConversion(dateTimeLastWatched); // last_watchedSplit[0] + " at " + last_watchedSplit[1];
-            }
-            else
-            {
-                libraryLastWatched.Text = "last watched: never";
+            if (libraryLastWatched != null) {
+                try {
+                    if (libraryObject.LastWatched != new DateTime()) {
+                        Debug.WriteLine("AnimeLastWatched");
+                        string relativeTime = RelativeDateTimeConverter.CalculateConversion(libraryObject.LastWatched);
+                        libraryLastWatched.Text = "last watched: " + relativeTime;
+                    }
+                    else {
+                        libraryLastWatched.Text = "last watched: never";
+                    }
+                }
+                catch (Exception) { libraryLastWatched.Text = "last watched: unknown"; }
             }
 
             Debug.WriteLine("Rating");
-            if (!(string.IsNullOrEmpty(libraryObject.rating.value)))
-            {
-                libraryRating.Text = libraryObject.rating.value + "/5";
+            if (libraryLastWatched != null) {
+                try {
+                    libraryRating.Text = libraryObject.Rating + "/5";
+                    originalRatingText = libraryObject.Rating.ToString();
+                }
+                catch (Exception) { libraryLastWatched.Text = "?/5"; }
             }
-            else
-            {
-                libraryObject.rating.valueAsDouble = 0.0;
-                libraryRating.Text = libraryObject.rating.value + "/5";
-            }
-            originalRatingText = libraryObject.rating.value;
-
 
             Debug.WriteLine("ListPicker");
-            switch (libraryObject.status)
-            {
-                case "currently-watching":
-                    LibraryPicker.SelectedIndex = 1;
-                    break;
-                case "plan-to-watch":
-                    LibraryPicker.SelectedIndex = 2;
-                    break;
-                case "completed":
-                    LibraryPicker.SelectedIndex = 3;
-                    break;
-                case "on-hold":
-                    LibraryPicker.SelectedIndex = 4;
-                    break;
-                case "dropped":
-                    LibraryPicker.SelectedIndex = 5;
-                    break;
-                case "":
-                case "favourites":
-                default:
-                    LibraryPicker.SelectedIndex = 0;
-                    break;
+            if (LibraryPicker != null) {
+                try {
+                    switch (libraryObject.Status) {
+                        case LibrarySelection.CurrentlyWatching:
+                            LibraryPicker.SelectedIndex = 1;
+                            break;
+                        case LibrarySelection.PlanToWatch:
+                            LibraryPicker.SelectedIndex = 2;
+                            break;
+                        case LibrarySelection.Completed:
+                            LibraryPicker.SelectedIndex = 3;
+                            break;
+                        case LibrarySelection.OnHold:
+                            LibraryPicker.SelectedIndex = 4;
+                            break;
+                        case LibrarySelection.Dropped:
+                            LibraryPicker.SelectedIndex = 5;
+                            break;
+                        case LibrarySelection.None:
+                        case LibrarySelection.Favourites:
+                        case LibrarySelection.Search:
+                        case LibrarySelection.Recent:
+                        default:
+                            LibraryPicker.SelectedIndex = 0;
+                            break;
+                    }
+                }
+                catch (Exception) { LibraryPicker.SelectedIndex = 0; }
             }
-
 
             Debug.WriteLine("Episodes Watched: wCount");
-            int wCount = Convert.ToInt32(libraryObject.episodes_watched);
+            int wCount = Convert.ToInt32(libraryObject.EpisodesWatched);
 
             Debug.WriteLine("Episodes Watched: epCount");
-            if (libraryObject.anime.episode_count == "?")
-            {
-                libraryEpisodesWatched.Text = wCount + "/" + "?";
+            if (libraryEpisodesWatched != null) {
+                try {
+                    if (libraryObject.Anime.EpisodeCountString == "?") {
+                        libraryEpisodesWatched.Text = wCount + "/" + "?";
+                    }
+                    else {
+                        int epCount = Convert.ToInt32(libraryObject.Anime.EpisodeCount);
+                        libraryEpisodesWatched.Text = wCount + "/" + epCount;
+                    }
+                }
+                catch (Exception) { libraryEpisodesWatched.Text = "?/?"; }
             }
-            else
-            {
-                int epCount = Convert.ToInt32(libraryObject.anime.episode_count);
-                libraryEpisodesWatched.Text = wCount + "/" + epCount;
-            }
-
 
             Debug.WriteLine("Rewatched Times");
-            int rewatchedTimes = Convert.ToInt32(libraryObject.rewatched_times);
-            libraryRewatchedTimes.Text = libraryObject.rewatched_times.ToString();
+            if (libraryRewatchedTimes != null) {
+                try {
+                    int rewatchedTimes = Convert.ToInt32(libraryObject.RewatchedTimes);
+                    libraryRewatchedTimes.Text = libraryObject.RewatchedTimes.ToString();
+                }
+                catch (Exception) { libraryRewatchedTimes.Text = "?"; }
+            }
 
             Debug.WriteLine("Private");
-            libraryPrivate.IsOn = libraryObject.@private;
+            if (libraryPrivate != null) {
+                try {
+                    libraryPrivate.IsOn = libraryObject.Private;
+                }
+                catch (Exception) { libraryPrivate.IsOn = false; }
+            }
 
             Debug.WriteLine("Notes");
-            if (libraryObject.notes == null) { libraryObject.notes = ""; }
-            notesTextBox.Text = libraryObject.notes.ToString();
+            if (notesTextBox != null) {
+                try {
+                    if (libraryObject.Notes == null) { libraryObject.Notes = ""; }
+                    notesTextBox.Text = libraryObject.Notes;
+                }
+                catch (Exception) { notesTextBox.Text = ""; }
+            }
             #endregion
 
 
-
             // Phew, we made it. Lets turn off the progress bar now; We're Done!
-            ChangeProgressBar(false);
+            XamlControlHelper.ChangeProgressIndicator(ApplicationProgressBar, false);
 
             // Reenable the ability to leave
             savingAndUpdatingAnime = false;
@@ -383,7 +397,7 @@ namespace Anitro
             savingAndUpdatingAnime = true;
 
             // First, lets enable the Progress Bar, cause this might take awhile.
-            ChangeProgressBar(true);
+            XamlControlHelper.ChangeProgressIndicator(ApplicationProgressBar, false);
 
             // Check if we are logged in, If we aren't, Login.
             if (!Consts.LoggedInUser.IsLoggedIn)
@@ -435,13 +449,13 @@ namespace Anitro
                 libraryObject = Consts.LoggedInUser.animeLibrary.GetObjectInLibrary(location, _pageParameter.slug);
 
                 // Now that we have the library objcet, lets see if it has genres on it.
-                if (libraryObject.anime.genres.Count == 0 || string.IsNullOrEmpty(libraryObject.anime.genres[0].name))
+                if (libraryObject.Anime.Genres.Count == 0 || string.IsNullOrEmpty(libraryObject.Anime.Genres[0].ToString()))
                 {
                     APIv1.APICompletedEventHandler += GetGenres_Completed;
 
                     this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                     {
-                        APIv1.Get.Anime(libraryObject.anime.slug);
+                        APIv1.Get.Anime(libraryObject.Anime.ServiceID);
                     });
                 }
                 else
@@ -489,11 +503,15 @@ namespace Anitro
                 // Grab the Anime Object that the API returns
                 Anime animeObj = (sender as Anime);
 
+                //foreach (var i in animeObj.Genres) {
+                //    Debug.WriteLine("Converted Genres: " + i.ToString());
+                //}
+
                 // Grab the location once more
-                LibrarySelection location = Library.GetLibrarySelectionFromStatus(libraryObject.status);
+                LibrarySelection location = libraryObject.Status;
 
                 // Save the Genres
-                libraryObject.anime = animeObj;
+                libraryObject.Anime = animeObj;
                 Consts.LoggedInUser.animeLibrary.UpdateLibrary(location, libraryObject, false);
                 //await Consts.LoggedInUser.Save();
             }
@@ -512,6 +530,18 @@ namespace Anitro
         private void libraryLastWatched_loaded(object sender, RoutedEventArgs e)
         {
             libraryLastWatched = (sender as TextBlock);
+
+            try {
+                if (libraryObject.LastWatched != new DateTime()) {
+                    Debug.WriteLine("AnimeLastWatched");
+                    string relativeTime = RelativeDateTimeConverter.CalculateConversion(libraryObject.LastWatched);
+                    libraryLastWatched.Text = "last watched: " + relativeTime;
+                }
+                else {
+                    libraryLastWatched.Text = "last watched: never";
+                }
+            }
+            catch (Exception) { libraryLastWatched.Text = "last watched: unknown"; }
         }
 
         private void ratingText_loaded(object sender, RoutedEventArgs e)
@@ -522,21 +552,67 @@ namespace Anitro
         private void libraryRating_loaded(object sender, RoutedEventArgs e)
         {
             libraryRating = (sender as TextBlock);
+
+            try {
+                libraryRating.Text = libraryObject.Rating + "/5";
+                originalRatingText = libraryObject.Rating.ToString();
+            }
+            catch (Exception) { libraryLastWatched.Text = "?/5"; }
         }
 
         private void LibraryPicker_loaded(object sender, RoutedEventArgs e)
         {
             LibraryPicker = (sender as ComboBox);
+
+            try {
+                switch (libraryObject.Status) {
+                    case LibrarySelection.CurrentlyWatching:
+                        LibraryPicker.SelectedIndex = 1;
+                        break;
+                    case LibrarySelection.PlanToWatch:
+                        LibraryPicker.SelectedIndex = 2;
+                        break;
+                    case LibrarySelection.Completed:
+                        LibraryPicker.SelectedIndex = 3;
+                        break;
+                    case LibrarySelection.OnHold:
+                        LibraryPicker.SelectedIndex = 4;
+                        break;
+                    case LibrarySelection.Dropped:
+                        LibraryPicker.SelectedIndex = 5;
+                        break;
+                    case LibrarySelection.None:
+                    case LibrarySelection.Favourites:
+                    case LibrarySelection.Search:
+                    case LibrarySelection.Recent:
+                    default:
+                        LibraryPicker.SelectedIndex = 0;
+                        break;
+                }
+            }
+            catch (Exception) { LibraryPicker.SelectedIndex = 0; }
         }
 
         private void libraryEpisodesWatchedText_loaded(object sender, RoutedEventArgs e)
         {
-            libraryEpisodesWatched = (sender as TextBlock);
+            libraryEpisodesWatchedText = (sender as TextBlock);
         }
 
         private void libraryEpisodesWatched_loaded(object sender, RoutedEventArgs e)
         {
             libraryEpisodesWatched = (sender as TextBlock);
+            try {
+                int wCount = Convert.ToInt32(libraryObject.EpisodesWatched);
+
+                if (libraryObject.Anime.EpisodeCountString == "?") {
+                    libraryEpisodesWatched.Text = wCount + "/" + "?";
+                }
+                else {
+                    int epCount = Convert.ToInt32(libraryObject.Anime.EpisodeCount);
+                    libraryEpisodesWatched.Text = wCount + "/" + epCount;
+                }
+            }
+            catch (Exception) { libraryEpisodesWatched.Text = "?/?"; }
         }
 
         private void libraryRewatchedTimesText_loaded(object sender, RoutedEventArgs e)
@@ -547,11 +623,22 @@ namespace Anitro
         private void libraryRewatchedTimes_loaded(object sender, RoutedEventArgs e)
         {
             libraryRewatchedTimes = (sender as TextBlock);
+
+            try {
+                int rewatchedTimes = Convert.ToInt32(libraryObject.RewatchedTimes);
+                libraryRewatchedTimes.Text = libraryObject.RewatchedTimes.ToString();
+            }
+            catch (Exception) { libraryRewatchedTimes.Text = "?"; }
         }
 
         private void libraryPrivate_loaded(object sender, RoutedEventArgs e)
         {
             libraryPrivate = (sender as ToggleSwitch);
+
+            try {
+                libraryPrivate.IsOn = libraryObject.Private;
+            }
+            catch (Exception) { libraryPrivate.IsOn = false; }
         }
 
         private void libraryRewatching_Switch_loaded(object sender, RoutedEventArgs e)
@@ -562,6 +649,12 @@ namespace Anitro
         private void notesTextBox_loaded(object sender, RoutedEventArgs e)
         {
             notesTextBox = (sender as TextBox);
+
+            try {
+                if (libraryObject.Notes == null) { libraryObject.Notes = ""; }
+                notesTextBox.Text = libraryObject.Notes;
+            }
+            catch (Exception) { notesTextBox.Text = ""; }
         }
         #endregion
 

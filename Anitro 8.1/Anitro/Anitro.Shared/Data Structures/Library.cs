@@ -180,21 +180,27 @@ namespace Anitro.Data_Structures
 
             foreach (LibraryObject temp in libraryList.library)
             {
-                switch (temp.status)
+                switch (temp.Status)
                 {
-                    case "currently-watching":
+                    case LibrarySelection.CurrentlyWatching:
+                    case LibrarySelection.CurrentlyReading:
                         CurrentlyWatching.Add(temp);
                         break;
-                    case "completed":
+
+                    case LibrarySelection.Completed:
                         Completed.Add(temp);
                         break;
-                    case "plan-to-watch":
+
+                    case LibrarySelection.PlanToWatch:
+                    case LibrarySelection.PlanToRead:
                         PlanToWatch.Add(temp);
                         break;
-                    case "on-hold":
+
+                    case LibrarySelection.OnHold:
                         OnHold.Add(temp);
                         break;
-                    case "dropped":
+
+                    case LibrarySelection.Dropped:
                         Dropped.Add(temp);
                         break;
                 }
@@ -301,7 +307,7 @@ namespace Anitro.Data_Structures
         #region Helper Methods
         public bool AddToRecent(LibraryObject temp, bool save = true)
         {
-            Debug.WriteLine("AddToRecent(" + temp.anime.slug + ", " + save.ToString() + ")" );
+            Debug.WriteLine("AddToRecent(" + temp.Anime.ServiceID + ", " + save.ToString() + ")" );
 
             // First check if it is already in the Recent
             if (DoesExistInLibrary(LibrarySelection.Recent, temp))
@@ -309,7 +315,7 @@ namespace Anitro.Data_Structures
                 // If it is, Remove the item from the Recent
                 for (int i = 0; i < Recent.Count; i++)
                 {
-                    if (temp.anime.slug == Recent[i].anime.slug) { Recent.RemoveAt(i); break; }
+                    if (temp.Anime.ServiceID == Recent[i].Anime.ServiceID) { Recent.RemoveAt(i); break; }
                 }
             }
 
@@ -395,7 +401,7 @@ namespace Anitro.Data_Structures
                     case LibrarySelection.CurrentlyWatching:
                         for (int i = 0; i < CurrentlyWatching.Count; i++)
                         {
-                            if (temp.anime.slug == CurrentlyWatching[i].anime.slug)
+                            if (temp.Anime.ServiceID == CurrentlyWatching[i].Anime.ServiceID)
                             {
                                 CurrentlyWatching[i] = temp;
                                 result = true;
@@ -405,7 +411,7 @@ namespace Anitro.Data_Structures
                     case LibrarySelection.PlanToWatch:
                         for (int i = 0; i < PlanToWatch.Count; i++)
                         {
-                            if (temp.anime.slug == PlanToWatch[i].anime.slug)
+                            if (temp.Anime.ServiceID == PlanToWatch[i].Anime.ServiceID)
                             {
                                 PlanToWatch[i] = temp;
                                 result = true;
@@ -415,7 +421,7 @@ namespace Anitro.Data_Structures
                     case LibrarySelection.Completed:
                         for (int i = 0; i < Completed.Count; i++)
                         {
-                            if (temp.anime.slug == Completed[i].anime.slug)
+                            if (temp.Anime.ServiceID == Completed[i].Anime.ServiceID)
                             {
                                 Completed[i] = temp;
                                 result = true;
@@ -425,7 +431,7 @@ namespace Anitro.Data_Structures
                     case LibrarySelection.OnHold:
                         for (int i = 0; i < OnHold.Count; i++)
                         {
-                            if (temp.anime.slug == OnHold[i].anime.slug)
+                            if (temp.Anime.ServiceID == OnHold[i].Anime.ServiceID)
                             {
                                 OnHold[i] = temp;
                                 result = true;
@@ -435,7 +441,7 @@ namespace Anitro.Data_Structures
                     case LibrarySelection.Dropped:
                         for (int i = 0; i < Dropped.Count; i++)
                         {
-                            if (temp.anime.slug == Dropped[i].anime.slug)
+                            if (temp.Anime.ServiceID == Dropped[i].Anime.ServiceID)
                             {
                                 Dropped[i] = temp;
                                 result = true;
@@ -465,14 +471,14 @@ namespace Anitro.Data_Structures
         public bool RemoveFromLibrary(LibrarySelection selection, LibraryObject temp, bool save = false)
         {
             if (!DoesExistInLibrary(selection, temp)) { return false; }
-            Debug.WriteLine("RemoveFromLibrary(" + selection.ToString() + ", " + temp.anime.slug + "): Entering");
+            Debug.WriteLine("RemoveFromLibrary(" + selection.ToString() + ", " + temp.Anime.ServiceID + "): Entering");
 
             switch (selection)
             {
                 case LibrarySelection.CurrentlyWatching:
                     for (int i = 0; i < CurrentlyWatching.Count; i++)
                     {
-                        if (temp.anime.slug == CurrentlyWatching[i].anime.slug) {
+                        if (temp.Anime.ServiceID == CurrentlyWatching[i].Anime.ServiceID) {
                             CurrentlyWatching.RemoveAt(i);
                             
                             if (save) Consts.LoggedInUser.Save(); //Storage.SaveAnimeLibrary(""); //"currently-watching");
@@ -484,7 +490,7 @@ namespace Anitro.Data_Structures
                 case LibrarySelection.PlanToWatch:
                     for (int i = 0; i < PlanToWatch.Count; i++)
                     {
-                        if (temp.anime.slug == PlanToWatch[i].anime.slug) { 
+                        if (temp.Anime.ServiceID == PlanToWatch[i].Anime.ServiceID) { 
                             PlanToWatch.RemoveAt(i);
 
                             if (save) Consts.LoggedInUser.Save(); //Storage.SaveAnimeLibrary(""); //"plan-to-watch");
@@ -496,7 +502,7 @@ namespace Anitro.Data_Structures
                 case LibrarySelection.Completed:
                     for (int i = 0; i < Completed.Count; i++)
                     {
-                        if (temp.anime.slug == Completed[i].anime.slug)
+                        if (temp.Anime.ServiceID == Completed[i].Anime.ServiceID)
                         {
                             Completed.RemoveAt(i);
 
@@ -509,7 +515,7 @@ namespace Anitro.Data_Structures
                 case LibrarySelection.OnHold:
                     for (int i = 0; i < OnHold.Count; i++)
                     {
-                        if (temp.anime.slug == OnHold[i].anime.slug)
+                        if (temp.Anime.ServiceID == OnHold[i].Anime.ServiceID)
                         {
                             OnHold.RemoveAt(i);
 
@@ -522,7 +528,7 @@ namespace Anitro.Data_Structures
                 case LibrarySelection.Dropped:
                     for (int i = 0; i < Dropped.Count; i++)
                     {
-                        if (temp.anime.slug == Dropped[i].anime.slug)
+                        if (temp.Anime.ServiceID == Dropped[i].Anime.ServiceID)
                         {
                             Dropped.RemoveAt(i);
 
@@ -543,7 +549,7 @@ namespace Anitro.Data_Structures
                     break;
             }
 
-            Debug.WriteLine("RemoveFromLibrary(" + selection.ToString() + ", " + temp.anime.slug + "): Returning");
+            Debug.WriteLine("RemoveFromLibrary(" + selection.ToString() + ", " + temp.Anime.ServiceID + "): Returning");
             return false;
         }
         #endregion
@@ -555,7 +561,7 @@ namespace Anitro.Data_Structures
             else if (DoesExistInLibrary(LibrarySelection.APISupported, temp))
             {
                 LibrarySelection location = FindWhereExistsInLibrary(temp);
-                temp = GetObjectInLibrary(location, temp.anime.slug);
+                temp = GetObjectInLibrary(location, temp.Anime.ServiceID);
             }
 
             Favourites.Add(temp);
@@ -567,7 +573,7 @@ namespace Anitro.Data_Structures
 
             for (int i = 0; i < Favourites.Count; i++)
             {
-                if (temp.anime.slug == Favourites[i].anime.slug)
+                if (temp.Anime.ServiceID == Favourites[i].Anime.ServiceID)
                 {
                     Favourites[i] = temp;
                     if (save) Consts.LoggedInUser.Save();
@@ -582,7 +588,7 @@ namespace Anitro.Data_Structures
 
             for (int i = 0; i < Favourites.Count; i++)
             {
-                if (temp.anime.slug == Favourites[i].anime.slug)
+                if (temp.Anime.ServiceID == Favourites[i].Anime.ServiceID)
                 {
                     Favourites.RemoveAt(i);
 
@@ -599,10 +605,10 @@ namespace Anitro.Data_Structures
         public bool SwitchLibraries(LibrarySelection switchToLibrary, LibraryObject temp, bool save = false)
         {
             LibrarySelection whereInLibrary = FindWhereExistsInLibrary(temp);
-            if (whereInLibrary == LibrarySelection.None || whereInLibrary == LibrarySelection.Favourites || temp.status == "search")  // Check if its currently in any of the libraries
+            if (whereInLibrary == LibrarySelection.None || whereInLibrary == LibrarySelection.Favourites || temp.Status == LibrarySelection.Search)  // Check if its currently in any of the libraries
             {
-                LibrarySelection newSelection = GetLibrarySelectionFromStatus(temp);
-                if (newSelection != LibrarySelection.None && newSelection != LibrarySelection.Favourites && temp.status != "search") { AddToLibrary(newSelection, temp); } // Check if the new value is able to be added to the library
+                LibrarySelection newSelection = temp.Status;
+                if (newSelection != LibrarySelection.None && newSelection != LibrarySelection.Favourites && temp.Status != LibrarySelection.Search) { AddToLibrary(newSelection, temp); } // Check if the new value is able to be added to the library
                 return false;
             }
             if (DoesExistInLibrary(switchToLibrary, temp)) { return true; }
@@ -621,43 +627,43 @@ namespace Anitro.Data_Structures
                 case LibrarySelection.CurrentlyWatching:
                     foreach (LibraryObject lO in CurrentlyWatching)
                     {
-                        if (slug == lO.anime.slug) { return lO; }
+                        if (slug == lO.Anime.ServiceID) { return lO; }
                     }
                     break;
                 case LibrarySelection.PlanToWatch:
                     foreach (LibraryObject lO in PlanToWatch)
                     {
-                        if (slug == lO.anime.slug) { return lO; }
+                        if (slug == lO.Anime.ServiceID) { return lO; }
                     }
                     break;
                 case LibrarySelection.Completed:
                     foreach (LibraryObject lO in Completed)
                     {
-                        if (slug == lO.anime.slug) { return lO; }
+                        if (slug == lO.Anime.ServiceID) { return lO; }
                     }
                     break;
                 case LibrarySelection.OnHold:
                     foreach (LibraryObject lO in OnHold)
                     {
-                        if (slug == lO.anime.slug) { return lO; }
+                        if (slug == lO.Anime.ServiceID) { return lO; }
                     }
                     break;
                 case LibrarySelection.Dropped:
                     foreach (LibraryObject lO in Dropped)
                     {
-                        if (slug == lO.anime.slug) { return lO; }
+                        if (slug == lO.Anime.ServiceID) { return lO; }
                     }
                     break;
                 case LibrarySelection.Favourites:
                     foreach (LibraryObject lO in Favourites)
                     {
-                        if (slug == lO.anime.slug) { return lO; }
+                        if (slug == lO.Anime.ServiceID) { return lO; }
                     }
                     break;
                 case LibrarySelection.Recent:
                     foreach (LibraryObject lO in Recent)
                     {
-                        if (slug == lO.anime.slug) { return lO; }
+                        if (slug == lO.Anime.ServiceID) { return lO; }
                     }
                     break;
                 case LibrarySelection.APISupported:
@@ -699,7 +705,7 @@ namespace Anitro.Data_Structures
 
         public bool DoesExistInLibrary(LibrarySelection selection, LibraryObject temp)
         {
-            return DoesExistInLibrary(selection, temp.anime.slug);
+            return DoesExistInLibrary(selection, temp.Anime.ServiceID);
         }
         public bool DoesExistInLibrary(LibrarySelection selection, string slug)
         {
@@ -708,43 +714,43 @@ namespace Anitro.Data_Structures
                 case LibrarySelection.CurrentlyWatching:
                     foreach (LibraryObject lO in CurrentlyWatching)
                     {
-                        if (slug == lO.anime.slug) { return true; }
+                        if (slug == lO.Anime.ServiceID) { return true; }
                     }
                     break;
                 case LibrarySelection.PlanToWatch:
                     foreach (LibraryObject lO in PlanToWatch)
                     {
-                        if (slug == lO.anime.slug) { return true; }
+                        if (slug == lO.Anime.ServiceID) { return true; }
                     }
                     break;
                 case LibrarySelection.Completed:
                     foreach (LibraryObject lO in Completed)
                     {
-                        if (slug == lO.anime.slug) { return true; }
+                        if (slug == lO.Anime.ServiceID) { return true; }
                     }
                     break;
                 case LibrarySelection.OnHold:
                     foreach (LibraryObject lO in OnHold)
                     {
-                        if (slug == lO.anime.slug) { return true; }
+                        if (slug == lO.Anime.ServiceID) { return true; }
                     }
                     break;
                 case LibrarySelection.Dropped:
                     foreach (LibraryObject lO in Dropped)
                     {
-                        if (slug == lO.anime.slug) { return true; }
+                        if (slug == lO.Anime.ServiceID) { return true; }
                     }
                     break;
                 case LibrarySelection.Favourites:
                     foreach (LibraryObject lO in Favourites)
                     {
-                        if (slug == lO.anime.slug) { return true; }
+                        if (slug == lO.Anime.ServiceID) { return true; }
                     }
                     break;
                 case LibrarySelection.Recent:
                     foreach (LibraryObject lO in Recent)
                     {
-                        if (slug == lO.anime.slug) { return true; }
+                        if (slug == lO.Anime.ServiceID) { return true; }
                     }
                     break;
                 case LibrarySelection.APISupported:
@@ -768,33 +774,33 @@ namespace Anitro.Data_Structures
 
         public LibrarySelection FindWhereExistsInLibrary(LibraryObject temp)
         {
-            return FindWhereExistsInLibrary(temp.anime.slug);
+            return FindWhereExistsInLibrary(temp.Anime.ServiceID);
         }
         public LibrarySelection FindWhereExistsInLibrary(string slug)
         {
             foreach (LibraryObject lO in CurrentlyWatching)
             {
-                if (lO.anime.slug == slug) { return LibrarySelection.CurrentlyWatching; }
+                if (lO.Anime.ServiceID == slug) { return LibrarySelection.CurrentlyWatching; }
             }
             foreach (LibraryObject lO in PlanToWatch)
             {
-                if (lO.anime.slug == slug) { return LibrarySelection.PlanToWatch; }
+                if (lO.Anime.ServiceID == slug) { return LibrarySelection.PlanToWatch; }
             }
             foreach (LibraryObject lO in Completed)
             {
-                if (lO.anime.slug == slug) { return LibrarySelection.Completed; }
+                if (lO.Anime.ServiceID == slug) { return LibrarySelection.Completed; }
             }
             foreach (LibraryObject lO in OnHold)
             {
-                if (lO.anime.slug == slug) { return LibrarySelection.OnHold; }
+                if (lO.Anime.ServiceID == slug) { return LibrarySelection.OnHold; }
             }
             foreach (LibraryObject lO in Dropped)
             {
-                if (lO.anime.slug == slug) { return LibrarySelection.Dropped; }
+                if (lO.Anime.ServiceID == slug) { return LibrarySelection.Dropped; }
             }
             foreach (LibraryObject lO in Favourites)
             {
-                if (lO.anime.slug == slug) { return LibrarySelection.Favourites; }
+                if (lO.Anime.ServiceID == slug) { return LibrarySelection.Favourites; }
             }
 
             return LibrarySelection.None;
@@ -808,43 +814,43 @@ namespace Anitro.Data_Structures
                 case LibrarySelection.CurrentlyWatching:
                     for (int i = 0; i < CurrentlyWatching.Count; i++)
                     {
-                        if (temp.anime.slug == CurrentlyWatching[i].anime.slug) { return i; }
+                        if (temp.Anime.ServiceID == CurrentlyWatching[i].Anime.ServiceID) { return i; }
                     }
                     break;
                 case LibrarySelection.PlanToWatch:
                     for (int i = 0; i < PlanToWatch.Count; i++)
                     {
-                        if (temp.anime.slug == PlanToWatch[i].anime.slug) { return i; }
+                        if (temp.Anime.ServiceID == PlanToWatch[i].Anime.ServiceID) { return i; }
                     }
                     break;
                 case LibrarySelection.Completed:
                     for (int i = 0; i < Completed.Count; i++)
                     {
-                        if (temp.anime.slug == Completed[i].anime.slug) { return i; }
+                        if (temp.Anime.ServiceID == Completed[i].Anime.ServiceID) { return i; }
                     }
                     break;
                 case LibrarySelection.OnHold:
                     for (int i = 0; i < OnHold.Count; i++)
                     {
-                        if (temp.anime.slug == OnHold[i].anime.slug) { return i; }
+                        if (temp.Anime.ServiceID == OnHold[i].Anime.ServiceID) { return i; }
                     }
                     break;
                 case LibrarySelection.Dropped:
                     for (int i = 0; i < Dropped.Count; i++)
                     {
-                        if (temp.anime.slug == Dropped[i].anime.slug) { return i; }
+                        if (temp.Anime.ServiceID == Dropped[i].Anime.ServiceID) { return i; }
                     }
                     break;
                 case LibrarySelection.Favourites:
                     for (int i = 0; i < Favourites.Count; i++)
                     {
-                        if (temp.anime.slug == Favourites[i].anime.slug) { return i; }
+                        if (temp.Anime.ServiceID == Favourites[i].Anime.ServiceID) { return i; }
                     }
                     break;
                 case LibrarySelection.Recent:
                     for (int i = 0; i < Recent.Count; i++)
                     {
-                        if (temp.anime.slug == Recent[i].anime.slug) { return i; }
+                        if (temp.Anime.ServiceID == Recent[i].Anime.ServiceID) { return i; }
                     }
                     break;
                 case LibrarySelection.APISupported:
@@ -915,16 +921,22 @@ namespace Anitro.Data_Structures
 
             foreach(LibraryObject lO in fullCollection)
             {
-                if (lO.anime.title.ToLower().Contains(query) || //StartsWith(query, StringComparison.CurrentCultureIgnoreCase) ||
-                    lO.anime.slug.ToLower().Contains(query)) //StartsWith(query, StringComparison.CurrentCultureIgnoreCase))
+                if (lO.Anime.RomanjiTitle.ToLower().Contains(query) ||
+                    lO.Anime.ServiceID.ToLower().Contains(query))
                 {
-                    tempCollection.Add(lO.anime);
+                    tempCollection.Add(lO.Anime);
                 }
-                else if (!string.IsNullOrEmpty(lO.anime.alternate_title))
+                else if (!string.IsNullOrEmpty(lO.Anime.EnglishTitle))
                 {
-                    if (lO.anime.alternate_title.ToLower().Contains(query)) //StartsWith(query, StringComparison.CurrentCultureIgnoreCase))
+                    if (lO.Anime.EnglishTitle.ToLower().Contains(query))
                     {
-                        tempCollection.Add(lO.anime);
+                        tempCollection.Add(lO.Anime);
+                    }
+                }
+                else if (!string.IsNullOrEmpty(lO.Anime.KanjiTitle)) {
+                    if (lO.Anime.KanjiTitle.ToLower().Contains(query))
+                    {
+                        tempCollection.Add(lO.Anime);
                     }
                 }
             }
@@ -935,7 +947,7 @@ namespace Anitro.Data_Structures
         public string SelectRandomTitleFromLibrary(LibrarySelection libSel, bool addFavourites = true)
         {
             ObservableCollection<LibraryObject> libList = GetLibraryInSingleCollection(libSel, addFavourites);
-            return libList[Consts.random.Next(libList.Count)].anime.title;
+            return libList[Consts.random.Next(libList.Count)].Anime.RomanjiTitle;
         }
         #endregion
         #endregion
@@ -956,60 +968,6 @@ namespace Anitro.Data_Structures
         //    // Lets call the generic version here
         //    return this.GetEnumerator();
         //}
-        #endregion
-
-        #region Static Methods
-        public static LibrarySelection GetLibrarySelectionFromStatus(LibraryObject lO)
-        {
-            return GetLibrarySelectionFromStatus(lO.status);
-        }
-        public static LibrarySelection GetLibrarySelectionFromStatus(string status)
-        {
-            switch (status)
-            {
-                case "currently-watching":
-                    return LibrarySelection.CurrentlyWatching;
-                case "plan-to-watch":
-                    return LibrarySelection.PlanToWatch;
-                case "completed":
-                    return LibrarySelection.Completed;
-                case "on-hold":
-                    return LibrarySelection.OnHold;
-                case "dropped":
-                    return LibrarySelection.Dropped;
-
-                case "favourites":
-                    return LibrarySelection.Favourites;
-                case "recent":
-                    return LibrarySelection.Recent;
-                case "all":
-                    return LibrarySelection.All;
-                default:
-                    return LibrarySelection.None;
-            }
-        }
-        public static string GetStatusFromLibrarySelection(LibrarySelection lS)
-        {
-            switch (lS)
-            {
-                case LibrarySelection.CurrentlyWatching:
-                    return "currently-watching";
-                case LibrarySelection.PlanToWatch:
-                    return "plan-to-watch";
-                case LibrarySelection.Completed:
-                    return "completed";
-                case LibrarySelection.OnHold:
-                    return "on-hold";
-                case LibrarySelection.Dropped:
-                    return "dropped";
-                case LibrarySelection.All:
-                case LibrarySelection.Favourites:
-                case LibrarySelection.Recent:
-                case LibrarySelection.None:
-                default:
-                    return "";
-            }
-        }
         #endregion
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Anitro.Data_Structures.API_Classes.V2
+namespace Anitro.Data_Structures.API_Classes.Hummingbird.V2
 {
     public class Anime
     {

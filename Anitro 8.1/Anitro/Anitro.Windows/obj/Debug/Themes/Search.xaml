@@ -8,16 +8,16 @@
             <StackPanel Orientation="Horizontal" Width="500" Height="260">
                 <Image Width="160" Height="260">
                     <Image.Source>
-                        <BitmapImage UriSource="{Binding cover_image}" CreateOptions="None" />
+                        <BitmapImage UriSource="{Binding CoverImageUrlString}" CreateOptions="None" />
                     </Image.Source>
                 </Image>
 
                 <StackPanel Orientation="Vertical" Margin="20,20,0,0" Height="260">
-                    <TextBlock Text="{Binding title}" FontSize="20" Margin="0,0,0,0" HorizontalAlignment="Stretch" 
+                    <TextBlock Text="{Binding RomanjiTitle}" FontSize="20" Margin="0,0,0,0" HorizontalAlignment="Stretch" 
                                TextTrimming="CharacterEllipsis"
                                Foreground="{StaticResource TitleBrush}"/>
                     <!--Width="250"-->
-                    <TextBlock Text="{Binding synopsis}" FontSize="14" Margin="0,0,10,0" HorizontalAlignment="Left"
+                    <TextBlock Text="{Binding Synopsis}" FontSize="14" Margin="0,0,10,0" HorizontalAlignment="Left"
                                Height="200" Width="300"
                                TextWrapping="Wrap" TextTrimming="WordEllipsis"
                                Foreground="{StaticResource ContentBrush}" />
