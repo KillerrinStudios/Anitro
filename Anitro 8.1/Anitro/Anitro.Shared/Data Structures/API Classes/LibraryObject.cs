@@ -10,6 +10,23 @@ namespace Anitro.Data_Structures.API_Classes
         #region Properties
         public int RewatchedTimes { get; set; } 
         public int EpisodesWatched { get; set; }
+        public string EpisodesWatchedString
+        {
+            get
+            {
+                //if (EpisodesWatched == 0) return "?";
+                return EpisodesWatched.ToString();
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value)) { EpisodesWatched = 0; }
+                else if (value.Contains("?")) { EpisodesWatched = 0; }
+                else {
+                    try { EpisodesWatched = Convert.ToInt32(value); }
+                    catch (Exception) { EpisodesWatched = 0; }
+                }
+            }
+        }
 
         public bool Private { get; set; }
         public bool Rewatching { get; set; }

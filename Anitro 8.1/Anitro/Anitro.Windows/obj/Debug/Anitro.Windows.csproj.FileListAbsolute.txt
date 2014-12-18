@@ -355,3 +355,4 @@ D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\qualifiers
 D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MyToolkit.Extended.pri.xml
 D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\ProjectArchitectures.txt
+D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Anitro.Windows.csprojResolveAssemblyReference.cache

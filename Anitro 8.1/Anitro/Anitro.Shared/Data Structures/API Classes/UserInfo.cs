@@ -82,14 +82,19 @@ namespace Anitro.Data_Structures.API_Classes
 
         public Uri GetWaifuPictureURI()
         {
-            string beginningUrl = "http://static.hummingbird.me/characters/images/000/0";
-            string firstTwo = "" + _waifuCharID[0] + _waifuCharID[1] + "/";
-            string lastThree = "" + _waifuCharID[2] + _waifuCharID[3] + _waifuCharID[4] + '/';
-            string afterCutID = "thumb_small/";
-            string fullWaifuIDExtension =  _waifuCharID + ".jpg?1375255551";
+            try {
+                string beginningUrl = "http://static.hummingbird.me/characters/images/000/0";
+                string firstTwo = "" + _waifuCharID[0] + _waifuCharID[1] + "/";
+                string lastThree = "" + _waifuCharID[2] + _waifuCharID[3] + _waifuCharID[4] + '/';
+                string afterCutID = "thumb_small/";
+                string fullWaifuIDExtension = _waifuCharID + ".jpg?1375255551";
 
-            string fullUrl = beginningUrl + firstTwo + lastThree + afterCutID + fullWaifuIDExtension;
-            return new Uri(fullUrl, UriKind.Absolute);
+                string fullUrl = beginningUrl + firstTwo + lastThree + afterCutID + fullWaifuIDExtension;
+                return new Uri(fullUrl, UriKind.Absolute);
+            }
+            catch (Exception) {
+                return new Uri("http://www.hummingbird.me", UriKind.Absolute);
+            }
         }
 
         public string location { get; set; }

@@ -8,7 +8,7 @@
 
             <Image Width="74.25" Height="151.25">
                 <Image.Source>
-                    <BitmapImage UriSource="{Binding cover_image}" CreateOptions="None" />
+                    <BitmapImage UriSource="{Binding CoverImageUrlString}" CreateOptions="None" />
                 </Image.Source>
             </Image>
 
@@ -24,8 +24,8 @@
                         <ColumnDefinition Width="0.01*" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="{Binding title}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="14" Margin="0,0,0,0" HorizontalAlignment="Stretch" Foreground="{StaticResource TitleBrush}"/>
-                    <TextBlock Text="{Binding synopsis}" Grid.Column="0" Grid.Row="1" FontSize="10" Margin="0,0,10,0" Width="250" Height="100" Foreground="{StaticResource ContentBrush}" TextWrapping="Wrap" TextTrimming="WordEllipsis" x:Name="searchSynopsisTextBlock"/>
+                    <TextBlock Text="{Binding RomanjiTitle}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="14" Margin="0,0,0,0" HorizontalAlignment="Stretch" Foreground="{StaticResource TitleBrush}"/>
+                    <TextBlock Text="{Binding Synopsis}" Grid.Column="0" Grid.Row="1" FontSize="10" Margin="0,0,10,0" Width="250" Height="100" Foreground="{StaticResource ContentBrush}" TextWrapping="Wrap" TextTrimming="WordEllipsis" x:Name="searchSynopsisTextBlock"/>
                     
                 </Grid>
             </StackPanel>

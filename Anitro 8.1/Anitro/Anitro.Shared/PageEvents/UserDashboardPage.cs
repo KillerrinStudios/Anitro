@@ -4,6 +4,7 @@ using Anitro.Data_Structures.Enumerators;
 using Anitro.Data_Structures.Structures;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using Windows.UI.Xaml;
@@ -18,7 +19,6 @@ using Microsoft.Advertising.Mobile.UI;
 using Microsoft.Advertising.Mobile.Common;
 #else
 using Microsoft.Advertising.WinRT.UI;
-using System.Collections.ObjectModel;
 //using Microsoft.Advertising.WinRT.Common;
 #endif
 

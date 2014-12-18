@@ -91,7 +91,7 @@ namespace Anitro
                 bool result = await SecondaryTileHelper.CreateTile(libraryObject.Anime.ServiceID,
                                                                    libraryObject.Anime.RomanjiTitle,
                                                                    new AnitroLaunchArgs(AnitroLaunchType.Anime, libraryObject.Anime.ServiceID),
-                                                                   libraryObject.Anime.cover_image_uri,
+                                                                   libraryObject.Anime.CoverImageUrl,
                                                                    TileSize.Default);
 #else
                 bool result = await SecondaryTileHelper.CreateTile(sender,

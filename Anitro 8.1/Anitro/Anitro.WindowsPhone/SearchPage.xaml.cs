@@ -238,7 +238,7 @@ namespace Anitro
                 // Remove the Event Handler for a safe transition
                 Windows.Phone.UI.Input.HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
 
-                AnimePageParameter pageParameter = new AnimePageParameter(_anime.slug, AnimePageParameter.ComingFrom.Search);
+                AnimePageParameter pageParameter = new AnimePageParameter(_anime.ServiceID, AnimePageParameter.ComingFrom.Search);
                 Frame.Navigate(typeof(AnimePage), pageParameter);
             }
             catch (Exception) { }

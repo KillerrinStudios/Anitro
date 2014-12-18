@@ -42,6 +42,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V2\Anime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\LibraryList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\LibraryObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\MyAnimeList\AnimeMangaSearch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\UserInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\ActivityFeedSelection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\AiringStatus.cs" />

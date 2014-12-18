@@ -24,8 +24,8 @@ namespace Anitro.Data_Structures.API_Classes
             }
         }
 
-        public string EnglishTitle { get; set; }
         public string RomanjiTitle { get; set; }
+        public string EnglishTitle { get; set; }
         public string KanjiTitle { get; set; }
 
         public int EpisodeCount { get; set; }

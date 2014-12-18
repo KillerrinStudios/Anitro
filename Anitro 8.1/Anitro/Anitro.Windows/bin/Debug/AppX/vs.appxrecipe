@@ -26,7 +26,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Anitro.Windows.exe">
       <PackagePath>Anitro.Windows.exe</PackagePath>
-      <Modified>2014-12-17T22:06:38.123</Modified>
+      <Modified>2014-12-18T04:34:00.065</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Callisto\1.4.0\References\CommonConfiguration\neutral\Callisto.dll">
       <PackagePath>Callisto.dll</PackagePath>

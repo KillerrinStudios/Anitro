@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>KILLERRIN-PC</Machine>
-    <WindowsUser>killer rin</WindowsUser>
+    <Machine>ANDREWS_SURFACE</Machine>
+    <WindowsUser>Andrew</WindowsUser>
     <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>6377b104-7df2-4d29-8ebb-88527728e673</PackageIdentityName>
-    <IntermediateOutputPath>C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Anitro.WindowsPhone.exe">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Anitro.WindowsPhone.exe">
       <PackagePath>Anitro.WindowsPhone.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Advertising.Mobile.Display\8.1\References\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.Common.winmd">
@@ -28,16 +28,16 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Advertising.Mobile.Display\8.1\References\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.UI.winmd">
       <PackagePath>Microsoft.Advertising.Mobile.UI.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\packages\BugSense.XAML81.3.6.6.0\lib\wpa81\BugSense-Windows.Universal.dll">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\BugSense.XAML81.3.6.6.0\lib\wpa81\BugSense-Windows.Universal.dll">
       <PackagePath>BugSense-Windows.Universal.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\packages\Microsoft.Bcl.Async.1.0.168\lib\wpa81\Microsoft.Threading.Tasks.dll">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\Microsoft.Bcl.Async.1.0.168\lib\wpa81\Microsoft.Threading.Tasks.dll">
       <PackagePath>Microsoft.Threading.Tasks.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\packages\Microsoft.Bcl.Async.1.0.168\lib\wpa81\Microsoft.Threading.Tasks.Extensions.dll">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\Microsoft.Bcl.Async.1.0.168\lib\wpa81\Microsoft.Threading.Tasks.Extensions.dll">
       <PackagePath>Microsoft.Threading.Tasks.Extensions.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Advertising.Mobile.Display\8.1\Redist\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.UI\Web\bootstrap.html">
@@ -49,127 +49,127 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Advertising.Mobile.Display\8.1\Redist\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.UI\Web\Ormma.js">
       <PackagePath>Microsoft.Advertising.Mobile.UI\Web\Ormma.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\Logo.scale-240.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\Logo.scale-240.png">
       <PackagePath>Assets\Logo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\SmallLogo.scale-240.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\SmallLogo.scale-240.png">
       <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\SplashScreen.scale-240.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\SplashScreen.scale-240.png">
       <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\Square71x71Logo.scale-240.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\Square71x71Logo.scale-240.png">
       <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\StoreLogo.scale-240.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\StoreLogo.scale-240.png">
       <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\WideLogo.scale-240.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Assets\WideLogo.scale-240.png">
       <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\CortanaGo.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\CortanaGo.png">
       <PackagePath>Assets\CortanaGo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\CortanaMicrophone.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\CortanaMicrophone.png">
       <PackagePath>Assets\CortanaMicrophone.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\download.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\download.png">
       <PackagePath>Assets\download.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\edit.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\edit.png">
       <PackagePath>Assets\edit.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\microphone.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\microphone.png">
       <PackagePath>Assets\microphone.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\stop.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\stop.png">
       <PackagePath>Assets\stop.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\UnlockWhite.png">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\UnlockWhite.png">
       <PackagePath>Assets\UnlockWhite.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\BugSense\BugSense - SDK License Agreement.txt">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\BugSense\BugSense - SDK License Agreement.txt">
       <PackagePath>BugSense\BugSense - SDK License Agreement.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\ReleaseNotes.txt">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\ReleaseNotes.txt">
       <PackagePath>ReleaseNotes.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\defaultAdSettings.xml">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\defaultAdSettings.xml">
       <PackagePath>defaultAdSettings.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\WindowsStoreProxy.xml">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\WindowsStoreProxy.xml">
       <PackagePath>WindowsStoreProxy.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\VoiceCommandDefinition_8.1.xml">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\VoiceCommandDefinition_8.1.xml">
       <PackagePath>VoiceCommandDefinition_8.1.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\CancelledEarcon.wav">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\CancelledEarcon.wav">
       <PackagePath>Assets\CancelledEarcon.wav</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\ListeningEarcon.wav">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\ListeningEarcon.wav">
       <PackagePath>Assets\ListeningEarcon.wav</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\User.hmb">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\User.hmb">
       <PackagePath>Assets\User.hmb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\UIThemes.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\UIThemes.xbf">
       <PackagePath>Themes\UIThemes.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\App.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\About.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\About.xbf">
       <PackagePath>About.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\LibraryPage.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\LibraryPage.xbf">
       <PackagePath>LibraryPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\AnimePage.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\AnimePage.xbf">
       <PackagePath>AnimePage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\LoggedOutPage.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\LoggedOutPage.xbf">
       <PackagePath>LoggedOutPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\LoginPage.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\LoginPage.xbf">
       <PackagePath>LoginPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\SearchPage.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\SearchPage.xbf">
       <PackagePath>SearchPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\SettingsPage.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\SettingsPage.xbf">
       <PackagePath>SettingsPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\Activity Feed.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\Activity Feed.xbf">
       <PackagePath>Themes\Activity Feed.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\Anime Library.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\Anime Library.xbf">
       <PackagePath>Themes\Anime Library.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\Anime Favourites.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\Anime Favourites.xbf">
       <PackagePath>Themes\Anime Favourites.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\Recent.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\Recent.xbf">
       <PackagePath>Themes\Recent.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\Search.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Themes\Search.xbf">
       <PackagePath>Themes\Search.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\UserDashboardPage.xbf">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\UserDashboardPage.xbf">
       <PackagePath>UserDashboardPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Anitro.WindowsPhone.xr.xml">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Anitro.WindowsPhone.xr.xml">
       <PackagePath>Anitro.WindowsPhone.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
