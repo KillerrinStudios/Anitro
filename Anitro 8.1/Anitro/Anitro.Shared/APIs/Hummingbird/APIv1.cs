@@ -715,7 +715,7 @@ namespace Anitro.APIs.Hummingbird
         }
         public static class Post
         {
-            public static async Task Login(string userMail, string password)
+            public static async Task Login(string userMail, string password, bool onlyObtainAuthToken = false)
             {
                 APICompletedEventArgs args;
                 if (userMail == "" || password == "")
@@ -736,7 +736,7 @@ namespace Anitro.APIs.Hummingbird
 
                 Debug.WriteLine("Entering: Post.Login()");
 
-
+                #region Test Account
                 if (testAccount)
                 {
                     Debug.WriteLine("Loading up the Test Account");
@@ -745,21 +745,25 @@ namespace Anitro.APIs.Hummingbird
                     for (int i = 0; i < networkSimulationInt; i++) { } //Simulate server activity
                     Debug.WriteLine("Network simulated");
 
-                    FeedbackEventHandler(null, new APIFeedbackEventArgs("Login Authorized"));
+                    if (FeedbackEventHandler != null)
+                        FeedbackEventHandler(null, new APIFeedbackEventArgs("Login Authorized"));
                     Debug.WriteLine("Feedback Sent");
 
                     Consts.LoggedInUser = await User.Load(true);
                     Debug.WriteLine("User Loaded from Solution");
 
                     for (int i = 0; i < networkSimulationInt; i++) { } //Simulate server activity
-                    FeedbackEventHandler(null, new APIFeedbackEventArgs("Grabbing User Info"));
+                    if (FeedbackEventHandler != null)
+                        FeedbackEventHandler(null, new APIFeedbackEventArgs("Grabbing User Info"));
                     Debug.WriteLine("Network Simulated Grabbing of User info");
 
                     for (int i = 0; i < networkSimulationInt; i++) { } //Simulate server activity
-                    FeedbackEventHandler(null, new APIFeedbackEventArgs("Extra User Info Succeeded"));
+                    if (FeedbackEventHandler != null)
+                        FeedbackEventHandler(null, new APIFeedbackEventArgs("Extra User Info Succeeded"));
                     Debug.WriteLine("Network Simulated Grabbing of Extra User Info");
-                    
-                    FeedbackEventHandler(null, new APIFeedbackEventArgs("Login Successfull"));
+
+                    if (FeedbackEventHandler != null)
+                        FeedbackEventHandler(null, new APIFeedbackEventArgs("Login Successfull"));
                     Debug.WriteLine("Test user sucessfully loaded");
                     Debug.WriteLine("Exiting: Post.PostLogin()");
 
@@ -769,6 +773,7 @@ namespace Anitro.APIs.Hummingbird
 
                     return;
                 }
+                #endregion
                 else
                 {
                     // Create a client
@@ -826,8 +831,8 @@ namespace Anitro.APIs.Hummingbird
                     {
                         Debug.WriteLine("Response was successful");
 
-
-                        FeedbackEventHandler(null, new APIFeedbackEventArgs("Login Authorized"));
+                        if (FeedbackEventHandler != null)
+                            FeedbackEventHandler(null, new APIFeedbackEventArgs("Login Authorized"));
 
                         // Grab the string and grab the content
                         Debug.WriteLine("Beginning Content Parse");
@@ -871,30 +876,33 @@ namespace Anitro.APIs.Hummingbird
                             userName = userMail;
                         }
 
+                        if (onlyObtainAuthToken) {
+                            Consts.LoggedInUser.AuthToken = _authToken;
+                            //await Consts.LoggedInUser.Save();
+                        }
+                        else {
+                            Consts.LoggedInUser.Login(userName, _authToken, password, email);
+                            Debug.WriteLine("User Info Stored");
 
-                        Consts.LoggedInUser.Login(userName, _authToken, password, email);
-                        Debug.WriteLine("User Info Stored");
-
-                        APICompletedEventArgs userEventArgs = await Get.Streamlining.AllUserInfo(userName, false);
-                        switch (userEventArgs.Result)
-                        {
-                            case APIResponse.Successful:
-                                Debug.WriteLine("AllUserInfo(): UserInfo Recieved Successfully!");
-                                Consts.LoggedInUser.UserInfo = (userEventArgs.ResultObject as Data_Structures.API_Classes.UserInfo);
-                                break;
-                            default:
-                                Debug.WriteLine("AllUserInfo(): UserInfo Failed");
-                                break;
+                            APICompletedEventArgs userEventArgs = await Get.Streamlining.AllUserInfo(userName, false);
+                            switch (userEventArgs.Result) {
+                                case APIResponse.Successful:
+                                    Debug.WriteLine("AllUserInfo(): UserInfo Recieved Successfully!");
+                                    Consts.LoggedInUser.UserInfo = (userEventArgs.ResultObject as Data_Structures.API_Classes.UserInfo);
+                                    break;
+                                default:
+                                    Debug.WriteLine("AllUserInfo(): UserInfo Failed");
+                                    break;
+                            }
                         }
 
-
                         Debug.WriteLine("Exiting: Post.PostLogin()");
-                        FeedbackEventHandler(null, new APIFeedbackEventArgs("Login Successfull"));
 
+                        if (FeedbackEventHandler != null)
+                            FeedbackEventHandler(null, new APIFeedbackEventArgs("Login Successfull"));
 
                         args = new APICompletedEventArgs(APIResponse.Successful, APIType.Login);
                         APICompletedEventHandler(args.UserState, args);
-
                         return;
                     }
                     else
@@ -995,34 +1003,35 @@ namespace Anitro.APIs.Hummingbird
                 return;
             }
 
-            public static async Task<APICompletedEventArgs> LibraryUpdate(LibraryObject libraryObject, bool updateRating, bool fireEvent = true)
+            public static async Task<APICompletedEventArgs> LibraryUpdate(LibraryObject libraryObject, bool fireEvent = true)
             {
                 Debug.WriteLine("PostLibraryUpdate(LibraryObject libraryObject): Entering");
                 APICompletedEventArgs args;
 
                 if (libraryObject.Notes == null) { libraryObject.Notes = ""; }
+                
+                // Set Fixed Values Here
                 bool incrimentEpisodes = false;
 
+                // Write the content to the console
                 Debug.WriteLine("Posting: ");
-                Debug.WriteLine(libraryObject.Anime.ServiceID);
-                Debug.WriteLine(libraryObject.Status.ToString());
-                Debug.WriteLine(libraryObject.Private.ToString());
-                Debug.WriteLine(libraryObject.Rating);
-                Debug.WriteLine(Convert.ToInt32(libraryObject.RewatchedTimes));
-                Debug.WriteLine(libraryObject.Notes.ToString());
-                Debug.WriteLine(Convert.ToInt32(libraryObject.EpisodesWatched));
-                Debug.WriteLine(incrimentEpisodes);
-
+                Debug.WriteLine("ServiceID: " + libraryObject.Anime.ServiceID);
+                Debug.WriteLine("LibraryStatus: " + libraryObject.Status.ToString());
+                Debug.WriteLine("PrivacySettings: " + libraryObject.Private.ToString());
+                Debug.WriteLine("Rating: " + libraryObject.Rating);
+                Debug.WriteLine("RewatchedTimes: " + Convert.ToInt32(libraryObject.RewatchedTimes));
+                Debug.WriteLine("Notes: " + libraryObject.Notes.ToString());
+                Debug.WriteLine("EpisodesWatched: " + Convert.ToInt32(libraryObject.EpisodesWatched));
+                Debug.WriteLine("IncrimentEpisodes: " + incrimentEpisodes);
 
                 args = await LibraryUpdate(libraryObject.Anime.ServiceID,
                                            APIConverter.LibrarySelectionToString(libraryObject.Status),
-                                           libraryObject.Private.ToString(),
+                                           APIConverter.PrivacySettingsToString(libraryObject.Private),
                                            libraryObject.Rating.ToString(),
                                            libraryObject.RewatchedTimes,
                                            libraryObject.Notes,
                                            libraryObject.EpisodesWatched,
-                                           incrimentEpisodes,
-                                           updateRating,
+                                           false, // Incriment Episodes
                                            false);
 
                 if (args.Result == APIResponse.Successful)
@@ -1041,7 +1050,7 @@ namespace Anitro.APIs.Hummingbird
                 }
                 return args;
             }
-            public static async Task<APICompletedEventArgs> LibraryUpdate(string _slug, string status, string privacy, string rating, int rewatchedTimes, string notes, int episodesWatched, bool incrimentEpisodes, bool updateRating, bool fireEventWhenComplete = true)
+            public static async Task<APICompletedEventArgs> LibraryUpdate(string animeID, string status, string privacy, string rating, int rewatchedTimes, string notes, int episodesWatched, bool incrimentEpisodes, bool fireEventWhenComplete = true)
             {
                 Debug.WriteLine("PostLibraryUpdate(): Entering");
                 APICompletedEventArgs args;
@@ -1049,82 +1058,65 @@ namespace Anitro.APIs.Hummingbird
                 /// ------------------------------------------------ ///
                 /// Double Check if _anime string is API Compliant.  ///
                 /// ------------------------------------------------ ///
-                string anime = Helpers.ConvertToAPIConpliantString(_slug, ' ', '-');
-
+                string anime = Helpers.ConvertToAPIConpliantString(animeID, ' ', '-');
+                
                 /// --------------------------------------------------- ///
                 /// Once _anime string is API Compliant, begin the GET  ///
                 /// --------------------------------------------------- ///
                 /// 
 
-                try
-                {
+                try {
                     // Create a client
                     HttpClient httpClient = new HttpClient();
 
                     // Add a new Request Message
-                    
-                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, Helpers.CreateHummingbirdUrl("libraries/" + anime, HummingbirdAPILevel.Version1, true)); //string uri = "https://hbrd-v1.p.mashape.com/libraries/" + anime;
+
+                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, Helpers.CreateHummingbirdUrl("libraries/" + animeID, HummingbirdAPILevel.Version1, true)); //string uri = "https://hbrd-v1.p.mashape.com/libraries/" + anime;
 
                     // Add our custom headers
                     requestMessage.Headers.Add("accept", "application/json"); //"accept"
-                    requestMessage.Headers.Add("X-Mashape-Authorization", Consts.appData.MashapeKey);
+                    //requestMessage.Headers.Add("X-Mashape-Authorization", Consts.appData.MashapeKey);
 
-                    LibrarySelection libSel = Consts.LoggedInUser.animeLibrary.FindWhereExistsInLibrary(anime);
-                    LibraryObject libObj = Consts.LoggedInUser.animeLibrary.GetObjectInLibrary(LibrarySelection.APISupported, anime);
+                    //LibrarySelection libSel = Consts.LoggedInUser.animeLibrary.FindWhereExistsInLibrary(anime);
+                    //LibraryObject libObj = Consts.LoggedInUser.animeLibrary.GetObjectInLibrary(LibrarySelection.APISupported, anime);
+                    //Debug.WriteLine("Current Rating: " + libObj.Rating);
+                    //Debug.WriteLine("Changed Value: " + rating);
 
-                    Debug.WriteLine("Current Rating: " + libObj.Rating);
-                    Debug.WriteLine("Changed Value: " + rating);
-
-
-                    if (!updateRating) //rating == (Consts.LoggedInUser.animeLibrary.GetObjectInLibrary(libSel, anime)).rating.value)
-                    {
-                        Debug.WriteLine("Rating is the same, Dont update rating");
-                        requestMessage.Content = new FormUrlEncodedContent(new[]
-                            {
-                                new KeyValuePair<string,string>("auth_token", Consts.LoggedInUser.AuthToken),//Consts.settings.auth_token),
-                                new KeyValuePair<string,string>("status", status),
-                                new KeyValuePair<string,string>("privacy", privacy),
-                                new KeyValuePair<string,string>("rewatched_times", rewatchedTimes.ToString()),
-                                new KeyValuePair<string,string>("notes", notes),
-                                new KeyValuePair<string,string>("episodes_watched", episodesWatched.ToString()),
-                                new KeyValuePair<string,string>("increment_episodes", (incrimentEpisodes.ToString()).ToLower())
-                            });
-                    }
-                    else
-                    {
-                        Debug.WriteLine("Rating isn't the same, Update Rating");
-                        requestMessage.Content = new FormUrlEncodedContent(new[]
-                            {
-                                new KeyValuePair<string,string>("auth_token", Consts.LoggedInUser.AuthToken),//Consts.settings.auth_token),
-                                new KeyValuePair<string,string>("status", status),
-                                new KeyValuePair<string,string>("privacy", privacy),
-                                new KeyValuePair<string,string>("rating", rating), // none = None Selected, 0-2 = Unhappy, 3 = Neutral, 4-5 = Happy
-                                new KeyValuePair<string,string>("rewatched_times", rewatchedTimes.ToString()),
-                                new KeyValuePair<string,string>("notes", notes),
-                                new KeyValuePair<string,string>("episodes_watched", episodesWatched.ToString()),
-                                new KeyValuePair<string,string>("increment_episodes", (incrimentEpisodes.ToString()).ToLower())
-                            });
-                    }
+                    requestMessage.Content = new FormUrlEncodedContent(new[]
+                        {
+                            new KeyValuePair<string,string>("auth_token", Consts.LoggedInUser.AuthToken),//Consts.settings.auth_token),
+                            new KeyValuePair<string,string>("status", status),
+                            new KeyValuePair<string,string>("privacy", privacy), // Can be "public", "private"
+                            new KeyValuePair<string,string>("sane_rating_update", rating), // none = None Selected, 0-2 = Unhappy, 3 = Neutral, 4-5 = Happy
+                            //new KeyValuePair<string,string>("rewatching", (false.ToString()).ToLower()),
+                            new KeyValuePair<string,string>("rewatched_times", rewatchedTimes.ToString()),
+                            new KeyValuePair<string,string>("notes", notes),
+                            new KeyValuePair<string,string>("episodes_watched", episodesWatched.ToString()),
+                            new KeyValuePair<string,string>("increment_episodes", (incrimentEpisodes.ToString()).ToLower())
+                        });
 
                     // Set Timeout
-                    httpClient.Timeout = new TimeSpan(0, 0, 0, 2, 0);
+                    //httpClient.Timeout = new TimeSpan(0, 0, 0, 2, 0);
 
                     // Send the request to the server
                     Debug.WriteLine("Sending Server Request");
 
                     // await the response if we care about a reply.
                     Task<HttpResponseMessage> response = httpClient.SendAsync(requestMessage);
+                    //HttpResponseMessage response = await httpClient.SendAsync(requestMessage);
+                    Debug.WriteLine("Parsing the Response");
                     // ...thankfully, we dont care.
 
                     if (true)//response.IsSuccessStatusCode)
                     {
                         Debug.WriteLine("Response Succeded");
-                        //string responseAsString = await response.Content.ReadAsStringAsync();//.Result;
-                        //Debug.WriteLine(responseAsString);
+                        // Grab the string and grab the content
+                        string responseAsString = ""; //await response.Content.ReadAsStringAsync();//.Result;
+                        Debug.WriteLine(responseAsString);
+
                         Debug.WriteLine("PostLibraryUpdate(): Exiting Succeeded");
 
-                        if (fireEventWhenComplete)
-                        {
+                        if (fireEventWhenComplete) {
                             args = new APICompletedEventArgs(APIResponse.Successful, APIType.PostLibraryUpdate);
                             APICompletedEventHandler(args.UserState, args);
                         }
@@ -1133,19 +1125,16 @@ namespace Anitro.APIs.Hummingbird
                     }
 
                     Debug.WriteLine("PostLibraryUpdate(): Exiting Failed");
-                    if (fireEventWhenComplete)
-                    {
+                    if (fireEventWhenComplete) {
                         args = new APICompletedEventArgs(APIResponse.Failed, APIType.PostLibraryUpdate);
                         APICompletedEventHandler(args.UserState, args);
                     }
                     else { args = new APICompletedEventArgs(); }
                     return args;
                 }
-                catch (Exception)
-                {
+                catch (Exception) {
                     Debug.WriteLine("PostLibraryUpdate(): Exiting Error");
-                    if (fireEventWhenComplete)
-                    {
+                    if (fireEventWhenComplete) {
                         args = new APICompletedEventArgs(APIResponse.Failed, APIType.PostLibraryUpdate);
                         APICompletedEventHandler(args.UserState, args);
                     }

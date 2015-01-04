@@ -362,7 +362,7 @@ namespace Anitro
             Debug.WriteLine("Private");
             if (libraryPrivate != null) {
                 try {
-                    libraryPrivate.IsOn = libraryObject.Private;
+                    libraryPrivate.IsOn = APIConverter.PrivacySettingsToBool(libraryObject.Private);
                 }
                 catch (Exception) { libraryPrivate.IsOn = false; }
             }
@@ -636,7 +636,7 @@ namespace Anitro
             libraryPrivate = (sender as ToggleSwitch);
 
             try {
-                libraryPrivate.IsOn = libraryObject.Private;
+                libraryPrivate.IsOn = APIConverter.PrivacySettingsToBool(libraryObject.Private);
             }
             catch (Exception) { libraryPrivate.IsOn = false; }
         }

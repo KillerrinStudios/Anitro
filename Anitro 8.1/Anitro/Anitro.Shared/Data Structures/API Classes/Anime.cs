@@ -10,6 +10,8 @@ namespace Anitro.Data_Structures.API_Classes
     {
         #region Properties
         public string ServiceID { get; set; }
+        public string ServiceID2 { get; set; }
+
         public AiringStatus AiringStatus { get; set; }
 
         public Uri WebUrl { get; set; }
@@ -142,6 +144,11 @@ namespace Anitro.Data_Structures.API_Classes
                 ServiceID = o.slug;
             }
             catch (Exception) { ServiceID = ""; }
+
+            try {
+                ServiceID2 = o.slug;
+            }
+            catch (Exception) { }
 
             try { 
                 AiringStatus = APIConverter.StringToAiringStatus(o.status);

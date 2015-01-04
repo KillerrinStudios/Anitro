@@ -13,7 +13,7 @@ namespace Anitro.APIs.Hummingbird
         public static event APIFeedbackEventHandler FeedbackEventHandler;
 
 
-        private static string Domain = "http://www.hummingbird.me";
+        public static string Domain { get { return "http://www.hummingbird.me"; } }
         public static string CreateHummingbirdUrl(string endpoint, HummingbirdAPILevel apiLevel = HummingbirdAPILevel.None, bool omitWWW = false)
         {
             string apiPoint;

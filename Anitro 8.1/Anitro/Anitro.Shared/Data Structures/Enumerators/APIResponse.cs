@@ -9,7 +9,7 @@ namespace Anitro.Data_Structures
         None,
         Successful,
         Failed,
-        
+
         //-- Standard Errors
         APIError,
         NetworkError,
@@ -18,6 +18,7 @@ namespace Anitro.Data_Structures
 
         //-- Specialized Errors
         NotSupported,
+        InvalidAuthorizationKey,
 
         // Login
         InfoNotEntered,

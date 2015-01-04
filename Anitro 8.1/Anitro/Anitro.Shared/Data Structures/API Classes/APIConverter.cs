@@ -177,5 +177,34 @@ namespace Anitro.Data_Structures.API_Classes
                     return "";
             }
         }
+
+        public static string PrivacySettingsToString(PrivacySettings pS)
+        {
+            switch (pS) {
+                case PrivacySettings.Public:     return "public";
+                case PrivacySettings.Private:    return "private";
+                default: return "";
+            }
+        }
+
+        public static bool PrivacySettingsToBool(PrivacySettings pS)
+        {
+            switch (pS) {
+                case PrivacySettings.Private:   return true;
+                case PrivacySettings.Public:    return false;
+                default:                        return false;
+            }
+        }
+
+        public static PrivacySettings BoolToPrivacySettings(bool pS)
+        {
+            switch (pS) {
+                case true:  return PrivacySettings.Private;
+                case false: return PrivacySettings.Public;
+                default:    return PrivacySettings.Public;
+            }
+        }
+
+
     }
 }

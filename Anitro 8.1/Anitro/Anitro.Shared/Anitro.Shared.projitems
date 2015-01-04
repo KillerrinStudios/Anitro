@@ -59,6 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\AnitroLaunchType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\LibraryType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\PageType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\PrivacySettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\SearchFilter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Library.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Settings.cs" />

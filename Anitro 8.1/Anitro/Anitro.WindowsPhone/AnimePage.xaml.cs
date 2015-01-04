@@ -315,7 +315,7 @@ namespace Anitro
             libraryRewatchedTimes.Text = libraryObject.RewatchedTimes.ToString();
 
             Debug.WriteLine("Private");
-            libraryPrivate.IsOn = libraryObject.Private;
+            libraryPrivate.IsOn = APIConverter.PrivacySettingsToBool(libraryObject.Private);
 
             Debug.WriteLine("Notes");
             notesTextBox.Text = libraryObject.Notes.ToString();

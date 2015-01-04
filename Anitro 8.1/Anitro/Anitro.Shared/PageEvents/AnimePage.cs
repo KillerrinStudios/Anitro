@@ -136,6 +136,7 @@ namespace Anitro
 
         private async void Save_Clicked(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine("Save Clicked");
             if (!contentLoaded || !objectChanged || !Consts.LoggedInUser.IsLoggedIn) return;
 
             Debug.WriteLine("Posting Update");
@@ -214,7 +215,7 @@ namespace Anitro
 
                         bool updateRating = (originalRatingText != libraryObject.Rating.ToString());
 
-                        await APIv1.Post.LibraryUpdate(libraryObject, updateRating, false);
+                        await APIv1.Post.LibraryUpdate(libraryObject, false);
 
                     }
                 }
@@ -354,7 +355,7 @@ namespace Anitro
         private void libraryPrivate_Toggled(object sender, RoutedEventArgs e)
         {
             AnimeUpdated(true);
-            libraryObject.Private = libraryPrivate.IsOn;
+            libraryObject.Private = APIConverter.BoolToPrivacySettings(libraryPrivate.IsOn);
             //UpdateLibrary();
         }
 

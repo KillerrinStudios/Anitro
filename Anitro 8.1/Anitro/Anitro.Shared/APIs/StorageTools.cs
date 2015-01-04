@@ -13,6 +13,7 @@ namespace Anitro.APIs
     public static class StorageTools
     {
         public static bool isSavingComplete = true; // If True, it is safe to exit. If not, loop continuously
+        private static object m_storageLock = new object();
 
         public static class StorageConsts
         {
@@ -72,17 +73,10 @@ namespace Anitro.APIs
             if (Consts.isApplicationClosing) return false;
 
             // Hold up while we wait for the previous person to finish
-            //if (!isSavingComplete)
-            //{
-            //    bool loop = true;
-            //    while (loop)
-            //    {
-            //        if (isSavingComplete) { loop = false; }
-            //    }
-            //}
+            lock (m_storageLock) {
+                isSavingComplete = false;
+            }
             
-            isSavingComplete = false;
-
             try
             {
                 Debug.WriteLine("SaveToStorage(): Saving to Storage");
@@ -104,7 +98,9 @@ namespace Anitro.APIs
         }
         public static async Task<bool> SaveFileFromServer(Uri serverURI, string fileName)
         {
-            isSavingComplete = false;
+            lock (m_storageLock) {
+                isSavingComplete = false;
+            }
 
             try
             {
@@ -133,7 +129,9 @@ namespace Anitro.APIs
 
         public static async Task<StorageFile> LoadStorageFileFromStorage(string fileName)
         {
-            Debug.WriteLine("LoadStorageFileFromStorage(" + fileName + "): entering");
+            lock (m_storageLock) {
+                Debug.WriteLine("LoadStorageFileFromStorage(" + fileName + "): Locking");
+            }
 
             StorageFolder folder = ApplicationData.Current.LocalFolder;
             StorageFile file = await folder.GetFileAsync(fileName);
@@ -142,6 +140,10 @@ namespace Anitro.APIs
         public static async Task<string> LoadFileFromStorage(string fileName)
         {
             StorageFile file = await LoadStorageFileFromStorage(fileName);
+
+            lock (m_storageLock) {
+                Debug.WriteLine("LoadFileFromStorage(" + fileName + "): Locking");
+            }
 
             byte[] data;
             using (Stream s = await file.OpenStreamForReadAsync())
@@ -156,7 +158,10 @@ namespace Anitro.APIs
 
         public static async Task<StorageFile> LoadStorageFileFromPackage(string folderName, string fileName)
         {
-            Debug.WriteLine("LoadStorageFileFromPackage(" + fileName + "): entering");
+            lock (m_storageLock) {
+                Debug.WriteLine("LoadStorageFileFromPackage(" + fileName + "): entering");
+            }
+
             StorageFolder installFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
 
             StorageFile file;
@@ -174,6 +179,10 @@ namespace Anitro.APIs
         public static async Task<string> LoadPackagedFile(string folderName, string fileName)
         {
             StorageFile file = await LoadStorageFileFromPackage(folderName, fileName);
+
+            lock (m_storageLock) {
+                Debug.WriteLine("LoadPackagedFile(" + folderName + "/" + fileName + "): entering");
+            }
 
             byte[] data;
             using (Stream s = await file.OpenStreamForReadAsync())

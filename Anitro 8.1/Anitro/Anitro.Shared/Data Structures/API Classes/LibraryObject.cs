@@ -28,7 +28,7 @@ namespace Anitro.Data_Structures.API_Classes
             }
         }
 
-        public bool Private { get; set; }
+        public PrivacySettings Private { get; set; }
         public bool Rewatching { get; set; }
 
         public double Rating { get; set; }
@@ -95,7 +95,14 @@ namespace Anitro.Data_Structures.API_Classes
             else { Notes = o.notes.ToString(); }
 
             Status = APIConverter.StringToLibrarySelection(o.status);
-            Private = o.@private;
+
+            try {
+                switch (o.@private) {
+                    case true:      Private = PrivacySettings.Private;      break;
+                    case false:     Private = PrivacySettings.Public;       break;
+                }
+            }
+            catch (Exception) { }
 
             if (o.rewatching == null) Rewatching = false;
             else Rewatching = (bool)o.rewatching;
@@ -111,7 +118,7 @@ namespace Anitro.Data_Structures.API_Classes
             RewatchedTimes = 0;
             Notes = "";
             Status = LibrarySelection.None;
-            Private = false;
+            Private = PrivacySettings.Public;
             Rewatching = false;
             Anime = new Anime(a);
             Rating = 0.0;
@@ -124,7 +131,7 @@ namespace Anitro.Data_Structures.API_Classes
             RewatchedTimes = 0;
             Notes = "";
             Status = LibrarySelection.None;
-            Private = false;
+            Private = PrivacySettings.Public;
             Rewatching = false;
             Anime = a;
             Rating = 0.0;
@@ -137,7 +144,7 @@ namespace Anitro.Data_Structures.API_Classes
             RewatchedTimes = 0;
             Notes = "";
             Status = LibrarySelection.None;
-            Private = false;
+            Private = PrivacySettings.Public;
             Rewatching = false;
             Anime = new Anime();
             Rating = 0.0;
