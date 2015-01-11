@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\RelativeDateTimeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\ActivityFeed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\ActivityFeedObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Anime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\APIConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\Anime.cs" />

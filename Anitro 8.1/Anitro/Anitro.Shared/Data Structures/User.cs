@@ -54,7 +54,7 @@ namespace Anitro.Data_Structures
         public API_Classes.UserInfo UserInfo;
 
         public Library animeLibrary;
-        public ObservableCollection<API_Classes.Hummingbird.V1.ActivityFeedObject> activityFeed;
+        public ObservableCollection<API_Classes.ActivityFeedObject> activityFeed;
 
 
         public User()
@@ -68,7 +68,7 @@ namespace Anitro.Data_Structures
             UserInfo = new API_Classes.UserInfo();
 
             animeLibrary = new Library("");
-            activityFeed = new ObservableCollection<API_Classes.Hummingbird.V1.ActivityFeedObject>();
+            activityFeed = new ObservableCollection<API_Classes.ActivityFeedObject>();
         }
         public User(string _username) : this()
         {
@@ -89,7 +89,7 @@ namespace Anitro.Data_Structures
             AvatarURL = storageUser.AvatarURL;
 
             // Create activity feed to be populated later
-            activityFeed = new ObservableCollection<API_Classes.Hummingbird.V1.ActivityFeedObject>();
+            activityFeed = new ObservableCollection<API_Classes.ActivityFeedObject>();
 
             //-- Load UserInfo from actual storage
             if (storageUser.UserInfo == null)
@@ -148,7 +148,7 @@ namespace Anitro.Data_Structures
             UserInfo = new API_Classes.UserInfo();
 
             animeLibrary.ClearLibrary(LibrarySelection.All);
-            activityFeed = new ObservableCollection<API_Classes.Hummingbird.V1.ActivityFeedObject>();
+            activityFeed = new ObservableCollection<API_Classes.ActivityFeedObject>();
         }
 
         #region Storage Tools

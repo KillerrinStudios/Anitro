@@ -38,7 +38,7 @@ namespace Anitro.APIs.Hummingbird
 
                         foreach (Anitro.Data_Structures.API_Classes.Hummingbird.V1.StatusFeedObject sFO in aF.status_feed)
                         {
-                            Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject temp = new Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject { };
+                            Anitro.Data_Structures.API_Classes.ActivityFeedObject temp = new Anitro.Data_Structures.API_Classes.ActivityFeedObject { };
                             string contentString;
 
                             if (string.IsNullOrEmpty(user.AvatarURL))//Consts.settings.userAvatar))
@@ -90,13 +90,13 @@ namespace Anitro.APIs.Hummingbird
 
                                     string storyImageString = "";
 
-                                    temp = new Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject
+                                    temp = new Anitro.Data_Structures.API_Classes.ActivityFeedObject
                                     {
-                                        slug = sFO.media.slug,
-                                        storyImage = sFO.media.cover_image,
-                                        header = sFO.media.title,
-                                        content = contentString,
-                                        timeStamp = DateTime.Parse(tts),//tS[0] + " at " + tS[1],
+                                        ServiceID = sFO.media.slug,
+                                        StoryImage = new Uri(sFO.media.cover_image, UriKind.Absolute),
+                                        Header = sFO.media.title,
+                                        Content = contentString,
+                                        TimeStamp = DateTime.Parse(tts),//tS[0] + " at " + tS[1],
                                     };
 
                                     //Debug.WriteLine(temp.header + " | "+ tts);
@@ -105,24 +105,24 @@ namespace Anitro.APIs.Hummingbird
                                     string tts2 = sFO.updated_at.Substring(0, sFO.updated_at.Length - 1);
                                     string[] tS2 = tts2.Split('T');
 
-                                    temp = new Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject
+                                    temp = new Anitro.Data_Structures.API_Classes.ActivityFeedObject
                                     {
-                                        storyImage = sFO.poster.avatar, //storyimage, //sFO.user.avatar,
-                                        header = sFO.poster.name, //sFO.user.name,
-                                        content = sFO.substories[0].comment,
-                                        timeStamp = DateTime.Parse(tts2),//tS2[0] + " at " + tS2[1],
+                                        StoryImage = new Uri(sFO.poster.avatar, UriKind.Absolute), //storyimage, //sFO.user.avatar,
+                                        Header = sFO.poster.name, //sFO.user.name,
+                                        Content = sFO.substories[0].comment,
+                                        TimeStamp = DateTime.Parse(tts2),//tS2[0] + " at " + tS2[1],
                                     };
                                     break;
                                 case "followed":
                                     string tts3 = sFO.updated_at.Substring(0, sFO.updated_at.Length - 1);
                                     string[] tS3 = tts3.Split('T');
 
-                                    temp = new Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject
+                                    temp = new Anitro.Data_Structures.API_Classes.ActivityFeedObject
                                     {
-                                        storyImage = sFO.user.avatar, //storyimage, //sFO.user.avatar,
-                                        header = sFO.user.name, //sFO.user.name,
-                                        content = "has followed " + sFO.substories[0].followed_user.name,
-                                        timeStamp = DateTime.Parse(tts3),//tS3[0] + " at " + tS3[1],
+                                        StoryImage = new Uri(sFO.user.avatar, UriKind.Absolute), //storyimage, //sFO.user.avatar,
+                                        Header = sFO.user.name, //sFO.user.name,
+                                        Content = "has followed " + sFO.substories[0].followed_user.name,
+                                        TimeStamp = DateTime.Parse(tts3),//tS3[0] + " at " + tS3[1],
                                     };
                                     break;
                                 default:
@@ -142,7 +142,6 @@ namespace Anitro.APIs.Hummingbird
                 public static List<Anime> ParseSearchResult(string searchResponseAsString)
                 {
                     Debug.WriteLine("ParseSearchResult(): Entering");
-                    //Debug.WriteLine(searchResponseAsString);
 
                     if (String.IsNullOrWhiteSpace(searchResponseAsString)) { Debug.WriteLine("ParseSearchResult(): String is null or empty"); return new List<Anime>(); }
                     else
@@ -548,10 +547,6 @@ namespace Anitro.APIs.Hummingbird
                 // Add a new Request Message
                 HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, Helpers.CreateHummingbirdUrl("users/" + user.Username + "/feed?page=" + pageIndex, HummingbirdAPILevel.Version1, true)); //"https://hbrd-v1.p.mashape.com/users/" + userName + "/feed?page=" + pageIndex); // http://hummingbird.me/api/v1/users/killerrin/feed?page=1
                 Debug.WriteLine("GetStatusFeed(): Getting: " + requestMessage.RequestUri.OriginalString);
-
-                // Add our custom headers
-                //requestMessage.Headers.Add("Content-Type", "application/json");
-                //requestMessage.Headers.Add("X-Mashape-Authorization", Consts.appData.MashapeKey);
 
                 // Send the request to the server
                 HttpResponseMessage response = await httpClient.SendAsync(requestMessage);
@@ -982,12 +977,12 @@ namespace Anitro.APIs.Hummingbird
                     string responseAsString = await response.Content.ReadAsStringAsync();//.Result;
 
                     DateTime dT = DateTime.UtcNow;
-                    Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject temp = new Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject
+                    Anitro.Data_Structures.API_Classes.ActivityFeedObject temp = new Anitro.Data_Structures.API_Classes.ActivityFeedObject
                     {
-                        storyImage = Consts.LoggedInUser.AvatarURL,//Consts.settings.userAvatar,
-                        header = Consts.LoggedInUser.Username,//Consts.settings.userName,
-                        content = _text,
-                        timeStamp = dT, //dT.Date.Year + "-" + dT.Date.Month + "-" + dT.Date.Day + " at " +
+                        StoryImage = new Uri(Consts.LoggedInUser.AvatarURL, UriKind.Absolute),//Consts.settings.userAvatar,
+                        Header = Consts.LoggedInUser.Username,//Consts.settings.userName,
+                        Content = _text,
+                        TimeStamp = dT, //dT.Date.Year + "-" + dT.Date.Month + "-" + dT.Date.Day + " at " +
                                                   //dT.TimeOfDay.Hours + ":" + dT.TimeOfDay.Minutes + ":" + dT.TimeOfDay.Seconds
                     };
 

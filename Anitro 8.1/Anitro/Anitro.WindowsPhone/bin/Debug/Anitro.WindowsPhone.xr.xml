@@ -4,10 +4,10 @@
     <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
-    <RootPropertyPathName Name="content" />
-    <RootPropertyPathName Name="timeStamp" />
-    <RootPropertyPathName Name="header" />
-    <RootPropertyPathName Name="storyImage" />
+    <RootPropertyPathName Name="Content" />
+    <RootPropertyPathName Name="TimeStamp" />
+    <RootPropertyPathName Name="Header" />
+    <RootPropertyPathName Name="StoryImage" />
     <RootPropertyPathName Name="Anime" />
     <RootPropertyPathName Name="EpisodeCount" />
     <RootPropertyPathName Name="EpisodesWatched" />

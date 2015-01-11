@@ -8,7 +8,7 @@
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>59141KillerrinStudios.Anitro</PackageIdentityName>
     <IntermediateOutputPath>D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>C26DBAC164A2E66085005DB672AEC78D5B4CBF8409C686C28461C6DFD8490940</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>FAB4A450311511B3863E350CC55410008410EF26CD2EAA30C1A4005948DA1F45</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>59141KillerrinStudios.Anitro_1.2.0.0_neutral__vsha6q420kgm4</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>59141KillerrinStudios.Anitro_vsha6q420kgm4!App</RegisteredUserModeAppID>
     <RegisteredPackageID>59141KillerrinStudios.Anitro</RegisteredPackageID>
@@ -20,13 +20,13 @@
     <AppXManifest Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-12-20T22:24:46.903</Modified>
+      <Modified>2015-01-09T09:01:45.633</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Anitro.Windows.exe">
       <PackagePath>Anitro.Windows.exe</PackagePath>
-      <Modified>2014-12-20T23:00:45.931</Modified>
+      <Modified>2015-01-09T09:02:56.177</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Callisto\1.4.0\References\CommonConfiguration\neutral\Callisto.dll">
       <PackagePath>Callisto.dll</PackagePath>
@@ -205,7 +205,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Themes\Activity Feed.xbf">
       <PackagePath>Themes\Activity Feed.xbf</PackagePath>
-      <Modified>2014-12-17T21:31:13.596</Modified>
+      <Modified>2015-01-09T09:02:55.520</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Themes\Anime Favourites.xbf">
       <PackagePath>Themes\Anime Favourites.xbf</PackagePath>
@@ -233,7 +233,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Anitro.Windows.xr.xml">
       <PackagePath>Anitro.Windows.xr.xml</PackagePath>
-      <Modified>2014-12-17T08:02:01.279</Modified>
+      <Modified>2015-01-09T09:02:55.412</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\MyToolkit.Extended.2.2.3.0\lib\portable-wpa81+win8\MyToolkit.Extended\MyToolkit.Extended.xr.xml">
       <PackagePath>MyToolkit.Extended\MyToolkit.Extended.xr.xml</PackagePath>
@@ -257,7 +257,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-12-20T22:24:42.594</Modified>
+      <Modified>2015-01-09T09:01:38.282</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

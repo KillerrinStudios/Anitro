@@ -82,13 +82,4 @@ namespace Anitro.Data_Structures.API_Classes.Hummingbird.V1
     {
         public List<StatusFeedObject> status_feed { get; set; }
     }
-
-    public class ActivityFeedObject
-    {
-        public string slug { get; set; }
-        public string storyImage { get; set; }
-        public string header { get; set; }
-        public string content { get; set; }
-        public DateTime timeStamp { get; set; }
-    }
 }

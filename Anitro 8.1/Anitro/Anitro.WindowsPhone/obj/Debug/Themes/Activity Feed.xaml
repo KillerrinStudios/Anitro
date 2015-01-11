@@ -10,7 +10,7 @@
         <StackPanel Orientation="Horizontal" Margin="0,-25,0,-5" VerticalAlignment="Top">
             <Image Width="62.5" Height="125" Margin="0,20,0,0" VerticalAlignment="Top">
                 <Image.Source>
-                    <BitmapImage UriSource="{Binding storyImage}" />
+                    <BitmapImage UriSource="{Binding StoryImage}" />
                 </Image.Source>
             </Image>
 
@@ -26,17 +26,17 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" Orientation="Vertical">
-                        <TextBlock Text="{Binding header}" FontSize="18" Foreground="{StaticResource TitleBrush}" TextAlignment="Left" Margin="0,0,0,0" Width="600"/>
+                        <TextBlock Text="{Binding Header}" FontSize="18" Foreground="{StaticResource TitleBrush}" TextAlignment="Left" Margin="0,0,0,0" Width="600"/>
                     </StackPanel>
                     
                     <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,-5,0,0" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
-                        <TextBlock Text="{Binding timeStamp, Converter={StaticResource ResourceKey=RelativeDateTimeConverter}}" Foreground="{StaticResource ContentBrush}"
+                        <TextBlock Text="{Binding TimeStamp, Converter={StaticResource ResourceKey=RelativeDateTimeConverter}}" Foreground="{StaticResource ContentBrush}"
                                    Margin="0,0,0,0" Width="300" HorizontalAlignment="Left"
                                    FontSize="8" TextAlignment="Left"/>
                     </StackPanel>
                     
                     <StackPanel Grid.Row="2" Grid.Column="0" Margin="-360,5,0,5" Height="Auto" Orientation="Vertical" VerticalAlignment="Top">
-                        <TextBlock x:Name="statusFeedContent" Text="{Binding content}" 
+                        <TextBlock x:Name="statusFeedContent" Text="{Binding Content}" 
                                    FontSize="14" TextTrimming="WordEllipsis" TextAlignment="Left" TextWrapping="Wrap" LineHeight="20" LineStackingStrategy="BlockLineHeight"
                                    Foreground="{StaticResource ContentBrush}"
                                    Width="235" Height="Auto"/>

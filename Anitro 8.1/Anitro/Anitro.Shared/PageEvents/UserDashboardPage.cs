@@ -185,11 +185,11 @@ namespace Anitro
             try
             {
                 if (((ListBox)sender).SelectedItem == null) { return; }
-                Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject selected = ((ListBox)sender).SelectedItem as Anitro.Data_Structures.API_Classes.Hummingbird.V1.ActivityFeedObject;
+                Anitro.Data_Structures.API_Classes.ActivityFeedObject selected = ((ListBox)sender).SelectedItem as Anitro.Data_Structures.API_Classes.ActivityFeedObject;
 
                 ((ListBox)sender).SelectedItem = null;
 
-                if (!string.IsNullOrEmpty(selected.slug) && selected.header != pageParameter.user.Username)//Consts.settings.userName)
+                if (!string.IsNullOrEmpty(selected.ServiceID) && selected.Header != pageParameter.user.Username)//Consts.settings.userName)
                 {
 #if WINDOWS_PHONE_APP
                     // Remove the Event Handler for a safe transition
@@ -198,7 +198,7 @@ namespace Anitro
                     APIv1.FeedbackEventHandler -= APIv1_FeedbackEventHandler;
 
                     Consts.UpdateLoggedInUser(pageParameter.user);
-                    AnimePageParameter sendParameter = new AnimePageParameter(selected.slug, AnimePageParameter.ComingFrom.ActivityFeed);
+                    AnimePageParameter sendParameter = new AnimePageParameter(selected.ServiceID, AnimePageParameter.ComingFrom.ActivityFeed);
                     Frame.Navigate(typeof(AnimePage), sendParameter);
                 }
 
