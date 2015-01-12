@@ -31,6 +31,9 @@
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\BugSense.XAML81.3.6.6.0\lib\wpa81\BugSense-Windows.Universal.dll">
       <PackagePath>BugSense-Windows.Universal.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Documents\GitHub\Killerrin-Studios-Toolkit\Killerrin Studios Toolkit\Killerrin Studios Toolkit.WindowsPhone\bin\Debug\Killerrin Studios Toolkit.WindowsPhone.dll">
+      <PackagePath>Killerrin Studios Toolkit.WindowsPhone.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\Microsoft.Bcl.Async.1.0.168\lib\wpa81\Microsoft.Threading.Tasks.dll">
       <PackagePath>Microsoft.Threading.Tasks.dll</PackagePath>
     </AppxPackagedFile>

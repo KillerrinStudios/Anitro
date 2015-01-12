@@ -335,3 +335,7 @@ D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\quali
 D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\qualifiers.txt.intermediate
 D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\ProjectArchitectures.txt
+D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Killerrin Studios Toolkit.WindowsPhone.dll
+D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Killerrin Studios Toolkit.WindowsPhone.pdb
+D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Killerrin Studios Toolkit.WindowsPhone.pri
+D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\Killerrin Studios Toolkit.WindowsPhone.pri.xml

@@ -127,7 +127,7 @@ namespace Anitro
             if (Consts.forceLibrarySave) return;
             //!activityFeedLoaded || 
 
-            await Consts.LaunchReview();
+            await Consts.appData.LaunchReview();
         }
         #endregion
 

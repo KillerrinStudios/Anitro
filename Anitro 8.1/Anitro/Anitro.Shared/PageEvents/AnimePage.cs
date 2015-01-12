@@ -16,6 +16,8 @@ using Windows.UI.StartScreen;
 using Windows.UI.Popups;
 using System.Threading.Tasks;
 
+using KillerrinStudiosToolkit;
+
 #if WINDOWS_PHONE_APP
 using Microsoft.Advertising.Mobile.UI;
 using Microsoft.Advertising.Mobile.Common;
@@ -87,17 +89,19 @@ namespace Anitro
 
             try
             {
+                AnitroLaunchArgs launchArgs = new AnitroLaunchArgs(AnitroLaunchType.Anime, libraryObject.Anime.ServiceID);
+
 #if WINDOWS_PHONE_APP
                 bool result = await SecondaryTileHelper.CreateTile(libraryObject.Anime.ServiceID,
                                                                    libraryObject.Anime.RomanjiTitle,
-                                                                   new AnitroLaunchArgs(AnitroLaunchType.Anime, libraryObject.Anime.ServiceID),
+                                                                   launchArgs.ToString(),
                                                                    libraryObject.Anime.CoverImageUrl,
                                                                    TileSize.Default);
 #else
                 bool result = await SecondaryTileHelper.CreateTile(sender,
                                                                    libraryObject.Anime.ServiceID,
                                                                    libraryObject.Anime.RomanjiTitle,
-                                                                   new AnitroLaunchArgs(AnitroLaunchType.Anime, libraryObject.Anime.ServiceID),
+                                                                   launchArgs.ToString(),
                                                                    libraryObject.Anime.CoverImageUrl,
                                                                    TileSize.Default);
 #endif

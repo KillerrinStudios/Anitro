@@ -241,7 +241,7 @@ namespace Anitro
         {
             if (!libraryLoaded || Consts.forceLibrarySave) return;
 
-            await Consts.LaunchReview();
+            await Consts.appData.LaunchReview();
         }
 
         private void ApplicationProgressBar_Loaded(object sender, RoutedEventArgs e)

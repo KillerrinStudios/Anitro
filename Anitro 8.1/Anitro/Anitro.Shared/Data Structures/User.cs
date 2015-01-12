@@ -212,7 +212,7 @@ namespace Anitro.Data_Structures
                 StorageTools.isSavingComplete = false;
 
                 string json = ThisToJson(saveSettings);
-                bool result = await StorageTools.SaveToStorage(StorageTools.StorageConsts.UserFile, json);
+                bool result = await StorageTools.SaveToStorage(StorageTools.StorageConsts.UserFile, new KillerrinStudiosToolkit.Helpers.SaveableString(json));
 
                 Debug.WriteLine("Save(): Success!");
                 return result;

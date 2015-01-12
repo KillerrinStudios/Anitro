@@ -105,7 +105,7 @@ namespace Anitro
 
         private async void Review_Clicked(object sender, RoutedEventArgs e)
         {
-            await Consts.LaunchReview();
+            await Consts.appData.LaunchReview();
         }
 
         private void Search_Clicked(object sender, RoutedEventArgs e)

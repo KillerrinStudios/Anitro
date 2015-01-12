@@ -27,6 +27,7 @@ using Windows.UI.StartScreen;
 using Anitro.APIs.Hummingbird;
 using Anitro.Converters;
 using Microsoft.Advertising.WinRT.UI;
+using KillerrinStudiosToolkit;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 

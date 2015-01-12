@@ -20,7 +20,7 @@ namespace Anitro
 {
     public sealed partial class AboutSettingsPane : SettingsFlyout
     {
-        private KillerrinApplicationData appData;
+        private AnitroApplicationData appData;
         public AboutSettingsPane()
         {
             this.InitializeComponent();

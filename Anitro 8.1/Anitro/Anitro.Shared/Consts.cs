@@ -11,17 +11,22 @@ using Anitro.Data_Structures;
 
 namespace Anitro
 {
-    public static class Consts
+    public class Consts : KillerrinStudiosToolkit.Consts
     {
         // Application Information
-        public static KillerrinApplicationData appData = new KillerrinApplicationData();
+#if WINDOWS_PHONE_APP
+        public static AnitroApplicationData appData = new AnitroApplicationData("6377b104-7df2-4d29-8ebb-88527728e673",
+                                                                                "");
+#elif WINDOWS_APP
+        public static AnitroApplicationData appData = new AnitroApplicationData("665e06bf-b4de-4cde-8ae3-c20c1a98b12b",
+                                                                                "");
+#endif
 
         // Logged-In Settings
         public static User LoggedInUser = new User();
         public static Settings AppSettings = new Settings();
 
         // Persisting Application Variables
-        public static bool isApplicationClosing = false;
         public static bool justSignedIn = false;
         public static bool forceLibrarySave = false;
         public static bool forceLibraryRemoveal = false;
@@ -30,21 +35,7 @@ namespace Anitro
         public static bool openedFromProtocolOrTile = false;
         public static bool uriAssociationHandled = false;
 
-        public static Random random = new Random();
-
         #region Helper Methods
-        public static bool IsConnectedToInternet() { return NetworkInterface.GetIsNetworkAvailable(); }
-
-        public static async Task<bool> LaunchReview()
-        {
-#if WINDOWS_PHONE_APP
-            bool result = await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store:reviewapp?appid="+Consts.appData.AnitroPackageName));
-#else
-            bool result = await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store:review?PFN="+Consts.appData.AnitroPackageName));
-#endif
-            return result;
-        }
-
         public static LauncherOptions AnitroCompanionLauncherOptions
         {
             get
@@ -79,25 +70,5 @@ namespace Anitro
                 LoggedInUser = new User(user);
             }
         }
-
-        #region Extension Methods
-        public static string AddSpacesToSentence(this string text, bool preserveAcronyms = true)
-        {
-            if (string.IsNullOrWhiteSpace(text))
-                return string.Empty;
-
-            StringBuilder newText = new StringBuilder(text.Length * 2);
-            newText.Append(text[0]);
-            for (int i = 1; i < text.Length; i++) {
-                if (char.IsUpper(text[i]))
-                    if ((text[i - 1] != ' ' && !char.IsUpper(text[i - 1])) ||
-                        (preserveAcronyms && char.IsUpper(text[i - 1]) &&
-                         i < text.Length - 1 && !char.IsUpper(text[i + 1])))
-                        newText.Append(' ');
-                newText.Append(text[i]);
-            }
-            return newText.ToString();
-        }
-        #endregion
     }
 }

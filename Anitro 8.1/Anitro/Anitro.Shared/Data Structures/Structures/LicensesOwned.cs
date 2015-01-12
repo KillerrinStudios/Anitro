@@ -71,7 +71,7 @@ namespace Anitro.Data_Structures.Structures
                 StorageTools.isSavingComplete = false;
 
                 string json = ThisToJson();
-                bool result = await StorageTools.SaveToStorage(StorageTools.StorageConsts.LicenseFile, json);
+                bool result = await StorageTools.SaveToStorage(StorageTools.StorageConsts.LicenseFile, new KillerrinStudiosToolkit.Helpers.SaveableString(json));
 
                 Debug.WriteLine("Save(): Success!");
                 return result;

@@ -25,8 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)APIs\Hummingbird\APIv2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\Hummingbird\Helpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\InAppPurchaseHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APIs\SecondaryTileHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APIs\StorageTools.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APIs\StorageConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\RelativeDateTimeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\ActivityFeed.cs" />
@@ -72,7 +71,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Structures\UserDashboardPageParameter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DebugTools.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)KillerrinApplicationData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnitroApplicationData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Consts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageEvents\AnimePage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageEvents\LibraryPage.cs" />

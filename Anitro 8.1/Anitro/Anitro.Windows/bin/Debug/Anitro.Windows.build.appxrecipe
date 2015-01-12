@@ -25,6 +25,9 @@
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\BugSense.XAML81.3.6.6.0\lib\netcore451\BugSense-Windows.Universal.dll">
       <PackagePath>BugSense-Windows.Universal.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Documents\GitHub\Killerrin-Studios-Toolkit\Killerrin Studios Toolkit\Killerrin Studios Toolkit.Windows\bin\Debug\Killerrin Studios Toolkit.Windows.dll">
+      <PackagePath>Killerrin Studios Toolkit.Windows.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\MyToolkit.2.2.3.0\lib\portable-net45+wp8+win8+wpa81\MyToolkit.dll">
       <PackagePath>MyToolkit.dll</PackagePath>
     </AppxPackagedFile>

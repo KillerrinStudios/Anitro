@@ -17,7 +17,7 @@ using Anitro.Data_Structures;
 
 namespace Anitro
 {
-    class VoiceCommandHelper
+    public class VoiceCommandHelper
     {
         public static event VoiceRecognitionResultEventHandler CortanaVoiceRecognitionResult;
 

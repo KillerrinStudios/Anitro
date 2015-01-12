@@ -23,7 +23,7 @@ namespace Anitro
     /// </summary>
     public sealed partial class About : Page
     {
-        private KillerrinApplicationData appData;
+        private AnitroApplicationData appData;
 
         public About()
         {

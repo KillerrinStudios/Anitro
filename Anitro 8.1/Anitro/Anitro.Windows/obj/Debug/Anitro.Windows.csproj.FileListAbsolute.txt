@@ -356,3 +356,7 @@ D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MultipleQu
 D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MyToolkit.Extended.pri.xml
 D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\ProjectArchitectures.txt
 D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Anitro.Windows.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Killerrin Studios Toolkit.Windows.dll
+D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Killerrin Studios Toolkit.Windows.pdb
+D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Killerrin Studios Toolkit.Windows.pri
+D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Killerrin Studios Toolkit.Windows.pri.xml

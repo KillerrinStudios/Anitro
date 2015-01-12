@@ -228,7 +228,7 @@ namespace Anitro
             if (!libraryLoaded || Consts.forceLibrarySave) return;
             //!activityFeedLoaded || 
 
-            await Consts.LaunchReview();
+            await Consts.appData.LaunchReview();
         }
         #endregion
     }

@@ -213,6 +213,9 @@
     <Reference Include="BugSense-Windows.Universal">
       <HintPath>..\..\packages\BugSense.XAML81.3.6.6.0\lib\wpa81\BugSense-Windows.Universal.dll</HintPath>
     </Reference>
+    <Reference Include="Killerrin Studios Toolkit.WindowsPhone">
+      <HintPath>..\..\..\..\Killerrin-Studios-Toolkit\Killerrin Studios Toolkit\Killerrin Studios Toolkit.WindowsPhone\bin\Debug\Killerrin Studios Toolkit.WindowsPhone.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\wpa81\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>

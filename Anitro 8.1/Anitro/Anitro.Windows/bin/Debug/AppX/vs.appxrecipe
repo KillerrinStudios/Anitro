@@ -20,13 +20,13 @@
     <AppXManifest Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-01-09T09:01:45.633</Modified>
+      <Modified>2015-01-12T14:41:11.663</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Anitro.Windows.exe">
       <PackagePath>Anitro.Windows.exe</PackagePath>
-      <Modified>2015-01-09T09:02:56.177</Modified>
+      <Modified>2015-01-12T14:41:03.083</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Callisto\1.4.0\References\CommonConfiguration\neutral\Callisto.dll">
       <PackagePath>Callisto.dll</PackagePath>
@@ -35,6 +35,10 @@
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\BugSense.XAML81.3.6.6.0\lib\netcore451\BugSense-Windows.Universal.dll">
       <PackagePath>BugSense-Windows.Universal.dll</PackagePath>
       <Modified>2014-12-15T07:17:42.134</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Documents\GitHub\Killerrin-Studios-Toolkit\Killerrin Studios Toolkit\Killerrin Studios Toolkit.Windows\bin\Debug\Killerrin Studios Toolkit.Windows.dll">
+      <PackagePath>Killerrin Studios Toolkit.Windows.dll</PackagePath>
+      <Modified>2015-01-12T14:32:36.072</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\packages\MyToolkit.2.2.3.0\lib\portable-net45+wp8+win8+wpa81\MyToolkit.dll">
       <PackagePath>MyToolkit.dll</PackagePath>
@@ -257,7 +261,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-01-09T09:01:38.282</Modified>
+      <Modified>2015-01-12T14:41:06.622</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
