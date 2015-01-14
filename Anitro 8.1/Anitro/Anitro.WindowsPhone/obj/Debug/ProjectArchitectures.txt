@@ -1,1 +1,1 @@
-D:\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Anitro.WindowsPhone.csproj;neutral
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\Anitro.WindowsPhone.csproj;neutral

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using Anitro.APIs;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using KillerrinStudiosToolkit.Helpers;
 
 namespace Anitro.Data_Structures.Structures
 {
@@ -51,8 +52,8 @@ namespace Anitro.Data_Structures.Structures
             {
                 try
                 {
-                    string json = await StorageTools.LoadFileFromStorage(StorageTools.StorageConsts.LicenseFile);
-                    licensesOwned.JsonToThis(json);
+                    SerializableString json = await StorageTools.LoadFileFromStorage(StorageTools.StorageConsts.LicenseFile);
+                    licensesOwned.JsonToThis((json.Deserialize() as string));
                 }
                 catch (Exception)
                 {
@@ -71,7 +72,7 @@ namespace Anitro.Data_Structures.Structures
                 StorageTools.isSavingComplete = false;
 
                 string json = ThisToJson();
-                bool result = await StorageTools.SaveToStorage(StorageTools.StorageConsts.LicenseFile, new KillerrinStudiosToolkit.Helpers.SaveableString(json));
+                bool result = await StorageTools.SaveToStorage(StorageTools.StorageConsts.LicenseFile, new SerializableString(json));
 
                 Debug.WriteLine("Save(): Success!");
                 return result;

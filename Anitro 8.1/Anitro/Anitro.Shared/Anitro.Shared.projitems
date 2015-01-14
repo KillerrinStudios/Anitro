@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\StatusFeed\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Data Structures\Interface Implimentations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\CancelledEarcon.wav" />

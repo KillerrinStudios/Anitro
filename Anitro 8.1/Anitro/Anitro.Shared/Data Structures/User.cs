@@ -7,6 +7,9 @@ using System.Text;
 using Anitro.APIs;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
+using KillerrinStudiosToolkit.Helpers;
+using KillerrinStudiosToolkit.Interfaces;
 
 namespace Anitro.Data_Structures
 {
@@ -16,7 +19,7 @@ namespace Anitro.Data_Structures
         JustUser
     }
 
-    public class User
+    public class User : ISerializable
     {
         public bool IsLoggedIn
         {
@@ -118,7 +121,8 @@ namespace Anitro.Data_Structures
 
             return storageUser;
         }
-        
+
+        #region Helper Methods
 
         public void Login(string _user, string _auth, string pass, string email = "")
         {
@@ -151,6 +155,8 @@ namespace Anitro.Data_Structures
             activityFeed = new ObservableCollection<API_Classes.ActivityFeedObject>();
         }
 
+        #endregion
+
         #region Storage Tools
         #region Json Tools
         public string ThisToJson(UserSaveSettings saveSettings = UserSaveSettings.All)
@@ -176,7 +182,40 @@ namespace Anitro.Data_Structures
         }
         #endregion
 
-        public static async System.Threading.Tasks.Task<User> Load(bool testData = false)
+        #region Serializable Implimentation
+        byte[] ISerializable.Serialize() { return Serialize(); }
+        public byte[] Serialize(UserSaveSettings saveSettings = UserSaveSettings.All) 
+        {
+            string json = ThisToJson(saveSettings);
+            SerializableString serializedString = new SerializableString(json);
+            return serializedString.Serialize();
+        }
+
+        object ISerializable.Deserialize() { return Deserialize(); }
+        public object Deserialize()
+        {
+            return "";
+        }
+        #endregion
+
+        public async Task<bool> Save(UserSaveSettings saveSettings = UserSaveSettings.All)
+        {
+            try {
+                Debug.WriteLine("Save(): Begun");
+                StorageTools.isSavingComplete = false;
+
+                bool result = await StorageTools.SaveToStorage(StorageTools.StorageConsts.UserFile, this);
+
+                Debug.WriteLine("Save(): Success!");
+                return result;
+            }
+            catch (Exception) {
+                Debug.WriteLine("Save(): Failed");
+                StorageTools.isSavingComplete = true;
+                return false;
+            }
+        }
+        public static async Task<User> Load(bool testData = false)
         {
             Debug.WriteLine("User.Load("+testData+"): Entering");
             User user = new User();
@@ -187,8 +226,8 @@ namespace Anitro.Data_Structures
                 {
                     try
                     {
-                        string json = await StorageTools.LoadFileFromStorage(StorageTools.StorageConsts.UserFile);
-                        user.JsonToThis(json);
+                        SerializableString json = await StorageTools.LoadFileFromStorage(StorageTools.StorageConsts.UserFile);
+                        user.JsonToThis((json.Deserialize() as string));
                     }
                     catch (Exception)
                     {
@@ -199,31 +238,13 @@ namespace Anitro.Data_Structures
             }
             else
             {
-                string json = await StorageTools.LoadPackagedFile(StorageTools.StorageConsts.AssetsFolder, StorageTools.StorageConsts.TestUserFile);
-                user.JsonToThis(json);
+                SerializableString json = await StorageTools.LoadPackagedFile(StorageTools.StorageConsts.AssetsFolder, StorageTools.StorageConsts.TestUserFile);
+                user.JsonToThis((json.Deserialize() as string));
             }
 
             return user;
         }
-        public async System.Threading.Tasks.Task<bool> Save(UserSaveSettings saveSettings = UserSaveSettings.All)
-        {
-            try {
-                Debug.WriteLine("Save(): Begun");
-                StorageTools.isSavingComplete = false;
-
-                string json = ThisToJson(saveSettings);
-                bool result = await StorageTools.SaveToStorage(StorageTools.StorageConsts.UserFile, new KillerrinStudiosToolkit.Helpers.SaveableString(json));
-
-                Debug.WriteLine("Save(): Success!");
-                return result;
-            }
-            catch(Exception) {
-                Debug.WriteLine("Save(): Failed");
-                StorageTools.isSavingComplete = true;
-                return false;
-            }
-        }
-        public async System.Threading.Tasks.Task DeleteFile()
+        public async Task DeleteFile()
         {
             try
             {
