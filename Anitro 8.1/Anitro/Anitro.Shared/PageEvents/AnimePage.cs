@@ -415,7 +415,6 @@ namespace Anitro
 
                 if (epCount == 0) { libraryEpisodesWatched.Text = wCount + "/" + "?"; }
                 else { libraryEpisodesWatched.Text = wCount + "/" + epCount; }
-                //UpdateLibrary();
 
                 if (wCount >= epCount && skipLibChange == false) { LibraryPicker.SelectedIndex = 3; }
                 else if (LibraryPicker.SelectedIndex == 0) { LibraryPicker.SelectedIndex = 1; }

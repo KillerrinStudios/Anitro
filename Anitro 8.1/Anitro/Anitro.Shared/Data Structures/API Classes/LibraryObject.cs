@@ -48,7 +48,8 @@ namespace Anitro.Data_Structures.API_Classes
             int epCount = Anime.EpisodeCount;
 
             int newWatchedCount;
-            if ((watchedCount + ammount) >= epCount) newWatchedCount = epCount;
+            if (epCount == 0) newWatchedCount = watchedCount + ammount;
+            else if ((watchedCount + ammount) >= epCount) newWatchedCount = epCount;
             else newWatchedCount = watchedCount + ammount;
 
             EpisodesWatched = newWatchedCount;
