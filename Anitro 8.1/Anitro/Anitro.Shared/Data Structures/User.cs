@@ -231,6 +231,7 @@ namespace Anitro.Data_Structures
                     }
                     catch (Exception)
                     {
+                        Debug.WriteLine("User.Load(" + testData + "): Failed");
                         Consts.LoggedInUser.DeleteFile();
                         user = new User();
                     }
@@ -242,6 +243,7 @@ namespace Anitro.Data_Structures
                 user.JsonToThis((json.Deserialize() as string));
             }
 
+            Debug.WriteLine("User.Load(" + testData + "): Exiting");
             return user;
         }
         public async Task DeleteFile()

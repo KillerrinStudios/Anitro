@@ -71,11 +71,13 @@ namespace Anitro.Data_Structures
                 }
                 catch (Exception)
                 {
+                    Debug.WriteLine("Settings.Load(" + "): Failed");
                     Consts.AppSettings.DeleteFile();
                     settings = new Settings();
                 }
             }
 
+            Debug.WriteLine("Settings.Load(" + "): Exiting");
             return settings;
         }
         public async System.Threading.Tasks.Task<bool> Save()
