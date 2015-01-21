@@ -191,12 +191,13 @@
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
     <MainPackageIdentityName>59141KillerrinStudios.AnitroCompanion</MainPackageIdentityName>
+    <MainPackageIdentityName>59141KillerrinStudios.EmpiresoftheIV</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=665e06bf-b4de-4cde-8ae3-c20c1a98b12b">
     <PackageInfo>
       <OsMinVersion>6.3.0.0</OsMinVersion>
       <PackageArchitecture>neutral</PackageArchitecture>
-      <PackageMaxArchitectureVersion>1.1.2.9</PackageMaxArchitectureVersion>
+      <PackageMaxArchitectureVersion>1.2.0.0</PackageMaxArchitectureVersion>
     </PackageInfo>
   </PackageInfoList>
 </StoreAssociation>

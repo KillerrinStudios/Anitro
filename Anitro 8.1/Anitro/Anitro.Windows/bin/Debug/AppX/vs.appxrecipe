@@ -8,19 +8,19 @@
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>59141KillerrinStudios.Anitro</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>2394FB71E335C9474C173E141251658D18CE41EF553568A101573270304E9B10</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>1C3D3C0C6F5D124630206055C63EE6B947202BFB74040096ACEF11D661CF89AA</RegisteredManifestChecksum>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-01-14T02:46:59.767</Modified>
+      <Modified>2015-01-20T09:55:24.484</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Anitro.Windows.exe">
       <PackagePath>Anitro.Windows.exe</PackagePath>
-      <Modified>2015-01-18T06:58:11.626</Modified>
+      <Modified>2015-01-20T09:55:18.273</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Callisto\1.4.0\References\CommonConfiguration\neutral\Callisto.dll">
       <PackagePath>Callisto.dll</PackagePath>
@@ -32,7 +32,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\killer rin\Documents\GitHub\Killerrin-Studios-Toolkit\Killerrin Studios Toolkit\Killerrin Studios Toolkit.Windows\bin\Debug\Killerrin Studios Toolkit.Windows.dll">
       <PackagePath>Killerrin Studios Toolkit.Windows.dll</PackagePath>
-      <Modified>2015-01-14T23:23:55.990</Modified>
+      <Modified>2015-01-18T07:32:00.208</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\packages\MyToolkit.2.2.3.0\lib\portable-net45+wp8+win8+wpa81\MyToolkit.dll">
       <PackagePath>MyToolkit.dll</PackagePath>
@@ -255,7 +255,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-01-14T02:46:53.959</Modified>
+      <Modified>2015-01-20T09:55:18.835</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

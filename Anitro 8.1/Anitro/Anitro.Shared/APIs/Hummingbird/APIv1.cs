@@ -712,24 +712,27 @@ namespace Anitro.APIs.Hummingbird
         {
             public static async Task Login(string userMail, string password, bool onlyObtainAuthToken = false)
             {
-                APICompletedEventArgs args;
-                if (userMail == "" || password == "")
-                {
+                APICompletedEventArgs args = null;
+                if (userMail == "" || password == "") {
                     args = new APICompletedEventArgs(APIResponse.InfoNotEntered, APIType.Login);
-                    APICompletedEventHandler(args.UserState, args);
-                    return;
                 }
-                if (userMail.Contains("@"))
-                {
+                else if (userMail.Contains("@")) {
                     args = new APICompletedEventArgs(APIResponse.NotSupported, APIType.Login);
-                    APICompletedEventHandler(args.UserState, args);
+                }
+
+                if (args != null) {
+                    if (APICompletedEventHandler != null)
+                        APICompletedEventHandler(args.UserState, args);
                     return;
                 }
+
+                Debug.WriteLine("Entering: Post.Login()");
+                if (onlyObtainAuthToken)
+                    Debug.WriteLine("Only Obtaining Authentication Code");
 
                 bool testAccount = false;
                 if (userMail == "killerrindev" && password == "testtest1") { testAccount = true; }
 
-                Debug.WriteLine("Entering: Post.Login()");
 
                 #region Test Account
                 if (testAccount)
@@ -744,7 +747,7 @@ namespace Anitro.APIs.Hummingbird
                         FeedbackEventHandler(null, new APIFeedbackEventArgs("Login Authorized"));
                     Debug.WriteLine("Feedback Sent");
 
-                    Consts.LoggedInUser = await User.Load(true);
+                    Consts.LoggedInUser = await User.Load(false, true);
                     Debug.WriteLine("User Loaded from Solution");
 
                     for (int i = 0; i < networkSimulationInt; i++) { } //Simulate server activity
@@ -850,32 +853,33 @@ namespace Anitro.APIs.Hummingbird
                         }
                         Debug.WriteLine("AuthToken Parsed");
 
-                        // Grab the Username and/or Email and then Login to the user
-                        string userName = "";
-                        string email = "";
-                        if (emailLogin)
-                        {
-                            Debug.WriteLine("Beginning Email Login Parse");
-
-                            // Set the EmailAddress to the user
-                            email = userMail;
-
-                            // Send a request to get username
-                            userName = "me"; //userName = await GetUsernameFromServer(_authToken);
-                        }
-                        else
-                        {
-                            Debug.WriteLine("Beginning Username Login Parse");
-
-                            // Set the username to the user
-                            userName = userMail;
-                        }
-
                         if (onlyObtainAuthToken) {
-                            Consts.LoggedInUser.AuthToken = _authToken;
-                            //await Consts.LoggedInUser.Save();
+                            lock (Consts.LoggedInUser) {
+                                Consts.LoggedInUser.AuthToken = _authToken;
+                            }
+
+                            return;
                         }
                         else {
+                            // Grab the Username and/or Email and then Login to the user
+                            string userName = "";
+                            string email = "";
+                            if (emailLogin) {
+                                Debug.WriteLine("Beginning Email Login Parse");
+
+                                // Set the EmailAddress to the user
+                                email = userMail;
+
+                                // Send a request to get username
+                                userName = "me"; //userName = await GetUsernameFromServer(_authToken);
+                            }
+                            else {
+                                Debug.WriteLine("Beginning Username Login Parse");
+
+                                // Set the username to the user
+                                userName = userMail;
+                            }
+
                             Consts.LoggedInUser.Login(userName, _authToken, password, email);
                             Debug.WriteLine("User Info Stored");
 
@@ -908,7 +912,8 @@ namespace Anitro.APIs.Hummingbird
                             Debug.WriteLine("Network Error: PostLogin()");
 
                             args = new APICompletedEventArgs(APIResponse.NetworkError, APIType.Login);
-                            APICompletedEventHandler(args.UserState, args);
+                            if (APICompletedEventHandler != null)
+                                APICompletedEventHandler(args.UserState, args);
                             return;
                         }
                         else if (await response.Content.ReadAsStringAsync() == "{\"error\":\"Invalid credentials\"}")
@@ -916,7 +921,8 @@ namespace Anitro.APIs.Hummingbird
                             Debug.WriteLine("Invalid Login Credidentials: PostLogin()");
 
                             args = new APICompletedEventArgs(APIResponse.InvalidCredentials, APIType.Login);
-                            APICompletedEventHandler(args.UserState, args);
+                            if (APICompletedEventHandler != null)
+                                APICompletedEventHandler(args.UserState, args);
                             return;
                         }
                         else
@@ -924,7 +930,8 @@ namespace Anitro.APIs.Hummingbird
                             Debug.WriteLine("Error connecting to server: PostLogin()");
 
                             args = new APICompletedEventArgs(APIResponse.ServerError, APIType.Login);
-                            APICompletedEventHandler(args.UserState, args);
+                            if (APICompletedEventHandler != null)
+                                APICompletedEventHandler(args.UserState, args);
                             return;
                         }
                     }

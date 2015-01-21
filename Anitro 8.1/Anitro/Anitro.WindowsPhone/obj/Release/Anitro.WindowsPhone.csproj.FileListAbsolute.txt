@@ -217,3 +217,125 @@ C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 
 C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\MultipleQualifiersPerDimensionFound.txt
 C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\ProjectArchitectures.txt
 C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Anitro.WindowsPhone.csprojResolveAssemblyReference.cache
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\defaultAdSettings.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Themes\UIThemes.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\App.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\About.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\LibraryPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\AnimePage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\LoggedOutPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\LoginPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\MainPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\SearchPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\SettingsPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Themes\Activity Feed.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Themes\Anime Library.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Themes\Anime Favourites.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Themes\Recent.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Themes\Search.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\UserDashboardPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Anitro.WindowsPhone.xr.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Anitro.WindowsPhone.exe
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Anitro.WindowsPhone.pdb
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\resources.pri
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\AppxManifest.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Anitro.WindowsPhone.build.appxrecipe
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Microsoft.Advertising.Mobile.Common.winmd
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Microsoft.Advertising.Mobile.Common.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Microsoft.Advertising.Mobile.Display.winmd
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Microsoft.Advertising.Mobile.Display.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Microsoft.Advertising.Mobile.UI.winmd
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Microsoft.Advertising.Mobile.UI.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\BugSense-Windows.Universal.dll
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Killerrin Studios Toolkit.WindowsPhone.dll
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Microsoft.Threading.Tasks.dll
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Newtonsoft.Json.dll
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Killerrin Studios Toolkit.WindowsPhone.pdb
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Killerrin Studios Toolkit.WindowsPhone.pri
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Microsoft.Threading.Tasks.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Newtonsoft.Json.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\App.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\App.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\About.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\About.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LibraryPage.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LibraryPage.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\AnimePage.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\AnimePage.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LoggedOutPage.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LoggedOutPage.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LoginPage.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LoginPage.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\MainPage.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\MainPage.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\SearchPage.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\SearchPage.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\SettingsPage.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\SettingsPage.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Activity Feed.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Activity Feed.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Anime Library.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Anime Library.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Anime Favourites.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Anime Favourites.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Recent.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Recent.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Search.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Search.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\UserDashboardPage.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\UserDashboardPage.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\UIThemes.g.i.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\UIThemes.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\XamlTypeInfo.g.cs
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\App.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\About.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LibraryPage.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\AnimePage.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LoggedOutPage.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LoginPage.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\MainPage.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\SearchPage.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\SettingsPage.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Activity Feed.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Anime Library.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Anime Favourites.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Recent.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Search.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\UserDashboardPage.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\UIThemes.xaml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\App.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\About.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LibraryPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\AnimePage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LoggedOutPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\LoginPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\MainPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\SearchPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\SettingsPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Activity Feed.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Anime Library.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Anime Favourites.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Recent.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\Search.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\UserDashboardPage.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Themes\UIThemes.xbf
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\XamlSaveStateFile.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Anitro.WindowsPhone.exe
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Anitro.WindowsPhone.pdb
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Anitro.WindowsPhone.csproj.GenerateResource.Cache
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\priconfig.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\priconfig.xml.intermediate
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\layout.resfiles
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\layout.resfiles.intermediate
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\resources.resfiles
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\resources.resfiles.intermediate
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\pri.resfiles
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\pri.resfiles.intermediate
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\qualifiers.txt
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\qualifiers.txt.intermediate
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\MultipleQualifiersPerDimensionFound.txt
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Killerrin Studios Toolkit.WindowsPhone.pri.xml
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\ProjectArchitectures.txt
+C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\Anitro.WindowsPhone.csprojResolveAssemblyReference.cache

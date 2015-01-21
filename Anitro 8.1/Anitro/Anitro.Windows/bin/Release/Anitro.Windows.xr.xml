@@ -6,17 +6,18 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="anime" />
     <RootPropertyPathName Name="cover_image" />
-    <RootPropertyPathName Name="content" />
-    <RootPropertyPathName Name="timeStamp" />
-    <RootPropertyPathName Name="header" />
-    <RootPropertyPathName Name="storyImage" />
-    <RootPropertyPathName Name="title" />
-    <RootPropertyPathName Name="episode_count" />
-    <RootPropertyPathName Name="episodes_watched" />
-    <RootPropertyPathName Name="rating" />
-    <RootPropertyPathName Name="value" />
-    <RootPropertyPathName Name="alternate_title" />
-    <RootPropertyPathName Name="synopsis" />
+    <RootPropertyPathName Name="Content" />
+    <RootPropertyPathName Name="TimeStamp" />
+    <RootPropertyPathName Name="Header" />
+    <RootPropertyPathName Name="StoryImage" />
+    <RootPropertyPathName Name="Anime" />
+    <RootPropertyPathName Name="RomanjiTitle" />
+    <RootPropertyPathName Name="CoverImageUrlString" />
+    <RootPropertyPathName Name="EpisodeCount" />
+    <RootPropertyPathName Name="EpisodesWatched" />
+    <RootPropertyPathName Name="Rating" />
+    <RootPropertyPathName Name="EnglishTitle" />
+    <RootPropertyPathName Name="Synopsis" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">

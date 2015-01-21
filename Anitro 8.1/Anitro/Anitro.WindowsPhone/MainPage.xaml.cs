@@ -103,7 +103,11 @@ namespace Anitro
 
                 // Login and proceed to app launch
                 if (!Consts.LoggedInUser.IsLoggedIn)
-                    Consts.LoggedInUser = await Anitro.Data_Structures.User.Load();
+                    Consts.LoggedInUser = await Anitro.Data_Structures.User.Load(true);
+
+                if (Consts.LoggedInUser.IsLoggedIn) {
+                    APIs.Hummingbird.APIv1.Post.Login(Consts.LoggedInUser.Username, Consts.LoggedInUser.Password, true);
+                }
 
                 await InAppPurchaseHelper.CheckProductInformation();
 

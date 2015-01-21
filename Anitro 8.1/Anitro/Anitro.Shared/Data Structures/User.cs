@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 using KillerrinStudiosToolkit.Helpers;
 using KillerrinStudiosToolkit.Interfaces;
+using Anitro.Data_Structures.API_Classes;
 
 namespace Anitro.Data_Structures
 {
@@ -32,6 +33,8 @@ namespace Anitro.Data_Structures
             }
         }
 
+        public bool IsTestAccount { get { return Username == "killerrindev"; } }
+
         public string AuthToken
         {
             get
@@ -52,12 +55,12 @@ namespace Anitro.Data_Structures
         public string Username; // { get; set; }
         public string AvatarURL;
         public string EmailAddress; // { get; set; }
-        private string Password; // { get; set; }
+        public string Password; // { get; set; }
 
-        public API_Classes.UserInfo UserInfo;
+        public UserInfo UserInfo;
 
         public Library animeLibrary;
-        public ObservableCollection<API_Classes.ActivityFeedObject> activityFeed;
+        public ObservableCollection<ActivityFeedObject> activityFeed;
 
 
         public User()
@@ -71,7 +74,7 @@ namespace Anitro.Data_Structures
             UserInfo = new API_Classes.UserInfo();
 
             animeLibrary = new Library("");
-            activityFeed = new ObservableCollection<API_Classes.ActivityFeedObject>();
+            activityFeed = new ObservableCollection<ActivityFeedObject>();
         }
         public User(string _username) : this()
         {
@@ -83,28 +86,36 @@ namespace Anitro.Data_Structures
             SetFromOtherUser(storageUser);
         }
 
-        private void SetFromOtherUser(User storageUser)
+        private void SetFromOtherUser(User otherUser)
         {
-            Username = storageUser.Username;
-            Password = storageUser.Password;
-            EmailAddress = storageUser.EmailAddress;
-            AuthToken = storageUser.AuthToken;
-            AvatarURL = storageUser.AvatarURL;
+            if (otherUser != null) {
+                Username = otherUser.Username;
+                Password = otherUser.Password;
+
+                EmailAddress = otherUser.EmailAddress;
+                
+                AuthToken = otherUser.AuthToken;
+                AvatarURL = otherUser.AvatarURL;
+
+                //-- Load UserInfo from actual storage
+                if (otherUser.UserInfo == null)
+                    UserInfo = new UserInfo();
+                else
+                    UserInfo = otherUser.UserInfo;
+
+                //-- Load Library from actual storage
+                if (otherUser.animeLibrary == null)
+                    animeLibrary = new Library(otherUser.Username);
+                else
+                    animeLibrary = new Library(otherUser.animeLibrary);
+            }
+            else {
+                UserInfo = new UserInfo();
+                animeLibrary = new Library("");
+            }
 
             // Create activity feed to be populated later
-            activityFeed = new ObservableCollection<API_Classes.ActivityFeedObject>();
-
-            //-- Load UserInfo from actual storage
-            if (storageUser.UserInfo == null)
-                UserInfo = new API_Classes.UserInfo();
-            else
-                UserInfo = storageUser.UserInfo;
-
-            //-- Load Library from actual storage
-            if (storageUser.animeLibrary == null)
-                animeLibrary = new Library(storageUser.Username);
-            else
-                animeLibrary = new Library(storageUser.animeLibrary);
+            activityFeed = new ObservableCollection<ActivityFeedObject>();
         }
         public User CreateStorageObject()
         {
@@ -123,7 +134,6 @@ namespace Anitro.Data_Structures
         }
 
         #region Helper Methods
-
         public void Login(string _user, string _auth, string pass, string email = "")
         {
             Username = _user;
@@ -149,12 +159,11 @@ namespace Anitro.Data_Structures
 
             AvatarURL = "";
 
-            UserInfo = new API_Classes.UserInfo();
+            UserInfo = new UserInfo();
 
             animeLibrary.ClearLibrary(LibrarySelection.All);
-            activityFeed = new ObservableCollection<API_Classes.ActivityFeedObject>();
+            activityFeed = new ObservableCollection<ActivityFeedObject>();
         }
-
         #endregion
 
         #region Storage Tools
@@ -215,9 +224,9 @@ namespace Anitro.Data_Structures
                 return false;
             }
         }
-        public static async Task<User> Load(bool testData = false)
+        public static async Task<User> Load(bool reobtainAuthentication, bool testData = false)
         {
-            Debug.WriteLine("User.Load("+testData+"): Entering");
+            Debug.WriteLine("User.Load(" + reobtainAuthentication + ", " + testData + "): Entering");
             User user = new User();
 
             if (!testData)
@@ -243,7 +252,15 @@ namespace Anitro.Data_Structures
                 user.JsonToThis((json.Deserialize() as string));
             }
 
-            Debug.WriteLine("User.Load(" + testData + "): Exiting");
+            User previousUser = Consts.LoggedInUser;
+            Consts.LoggedInUser = user;
+
+            if (reobtainAuthentication) {
+                await APIs.Hummingbird.APIv1.Post.Login(user.Username, user.Password, true);
+            }
+
+
+            Debug.WriteLine("User.Load(" + reobtainAuthentication + ", " + testData + "): Exiting");
             return user;
         }
         public async Task DeleteFile()

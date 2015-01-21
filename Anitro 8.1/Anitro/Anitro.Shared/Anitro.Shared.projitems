@@ -61,6 +61,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\PageType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\PrivacySettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\SearchFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Interfaces\IOnlineServiceConnector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Library.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Structures\AnimePageParameter.cs" />
@@ -90,7 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\StatusFeed\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Data Structures\Interface Implimentations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\CancelledEarcon.wav" />

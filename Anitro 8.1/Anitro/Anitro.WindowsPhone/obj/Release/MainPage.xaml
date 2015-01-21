@@ -28,8 +28,6 @@
                    HorizontalAlignment="Center" TextWrapping="Wrap"/>
 
         <ProgressRing x:Name="ApplicationProgressBar" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50" Height="150" Width="150" IsActive="True" Background="#00000000"/>
-
-
     </Grid>
 </Page>
 

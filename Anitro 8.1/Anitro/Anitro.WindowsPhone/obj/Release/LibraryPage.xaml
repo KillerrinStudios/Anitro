@@ -28,7 +28,7 @@
         <Pivot x:Name="libraryPivot" Title="Library">
             <PivotItem x:Name="recent_PivotItem" Header="Recent">
                 <GridView x:ConnectionId='12' x:Name="recent_GridView" Margin="0,0,0,0" ScrollViewer.VerticalScrollMode="Enabled" IsItemClickEnabled="True"
-							                                    
+							                                     
 							  
 							  ItemTemplate="{StaticResource RecentDataTemplate}"
 							  ItemsPanel="{StaticResource RecentItemsPanelTemplate}"

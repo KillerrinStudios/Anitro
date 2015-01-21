@@ -8,4 +8,5 @@
   <file>\Microsoft.Advertising.Mobile.UI.winmd</file>
   <file>\Microsoft.Threading.Tasks.dll</file>
   <file>\Microsoft.Threading.Tasks.Extensions.dll</file>
+  <file>\Killerrin Studios Toolkit.WindowsPhone.dll</file>
 </Files>

@@ -241,7 +241,7 @@
       <HintPath>..\..\packages\BugSense.XAML81.3.6.6.0\lib\netcore451\BugSense-Windows.Universal.dll</HintPath>
     </Reference>
     <Reference Include="Killerrin Studios Toolkit.Windows">
-      <HintPath>..\..\..\..\Killerrin-Studios-Toolkit\Killerrin Studios Toolkit\Killerrin Studios Toolkit.Windows\bin\Debug\Killerrin Studios Toolkit.Windows.dll</HintPath>
+      <HintPath>..\..\..\..\Killerrin-Studios-Toolkit\Killerrin Studios Toolkit\Killerrin Studios Toolkit.Windows\bin\Release\Killerrin Studios Toolkit.Windows.dll</HintPath>
     </Reference>
     <Reference Include="MyToolkit">
       <HintPath>..\..\packages\MyToolkit.2.2.3.0\lib\portable-net45+wp8+win8+wpa81\MyToolkit.dll</HintPath>

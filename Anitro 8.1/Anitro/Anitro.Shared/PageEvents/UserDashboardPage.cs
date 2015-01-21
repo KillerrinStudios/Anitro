@@ -710,9 +710,10 @@ namespace Anitro
             // Reset the bindings for the content
             BindUserInfo();
         }
+
         private void APIv1_FeedbackEventHandler(object sender, APIs.Events.APIFeedbackEventArgs e)
         {
-
+            
         }
         #endregion
 

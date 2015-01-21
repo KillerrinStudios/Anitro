@@ -1,12 +1,13 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
-    <LocalAssembly PathName="c:\users\killer rin\programming\windows rt\killerrin studios apps\anitro\anitro 8.1\anitro\anitro.windowsphone\obj\release\intermediatexaml\anitro.windowsphone.exe" HashGuid="6537570f-cdfc-5a42-caf2-0dc91c3d76d2" />
+    <LocalAssembly PathName="c:\users\killer rin\documents\github\anitro\anitro 8.1\anitro\anitro.windowsphone\obj\release\intermediatexaml\anitro.windowsphone.exe" HashGuid="712da564-b1af-4ae3-8031-6d0dfe76b9f2" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windowsphoneapp\v8.1\extensionsdks\microsoft.advertising.mobile.display\8.1\references\commonconfiguration\neutral\microsoft.advertising.mobile.common.winmd" HashGuid="1e8503cf-70b4-228d-c093-500b67413313" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windowsphoneapp\v8.1\extensionsdks\microsoft.advertising.mobile.display\8.1\references\commonconfiguration\neutral\microsoft.advertising.mobile.display.winmd" HashGuid="cc0fb2e7-7a64-f70e-2997-2ad4fbf1cad0" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windowsphoneapp\v8.1\extensionsdks\microsoft.advertising.mobile.display\8.1\references\commonconfiguration\neutral\microsoft.advertising.mobile.ui.winmd" HashGuid="e9cb4a1e-7cfd-ae54-a0dc-9f940488270a" />
-    <ReferenceAssembly PathName="c:\users\killer rin\programming\windows rt\killerrin studios apps\anitro\anitro 8.1\packages\bugsense.xaml81.3.6.6.0\lib\wpa81\bugsense-windows.universal.dll" HashGuid="8a0be7f4-7426-92f7-d586-c9df075e136b" />
-    <ReferenceAssembly PathName="c:\users\killer rin\programming\windows rt\killerrin studios apps\anitro\anitro 8.1\packages\microsoft.bcl.async.1.0.168\lib\wpa81\microsoft.threading.tasks.dll" HashGuid="3a1beea5-1547-d5c6-af32-3b5c761c2a6a" />
-    <ReferenceAssembly PathName="c:\users\killer rin\programming\windows rt\killerrin studios apps\anitro\anitro 8.1\packages\microsoft.bcl.async.1.0.168\lib\wpa81\microsoft.threading.tasks.extensions.dll" HashGuid="79a01987-c06c-c9d7-37eb-629809787680" />
-    <ReferenceAssembly PathName="c:\users\killer rin\programming\windows rt\killerrin studios apps\anitro\anitro 8.1\packages\newtonsoft.json.6.0.2\lib\portable-net45+wp80+win8+wpa81\newtonsoft.json.dll" HashGuid="9d7edd31-e823-430e-c3cf-22078730f8bb" />
+    <ReferenceAssembly PathName="c:\users\killer rin\documents\github\anitro\anitro 8.1\packages\bugsense.xaml81.3.6.6.0\lib\wpa81\bugsense-windows.universal.dll" HashGuid="8a0be7f4-7426-92f7-d586-c9df075e136b" />
+    <ReferenceAssembly PathName="c:\users\killer rin\documents\github\killerrin-studios-toolkit\killerrin studios toolkit\killerrin studios toolkit.windowsphone\bin\release\killerrin studios toolkit.windowsphone.dll" HashGuid="159f6d59-bc9c-1747-22cc-49ac86f020f4" />
+    <ReferenceAssembly PathName="c:\users\killer rin\documents\github\anitro\anitro 8.1\packages\microsoft.bcl.async.1.0.168\lib\wpa81\microsoft.threading.tasks.dll" HashGuid="3a1beea5-1547-d5c6-af32-3b5c761c2a6a" />
+    <ReferenceAssembly PathName="c:\users\killer rin\documents\github\anitro\anitro 8.1\packages\microsoft.bcl.async.1.0.168\lib\wpa81\microsoft.threading.tasks.extensions.dll" HashGuid="79a01987-c06c-c9d7-37eb-629809787680" />
+    <ReferenceAssembly PathName="c:\users\killer rin\documents\github\anitro\anitro 8.1\packages\newtonsoft.json.6.0.2\lib\portable-net45+wp80+win8+wpa81\newtonsoft.json.dll" HashGuid="9d7edd31-e823-430e-c3cf-22078730f8bb" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

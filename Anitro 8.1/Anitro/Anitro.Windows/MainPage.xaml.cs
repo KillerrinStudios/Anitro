@@ -102,7 +102,8 @@ namespace Anitro
 
                 // Login and proceed to app launch
                 if (!Consts.LoggedInUser.IsLoggedIn)
-                    Consts.LoggedInUser = await Anitro.Data_Structures.User.Load();
+                    Consts.LoggedInUser = await Anitro.Data_Structures.User.Load(true);
+
                 XamlControlHelper.SetDebugString(debugTextBlock, "User Loaded");
 
                 await InAppPurchaseHelper.CheckProductInformation();

@@ -418,8 +418,6 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
                     _otherProviders.Add(provider); 
                     provider = new global::Microsoft.Advertising.WinRT.UI.XamlAdControl_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
                     _otherProviders.Add(provider); 
-                    provider = new global::AdRotator.AdRotator_Windows8_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
-                    _otherProviders.Add(provider); 
                     provider = new global::MyToolkit.MyToolkit_Extended_WinRT_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
                     _otherProviders.Add(provider); 
                 }

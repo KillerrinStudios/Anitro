@@ -365,7 +365,7 @@ namespace Anitro
 
             // Check if we are logged in, If we aren't, Login.
             if (!Consts.LoggedInUser.IsLoggedIn)
-                Consts.LoggedInUser = await Anitro.Data_Structures.User.Load();
+                Consts.LoggedInUser = await Anitro.Data_Structures.User.Load(true);
 
             // With that out of the way, Check our connection to the internet and go into each's respective method call
             if (Consts.IsConnectedToInternet()) { ConnectedToInternet(_pageParameter); }
