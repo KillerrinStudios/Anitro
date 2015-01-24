@@ -148,41 +148,57 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[16];
+            _typeNameTable = new string[24];
             _typeNameTable[0] = "Anitro.AboutSettingsPane";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.SettingsFlyout";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[3] = "Anitro.AnimeLibraryPage";
+            _typeNameTable[3] = "Anitro.LibraryPage";
             _typeNameTable[4] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[5] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[6] = "Anitro.AnimePage";
-            _typeNameTable[7] = "Anitro.LoginSettingsPane";
-            _typeNameTable[8] = "Anitro.MainPage";
-            _typeNameTable[9] = "Anitro.SearchPage";
-            _typeNameTable[10] = "Anitro.OptionsSettingsPane";
-            _typeNameTable[11] = "Anitro.UserStatsPage";
-            _typeNameTable[12] = "Windows.UI.Color";
-            _typeNameTable[13] = "System.ValueType";
-            _typeNameTable[14] = "Object";
-            _typeNameTable[15] = "Byte";
+            _typeNameTable[6] = "Microsoft.Advertising.WinRT.UI.AdControl";
+            _typeNameTable[7] = "Windows.UI.Xaml.Controls.Control";
+            _typeNameTable[8] = "String";
+            _typeNameTable[9] = "Boolean";
+            _typeNameTable[10] = "Double";
+            _typeNameTable[11] = "Anitro.AnimePage";
+            _typeNameTable[12] = "Anitro.LoggedOutPage";
+            _typeNameTable[13] = "Anitro.LoginSettingsPane";
+            _typeNameTable[14] = "Anitro.MainPage";
+            _typeNameTable[15] = "Anitro.SearchPage";
+            _typeNameTable[16] = "Anitro.OptionsSettingsPane";
+            _typeNameTable[17] = "Anitro.Converters.RelativeDateTimeConverter";
+            _typeNameTable[18] = "Object";
+            _typeNameTable[19] = "Anitro.UnlockAnitroFlyout";
+            _typeNameTable[20] = "Anitro.UserDashboardPage";
+            _typeNameTable[21] = "Windows.UI.Color";
+            _typeNameTable[22] = "System.ValueType";
+            _typeNameTable[23] = "Byte";
 
-            _typeTable = new global::System.Type[16];
+            _typeTable = new global::System.Type[24];
             _typeTable[0] = typeof(global::Anitro.AboutSettingsPane);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.SettingsFlyout);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
-            _typeTable[3] = typeof(global::Anitro.AnimeLibraryPage);
+            _typeTable[3] = typeof(global::Anitro.LibraryPage);
             _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[6] = typeof(global::Anitro.AnimePage);
-            _typeTable[7] = typeof(global::Anitro.LoginSettingsPane);
-            _typeTable[8] = typeof(global::Anitro.MainPage);
-            _typeTable[9] = typeof(global::Anitro.SearchPage);
-            _typeTable[10] = typeof(global::Anitro.OptionsSettingsPane);
-            _typeTable[11] = typeof(global::Anitro.UserStatsPage);
-            _typeTable[12] = typeof(global::Windows.UI.Color);
-            _typeTable[13] = typeof(global::System.ValueType);
-            _typeTable[14] = typeof(global::System.Object);
-            _typeTable[15] = typeof(global::System.Byte);
+            _typeTable[6] = typeof(global::Microsoft.Advertising.WinRT.UI.AdControl);
+            _typeTable[7] = typeof(global::Windows.UI.Xaml.Controls.Control);
+            _typeTable[8] = typeof(global::System.String);
+            _typeTable[9] = typeof(global::System.Boolean);
+            _typeTable[10] = typeof(global::System.Double);
+            _typeTable[11] = typeof(global::Anitro.AnimePage);
+            _typeTable[12] = typeof(global::Anitro.LoggedOutPage);
+            _typeTable[13] = typeof(global::Anitro.LoginSettingsPane);
+            _typeTable[14] = typeof(global::Anitro.MainPage);
+            _typeTable[15] = typeof(global::Anitro.SearchPage);
+            _typeTable[16] = typeof(global::Anitro.OptionsSettingsPane);
+            _typeTable[17] = typeof(global::Anitro.Converters.RelativeDateTimeConverter);
+            _typeTable[18] = typeof(global::System.Object);
+            _typeTable[19] = typeof(global::Anitro.UnlockAnitroFlyout);
+            _typeTable[20] = typeof(global::Anitro.UserDashboardPage);
+            _typeTable[21] = typeof(global::Windows.UI.Color);
+            _typeTable[22] = typeof(global::System.ValueType);
+            _typeTable[23] = typeof(global::System.Byte);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -218,13 +234,17 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
         }
 
         private object Activate_0_AboutSettingsPane() { return new global::Anitro.AboutSettingsPane(); }
-        private object Activate_3_AnimeLibraryPage() { return new global::Anitro.AnimeLibraryPage(); }
-        private object Activate_6_AnimePage() { return new global::Anitro.AnimePage(); }
-        private object Activate_7_LoginSettingsPane() { return new global::Anitro.LoginSettingsPane(); }
-        private object Activate_8_MainPage() { return new global::Anitro.MainPage(); }
-        private object Activate_9_SearchPage() { return new global::Anitro.SearchPage(); }
-        private object Activate_10_OptionsSettingsPane() { return new global::Anitro.OptionsSettingsPane(); }
-        private object Activate_11_UserStatsPage() { return new global::Anitro.UserStatsPage(); }
+        private object Activate_3_LibraryPage() { return new global::Anitro.LibraryPage(); }
+        private object Activate_6_AdControl() { return new global::Microsoft.Advertising.WinRT.UI.AdControl(); }
+        private object Activate_11_AnimePage() { return new global::Anitro.AnimePage(); }
+        private object Activate_12_LoggedOutPage() { return new global::Anitro.LoggedOutPage(); }
+        private object Activate_13_LoginSettingsPane() { return new global::Anitro.LoginSettingsPane(); }
+        private object Activate_14_MainPage() { return new global::Anitro.MainPage(); }
+        private object Activate_15_SearchPage() { return new global::Anitro.SearchPage(); }
+        private object Activate_16_OptionsSettingsPane() { return new global::Anitro.OptionsSettingsPane(); }
+        private object Activate_17_RelativeDateTimeConverter() { return new global::Anitro.Converters.RelativeDateTimeConverter(); }
+        private object Activate_19_UnlockAnitroFlyout() { return new global::Anitro.UnlockAnitroFlyout(); }
+        private object Activate_20_UserDashboardPage() { return new global::Anitro.UserDashboardPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -251,9 +271,9 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
                 xamlType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  Anitro.AnimeLibraryPage
+            case 3:   //  Anitro.LibraryPage
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_AnimeLibraryPage;
+                userType.Activator = Activate_3_LibraryPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -266,49 +286,103 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
                 xamlType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 6:   //  Anitro.AnimePage
+            case 6:   //  Microsoft.Advertising.WinRT.UI.AdControl
+                userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Control"));
+                userType.Activator = Activate_6_AdControl;
+                userType.AddMemberName("ApplicationId");
+                userType.AddMemberName("AdUnitId");
+                userType.AddMemberName("IsAutoRefreshEnabled");
+                userType.AddMemberName("Latitude");
+                userType.AddMemberName("Longitude");
+                userType.AddMemberName("IsEngaged");
+                userType.AddMemberName("IsSuspended");
+                xamlType = userType;
+                break;
+
+            case 7:   //  Windows.UI.Xaml.Controls.Control
+                xamlType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 8:   //  String
+                xamlType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 9:   //  Boolean
+                xamlType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 10:   //  Double
+                xamlType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 11:   //  Anitro.AnimePage
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_6_AnimePage;
+                userType.Activator = Activate_11_AnimePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 7:   //  Anitro.LoginSettingsPane
+            case 12:   //  Anitro.LoggedOutPage
+                userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_12_LoggedOutPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 13:   //  Anitro.LoginSettingsPane
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.SettingsFlyout"));
-                userType.Activator = Activate_7_LoginSettingsPane;
+                userType.Activator = Activate_13_LoginSettingsPane;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 8:   //  Anitro.MainPage
+            case 14:   //  Anitro.MainPage
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_8_MainPage;
+                userType.Activator = Activate_14_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 9:   //  Anitro.SearchPage
+            case 15:   //  Anitro.SearchPage
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_9_SearchPage;
+                userType.Activator = Activate_15_SearchPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 10:   //  Anitro.OptionsSettingsPane
+            case 16:   //  Anitro.OptionsSettingsPane
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.SettingsFlyout"));
-                userType.Activator = Activate_10_OptionsSettingsPane;
+                userType.Activator = Activate_16_OptionsSettingsPane;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 11:   //  Anitro.UserStatsPage
+            case 17:   //  Anitro.Converters.RelativeDateTimeConverter
+                userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_17_RelativeDateTimeConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 18:   //  Object
+                xamlType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 19:   //  Anitro.UnlockAnitroFlyout
+                userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.SettingsFlyout"));
+                userType.Activator = Activate_19_UnlockAnitroFlyout;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 20:   //  Anitro.UserDashboardPage
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_11_UserStatsPage;
+                userType.Activator = Activate_20_UserDashboardPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 12:   //  Windows.UI.Color
+            case 21:   //  Windows.UI.Color
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.AddMemberName("A");
                 userType.AddMemberName("B");
@@ -317,16 +391,12 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 13:   //  System.ValueType
+            case 22:   //  System.ValueType
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 14:   //  Object
-                xamlType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 15:   //  Byte
+            case 23:   //  Byte
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
@@ -345,6 +415,8 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
                     _otherProviders = new global::System.Collections.Generic.List<global::Windows.UI.Xaml.Markup.IXamlMetadataProvider>();
                     global::Windows.UI.Xaml.Markup.IXamlMetadataProvider provider;
                     provider = new global::Callisto.Callisto_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
+                    _otherProviders.Add(provider); 
+                    provider = new global::Microsoft.Advertising.WinRT.UI.XamlAdControl_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
                     _otherProviders.Add(provider); 
                     provider = new global::MyToolkit.MyToolkit_Extended_WinRT_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
                     _otherProviders.Add(provider); 
@@ -391,42 +463,102 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
             return foundXamlType;
         }
 
-        private object get_0_Color_A(object instance)
+        private object get_0_AdControl_ApplicationId(object instance)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            return that.ApplicationId;
+        }
+        private void set_0_AdControl_ApplicationId(object instance, object Value)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            that.ApplicationId = (global::System.String)Value;
+        }
+        private object get_1_AdControl_AdUnitId(object instance)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            return that.AdUnitId;
+        }
+        private void set_1_AdControl_AdUnitId(object instance, object Value)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            that.AdUnitId = (global::System.String)Value;
+        }
+        private object get_2_AdControl_IsAutoRefreshEnabled(object instance)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            return that.IsAutoRefreshEnabled;
+        }
+        private void set_2_AdControl_IsAutoRefreshEnabled(object instance, object Value)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            that.IsAutoRefreshEnabled = (global::System.Boolean)Value;
+        }
+        private object get_3_AdControl_Latitude(object instance)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            return that.Latitude;
+        }
+        private void set_3_AdControl_Latitude(object instance, object Value)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            that.Latitude = (global::System.Double)Value;
+        }
+        private object get_4_AdControl_Longitude(object instance)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            return that.Longitude;
+        }
+        private void set_4_AdControl_Longitude(object instance, object Value)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            that.Longitude = (global::System.Double)Value;
+        }
+        private object get_5_AdControl_IsEngaged(object instance)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            return that.IsEngaged;
+        }
+        private object get_6_AdControl_IsSuspended(object instance)
+        {
+            var that = (global::Microsoft.Advertising.WinRT.UI.AdControl)instance;
+            return that.IsSuspended;
+        }
+        private object get_7_Color_A(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.A;
         }
-        private void set_0_Color_A(object instance, object Value)
+        private void set_7_Color_A(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.A = (global::System.Byte)Value;
         }
-        private object get_1_Color_B(object instance)
+        private object get_8_Color_B(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.B;
         }
-        private void set_1_Color_B(object instance, object Value)
+        private void set_8_Color_B(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.B = (global::System.Byte)Value;
         }
-        private object get_2_Color_G(object instance)
+        private object get_9_Color_G(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.G;
         }
-        private void set_2_Color_G(object instance, object Value)
+        private void set_9_Color_G(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.G = (global::System.Byte)Value;
         }
-        private object get_3_Color_R(object instance)
+        private object get_10_Color_R(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.R;
         }
-        private void set_3_Color_R(object instance, object Value)
+        private void set_10_Color_R(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.R = (global::System.Byte)Value;
@@ -439,29 +571,71 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
 
             switch (longMemberName)
             {
+            case "Microsoft.Advertising.WinRT.UI.AdControl.ApplicationId":
+                userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Advertising.WinRT.UI.AdControl");
+                xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "ApplicationId", "String");
+                xamlMember.Getter = get_0_AdControl_ApplicationId;
+                xamlMember.Setter = set_0_AdControl_ApplicationId;
+                break;
+            case "Microsoft.Advertising.WinRT.UI.AdControl.AdUnitId":
+                userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Advertising.WinRT.UI.AdControl");
+                xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "AdUnitId", "String");
+                xamlMember.Getter = get_1_AdControl_AdUnitId;
+                xamlMember.Setter = set_1_AdControl_AdUnitId;
+                break;
+            case "Microsoft.Advertising.WinRT.UI.AdControl.IsAutoRefreshEnabled":
+                userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Advertising.WinRT.UI.AdControl");
+                xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "IsAutoRefreshEnabled", "Boolean");
+                xamlMember.Getter = get_2_AdControl_IsAutoRefreshEnabled;
+                xamlMember.Setter = set_2_AdControl_IsAutoRefreshEnabled;
+                break;
+            case "Microsoft.Advertising.WinRT.UI.AdControl.Latitude":
+                userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Advertising.WinRT.UI.AdControl");
+                xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "Latitude", "Double");
+                xamlMember.Getter = get_3_AdControl_Latitude;
+                xamlMember.Setter = set_3_AdControl_Latitude;
+                break;
+            case "Microsoft.Advertising.WinRT.UI.AdControl.Longitude":
+                userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Advertising.WinRT.UI.AdControl");
+                xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "Longitude", "Double");
+                xamlMember.Getter = get_4_AdControl_Longitude;
+                xamlMember.Setter = set_4_AdControl_Longitude;
+                break;
+            case "Microsoft.Advertising.WinRT.UI.AdControl.IsEngaged":
+                userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Advertising.WinRT.UI.AdControl");
+                xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "IsEngaged", "Boolean");
+                xamlMember.Getter = get_5_AdControl_IsEngaged;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.Advertising.WinRT.UI.AdControl.IsSuspended":
+                userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Advertising.WinRT.UI.AdControl");
+                xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "IsSuspended", "Boolean");
+                xamlMember.Getter = get_6_AdControl_IsSuspended;
+                xamlMember.SetIsReadOnly();
+                break;
             case "Windows.UI.Color.A":
                 userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "A", "Byte");
-                xamlMember.Getter = get_0_Color_A;
-                xamlMember.Setter = set_0_Color_A;
+                xamlMember.Getter = get_7_Color_A;
+                xamlMember.Setter = set_7_Color_A;
                 break;
             case "Windows.UI.Color.B":
                 userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "B", "Byte");
-                xamlMember.Getter = get_1_Color_B;
-                xamlMember.Setter = set_1_Color_B;
+                xamlMember.Getter = get_8_Color_B;
+                xamlMember.Setter = set_8_Color_B;
                 break;
             case "Windows.UI.Color.G":
                 userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "G", "Byte");
-                xamlMember.Getter = get_2_Color_G;
-                xamlMember.Setter = set_2_Color_G;
+                xamlMember.Getter = get_9_Color_G;
+                xamlMember.Setter = set_9_Color_G;
                 break;
             case "Windows.UI.Color.R":
                 userType = (global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlMember(this, "R", "Byte");
-                xamlMember.Getter = get_3_Color_R;
-                xamlMember.Setter = set_3_Color_R;
+                xamlMember.Getter = get_10_Color_R;
+                xamlMember.Setter = set_10_Color_R;
                 break;
             }
             return xamlMember;
