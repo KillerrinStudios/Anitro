@@ -467,7 +467,7 @@ namespace Anitro.Data_Structures.API_Classes.Hummingbird.V1
         }
     }
 
-    public class UserInfoRootObject
+    public class UserInfoV1RootObject
     {
         public UserInfo user_info { get; set; }
     }

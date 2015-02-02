@@ -25,6 +25,20 @@ namespace Anitro.Data_Structures.API_Classes
             }
         }
 
+        public TopGenres(Hummingbird.V2.TopGenreV2 g)
+        {
+            try
+            {
+                genre = APIConverter.StringToMediaGenre(g.genre.name);
+                num = g.num;
+            }
+            catch (Exception)
+            {
+                genre = MediaGenre.None;
+                num = 0;
+            }
+        }
+
         #region Documented
         public MediaGenre genre { get; set; }
         public double num { get; set; }
@@ -48,7 +62,23 @@ namespace Anitro.Data_Structures.API_Classes
         public int id { get; set; }
         //public int life_spent_on_anime { get; set; }
         public int anime_total { get; set; }
-        public int anime_watched { get; set; }
+
+        private int m_animeWatched;
+        public int anime_watched {
+            get 
+            { 
+                if (m_animeWatched != 0)
+                    return m_animeWatched;
+
+                int total = 0;
+                foreach (var i in top_genres)
+                {
+                    total += (int)i.num;
+                }
+                return total;
+            }
+            set { m_animeWatched = value; }        
+        }
         public List<TopGenres> top_genres { get; set; }
         #endregion
 
@@ -187,6 +217,32 @@ namespace Anitro.Data_Structures.API_Classes
             Debug.WriteLine("TopGenres");
             try {
                 foreach (var g in userInfo.top_genres) {
+                    top_genres.Add(new TopGenres(g));
+                }
+            }
+            catch (Exception) { Debug.WriteLine("Exception"); }
+        }
+
+        public UserInfo(Hummingbird.V2.UserInfoV2 userInfo)
+        {
+            top_genres = new List<TopGenres>();
+
+            Debug.WriteLine("Undocumented User Info");
+            try
+            {
+                id = Convert.ToInt32(userInfo.id);
+                life_spent_on_anime = userInfo.life_spent_on_anime;
+
+                anime_total = userInfo.anime_watched;
+                anime_watched = userInfo.anime_watched;
+            }
+            catch (Exception) { Debug.WriteLine("Undocumented User Info: Exception"); };
+
+            Debug.WriteLine("TopGenres");
+            try
+            {
+                foreach (var g in userInfo.top_genres)
+                {
                     top_genres.Add(new TopGenres(g));
                 }
             }

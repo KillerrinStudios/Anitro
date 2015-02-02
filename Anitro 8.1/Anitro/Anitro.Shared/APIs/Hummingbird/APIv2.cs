@@ -34,7 +34,7 @@ namespace Anitro.APIs.Hummingbird
                 /// --------------------------------------------------- ///
                 /// Once _anime string is API Compliant, begin the GET  ///
                 /// --------------------------------------------------- ///
-                Debug.WriteLine("UserInfo(): Entering");
+                Debug.WriteLine("V2UserInfo(): Entering");
 
                 // Create a client
                 HttpClient httpClient = new HttpClient();
@@ -53,16 +53,16 @@ namespace Anitro.APIs.Hummingbird
 
                     if (response.IsSuccessStatusCode)
                     {
-                        Debug.WriteLine("UserInfo(): Success Code");
+                        Debug.WriteLine("V2UserInfo(): Success Code");
                         // Just as an example I'm turning the response into a string here
                         string responseAsString = await response.Content.ReadAsStringAsync();
 
                         //Debug.WriteLine(responseAsString);
                         
                         JObject o = JObject.Parse(responseAsString); // This would be the string you defined above
-                        Anitro.Data_Structures.API_Classes.Hummingbird.V1.UserInfoRootObject userInfo = JsonConvert.DeserializeObject<Anitro.Data_Structures.API_Classes.Hummingbird.V1.UserInfoRootObject>(o.ToString()); ;
+                        Anitro.Data_Structures.API_Classes.Hummingbird.V2.UserInfoV2RootObject userInfo = JsonConvert.DeserializeObject<Anitro.Data_Structures.API_Classes.Hummingbird.V2.UserInfoV2RootObject>(o.ToString()); ;
 
-                        Debug.WriteLine("GetAnime(): Exiting");
+                        Debug.WriteLine("V2UserInfo(): Exiting");
 
                         args = new APICompletedEventArgs(APIResponse.Successful, APIType.UserInfo, userInfo);
 

@@ -215,7 +215,7 @@ namespace Anitro.Data_Structures
 
                 bool result = await StorageTools.SaveToStorage(StorageTools.StorageConsts.UserFile, this);
 
-                Debug.WriteLine("Save(): Success!");
+                Debug.WriteLine("Save(): Success: " + result);
                 return result;
             }
             catch (Exception) {
@@ -236,7 +236,9 @@ namespace Anitro.Data_Structures
                     try
                     {
                         SerializableString json = await StorageTools.LoadFileFromStorage(StorageTools.StorageConsts.UserFile);
-                        user.JsonToThis((json.Deserialize() as string));
+                        string jsonDeserializedString = (json.Deserialize() as string);
+                        Debug.WriteLine(jsonDeserializedString);
+                        user.JsonToThis(jsonDeserializedString);
                     }
                     catch (Exception)
                     {

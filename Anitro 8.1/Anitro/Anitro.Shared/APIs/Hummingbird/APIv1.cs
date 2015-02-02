@@ -350,7 +350,7 @@ namespace Anitro.APIs.Hummingbird
                         {
                             case APIResponse.Successful:
                                 Debug.WriteLine("AllUserInfo(): Undocumented_UserInfo Recieved Successfully!");
-                                Anitro.Data_Structures.API_Classes.Hummingbird.V1.UserInfo undoc_UserInfo = (undoc_userEventArgs.ResultObject as Anitro.Data_Structures.API_Classes.Hummingbird.V1.UserInfoRootObject).user_info;
+                                Anitro.Data_Structures.API_Classes.Hummingbird.V2.UserInfoV2 undoc_UserInfo = (undoc_userEventArgs.ResultObject as Anitro.Data_Structures.API_Classes.Hummingbird.V2.UserInfoV2RootObject).user_info;
                                 userinfo.AddUnDocumentedToDocumented(new UserInfo(undoc_UserInfo));
 
                                 FeedbackEventHandler(null, new APIFeedbackEventArgs("Extra User Info Succeeded"));

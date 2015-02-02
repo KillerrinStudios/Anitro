@@ -40,6 +40,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\StatusFeed.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\UserInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V2\Anime.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V2\Manga.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V2\UserInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\LibraryList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\LibraryObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\MyAnimeList\AnimeMangaSearch.cs" />
