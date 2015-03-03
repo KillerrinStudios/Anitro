@@ -7,41 +7,23 @@
     <Converters:RelativeDateTimeConverter x:Key="RelativeDateTimeConverter" />
     
     <DataTemplate x:Key="ActivityFeed_CommentTemplate">
-        <StackPanel Orientation="Horizontal" Margin="0,-25,0,-5" VerticalAlignment="Top">
-            <Image Width="62.5" Height="125" Margin="0,20,0,0" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Image Width="65" Height="130" Margin="0,20,0,0" VerticalAlignment="Top">
                 <Image.Source>
                     <BitmapImage UriSource="{Binding StoryImage}" />
                 </Image.Source>
             </Image>
 
-            <StackPanel Orientation="Vertical" Margin="10,15,0,0" VerticalAlignment="Top">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <TextBlock Text="{Binding Header}" Foreground="{StaticResource TitleBrush}" 
+                           FontSize="18" TextAlignment="Left" Margin="0,0,0,0" Width="600"/>
 
-                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" Orientation="Vertical">
-                        <TextBlock Text="{Binding Header}" FontSize="18" Foreground="{StaticResource TitleBrush}" TextAlignment="Left" Margin="0,0,0,0" Width="600"/>
-                    </StackPanel>
-                    
-                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,-5,0,0" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
-                        <TextBlock Text="{Binding TimeStamp, Converter={StaticResource ResourceKey=RelativeDateTimeConverter}}" Foreground="{StaticResource ContentBrush}"
-                                   Margin="0,0,0,0" Width="300" HorizontalAlignment="Left"
-                                   FontSize="8" TextAlignment="Left"/>
-                    </StackPanel>
-                    
-                    <StackPanel Grid.Row="2" Grid.Column="0" Margin="-360,5,0,5" Height="Auto" Orientation="Vertical" VerticalAlignment="Top">
-                        <TextBlock x:Name="statusFeedContent" Text="{Binding Content}" 
-                                   FontSize="14" TextTrimming="WordEllipsis" TextAlignment="Left" TextWrapping="Wrap" LineHeight="20" LineStackingStrategy="BlockLineHeight"
-                                   Foreground="{StaticResource ContentBrush}"
-                                   Width="235" Height="Auto"/>
-                    </StackPanel>
-                </Grid>
+                <TextBlock Text="{Binding TimeStamp, Converter={StaticResource ResourceKey=RelativeDateTimeConverter}}" Foreground="{StaticResource ContentBrush}"
+                           FontSize="10" TextAlignment="Left" HorizontalAlignment="Left" Width="300" Margin="0,0,0,0"/>
+
+                <TextBlock Text="{Binding Content}" Foreground="{StaticResource ContentBrush}" xml:space="preserve"
+                           FontSize="14" TextAlignment="Left" HorizontalAlignment="Left" Width="235" Height="Auto"
+                           TextTrimming="WordEllipsis" TextWrapping="Wrap" LineStackingStrategy="BlockLineHeight" />
             </StackPanel>
         </StackPanel>
     </DataTemplate>

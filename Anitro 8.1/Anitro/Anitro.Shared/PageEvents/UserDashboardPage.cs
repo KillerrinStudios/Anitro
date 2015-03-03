@@ -38,9 +38,14 @@ namespace Anitro
             try
             {
                 username_TextBlock.Text = pageParameter.user.Username;
-                userID_TextBlock.Text = "UserID: " + Consts.LoggedInUser.UserInfo.id.ToString();
             }
             catch (Exception) { }
+
+            if (Consts.LoggedInUser.UserInfo.id == 0) userID_TextBlock.Visibility = Visibility.Collapsed;
+            else
+            {
+                userID_TextBlock.Text = "UserID: " + Consts.LoggedInUser.UserInfo.id.ToString();
+            }
             
             bool hidewifu = false;
             try

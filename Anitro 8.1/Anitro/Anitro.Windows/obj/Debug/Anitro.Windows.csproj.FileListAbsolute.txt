@@ -488,3 +488,130 @@ C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj
 C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Killerrin Studios Toolkit.Windows.pri.xml
 C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MyToolkit.Extended.pri.xml
 C:\Users\killer rin\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\ProjectArchitectures.txt
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Themes\UIThemes.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\App.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\AboutSettingsPane.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\LibraryPage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\AnimePage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\LoggedOutPage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\LoginSettingsPane.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\MainPage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\SearchPage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\OptionsSettingsPane.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Themes\Activity Feed.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Themes\Anime Favourites.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Themes\Anime Library.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Themes\Recent.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Themes\Search.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\UnlockAnitroFlyout.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\UserDashboardPage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Anitro.Windows.xr.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Anitro.Windows.exe
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Anitro.Windows.pdb
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\resources.pri
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\AppxManifest.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Anitro.Windows.build.appxrecipe
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Callisto.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Callisto.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Microsoft.Advertising.WinRT.UI.winmd
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Microsoft.Advertising.WinRT.UI.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\MicrosoftAdvertising.winmd
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\MicrosoftAdvertising.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\BugSense-Windows.Universal.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\MyToolkit.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\MyToolkit.Extended.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Killerrin Studios Toolkit.Windows.pdb
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Killerrin Studios Toolkit.Windows.pri
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\MyToolkit.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\MyToolkit.Extended.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\MyToolkit.Extended.pri
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Anitro.Windows.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\App.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\App.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\AboutSettingsPane.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\AboutSettingsPane.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LibraryPage.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LibraryPage.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\AnimePage.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\AnimePage.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LoggedOutPage.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LoggedOutPage.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LoginSettingsPane.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LoginSettingsPane.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MainPage.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MainPage.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\SearchPage.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\SearchPage.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\OptionsSettingsPane.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\OptionsSettingsPane.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Activity Feed.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Activity Feed.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Anime Favourites.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Anime Favourites.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Anime Library.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Anime Library.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Recent.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Recent.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Search.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Search.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\UnlockAnitroFlyout.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\UnlockAnitroFlyout.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\UserDashboardPage.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\UserDashboardPage.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\UIThemes.g.i.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\UIThemes.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\XamlTypeInfo.g.cs
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\App.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\AboutSettingsPane.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LibraryPage.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\AnimePage.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LoggedOutPage.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LoginSettingsPane.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MainPage.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\SearchPage.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\OptionsSettingsPane.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Activity Feed.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Anime Favourites.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Anime Library.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Recent.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Search.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\UnlockAnitroFlyout.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\UserDashboardPage.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\UIThemes.xaml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\App.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\AboutSettingsPane.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LibraryPage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\AnimePage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LoggedOutPage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\LoginSettingsPane.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MainPage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\SearchPage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\OptionsSettingsPane.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Activity Feed.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Anime Favourites.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Anime Library.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Recent.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\Search.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\UnlockAnitroFlyout.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\UserDashboardPage.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Themes\UIThemes.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\XamlSaveStateFile.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Anitro.Windows.exe
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Anitro.Windows.pdb
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Anitro.Windows.csproj.GenerateResource.Cache
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\priconfig.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\priconfig.xml.intermediate
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\layout.resfiles
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\layout.resfiles.intermediate
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\resources.resfiles
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\resources.resfiles.intermediate
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\pri.resfiles
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\pri.resfiles.intermediate
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\qualifiers.txt
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\qualifiers.txt.intermediate
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\Killerrin Studios Toolkit.Windows.pri.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\MyToolkit.Extended.pri.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Debug\ProjectArchitectures.txt
