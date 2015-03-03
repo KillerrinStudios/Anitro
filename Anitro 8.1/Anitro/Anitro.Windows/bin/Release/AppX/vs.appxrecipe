@@ -8,7 +8,7 @@
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>59141KillerrinStudios.Anitro</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>46AF847548257EBBAD279CED3F8323C0C680EA90212EAFC1628D7CEAC7A80539</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>923B28AF6D32EB40194B3C9A5D4E81D4DDF6884B4F8811EACB6BFEDECE3210FD</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>59141KillerrinStudios.Anitro_1.2.0.0_neutral__vsha6q420kgm4</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>59141KillerrinStudios.Anitro_vsha6q420kgm4!App</RegisteredUserModeAppID>
     <RegisteredPackageID>59141KillerrinStudios.Anitro</RegisteredPackageID>
@@ -20,13 +20,13 @@
     <AppXManifest Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-01-24T07:47:28.705</Modified>
+      <Modified>2015-03-03T03:59:09.332</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.exe">
       <PackagePath>Anitro.Windows.exe</PackagePath>
-      <Modified>2015-01-24T07:47:17.665</Modified>
+      <Modified>2015-03-03T04:28:06.944</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Callisto\1.4.0\References\CommonConfiguration\neutral\Callisto.dll">
       <PackagePath>Callisto.dll</PackagePath>
@@ -169,75 +169,75 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\UIThemes.xbf">
       <PackagePath>Themes\UIThemes.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.279</Modified>
+      <Modified>2015-03-03T03:59:00.832</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.229</Modified>
+      <Modified>2015-03-03T03:59:00.706</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AboutSettingsPane.xbf">
       <PackagePath>AboutSettingsPane.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.231</Modified>
+      <Modified>2015-03-03T03:59:00.708</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\LibraryPage.xbf">
       <PackagePath>LibraryPage.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.233</Modified>
+      <Modified>2015-03-03T03:59:00.710</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AnimePage.xbf">
       <PackagePath>AnimePage.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.254</Modified>
+      <Modified>2015-03-03T03:59:00.712</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\LoggedOutPage.xbf">
       <PackagePath>LoggedOutPage.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.256</Modified>
+      <Modified>2015-03-03T03:59:00.714</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\LoginSettingsPane.xbf">
       <PackagePath>LoginSettingsPane.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.258</Modified>
+      <Modified>2015-03-03T03:59:00.716</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.259</Modified>
+      <Modified>2015-03-03T03:59:00.718</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\SearchPage.xbf">
       <PackagePath>SearchPage.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.261</Modified>
+      <Modified>2015-03-03T03:59:00.734</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\OptionsSettingsPane.xbf">
       <PackagePath>OptionsSettingsPane.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.263</Modified>
+      <Modified>2015-03-03T03:59:00.736</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Activity Feed.xbf">
       <PackagePath>Themes\Activity Feed.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.264</Modified>
+      <Modified>2015-03-03T04:28:06.579</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Anime Favourites.xbf">
       <PackagePath>Themes\Anime Favourites.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.266</Modified>
+      <Modified>2015-03-03T03:59:00.740</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Anime Library.xbf">
       <PackagePath>Themes\Anime Library.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.268</Modified>
+      <Modified>2015-03-03T03:59:00.743</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Recent.xbf">
       <PackagePath>Themes\Recent.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.271</Modified>
+      <Modified>2015-03-03T03:59:00.807</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\Search.xbf">
       <PackagePath>Themes\Search.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.273</Modified>
+      <Modified>2015-03-03T03:59:00.826</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\UnlockAnitroFlyout.xbf">
       <PackagePath>UnlockAnitroFlyout.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.275</Modified>
+      <Modified>2015-03-03T03:59:00.828</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\UserDashboardPage.xbf">
       <PackagePath>UserDashboardPage.xbf</PackagePath>
-      <Modified>2015-01-24T07:47:17.277</Modified>
+      <Modified>2015-03-03T04:27:19.418</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.xr.xml">
       <PackagePath>Anitro.Windows.xr.xml</PackagePath>
-      <Modified>2015-01-23T09:19:59.450</Modified>
+      <Modified>2015-03-03T04:27:19.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\packages\MyToolkit.Extended.2.2.3.0\lib\portable-wpa81+win8\MyToolkit.Extended\MyToolkit.Extended.xr.xml">
       <PackagePath>MyToolkit.Extended\MyToolkit.Extended.xr.xml</PackagePath>
@@ -261,7 +261,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-01-24T07:47:18.438</Modified>
+      <Modified>2015-03-03T03:59:02.742</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -21,7 +21,7 @@
     <SccProvider>SAK</SccProvider>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
-    <AppxPackageDir>C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Marketplace Info\Windows Phone\Xaps\1.2.0\</AppxPackageDir>
+    <AppxPackageDir>C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Marketplace Info\Windows Phone\Xaps\1.2.2\</AppxPackageDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

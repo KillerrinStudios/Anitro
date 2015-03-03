@@ -139,34 +139,35 @@
 							<ScrollViewer VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
 								<Grid>
 									<StackPanel Orientation="Vertical">
-										<StackPanel Orientation="Vertical">
-											<TextBlock x:Name="waifuHusbando_TextBlock" Text="waifu/husbando" Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="WaifuHusbando_TextBlock_Loaded"/>
-											<StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-												<Image x:Name="waifu_Image" Opacity="1" VerticalAlignment="Center" Width="50" Height="50" Loaded="Waifu_Image_Loaded">
-													<Image.Source>
-														<BitmapImage CreateOptions="None"/>
-													</Image.Source>
-												</Image>
-												<TextBlock x:Name="waifuName_TextBlock" Text="character name" Margin="20,0,0,0" Width="240"
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock x:Name="waifuHusbando_TextBlock" Text="waifu/husbando" Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="WaifuHusbando_TextBlock_Loaded"/>
+
+                                            <Button BorderThickness="0" Margin="0,0,0,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Loaded="WaifuShow_Button_Loaded" Click="WaifuShow_Clicked">
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                                    <Image x:Name="waifuShow_Image" Opacity="1" VerticalAlignment="Center" Width="65" Height="130" Loaded="WaifuShow_Image_Loaded">
+                                                        <Image.Source>
+                                                            <BitmapImage CreateOptions="None"/>
+                                                        </Image.Source>
+                                                    </Image>
+                                                    <TextBlock x:Name="waifuShowName_TextBlock" Text="show name" Margin="10,0,0,0" Width="240"
+												   FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap"
+												   Foreground="{StaticResource ContentBrush}" Loaded="WaifuShowName_TextBlock_Loaded"/>
+                                                </StackPanel>
+                                            </Button>
+
+                                            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                                                <Image x:Name="waifu_Image" Opacity="1" VerticalAlignment="Center" Width="60" Height="60" Loaded="Waifu_Image_Loaded">
+                                                    <Image.Source>
+                                                        <BitmapImage CreateOptions="None"/>
+                                                    </Image.Source>
+                                                </Image>
+                                                <TextBlock x:Name="waifuName_TextBlock" Text="character name" Margin="20,0,0,0" Width="240"
 												   FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextWrapping="Wrap"
 												   Foreground="{StaticResource ContentBrush}" Loaded="WaifuName_TextBlock_Loaded"/>
-											</StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
 
-											<Button BorderThickness="0" Margin="0,0,0,0" HorizontalAlignment="Left" Loaded="WaifuShow_Button_Loaded" Click="WaifuShow_Clicked">
-												<StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-													<Image x:Name="waifuShow_Image" Opacity="1" VerticalAlignment="Center" Width="50" Height="50" Loaded="WaifuShow_Image_Loaded">
-														<Image.Source>
-															<BitmapImage CreateOptions="None"/>
-														</Image.Source>
-													</Image>
-													<TextBlock x:Name="waifuShowName_TextBlock" Text="show name" Margin="20,0,0,0" Width="240"
-												   FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextWrapping="Wrap"
-												   Foreground="{StaticResource ContentBrush}" Loaded="WaifuShowName_TextBlock_Loaded"/>
-												</StackPanel>
-											</Button>
-										</StackPanel>
-
-										<StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                                        <StackPanel Orientation="Vertical" Margin="0,20,0,0">
 											<StackPanel Orientation="Vertical" HorizontalAlignment="Center">
 												<TextBlock x:Name="animeWatched_TextBlock" Text="Total Anime Watched: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}"/>
 												<TextBlock x:Name="total_AnimeWatched_TextBlock" Text="0" Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Total_AnimeWatched_TextBlock_Loaded"/>

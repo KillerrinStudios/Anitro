@@ -21,9 +21,9 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <PackageCertificateThumbprint>0828AEA0D194DE428B1B8166BA0E5535912DFA91</PackageCertificateThumbprint>
-    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
-    <AppxPackageDir>C:\Users\killer rin\Programming\Windows RT\Killerrin Studios Apps\Anitro\Anitro 8.1\Marketplace Info\Windows 8\Xaps\1.2.0\</AppxPackageDir>
+    <AppxPackageDir>C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Marketplace Info\Windows 8\Xaps\1.2.2\</AppxPackageDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
