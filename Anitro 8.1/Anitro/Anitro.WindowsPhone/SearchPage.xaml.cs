@@ -21,7 +21,7 @@ using Anitro.Data_Structures.API_Classes;
 using Anitro.Data_Structures.Structures;
 using Anitro.Data_Structures.Enumerators;
 using Anitro.APIs.Hummingbird;
-using Microsoft.Advertising.Mobile.UI;
+using Microsoft.AdMediator.WindowsPhone81;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -34,7 +34,7 @@ namespace Anitro
     {
         private SearchPageParameter pageParameter;
 
-        AdControl adControl;
+        AdMediatorControl adControl;
 
         TextBox searchBox;
         ListBox searchResult_ListBox;
@@ -324,12 +324,6 @@ namespace Anitro
         }
 
         #region Loaded Events
-        private void AdControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            adControl = (sender as AdControl);
-            XamlControlHelper.AnitroAdControlSettings(adControl);
-        }
-
         private void ListBoxSearch_Loaded(object sender, RoutedEventArgs e)
         {
             searchResult_ListBox = (sender as ListBox);
@@ -400,9 +394,34 @@ namespace Anitro
             }
         }
 
-        private void AdControl_ErrorOccured(object sender, Microsoft.Advertising.Mobile.Common.AdErrorEventArgs e)
+        #region Ad Mediator
+        private void AdMediator_Loaded(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("AdControl error (" + ((AdControl)sender).Name + "): " + e.Error + " ErrorCode: " + e.ErrorCode.ToString());
+            adControl = (sender as AdMediatorControl);
+            XamlControlHelper.AnitroAdMediatorSettings(adControl);
         }
+
+        private void AdMediator_AdSdkError(object sender, Microsoft.AdMediator.Core.Events.AdFailedEventArgs e)
+        {
+            Debug.WriteLine("AdSdkError by {0} ErrorCode: {1} ErrorDescription: {2} Error: {3}", e.Name, e.ErrorCode, e.ErrorDescription, e.Error);
+        }
+
+        private void AdMediator_AdSdkEvent(object sender, Microsoft.AdMediator.Core.Events.AdSdkEventArgs e)
+        {
+            Debug.WriteLine("AdSdk event {0} by {1}", e.EventName, e.Name);
+        }
+
+        private void AdMediator_AdMediatorFilled(object sender, Microsoft.AdMediator.Core.Events.AdSdkEventArgs e)
+        {
+            Debug.WriteLine("AdFilled:" + e.Name);
+        }
+
+        private void AdMediator_AdMediatorError(object sender, Microsoft.AdMediator.Core.Events.AdMediatorFailedEventArgs e)
+        {
+            Debug.WriteLine("AdMediatorError:" + e.Error + " " + e.ErrorCode);
+            // if (e.ErrorCode == AdMediatorErrorCode.NoAdAvailable)
+            // AdMediator will not show an ad for this mediation cycle
+        }
+        #endregion
     }
 }

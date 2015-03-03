@@ -302,11 +302,13 @@ namespace Anitro
         #endregion
 
         #region General
+#if WINDOWS_APP
         private void AdControl_Loaded(object sender, RoutedEventArgs e)
         {
             adControl = (sender as AdControl);
             XamlControlHelper.AnitroAdControlSettings(adControl);
         }
+#endif
         #endregion
 
         #region Statistics

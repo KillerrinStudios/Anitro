@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:UI="using:Microsoft.Advertising.Mobile.UI"
+    xmlns:WindowsPhone81="using:Microsoft.AdMediator.WindowsPhone81"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                                  >
 
@@ -45,18 +45,14 @@
             </HubSection>
         </Hub>
 
-        <UI:AdControl x:ConnectionId='6'
-			                         
-			                                      
-			AutoRefreshIntervalInSeconds="60" 
-			ApplicationId="e4487080-07e5-4855-899a-a5ba5df17371"
-			AdUnitId="186550"
-			HorizontalAlignment="Left"
-			Height="100"
-			IsAutoRefreshEnabled="True"
-			Margin="0,0,0,0" 
-			VerticalAlignment="Bottom" 
-			Width="320"/>
+
+
+        <WindowsPhone81:AdMediatorControl x:ConnectionId='6' x:Name="adMediatorLogout" Id="AdMediator-Id-B092D740-2B55-40F2-83EC-B279890AB26E"
+                                                                  Height="100" Width="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                                                                             
+                                                                                                                                       
+                                                                                                                                                             
+                                                                  />
     </Grid>
 </Page>
 

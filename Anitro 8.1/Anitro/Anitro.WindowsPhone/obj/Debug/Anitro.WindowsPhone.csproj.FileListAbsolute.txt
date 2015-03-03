@@ -494,12 +494,9 @@ C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bi
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Microsoft.Threading.Tasks.dll
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Killerrin Studios Toolkit.WindowsPhone.pdb
-C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Killerrin Studios Toolkit.WindowsPhone.pri
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Microsoft.Threading.Tasks.xml
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\Anitro.WindowsPhone.csprojResolveAssemblyReference.cache
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\App.g.i.cs
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\App.g.cs
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\About.g.i.cs
@@ -579,6 +576,21 @@ C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\ob
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\qualifiers.txt
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\MultipleQualifiersPerDimensionFound.txt
-C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\Killerrin Studios Toolkit.WindowsPhone.pri.xml
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\ProjectArchitectures.txt
 C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\Themes\Activity Feed.xbf
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Microsoft.AdMediator.Core.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Microsoft.AdMediator.WindowsPhone81.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\AdDuplex.Universal.Controls.WinPhone.XAML.winmd
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\AdDuplex.Universal.WinPhone.WinRT.winmd
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Microsoft.AdMediator.WindowsPhone81.AdDuplex.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Microsoft.AdMediator.WindowsPhone81.MicrosoftAdvertising.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Microsoft.AdMediator.WindowsPhone81.Smaato.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\SOMAWP81.dll
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\AdDuplex.Universal.Controls.WinPhone.XAML.pri
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\AdDuplex.Universal.WinPhone.WinRT.pri
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\SOMAWP81.pdb
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\SOMAWP81.pri
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\AdDuplex.Universal.Controls.WinPhone.XAML.pri.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\AdDuplex.Universal.WinPhone.WinRT.pri.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\SOMAWP81.pri.xml
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Debug\Anitro.WindowsPhone.csprojResolveAssemblyReference.cache

@@ -235,18 +235,17 @@
       <RootEvent Name="Loaded" />
     </RootType>
     <RootType FullName="System.String" />
-    <RootType FullName="Microsoft.Advertising.Mobile.UI.AdControl">
-      <RootProperty Name="AutoRefreshIntervalInSeconds" />
-      <RootProperty Name="ApplicationId" />
-      <RootProperty Name="AdUnitId" />
-      <RootProperty Name="HorizontalAlignment" />
+    <RootType FullName="Microsoft.AdMediator.WindowsPhone81.AdMediatorControl">
+      <RootProperty Name="Id" />
       <RootProperty Name="Height" />
-      <RootProperty Name="IsAutoRefreshEnabled" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
       <RootEvent Name="Loaded" />
-      <RootEvent Name="ErrorOccurred" />
+      <RootEvent Name="AdSdkError" />
+      <RootEvent Name="AdSdkEvent" />
+      <RootEvent Name="AdMediatorFilled" />
+      <RootEvent Name="AdMediatorError" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Imaging.BitmapImage">
       <RootProperty Name="CreateOptions" />

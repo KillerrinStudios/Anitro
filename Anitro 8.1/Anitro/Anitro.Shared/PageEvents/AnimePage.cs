@@ -36,6 +36,7 @@ namespace Anitro
         }
 
         #region Control Loaded
+#if WINDOWS_APP
         private void AdControl_Loaded(object sender, RoutedEventArgs e)
         {
             adControl = (sender as AdControl);
@@ -45,6 +46,7 @@ namespace Anitro
         {
             Debug.WriteLine("AdControl error (" + ((AdControl)sender).Name + "): " + e.Error + " ErrorCode: " + e.ErrorCode.ToString());
         }
+#endif
         #endregion
 
         #region Message Box

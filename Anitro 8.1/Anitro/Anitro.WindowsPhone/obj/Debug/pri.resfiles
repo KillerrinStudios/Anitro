@@ -1,4 +1,7 @@
+C:\Program Files (x86)\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.AdMediator81\1.0\Redist\CommonConfiguration\Neutral\Microsoft.AdMediator.WindowsPhone81.pri
 C:\Program Files (x86)\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Advertising.Mobile.Display\8.1\Redist\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.Common.pri
 C:\Program Files (x86)\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Advertising.Mobile.Display\8.1\Redist\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.Display.pri
 C:\Program Files (x86)\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Advertising.Mobile.Display\8.1\Redist\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.UI.pri
-C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Debug\Killerrin Studios Toolkit.WindowsPhone.pri
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\packages\AdDuplexWinPhone81.8.5.0.5\lib\portable-win81+wpa81\AdDuplex.Universal.Controls.WinPhone.XAML.pri
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\packages\AdDuplexWinPhone81.8.5.0.5\lib\portable-win81+wpa81\AdDuplex.Universal.WinPhone.WinRT.pri
+C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\packages\SOMAW81_Package.1.1.6\lib\wpa81\SOMAWP81.pri

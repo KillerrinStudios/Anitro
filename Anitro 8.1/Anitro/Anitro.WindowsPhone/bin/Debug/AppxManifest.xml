@@ -52,6 +52,16 @@
         <ActivatableClass ActivatableClassId="Microsoft.Advertising.Mobile.Display.Key35MSSharedLib1024" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Microsoft.Advertising.Mobile.UI.UI_XamlTypeInfo.XamlMetaDataProvider" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Microsoft.Advertising.Mobile.UI.AdControl" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Universal.Controls.WinPhone.XAML.AdControl" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Universal.Controls.WinPhone.XAML.AdDuplex_Universal_Controls_WinPhone_XAML_XamlTypeInfo.XamlMetaDataProvider" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Universal.WinPhone.WinRT.Core.SettingsManager" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Universal.WinPhone.WinRT.Core.AdSizeToSizeConverter" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Universal.WinPhone.WinRT.Core.NetworkManager" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Universal.WinPhone.WinRT.Core.ActionManager" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Universal.WinPhone.WinRT.Models.InstallationInfo" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Universal.WinPhone.WinRT.Models.ScreenInformation" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Universal.WinPhone.WinRT.Models.TextAdInfo" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="AdDuplex.Universal.WinPhone.WinRT.Models.ControlSettings" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
   </Extensions>
@@ -65,6 +75,7 @@
     <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="12.0.31101.0" />
     <build:Item Name="ProjectGUID" Value="{CC0BCFFC-9436-42B5-B11D-CF0B2F346A54}" />
     <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="12.0.30501.0" />
+    <build:Item Name="Microsoft.AdMediator81" Version="1.0" />
     <build:Item Name="Microsoft.Advertising.Mobile.Display" Version="8.1" />
     <build:Item Name="MakePri.exe" Version="6.3.9600.17298 (winblue.141024-1500)" />
   </build:Metadata>

@@ -4,8 +4,7 @@ using Anitro.APIs.Hummingbird;
 using Anitro.Data_Structures;
 using Anitro.Data_Structures.Enumerators;
 using Anitro.Data_Structures.Structures;
-using Microsoft.Advertising.Mobile.Common;
-using Microsoft.Advertising.Mobile.UI;
+using Microsoft.AdMediator.WindowsPhone81;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -39,7 +38,7 @@ namespace Anitro
         private TextBlock userID_TextBlock;
 
         // General
-        private AdControl adControl;
+        private AdMediatorControl adControl;
 
         // Stats
         private TextBlock waifuHusbando_TextBlock;
@@ -229,6 +228,36 @@ namespace Anitro
             //!activityFeedLoaded || 
 
             await Consts.appData.LaunchReview();
+        }
+        #endregion
+
+        #region Ad Mediator
+        private void AdMediator_Loaded(object sender, RoutedEventArgs e)
+        {
+            adControl = (sender as AdMediatorControl);
+            XamlControlHelper.AnitroAdMediatorSettings(sender);
+        }
+
+        private void AdMediator_AdSdkError(object sender, Microsoft.AdMediator.Core.Events.AdFailedEventArgs e)
+        {
+            Debug.WriteLine("AdSdkError by {0} ErrorCode: {1} ErrorDescription: {2} Error: {3}", e.Name, e.ErrorCode, e.ErrorDescription, e.Error);
+        }
+
+        private void AdMediator_AdSdkEvent(object sender, Microsoft.AdMediator.Core.Events.AdSdkEventArgs e)
+        {
+            Debug.WriteLine("AdSdk event {0} by {1}", e.EventName, e.Name);
+        }
+
+        private void AdMediator_AdMediatorFilled(object sender, Microsoft.AdMediator.Core.Events.AdSdkEventArgs e)
+        {
+            Debug.WriteLine("AdFilled:" + e.Name);
+        }
+
+        private void AdMediator_AdMediatorError(object sender, Microsoft.AdMediator.Core.Events.AdMediatorFailedEventArgs e)
+        {
+            Debug.WriteLine("AdMediatorError:" + e.Error + " " + e.ErrorCode);
+            // if (e.ErrorCode == AdMediatorErrorCode.NoAdAvailable)
+            // AdMediator will not show an ad for this mediation cycle
         }
         #endregion
     }

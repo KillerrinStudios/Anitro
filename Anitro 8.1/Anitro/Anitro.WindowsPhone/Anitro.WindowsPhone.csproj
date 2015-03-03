@@ -211,6 +211,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="AdDuplex.Universal.Controls.WinPhone.XAML">
+      <HintPath>..\..\packages\AdDuplexWinPhone81.8.5.0.5\lib\portable-win81+wpa81\AdDuplex.Universal.Controls.WinPhone.XAML.winmd</HintPath>
+    </Reference>
+    <Reference Include="AdDuplex.Universal.WinPhone.WinRT">
+      <HintPath>..\..\packages\AdDuplexWinPhone81.8.5.0.5\lib\portable-win81+wpa81\AdDuplex.Universal.WinPhone.WinRT.winmd</HintPath>
+    </Reference>
     <Reference Include="BugSense-Windows.Universal">
       <HintPath>..\..\packages\BugSense.XAML81.3.6.6.0\lib\wpa81\BugSense-Windows.Universal.dll</HintPath>
     </Reference>
@@ -218,15 +224,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Killerrin-Studios-Toolkit\Killerrin Studios Toolkit\Killerrin Studios Toolkit.WindowsPhone\bin\Release\Killerrin Studios Toolkit.WindowsPhone.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AdMediator.WindowsPhone81.AdDuplex">
+      <HintPath>..\..\packages\Microsoft.AdMediator.WindowsPhone81.AdDuplex.1.0.12\lib\wpa\Microsoft.AdMediator.WindowsPhone81.AdDuplex.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AdMediator.WindowsPhone81.MicrosoftAdvertising">
       <HintPath>..\..\packages\Microsoft.AdMediator.WindowsPhone81.MicrosoftAdvertising.1.0.13\lib\wpa\Microsoft.AdMediator.WindowsPhone81.MicrosoftAdvertising.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Advertising.Mobile.Common, Version=8.1.40505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Advertising.WindowsPhone.Xaml81.8.1.40505.0\lib\wpa81\Microsoft.Advertising.Mobile.Common.winmd</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Advertising.Mobile.Display, Version=8.1.40505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Advertising.WindowsPhone.Xaml81.8.1.40505.0\lib\wpa81\Microsoft.Advertising.Mobile.Display.winmd</HintPath>
+    <Reference Include="Microsoft.AdMediator.WindowsPhone81.Smaato">
+      <HintPath>..\..\packages\Microsoft.AdMediator.WindowsPhone81.Smaato.1.0.6\lib\wpa\Microsoft.AdMediator.WindowsPhone81.Smaato.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\wpa81\Microsoft.Threading.Tasks.dll</HintPath>
@@ -237,11 +242,17 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SOMAWP81">
+      <HintPath>..\..\packages\SOMAW81_Package.1.1.6\lib\wpa81\SOMAWP81.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.AdMediator81, Version=1.0">
+      <Name>Microsoft.AdMediator81</Name>
+    </SDKReference>
     <SDKReference Include="Microsoft.Advertising.Mobile.Display, Version=8.1">
       <Name>Microsoft Advertising SDK for Windows Phone 8.1 %28XAML%29</Name>
     </SDKReference>

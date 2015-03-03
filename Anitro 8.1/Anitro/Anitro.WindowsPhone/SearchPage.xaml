@@ -6,7 +6,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	xmlns:UI="using:Microsoft.Advertising.Mobile.UI"
+	xmlns:WindowsPhone81="using:Microsoft.AdMediator.WindowsPhone81"
 	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
 	Loaded="SearchPage_Loaded">
 
@@ -66,19 +66,14 @@
 							</ComboBox>
 						</StackPanel>
 
-						<UI:AdControl
-							Loaded="AdControl_Loaded"
-							ErrorOccurred="AdControl_ErrorOccured"
-							AutoRefreshIntervalInSeconds="60" 
-							ApplicationId="e4487080-07e5-4855-899a-a5ba5df17371"
-							AdUnitId="186550"
-							HorizontalAlignment="Left"
-							Height="100"
-							IsAutoRefreshEnabled="True"
-							Margin="0,0,0,0" 
-							VerticalAlignment="Bottom" 
-							Width="320"/>
-					</Grid>
+
+                        <WindowsPhone81:AdMediatorControl x:Name="adMediatorSearch" Id="AdMediator-Id-F2380F7F-2999-4283-BE9E-66662DCD5468"
+                                                                  Height="100" Width="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                                                  Loaded="AdMediator_Loaded" 
+                                                                  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
+                                                                  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError"
+                                                                  />
+                    </Grid>
 				</DataTemplate>
 			</HubSection>
 		</Hub>

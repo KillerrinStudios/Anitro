@@ -40,5 +40,28 @@ namespace Anitro
             Debug.WriteLine("AdControl Loaded");
             return true;
         }
+
+#if WINDOWS_PHONE_APP
+        public static bool AnitroAdMediatorSettings(object sender)
+        {
+            if (sender == null) return true;
+            var adControl = (sender as Microsoft.AdMediator.WindowsPhone81.AdMediatorControl);
+
+            if (InAppPurchaseHelper.licensesOwned.AnitroUnlocked)
+            {
+                Debug.WriteLine("Anitro Unlock Purchased, Turning off Ads");
+
+                adControl.IsEnabled = false;
+                adControl.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                //adControl.Disable();
+                Debug.WriteLine("Ads Turned Off");
+                return false;
+            }
+            else { }
+
+            Debug.WriteLine("AdControl Loaded");
+            return true;
+        }
+#endif
     }
 }

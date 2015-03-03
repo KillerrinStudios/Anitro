@@ -6,7 +6,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	xmlns:UI="using:Microsoft.Advertising.Mobile.UI"
+	xmlns:WindowsPhone81="using:Microsoft.AdMediator.WindowsPhone81"
 	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
 	Loaded="UserDashboardPage_Loaded">
 
@@ -37,83 +37,71 @@
 		<TextBlock x:Name="debugTextBlock" Width="Auto" Height="Auto" Margin="10,10,10,10" Text="" />
 		<MediaElement x:Name="player" Visibility="Collapsed"/>
 
-		<Hub x:Name="DashboardHub" Header="Anitro" DefaultSectionIndex="0" Visibility="Visible" 
+        <Hub x:Name="DashboardHub" Header="Anitro" DefaultSectionIndex="0" Visibility="Visible" 
 			 Margin="10,27,0,0"  HorizontalAlignment="Left" VerticalAlignment="Stretch"
 			 Grid.Column="0" Grid.Row="0" SectionsInViewChanged="DashboardHub_SectionsInViewChanged">
-			<Hub.HeaderTemplate>
-				<DataTemplate>
-					<Grid HorizontalAlignment="Stretch" Height="80" Margin="0,0,0,2">
-						<Image x:Name="cover_Image" Opacity="1" VerticalAlignment="Top" Width="Auto" Height="80" Loaded="Cover_Image_Loaded" >
-							<Image.Source>
-								<BitmapImage CreateOptions="None"/>
-							</Image.Source>
-						</Image>
-						<Rectangle Fill="#7F000000" Width="Auto" Height="80" />
+            <Hub.HeaderTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch" Height="80" Margin="0,0,0,2">
+                        <Image x:Name="cover_Image" Opacity="1" VerticalAlignment="Top" Width="Auto" Height="80" Loaded="Cover_Image_Loaded" >
+                            <Image.Source>
+                                <BitmapImage CreateOptions="None"/>
+                            </Image.Source>
+                        </Image>
+                        <Rectangle Fill="#7F000000" Width="Auto" Height="80" />
 
-						<StackPanel Orientation="Horizontal">
-							<Image x:Name="avatar_Image" Opacity="1" VerticalAlignment="Top" Width="80" Height="80" Loaded="Avatar_Image_Loaded">
-								<Image.Source>
-									<BitmapImage CreateOptions="None"/>
-								</Image.Source>
-							</Image>
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="avatar_Image" Opacity="1" VerticalAlignment="Top" Width="80" Height="80" Loaded="Avatar_Image_Loaded">
+                                <Image.Source>
+                                    <BitmapImage CreateOptions="None"/>
+                                </Image.Source>
+                            </Image>
 
-							<StackPanel Orientation="Vertical" Margin="20,0,0,0" VerticalAlignment="Center">
-								<StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-									<TextBlock x:Name="userName_TextBlock" Text="username" Margin="0,0,0,0" VerticalAlignment="Center"
+                            <StackPanel Orientation="Vertical" Margin="20,0,0,0" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock x:Name="userName_TextBlock" Text="username" Margin="0,0,0,0" VerticalAlignment="Center"
 									   FontSize="26" Foreground="{StaticResource TitleBrush}" Loaded="Username_TextBlock_Loaded"/>
-								</StackPanel>
-								<TextBlock x:Name="userID_TextBlock" Text="userID" Margin="0,0,0,0"
+                                </StackPanel>
+                                <TextBlock x:Name="userID_TextBlock" Text="userID" Margin="0,0,0,0"
 								   FontSize="26" TextTrimming="CharacterEllipsis"
 								   Foreground="{StaticResource ContentBrush}" Loaded="UserID_TextBlock_Loaded"/>
-							</StackPanel>
-						</StackPanel>
-					</Grid>
-				</DataTemplate>
-			</Hub.HeaderTemplate>
-			
-			<!--Height="640" Width="390">-->
-			<HubSection x:Name="General_HubSection" Tag="0" Header="General">
-				<DataTemplate>
-					<Grid>
-						<StackPanel Orientation="Vertical">
-							<Button BorderThickness="0" Click="AnimeLibrary_Clicked">
-								<StackPanel Orientation="Horizontal">
-									<Rectangle Width="38" Height="38" HorizontalAlignment="Left" Margin="0,0,12,0" Fill="{ThemeResource PhoneAccentBrush}" />
-									<TextBlock Text="Anime Library" HorizontalAlignment="Right" FontSize="28" />
-								</StackPanel>
-							</Button>
-						</StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </Hub.HeaderTemplate>
 
-						<!-- http://msdn.microsoft.com/en-US/library/advertising-mobile-windows-phone-ads-walkthroughs-81-xaml-markup%28v=msads.20%29.aspx -->
-						<!-- Test Settings -->
-						<!--ApplicationId="test_client"-->
-						<!--AdUnitId="Image320_50"-->
-						<!-- Real Settings -->
-						<!--ApplicationId="e4487080-07e5-4855-899a-a5ba5df17371"-->
-						<!--AdUnitId="186550"-->
-						<UI:AdControl 
-							 Loaded="AdControl_Loaded"
-							 ErrorOccurred="AdControl_ErrorOccured"
-							 AutoRefreshIntervalInSeconds="60" 
-							 ApplicationId="e4487080-07e5-4855-899a-a5ba5df17371"
-							 AdUnitId="186550"
-							 HorizontalAlignment="Left"
-							 Height="100"
-							 IsAutoRefreshEnabled="True"
-							 Margin="0,0,0,0" 
-							 VerticalAlignment="Bottom" 
-							 Width="320" />
-					</Grid>
-				</DataTemplate>
-			</HubSection>
-			<HubSection x:Name="UserStats_HubSection" Tag="1" Header="Stats">
-				<DataTemplate>
-					<Grid>
-						<ScrollViewer VerticalAlignment="Stretch">
-							<Grid>
-								<StackPanel Orientation="Vertical">
-									<StackPanel Orientation="Vertical">
-										<TextBlock x:Name="waifuHusbando_TextBlock" Text="waifu/husbando" Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="WaifuHusbando_TextBlock_Loaded"/>
+            <!--Height="640" Width="390">-->
+            <HubSection x:Name="General_HubSection" Tag="0" Header="General">
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel Orientation="Vertical">
+                            <Button BorderThickness="0" Click="AnimeLibrary_Clicked">
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Width="38" Height="38" HorizontalAlignment="Left" Margin="0,0,12,0" Fill="{ThemeResource PhoneAccentBrush}" />
+                                    <TextBlock Text="Anime Library" HorizontalAlignment="Right" FontSize="28" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+
+                        <WindowsPhone81:AdMediatorControl x:Name="adMediatorDashboard" Id="AdMediator-Id-BB2050C5-3944-497C-AAA5-577931380C21"
+                                                                  Height="100" Width="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                                                  Loaded="AdMediator_Loaded" 
+                                                                  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
+                                                                  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError"
+                                                                  />
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection x:Name="UserStats_HubSection" Tag="1" Header="Stats">
+                <DataTemplate>
+                    <Grid>
+                        <ScrollViewer VerticalAlignment="Stretch">
+                            <Grid>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock x:Name="waifuHusbando_TextBlock" Text="waifu/husbando" Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="WaifuHusbando_TextBlock_Loaded"/>
 
                                         <Button BorderThickness="0" Margin="0,0,0,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Loaded="WaifuShow_Button_Loaded" Click="WaifuShow_Clicked">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
@@ -139,52 +127,52 @@
 												   Foreground="{StaticResource ContentBrush}" Loaded="WaifuName_TextBlock_Loaded"/>
                                         </StackPanel>
                                     </StackPanel>
-									
-									<StackPanel Orientation="Vertical" Margin="0,40,0,0">
-										<StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-											<TextBlock x:Name="animeWatched_TextBlock" Text="Total Anime Watched: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}"/>
-											<TextBlock x:Name="total_AnimeWatched_TextBlock" Text="0" Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Total_AnimeWatched_TextBlock_Loaded"/>
-										</StackPanel>
 
-										<TextBlock x:Name="topGenres_TextBlock" Text="Top Genres" Margin="0,20,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}"/>
-	
-										<StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-											<StackPanel Orientation="Vertical">
-												<TextBlock x:Name="genre1_TextBlock" Text="Genre 1: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Genre1_TextBlock_Loaded"/>
-												<TextBlock x:Name="genre2_TextBlock" Text="Genre 2: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Genre2_TextBlock_Loaded"/>
-												<TextBlock x:Name="genre3_TextBlock" Text="Genre 3: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Genre3_TextBlock_Loaded"/>
-												<TextBlock x:Name="genre4_TextBlock" Text="Genre 4: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Genre4_TextBlock_Loaded"/>
-												<TextBlock x:Name="genre5_TextBlock" Text="Genre 5: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Genre5_TextBlock_Loaded"/>
-											</StackPanel>
-											
-											<StackPanel Orientation="Vertical" Margin="50,0,0,0">
-												<TextBlock x:Name="num_Genre1_TextBlock" Text="0" Margin="20,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Num_Genre1_TextBlock_Loaded"/>
-												<TextBlock x:Name="num_Genre2_TextBlock" Text="0" Margin="20,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Num_Genre2_TextBlock_Loaded"/>
-												<TextBlock x:Name="num_Genre3_TextBlock" Text="0" Margin="20,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Num_Genre3_TextBlock_Loaded"/>
-												<TextBlock x:Name="num_Genre4_TextBlock" Text="0" Margin="20,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Num_Genre4_TextBlock_Loaded"/>
-												<TextBlock x:Name="num_Genre5_TextBlock" Text="0" Margin="20,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Num_Genre5_TextBlock_Loaded"/>
-											</StackPanel>
-											
-										</StackPanel>
-									</StackPanel>
-								</StackPanel>
-							</Grid>
-						</ScrollViewer>
-					</Grid>
-				</DataTemplate>
-			</HubSection>
-			<HubSection x:Name="Social_HubSection" Tag="2" Header="Social">
-				<DataTemplate>
-					<Grid>
-						<TextBox x:Name="textBox_Status" PlaceholderText="write something..." InputScope="Default" Text="" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,0,10,0" KeyDown="StatusPostEnterCheck" Loaded="ActivityTextBoxLoaded"/>
-						<ListBox x:Name="listBox_ActivityFeed" Margin="0,50,0,0" 
+                                    <StackPanel Orientation="Vertical" Margin="0,40,0,0">
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                            <TextBlock x:Name="animeWatched_TextBlock" Text="Total Anime Watched: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}"/>
+                                            <TextBlock x:Name="total_AnimeWatched_TextBlock" Text="0" Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Total_AnimeWatched_TextBlock_Loaded"/>
+                                        </StackPanel>
+
+                                        <TextBlock x:Name="topGenres_TextBlock" Text="Top Genres" Margin="0,20,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}"/>
+
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock x:Name="genre1_TextBlock" Text="Genre 1: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Genre1_TextBlock_Loaded"/>
+                                                <TextBlock x:Name="genre2_TextBlock" Text="Genre 2: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Genre2_TextBlock_Loaded"/>
+                                                <TextBlock x:Name="genre3_TextBlock" Text="Genre 3: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Genre3_TextBlock_Loaded"/>
+                                                <TextBlock x:Name="genre4_TextBlock" Text="Genre 4: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Genre4_TextBlock_Loaded"/>
+                                                <TextBlock x:Name="genre5_TextBlock" Text="Genre 5: " Margin="0,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Genre5_TextBlock_Loaded"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Vertical" Margin="50,0,0,0">
+                                                <TextBlock x:Name="num_Genre1_TextBlock" Text="0" Margin="20,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Num_Genre1_TextBlock_Loaded"/>
+                                                <TextBlock x:Name="num_Genre2_TextBlock" Text="0" Margin="20,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Num_Genre2_TextBlock_Loaded"/>
+                                                <TextBlock x:Name="num_Genre3_TextBlock" Text="0" Margin="20,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Num_Genre3_TextBlock_Loaded"/>
+                                                <TextBlock x:Name="num_Genre4_TextBlock" Text="0" Margin="20,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Num_Genre4_TextBlock_Loaded"/>
+                                                <TextBlock x:Name="num_Genre5_TextBlock" Text="0" Margin="20,0,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}" Loaded="Num_Genre5_TextBlock_Loaded"/>
+                                            </StackPanel>
+
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection x:Name="Social_HubSection" Tag="2" Header="Social">
+                <DataTemplate>
+                    <Grid>
+                        <TextBox x:Name="textBox_Status" PlaceholderText="write something..." InputScope="Default" Text="" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,0,10,0" KeyDown="StatusPostEnterCheck" Loaded="ActivityTextBoxLoaded"/>
+                        <ListBox x:Name="listBox_ActivityFeed" Margin="0,50,0,0" 
 								 Background="Transparent" FontSize="26"
 								 Tapped="ActivityFeed_Tapped" Loaded="ActivityFeedLoaded" 
 								 ItemTemplate="{StaticResource ActivityFeed_CommentTemplate}"
 								 ItemContainerStyle="{StaticResource ActivityFeed_ItemContainerStyle}" />
-					</Grid>
-				</DataTemplate>
-			</HubSection>
-		</Hub>
-	</Grid>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+    </Grid>
 </Page>
