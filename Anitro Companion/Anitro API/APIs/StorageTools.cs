@@ -19,6 +19,7 @@ namespace Anitro.APIs
         public static class StorageConsts
         {
             public static string UserFile = "User.hmb";
+            public static string SettingsFile = "Settings.hmb";
             public static string LibraryFile = "Library.hmb";
             public static string AvatarImage = "UserAvatar.jpg";
 
