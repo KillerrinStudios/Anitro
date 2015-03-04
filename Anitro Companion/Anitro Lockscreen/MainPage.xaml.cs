@@ -44,8 +44,16 @@ namespace Anitro_Lockscreen
 
             Consts.HasAccessForLockscreen = LockScreenManager.IsProvidedByCurrentApplication;
 
-            if (!Consts.LoggedInUser.IsLoggedIn) { }
+            if (!Consts.LoggedInUser.IsLoggedIn)
+            {
                 Consts.LoggedInUser = await Anitro.Data_Structures.User.Load();
+            }
+
+            if (!Settings.Loaded)
+            {
+                Consts.AppSettings = await Anitro.Data_Structures.Settings.Load();
+                Debug.WriteLine(Consts.AppSettings.ToString());
+            }
 
             if (!openedThroughLockscreen)
             {
