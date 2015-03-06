@@ -44,7 +44,15 @@ namespace Anitro
 #if WINDOWS_PHONE_APP
         public static bool AnitroAdMediatorSettings(object sender)
         {
-            if (sender == null) return true;
+            Debug.WriteLine("AnitroAdMediatorSettings(): Entering");
+            if (sender == null)
+            {
+                Debug.WriteLine("AnitroAdMediatorSettings(): Control Is Null");
+                return true;
+            }
+            Debug.WriteLine("AnitroAdMediatorSettings(): Control is not Null");
+            
+
             var adControl = (sender as Microsoft.AdMediator.WindowsPhone81.AdMediatorControl);
 
             if (InAppPurchaseHelper.licensesOwned.AnitroUnlocked)
@@ -53,7 +61,7 @@ namespace Anitro
 
                 adControl.IsEnabled = false;
                 adControl.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                //adControl.Disable();
+                adControl.Disable();
                 Debug.WriteLine("Ads Turned Off");
                 return false;
             }

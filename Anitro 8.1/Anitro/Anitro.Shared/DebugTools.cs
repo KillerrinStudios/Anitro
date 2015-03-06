@@ -13,5 +13,10 @@ namespace Anitro
 
         public static string testAccountUsername = "killerrin";
         public static string testAccountPassword = "";
+
+        public static void WriteLine(string s, params object[] args)
+        {
+            Debug.WriteLine(s, args);
+        }
     }
 }

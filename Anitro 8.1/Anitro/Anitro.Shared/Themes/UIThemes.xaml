@@ -1,8 +1,14 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Anitro.Themes">
+    xmlns:local="using:Anitro.Themes"
+    xmlns:Converters="using:Anitro.Converters">
 
+    <Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <Converters:RelativeDateTimeConverter    x:Key="RelativeDateTimeConverter" />
+    <Converters:AdVisibilityConverter        x:Key="AdVisibilityConverter" />
+    
+    
     <!-- Colours -->
     <Color x:Key="SystemTrayBackgroundColor">Transparent</Color>
     <Color x:Key="SystemTrayForegroundColor">#FFF0F0F0"</Color>

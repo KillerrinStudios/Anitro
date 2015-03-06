@@ -65,7 +65,7 @@ namespace Anitro.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, string culture)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
     }
 }

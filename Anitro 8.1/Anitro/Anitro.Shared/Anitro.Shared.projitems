@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)APIs\Hummingbird\Helpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\InAppPurchaseHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\StorageConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\AdVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\RelativeDateTimeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\ActivityFeed.cs" />

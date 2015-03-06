@@ -16,8 +16,8 @@
 
         <TextBlock x:Name="loginErrors" Text="Please Log in" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="50" Width="Auto" />
 
-        <TextBox x:Name="usernameBox" PlaceholderText="Username" VerticalAlignment="Bottom" Margin="0,0,0,10" InputScope="EmailSmtpAddress" KeyDown="LoginEnterEvent"/>
-        <PasswordBox x:Name="passwordBox" PlaceholderText="Password" Password="" VerticalAlignment="Bottom" Margin="0,0,0,10" KeyDown="LoginEnterEvent" IsPasswordRevealButtonEnabled="True" />
+        <TextBox x:Name="usernameBox" PlaceholderText="Username" VerticalAlignment="Bottom" Margin="0,0,0,10" InputScope="EmailSmtpAddress" KeyUp="LoginEnterEvent"/>
+        <PasswordBox x:Name="passwordBox" PlaceholderText="Password" Password="" VerticalAlignment="Bottom" Margin="0,0,0,10" KeyUp="LoginEnterEvent" IsPasswordRevealButtonEnabled="True" />
         
         <StackPanel x:Name="buttonStackPanel" Orientation="Horizontal">
             <Button x:Name="LoginButton" Content="login" HorizontalAlignment="Center" Margin="0,0,10,0" VerticalAlignment="Top" Width="208" Click="LoginButton_Click"/>

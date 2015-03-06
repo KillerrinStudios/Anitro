@@ -24,7 +24,8 @@ namespace Anitro
 {
     public sealed partial class LoginSettingsPane : SettingsFlyout
     {
-        public static event LoggedInEventHandler LoggedInEventHandler;       
+        public static event LoggedInEventHandler LoggedInEventHandler;
+        public static string cachedUsername = "";
 
         public bool postingLogin = false;
 
@@ -36,6 +37,10 @@ namespace Anitro
             {
                 usernameBox.Text = DebugTools.testAccountUsername;
                 passwordBox.Password = DebugTools.testAccountPassword;
+            }
+            else
+            {
+                usernameBox.Text = cachedUsername;
             }
         }
 
@@ -57,6 +62,7 @@ namespace Anitro
         private void GoBack()
         {
             APIv1.FeedbackEventHandler -= APIv1_FeedbackEventHandler;
+            cachedUsername = "";
 
             // Go back to the main settings
             var mainSettings = new OptionsSettingsPane();
@@ -65,6 +71,7 @@ namespace Anitro
 
         private void LoginEnterEvent(object sender, KeyRoutedEventArgs e)
         {
+            cachedUsername = usernameBox.Text;
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
                 Debug.WriteLine("Enter Pressed");
@@ -101,6 +108,7 @@ namespace Anitro
 
                     this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                     {
+                        cachedUsername = "";
                         APIv1.Post.Login(usernameBox.Text, passwordBox.Password);
                     });
 
