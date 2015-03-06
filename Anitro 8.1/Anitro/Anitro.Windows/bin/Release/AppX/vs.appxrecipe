@@ -8,25 +8,25 @@
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>59141KillerrinStudios.Anitro</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\obj\Release\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>923B28AF6D32EB40194B3C9A5D4E81D4DDF6884B4F8811EACB6BFEDECE3210FD</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>59141KillerrinStudios.Anitro_1.2.0.0_neutral__vsha6q420kgm4</RegisteredPackageMoniker>
+    <RegisteredManifestChecksum>B13ED1158CD068893A4A1A322B5E72594D21EE4C01F15622D7E43B3EB3E40849</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>59141KillerrinStudios.Anitro_1.2.2.1_neutral__vsha6q420kgm4</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>59141KillerrinStudios.Anitro_vsha6q420kgm4!App</RegisteredUserModeAppID>
     <RegisteredPackageID>59141KillerrinStudios.Anitro</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=CB9966B0-97F1-4167-993A-C177C5B8B46A</RegisteredPackagePublisher>
-    <RegisteredVersion>1.2.0.0</RegisteredVersion>
+    <RegisteredVersion>1.2.2.1</RegisteredVersion>
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-03-03T03:59:09.332</Modified>
+      <Modified>2015-03-06T20:59:14.766</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.exe">
       <PackagePath>Anitro.Windows.exe</PackagePath>
-      <Modified>2015-03-03T04:28:06.944</Modified>
+      <Modified>2015-03-06T20:59:08.638</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Callisto\1.4.0\References\CommonConfiguration\neutral\Callisto.dll">
       <PackagePath>Callisto.dll</PackagePath>
@@ -169,7 +169,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Themes\UIThemes.xbf">
       <PackagePath>Themes\UIThemes.xbf</PackagePath>
-      <Modified>2015-03-03T03:59:00.832</Modified>
+      <Modified>2015-03-06T20:59:08.210</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\App.xbf">
       <PackagePath>App.xbf</PackagePath>
@@ -193,7 +193,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\LoginSettingsPane.xbf">
       <PackagePath>LoginSettingsPane.xbf</PackagePath>
-      <Modified>2015-03-03T03:59:00.716</Modified>
+      <Modified>2015-03-05T08:19:12.341</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
@@ -237,7 +237,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\Anitro.Windows.xr.xml">
       <PackagePath>Anitro.Windows.xr.xml</PackagePath>
-      <Modified>2015-03-03T04:27:19.337</Modified>
+      <Modified>2015-03-06T20:59:08.163</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\packages\MyToolkit.Extended.2.2.3.0\lib\portable-wpa81+win8\MyToolkit.Extended\MyToolkit.Extended.xr.xml">
       <PackagePath>MyToolkit.Extended\MyToolkit.Extended.xr.xml</PackagePath>
@@ -261,7 +261,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Windows\bin\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-03-03T03:59:02.742</Modified>
+      <Modified>2015-03-06T20:59:09.211</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

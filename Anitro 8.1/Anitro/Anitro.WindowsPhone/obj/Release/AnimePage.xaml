@@ -77,22 +77,17 @@
 									<TextBlock x:Name="animeGenres" Text="Genre, Genre, Genre, Genre" FontSize="14" Width="Auto" Height="Auto" TextWrapping="Wrap" Foreground="{StaticResource ContentBrush}"/>
 								</StackPanel>
 
-								<!--                                                              Width="Auto" Height="379" Margin="0,10,-0.333,0 -->
-								<!--<ScrollViewer x:Name="animeSynopsisScrollViewer" HorizontalAlignment="Stretch" Height="379" Margin="0,10,0,0">-->
-
-								<!--</ScrollViewer>-->
-
-								<!--                                                                                        Width="Auto" Height="429" -->
-								<StackPanel x:Name="animeSynopsisStackpanel"  Orientation="Vertical" Margin="0,15,-0.333,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-									<TextBlock x:Name="animeSynopsis" Text="Synopsis" FontSize="18" Width="Auto" Height="Auto" Margin="0,0,0,0" TextWrapping="Wrap" Foreground="{StaticResource ContentBrush}"/>
-								</StackPanel>
-
 								<WindowsPhone81:AdMediatorControl x:ConnectionId='18' x:Name="adMediatorAnime" Id="AdMediator-Id-257D772B-32CA-4B9A-AFA4-5BD8270B8924" 
-																  Height="100" Width="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+																  MinHeight="100" MinWidth="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
 																                             
 																                                                                       
 																                                                                                             
 																  />
+								
+								<StackPanel x:Name="animeSynopsisStackpanel"  Orientation="Vertical" Margin="0,15,-0.333,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+									<TextBlock x:Name="animeSynopsis" Text="Synopsis" FontSize="18" Width="Auto" Height="Auto" Margin="0,0,0,0" TextWrapping="Wrap" Foreground="{StaticResource ContentBrush}"/>
+								</StackPanel>
+
 							</StackPanel>
 						</ScrollViewer>
 					</Grid>

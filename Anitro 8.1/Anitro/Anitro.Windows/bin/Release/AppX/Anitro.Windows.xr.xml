@@ -267,6 +267,7 @@
       <RootEvent Name="Loaded" />
       <RootEvent Name="KeyDown" />
       <RootEvent Name="LostFocus" />
+      <RootEvent Name="KeyUp" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
       <RootProperty Name="Header" />
@@ -313,7 +314,7 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
       <RootProperty Name="IsPasswordRevealButtonEnabled" />
-      <RootEvent Name="KeyDown" />
+      <RootEvent Name="KeyUp" />
     </RootType>
     <RootType FullName="Anitro.LoginSettingsPane" />
     <RootType FullName="Windows.UI.Xaml.Controls.MediaElement">
@@ -366,6 +367,8 @@
     <RootType FullName="Windows.UI.Xaml.Documents.LineBreak" />
     <RootType FullName="Anitro.UnlockAnitroFlyout" />
     <RootType FullName="Anitro.UserDashboardPage" />
+    <RootType FullName="Anitro.Converters.BooleanToVisibilityConverter" />
+    <RootType FullName="Anitro.Converters.AdVisibilityConverter" />
     <RootType FullName="Windows.UI.Color" />
     <RootType FullName="Windows.UI.Xaml.Media.AlignmentX" />
     <RootType FullName="Windows.UI.Xaml.Media.AlignmentY" />

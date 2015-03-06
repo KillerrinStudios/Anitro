@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="59141KillerrinStudios.Anitro" Publisher="CN=CB9966B0-97F1-4167-993A-C177C5B8B46A" Version="1.2.0.0" ProcessorArchitecture="neutral" />
+  <Identity Name="59141KillerrinStudios.Anitro" Publisher="CN=CB9966B0-97F1-4167-993A-C177C5B8B46A" Version="1.2.2.1" ProcessorArchitecture="neutral" />
   <Properties>
     <DisplayName>Anitro</DisplayName>
     <PublisherDisplayName>Killerrin Studios</PublisherDisplayName>

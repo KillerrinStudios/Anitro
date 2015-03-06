@@ -18,7 +18,7 @@
                    Width="Auto" Height="Auto" Margin="10,10,10,10"
                    HorizontalAlignment="Center" TextWrapping="Wrap"/>
         
-		<Hub x:ConnectionId='2' x:Name="mainHub" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,27,0,0"                                                      >
+		<Hub x:ConnectionId='2' x:Name="mainHub" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,00,0,0"                                                      >
 			<HubSection x:Name="search_HubSection" Tag="0" MinWidth="400" Margin="-20,0,0,0" >
 				<DataTemplate>
 					<Grid>
@@ -27,12 +27,16 @@
 							<ColumnDefinition Width="*"/>
 						</Grid.ColumnDefinitions>
 						<Grid.RowDefinitions>
-							<RowDefinition Height="0.05*" />
+							<!--<RowDefinition Height="Auto" />-->
 							<RowDefinition Height="*" />
 							<RowDefinition Height="0.12*" />
 						</Grid.RowDefinitions>
 
-						<ListBox x:ConnectionId='5' x:Name="searchResult_ListBox" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" ItemTemplate="{StaticResource SearchTemplate}" VerticalAlignment="Stretch" Margin="0,5,0,0" FontSize="26"                                                    />
+                        <ListBox x:ConnectionId='5' x:Name="searchResult_ListBox" Background="Transparent" FontSize="26"
+                                 Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                 ItemTemplate="{StaticResource SearchTemplate}" 
+                                 VerticalAlignment="Stretch" Margin="0,0,0,0" 
+                                                                                    />
 
 						<TextBox x:ConnectionId='6' Visibility="Visible" x:Name="searchBox" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,2,0" Height="60" 
 								 PlaceholderText="type a search... or speak it!" Text=""                                                        />
@@ -68,11 +72,11 @@
 
 
                         <WindowsPhone81:AdMediatorControl x:ConnectionId='3' x:Name="adMediatorSearch" Id="AdMediator-Id-F2380F7F-2999-4283-BE9E-66662DCD5468"
-                                                                  Height="100" Width="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                                                                             
-                                                                                                                                       
-                                                                                                                                                             
-                                                                  />
+                                                          MinHeight="100" MinWidth="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                                                                     
+                                                                                                                               
+                                                                                                                                                     
+                                                          />
                     </Grid>
 				</DataTemplate>
 			</HubSection>

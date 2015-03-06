@@ -48,11 +48,11 @@
 
 
         <WindowsPhone81:AdMediatorControl x:ConnectionId='6' x:Name="adMediatorLogout" Id="AdMediator-Id-B092D740-2B55-40F2-83EC-B279890AB26E"
-                                                                  Height="100" Width="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                                                                             
-                                                                                                                                       
-                                                                                                                                                             
-                                                                  />
+                                          MinHeight="100" MinWidth="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                                                     
+                                                                                                               
+                                                                                                                                     
+                                          />
     </Grid>
 </Page>
 

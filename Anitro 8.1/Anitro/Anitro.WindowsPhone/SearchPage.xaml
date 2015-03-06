@@ -18,7 +18,7 @@
                    Width="Auto" Height="Auto" Margin="10,10,10,10"
                    HorizontalAlignment="Center" TextWrapping="Wrap"/>
         
-		<Hub x:Name="mainHub" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,27,0,0" SectionsInViewChanged="MainHub_SectionsInViewChanged">
+		<Hub x:Name="mainHub" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,00,0,0" SectionsInViewChanged="MainHub_SectionsInViewChanged">
 			<HubSection x:Name="search_HubSection" Tag="0" MinWidth="400" Margin="-20,0,0,0" >
 				<DataTemplate>
 					<Grid>
@@ -27,12 +27,16 @@
 							<ColumnDefinition Width="*"/>
 						</Grid.ColumnDefinitions>
 						<Grid.RowDefinitions>
-							<RowDefinition Height="0.05*" />
+							<!--<RowDefinition Height="Auto" />-->
 							<RowDefinition Height="*" />
 							<RowDefinition Height="0.12*" />
 						</Grid.RowDefinitions>
 
-						<ListBox x:Name="searchResult_ListBox" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" ItemTemplate="{StaticResource SearchTemplate}" VerticalAlignment="Stretch" Margin="0,5,0,0" FontSize="26" Tapped="listBox_Tap" Loaded="ListBoxSearch_Loaded" />
+                        <ListBox x:Name="searchResult_ListBox" Background="Transparent" FontSize="26"
+                                 Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                 ItemTemplate="{StaticResource SearchTemplate}" 
+                                 VerticalAlignment="Stretch" Margin="0,0,0,0" 
+                                 Tapped="listBox_Tap" Loaded="ListBoxSearch_Loaded" />
 
 						<TextBox Visibility="Visible" x:Name="searchBox" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,2,0" Height="60" 
 								 PlaceholderText="type a search... or speak it!" Text="" KeyDown="searchBoxEnterEvent" Loaded="SearchBox_Loaded"/>
@@ -68,11 +72,11 @@
 
 
                         <WindowsPhone81:AdMediatorControl x:Name="adMediatorSearch" Id="AdMediator-Id-F2380F7F-2999-4283-BE9E-66662DCD5468"
-                                                                  Height="100" Width="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                                                  Loaded="AdMediator_Loaded" 
-                                                                  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
-                                                                  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError"
-                                                                  />
+                                                          MinHeight="100" MinWidth="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                                          Loaded="AdMediator_Loaded" 
+                                                          AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
+                                                          AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError"
+                                                          />
                     </Grid>
 				</DataTemplate>
 			</HubSection>

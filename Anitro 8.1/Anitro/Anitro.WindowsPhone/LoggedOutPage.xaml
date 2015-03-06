@@ -48,10 +48,10 @@
 
 
         <WindowsPhone81:AdMediatorControl x:Name="adMediatorLogout" Id="AdMediator-Id-B092D740-2B55-40F2-83EC-B279890AB26E"
-                                                                  Height="100" Width="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                                                  Loaded="AdMediator_Loaded" 
-                                                                  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
-                                                                  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError"
-                                                                  />
+                                          MinHeight="100" MinWidth="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                          Loaded="AdMediator_Loaded" 
+                                          AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
+                                          AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError"
+                                          />
     </Grid>
 </Page>

@@ -86,11 +86,11 @@
 
 
                         <WindowsPhone81:AdMediatorControl x:ConnectionId='31' x:Name="adMediatorDashboard" Id="AdMediator-Id-BB2050C5-3944-497C-AAA5-577931380C21"
-                                                                  Height="100" Width="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                                                                             
-                                                                                                                                       
-                                                                                                                                                             
-                                                                  />
+                                                          MinHeight="100" MinWidth="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                                                                     
+                                                                                                                               
+                                                                                                                                                     
+                                                          />
                     </Grid>
                 </DataTemplate>
             </HubSection>

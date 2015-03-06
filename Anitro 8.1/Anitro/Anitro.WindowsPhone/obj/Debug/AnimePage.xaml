@@ -1,192 +1,187 @@
 ﻿<Page
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Anitro"
-    xmlns:Converters="using:Anitro.Converters"
-    xmlns:callisto="using:Callisto"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:WindowsPhone81="using:Microsoft.AdMediator.WindowsPhone81"
-    x:Class="Anitro.AnimePage"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Anitro"
+	xmlns:Converters="using:Anitro.Converters"
+	xmlns:callisto="using:Callisto"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:WindowsPhone81="using:Microsoft.AdMediator.WindowsPhone81"
+	x:Class="Anitro.AnimePage"
+	mc:Ignorable="d"
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.BottomAppBar>
-        <CommandBar>
-            <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='1' x:Name="setLockscreenButton"  x:Uid="SetLockscreen" Icon="World" Label="set as lockscreen background"                                 />
-                <AppBarButton x:ConnectionId='2' x:Name="openIEButton"  x:Uid="OpenIE" Icon="World" Label="open in browser"                        />
-            </CommandBar.SecondaryCommands>
-            <AppBarButton x:ConnectionId='3' x:Name="pinButton" x:Uid="Pin" Icon="Pin" Label="pin"                     Visibility="Visible"/>
-            <AppBarButton x:ConnectionId='4' x:Name="unpinButton" x:Uid="UnPin" Icon="UnPin" Label="unpin"                       Visibility="Collapsed"/>
+	<Page.BottomAppBar>
+		<CommandBar>
+			<CommandBar.SecondaryCommands>
+				<AppBarButton x:ConnectionId='1' x:Name="setLockscreenButton"  x:Uid="SetLockscreen" Icon="World" Label="set as lockscreen background"                                 />
+				<AppBarButton x:ConnectionId='2' x:Name="openIEButton"  x:Uid="OpenIE" Icon="World" Label="open in browser"                        />
+			</CommandBar.SecondaryCommands>
+			<AppBarButton x:ConnectionId='3' x:Name="pinButton" x:Uid="Pin" Icon="Pin" Label="pin"                     Visibility="Visible"/>
+			<AppBarButton x:ConnectionId='4' x:Name="unpinButton" x:Uid="UnPin" Icon="UnPin" Label="unpin"                       Visibility="Collapsed"/>
 
-            <AppBarButton x:ConnectionId='5' x:Name="favouriteButton" x:Uid="Favourite" Icon="Favorite" Label="favourite"                           Visibility="Collapsed"/>
-            <AppBarButton x:ConnectionId='6' x:Name="unfavouriteButton" x:Uid="UnFavourite" Icon="UnFavorite" Label="unfavourite"                             Visibility="Collapsed"/>
+			<AppBarButton x:ConnectionId='5' x:Name="favouriteButton" x:Uid="Favourite" Icon="Favorite" Label="favourite"                           Visibility="Collapsed"/>
+			<AppBarButton x:ConnectionId='6' x:Name="unfavouriteButton" x:Uid="UnFavourite" Icon="UnFavorite" Label="unfavourite"                             Visibility="Collapsed"/>
 
-            <AppBarButton x:ConnectionId='7' x:Name="saveButton" x:Uid="Save" Icon="Save" Label="save"                      Visibility="Collapsed"/>
-        </CommandBar>
-    </Page.BottomAppBar>
+			<AppBarButton x:ConnectionId='7' x:Name="saveButton" x:Uid="Save" Icon="Save" Label="save"                      Visibility="Collapsed"/>
+		</CommandBar>
+	</Page.BottomAppBar>
 
-    <Grid>
-        <ProgressRing x:Name="ApplicationProgressBar" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,50,0" Height="68" Width="68" IsActive="False"/>
+	<Grid>
+		<ProgressRing x:Name="ApplicationProgressBar" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,50,0" Height="68" Width="68" IsActive="False"/>
 
-        <Image x:Name="BackgroundImage" Opacity="0.65" VerticalAlignment="Top" Height="Auto" Width="Auto">
-            <Image.Source>
-                <BitmapImage CreateOptions="None"/>
-            </Image.Source>
-        </Image>
+		<Image x:Name="BackgroundImage" Opacity="0.65" VerticalAlignment="Top" Height="Auto" Width="Auto">
+			<Image.Source>
+				<BitmapImage CreateOptions="None"/>
+			</Image.Source>
+		</Image>
 
-        <Rectangle Fill="#A5000000" Width="Auto" Height="Auto"/>
+		<Rectangle Fill="#A5000000" Width="Auto" Height="Auto"/>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Margin="0,0,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Margin="0,0,0,0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*" />
+			</Grid.ColumnDefinitions>
 
-            <!--                                                 Width="400" Height="Auto"-->
-            <Pivot x:Name="pagePivot" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,-20,0,0">
+			<!--                                                 Width="400" Height="Auto"-->
+			<Pivot x:Name="pagePivot" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,-20,0,0">
 
-                <PivotItem x:Name="animePivotItem" Height="Auto" CacheMode="{x:Null}" IsHitTestVisible="False">
-                    <PivotItem.Header>
-                        <TextBlock Text="Toaru Kagak" Margin="0,0,0,0" FontSize="72" Foreground="Transparent" />
-                    </PivotItem.Header>
+				<PivotItem x:Name="animePivotItem" Height="Auto" CacheMode="{x:Null}" IsHitTestVisible="False">
+					<PivotItem.Header>
+						<TextBlock Text="Toaru Kagak" Margin="0,0,0,0" FontSize="72" Foreground="Transparent" />
+					</PivotItem.Header>
 
-                    <PivotItem.RenderTransform>
-                        <TranslateTransform/>
-                    </PivotItem.RenderTransform>
+					<PivotItem.RenderTransform>
+						<TranslateTransform/>
+					</PivotItem.RenderTransform>
 
-                    <Grid>
-                        <StackPanel Orientation="Vertical" Margin="0,-115,0,0">
-                            <TextBlock x:Name="animeTitle" Text="Anime" Margin="0,0,0,0" FontSize="72" Foreground="{StaticResource TitleBrush}" />
-                            <TextBlock x:Name="animeSecondaryHeader" Text="" Margin="20,-25,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}"/>
-                        </StackPanel>
+					<Grid>
+						<StackPanel Orientation="Vertical" Margin="0,-115,0,0">
+							<TextBlock x:Name="animeTitle" Text="Anime" Margin="0,0,0,0" FontSize="72" Foreground="{StaticResource TitleBrush}" />
+							<TextBlock x:Name="animeSecondaryHeader" Text="" Margin="20,-25,0,0" FontSize="24" Foreground="{StaticResource ContentBrush}"/>
+						</StackPanel>
 
-                        <ScrollViewer x:Name="animeDescriptionScrollViewer" Margin="0,0,0,0" VerticalAlignment="Stretch">
-                            <StackPanel Orientation="Vertical" Grid.Row="2">
-                                <StackPanel x:Name="animeStatsBar"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0">
-                                    <TextBlock x:Name="animeEpisodeCount" Text="0" FontSize="15" Width="Auto" Height="Auto" Foreground="{StaticResource ContentBrush}"/>
-                                    <TextBlock x:Name="animeStatus" Text="Airing" FontSize="15" Width="Auto" Height="Auto" Margin="15,0,0,0" Foreground="{StaticResource ContentBrush}"/>
-                                    <TextBlock x:Name="animeShowType" Text="TV" FontSize="15" Width="Auto" Height="Auto" Margin="15,0,0,0" Foreground="{StaticResource ContentBrush}"/>
-                                </StackPanel>
+						<ScrollViewer x:Name="animeDescriptionScrollViewer" Margin="0,0,0,0" VerticalAlignment="Stretch">
+							<StackPanel Orientation="Vertical" Grid.Row="2">
+								<StackPanel x:Name="animeStatsBar"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0">
+									<TextBlock x:Name="animeEpisodeCount" Text="0" FontSize="15" Width="Auto" Height="Auto" Foreground="{StaticResource ContentBrush}"/>
+									<TextBlock x:Name="animeStatus" Text="Airing" FontSize="15" Width="Auto" Height="Auto" Margin="15,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+									<TextBlock x:Name="animeShowType" Text="TV" FontSize="15" Width="Auto" Height="Auto" Margin="15,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+								</StackPanel>
 
-                                <StackPanel x:Name="animeGenresBar" Orientation="Vertical" Margin="0,0,0,0" HorizontalAlignment="Center">
-                                    <TextBlock x:Name="animeGenres" Text="Genre, Genre, Genre, Genre" FontSize="14" Width="Auto" Height="Auto" TextWrapping="Wrap" Foreground="{StaticResource ContentBrush}"/>
-                                </StackPanel>
+								<StackPanel x:Name="animeGenresBar" Orientation="Vertical" Margin="0,0,0,0" HorizontalAlignment="Center">
+									<TextBlock x:Name="animeGenres" Text="Genre, Genre, Genre, Genre" FontSize="14" Width="Auto" Height="Auto" TextWrapping="Wrap" Foreground="{StaticResource ContentBrush}"/>
+								</StackPanel>
 
-                                <!--                                                              Width="Auto" Height="379" Margin="0,10,-0.333,0 -->
-                                <!--<ScrollViewer x:Name="animeSynopsisScrollViewer" HorizontalAlignment="Stretch" Height="379" Margin="0,10,0,0">-->
+								<WindowsPhone81:AdMediatorControl x:ConnectionId='18' x:Name="adMediatorAnime" Id="AdMediator-Id-257D772B-32CA-4B9A-AFA4-5BD8270B8924" 
+																  MinHeight="100" MinWidth="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+																                             
+																                                                                       
+																                                                                                             
+																  />
+								
+								<StackPanel x:Name="animeSynopsisStackpanel"  Orientation="Vertical" Margin="0,15,-0.333,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+									<TextBlock x:Name="animeSynopsis" Text="Synopsis" FontSize="18" Width="Auto" Height="Auto" Margin="0,0,0,0" TextWrapping="Wrap" Foreground="{StaticResource ContentBrush}"/>
+								</StackPanel>
 
-                                <!--</ScrollViewer>-->
+							</StackPanel>
+						</ScrollViewer>
+					</Grid>
+				</PivotItem>
+				<PivotItem x:Name="libraryPivotItem" CacheMode="{x:Null}" Height="Auto" IsHitTestVisible="False" >
+					<PivotItem.Header>
+						<TextBlock Text="library" FontSize="72" Foreground="{StaticResource TitleBrush}" />
+					</PivotItem.Header>
 
-                                <!--                                                                                        Width="Auto" Height="429" -->
-                                <StackPanel x:Name="animeSynopsisStackpanel"  Orientation="Vertical" Margin="0,15,-0.333,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                    <TextBlock x:Name="animeSynopsis" Text="Synopsis" FontSize="18" Width="Auto" Height="Auto" Margin="0,0,0,0" TextWrapping="Wrap" Foreground="{StaticResource ContentBrush}"/>
-                                </StackPanel>
+					<PivotItem.RenderTransform>
+						<TranslateTransform/>
+					</PivotItem.RenderTransform>
+					<Grid>
+						<!--                                                                                Height="458"-->
+						<ScrollViewer x:Name="libraryScrollViewer" Margin="0,0,0,0" VerticalAlignment="Stretch">
+							<StackPanel Orientation="Vertical" Grid.Row="2" Margin="0,0,0,0">
+								<StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,0">
+									<TextBlock x:Name="libraryLastWatched" Text="last watched" FontSize="12" Width="Auto" Height="Auto" Foreground="{StaticResource ContentBrush}"/>
 
-                                <WindowsPhone81:AdMediatorControl x:ConnectionId='18' x:Name="adMediatorAnime" Id="AdMediator-Id-257D772B-32CA-4B9A-AFA4-5BD8270B8924" 
-                                                                  Height="100" Width="320" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                                                                             
-                                                                                                                                       
-                                                                                                                                                             
-                                                                  />
-                            </StackPanel>
-                        </ScrollViewer>
-                    </Grid>
-                </PivotItem>
-                <PivotItem x:Name="libraryPivotItem" CacheMode="{x:Null}" Height="Auto" IsHitTestVisible="False" >
-                    <PivotItem.Header>
-                        <TextBlock Text="library" FontSize="72" Foreground="{StaticResource TitleBrush}" />
-                    </PivotItem.Header>
+									<StackPanel Orientation="Horizontal">
+										<!--
+										<toolkit:Rating x:Name="libraryRating" Value="3" Orientation="Horizontal" Width="250" Height="50" RatingItemCount="5" ShowSelectionHelper="False" AllowHalfItemIncrement="True" FilledItemStyle="{StaticResource AnitroColouredStars}" Background="Transparent" />
+										-->
 
-                    <PivotItem.RenderTransform>
-                        <TranslateTransform/>
-                    </PivotItem.RenderTransform>
-                    <Grid>
-                        <!--                                                                                Height="458"-->
-                        <ScrollViewer x:Name="libraryScrollViewer" Margin="0,0,0,0" VerticalAlignment="Stretch">
-                            <StackPanel Orientation="Vertical" Grid.Row="2" Margin="0,0,0,0">
-                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,0">
-                                    <TextBlock x:Name="libraryLastWatched" Text="last watched" FontSize="12" Width="Auto" Height="Auto" Foreground="{StaticResource ContentBrush}"/>
+										<StackPanel Orientation="Vertical" Width="110" VerticalAlignment="Center" Margin="0,0,5,0">
+											<TextBlock x:Name="ratingText" Text="rating" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+											<TextBlock x:Name="libraryRating" Text="0/5" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+										</StackPanel>
 
-                                    <StackPanel Orientation="Horizontal">
-                                        <!--
-                                        <toolkit:Rating x:Name="libraryRating" Value="3" Orientation="Horizontal" Width="250" Height="50" RatingItemCount="5" ShowSelectionHelper="False" AllowHalfItemIncrement="True" FilledItemStyle="{StaticResource AnitroColouredStars}" Background="Transparent" />
-                                        -->
+										<Button x:ConnectionId='16' x:Name="ratingDecrementButton" Content="-" Width="30" Height="50" Margin="0,0,0,0" VerticalAlignment="Center"                               BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+										<Button x:ConnectionId='17' x:Name="ratingIncrimentButton" Content="+" Width="30" Height="50" Margin="5,0,0,0" VerticalAlignment="Center"                               BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+									</StackPanel>
+								</StackPanel>
 
-                                        <StackPanel Orientation="Vertical" Width="110" VerticalAlignment="Center" Margin="0,0,5,0">
-                                            <TextBlock x:Name="ratingText" Text="rating" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
-                                            <TextBlock x:Name="libraryRating" Text="0/5" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
-                                        </StackPanel>
-
-                                        <Button x:ConnectionId='16' x:Name="ratingDecrementButton" Content="-" Width="30" Height="50" Margin="0,0,0,0" VerticalAlignment="Center"                               BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
-                                        <Button x:ConnectionId='17' x:Name="ratingIncrimentButton" Content="+" Width="30" Height="50" Margin="5,0,0,0" VerticalAlignment="Center"                               BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
-                                    </StackPanel>
-                                </StackPanel>
-
-                                <StackPanel Orientation="Vertical" Margin="0,20,0,0" Width="Auto">
-                                    <ComboBox x:ConnectionId='15' x:Name="LibraryPicker" Header="library" PlaceholderText="None" HorizontalAlignment="Stretch"
+								<StackPanel Orientation="Vertical" Margin="0,20,0,0" Width="Auto">
+									<ComboBox x:ConnectionId='15' x:Name="LibraryPicker" Header="library" PlaceholderText="None" HorizontalAlignment="Stretch"
 										BorderBrush="{StaticResource ContentBrush}" Foreground="{StaticResource ContentBrush}"
 										SelectedIndex="0"                                                  >
-                                        <x:String>None</x:String>
-                                        <x:String>Currently Watching</x:String>
-                                        <x:String>Plan To Watch</x:String>
-                                        <x:String>Completed</x:String>
-                                        <x:String>On Hold</x:String>
-                                        <x:String>Dropped</x:String>
-                                    </ComboBox>
-                                </StackPanel>
+										<x:String>None</x:String>
+										<x:String>Currently Watching</x:String>
+										<x:String>Plan To Watch</x:String>
+										<x:String>Completed</x:String>
+										<x:String>On Hold</x:String>
+										<x:String>Dropped</x:String>
+									</ComboBox>
+								</StackPanel>
 
-                                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                                    <StackPanel Orientation="Vertical" Width="110" VerticalAlignment="Center" Margin="0,0,5,0">
-                                        <TextBlock x:Name="libraryEpisodesWatchedText" Text="watched" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
-                                        <TextBlock x:Name="libraryEpisodesWatched" Text="0/0" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
-                                    </StackPanel>
+								<StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+									<StackPanel Orientation="Vertical" Width="110" VerticalAlignment="Center" Margin="0,0,5,0">
+										<TextBlock x:Name="libraryEpisodesWatchedText" Text="watched" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+										<TextBlock x:Name="libraryEpisodesWatched" Text="0/0" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+									</StackPanel>
 
-                                    <Button x:ConnectionId='13' x:Name="episodeDecrementButton" Content="-" Width="30" Height="50" Margin="0,0,0,0" VerticalAlignment="Center"                                    BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
-                                    <Button x:ConnectionId='14' x:Name="episodeIncrimentButton" Content="+" Width="30" Height="50" Margin="5,0,0,0" VerticalAlignment="Center"                                    BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
-                                </StackPanel>
+									<Button x:ConnectionId='13' x:Name="episodeDecrementButton" Content="-" Width="30" Height="50" Margin="0,0,0,0" VerticalAlignment="Center"                                    BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+									<Button x:ConnectionId='14' x:Name="episodeIncrimentButton" Content="+" Width="30" Height="50" Margin="5,0,0,0" VerticalAlignment="Center"                                    BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+								</StackPanel>
 
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                                    <StackPanel Orientation="Vertical" Width="110" VerticalAlignment="Center" Margin="0,0,5,0">
-                                        <TextBlock x:Name="libraryRewatchedTimesText" Text="rewatched" FontSize="16" HorizontalAlignment="Center" Margin="0,00,0,0" Foreground="{StaticResource ContentBrush}"/>
-                                        <TextBlock x:Name="libraryRewatchedTimes" Text="0"  FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
-                                    </StackPanel>
+								<StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+									<StackPanel Orientation="Vertical" Width="110" VerticalAlignment="Center" Margin="0,0,5,0">
+										<TextBlock x:Name="libraryRewatchedTimesText" Text="rewatched" FontSize="16" HorizontalAlignment="Center" Margin="0,00,0,0" Foreground="{StaticResource ContentBrush}"/>
+										<TextBlock x:Name="libraryRewatchedTimes" Text="0"  FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{StaticResource ContentBrush}"/>
+									</StackPanel>
 
-                                    <Button x:ConnectionId='11' x:Name="rewatchingDecrementButton" Content="-" Width="30" Height="50" Margin="0,0,0,0" VerticalAlignment="Center"                                    BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
-                                    <Button x:ConnectionId='12' x:Name="rewatchingIncrimentButton" Content="+" Width="30" Height="50" Margin="5,0,0,0" VerticalAlignment="Center"                                    BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
-                                </StackPanel>
+									<Button x:ConnectionId='11' x:Name="rewatchingDecrementButton" Content="-" Width="30" Height="50" Margin="0,0,0,0" VerticalAlignment="Center"                                    BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+									<Button x:ConnectionId='12' x:Name="rewatchingIncrimentButton" Content="+" Width="30" Height="50" Margin="5,0,0,0" VerticalAlignment="Center"                                    BorderBrush="{StaticResource ContentBrush}"  Foreground="{StaticResource ContentBrush}" />
+								</StackPanel>
 
-                                <StackPanel Orientation="Vertical" Margin="0,20,0,0">
-                                    <ToggleSwitch x:ConnectionId='8' x:Name="libraryPrivate" Header="private"                                  Foreground="{ThemeResource PhoneAccentBrush}">
-                                        <ToggleSwitch.HeaderTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding}" Foreground="{StaticResource ContentBrush}" />
-                                            </DataTemplate>
-                                        </ToggleSwitch.HeaderTemplate>
-                                    </ToggleSwitch>
+								<StackPanel Orientation="Vertical" Margin="0,20,0,0">
+									<ToggleSwitch x:ConnectionId='8' x:Name="libraryPrivate" Header="private"                                  Foreground="{ThemeResource PhoneAccentBrush}">
+										<ToggleSwitch.HeaderTemplate>
+											<DataTemplate>
+												<TextBlock Text="{Binding}" Foreground="{StaticResource ContentBrush}" />
+											</DataTemplate>
+										</ToggleSwitch.HeaderTemplate>
+									</ToggleSwitch>
 
-                                    <ToggleSwitch x:ConnectionId='9' x:Name="libraryRewatching" Header="rewatching"                                     Foreground="{ThemeResource PhoneAccentBrush}">
-                                        <ToggleSwitch.HeaderTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding}" Foreground="{StaticResource ContentBrush}" />
-                                            </DataTemplate>
-                                        </ToggleSwitch.HeaderTemplate>
-                                    </ToggleSwitch>
+									<ToggleSwitch x:ConnectionId='9' x:Name="libraryRewatching" Header="rewatching"                                     Foreground="{ThemeResource PhoneAccentBrush}">
+										<ToggleSwitch.HeaderTemplate>
+											<DataTemplate>
+												<TextBlock Text="{Binding}" Foreground="{StaticResource ContentBrush}" />
+											</DataTemplate>
+										</ToggleSwitch.HeaderTemplate>
+									</ToggleSwitch>
 
 
-                                    <TextBox x:ConnectionId='10' x:Name="notesTextBox" PlaceholderText="notes" Text="" Width="Auto" Height="200" TextWrapping="Wrap"                                                      Background="White" Foreground="{StaticResource ContentBrush}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </Grid>
-                </PivotItem>
+									<TextBox x:ConnectionId='10' x:Name="notesTextBox" PlaceholderText="notes" Text="" Width="Auto" Height="200" TextWrapping="Wrap"                                                      Background="White" Foreground="{StaticResource ContentBrush}"/>
+								</StackPanel>
+							</StackPanel>
+						</ScrollViewer>
+					</Grid>
+				</PivotItem>
 
-            </Pivot>
-        </Grid>
-    </Grid>
+			</Pivot>
+		</Grid>
+	</Grid>
 </Page>
 

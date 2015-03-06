@@ -148,7 +148,7 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[24];
+            _typeNameTable = new string[26];
             _typeNameTable[0] = "Anitro.AboutSettingsPane";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.SettingsFlyout";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.ContentControl";
@@ -170,11 +170,13 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
             _typeNameTable[18] = "Object";
             _typeNameTable[19] = "Anitro.UnlockAnitroFlyout";
             _typeNameTable[20] = "Anitro.UserDashboardPage";
-            _typeNameTable[21] = "Windows.UI.Color";
-            _typeNameTable[22] = "System.ValueType";
-            _typeNameTable[23] = "Byte";
+            _typeNameTable[21] = "Anitro.Converters.BooleanToVisibilityConverter";
+            _typeNameTable[22] = "Anitro.Converters.AdVisibilityConverter";
+            _typeNameTable[23] = "Windows.UI.Color";
+            _typeNameTable[24] = "System.ValueType";
+            _typeNameTable[25] = "Byte";
 
-            _typeTable = new global::System.Type[24];
+            _typeTable = new global::System.Type[26];
             _typeTable[0] = typeof(global::Anitro.AboutSettingsPane);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.SettingsFlyout);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
@@ -196,9 +198,11 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
             _typeTable[18] = typeof(global::System.Object);
             _typeTable[19] = typeof(global::Anitro.UnlockAnitroFlyout);
             _typeTable[20] = typeof(global::Anitro.UserDashboardPage);
-            _typeTable[21] = typeof(global::Windows.UI.Color);
-            _typeTable[22] = typeof(global::System.ValueType);
-            _typeTable[23] = typeof(global::System.Byte);
+            _typeTable[21] = typeof(global::Anitro.Converters.BooleanToVisibilityConverter);
+            _typeTable[22] = typeof(global::Anitro.Converters.AdVisibilityConverter);
+            _typeTable[23] = typeof(global::Windows.UI.Color);
+            _typeTable[24] = typeof(global::System.ValueType);
+            _typeTable[25] = typeof(global::System.Byte);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -245,6 +249,8 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
         private object Activate_17_RelativeDateTimeConverter() { return new global::Anitro.Converters.RelativeDateTimeConverter(); }
         private object Activate_19_UnlockAnitroFlyout() { return new global::Anitro.UnlockAnitroFlyout(); }
         private object Activate_20_UserDashboardPage() { return new global::Anitro.UserDashboardPage(); }
+        private object Activate_21_BooleanToVisibilityConverter() { return new global::Anitro.Converters.BooleanToVisibilityConverter(); }
+        private object Activate_22_AdVisibilityConverter() { return new global::Anitro.Converters.AdVisibilityConverter(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -382,7 +388,21 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 21:   //  Windows.UI.Color
+            case 21:   //  Anitro.Converters.BooleanToVisibilityConverter
+                userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_21_BooleanToVisibilityConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 22:   //  Anitro.Converters.AdVisibilityConverter
+                userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_22_AdVisibilityConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 23:   //  Windows.UI.Color
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.AddMemberName("A");
                 userType.AddMemberName("B");
@@ -391,12 +411,12 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 22:   //  System.ValueType
+            case 24:   //  System.ValueType
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 23:   //  Byte
+            case 25:   //  Byte
                 userType = new global::Anitro.Anitro_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
@@ -962,5 +982,7 @@ namespace Anitro.Anitro_Windows_XamlTypeInfo
         }
     }
 }
+
+
 
 

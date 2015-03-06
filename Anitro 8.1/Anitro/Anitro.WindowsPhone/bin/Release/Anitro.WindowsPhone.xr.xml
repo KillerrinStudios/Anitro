@@ -237,8 +237,8 @@
     <RootType FullName="System.String" />
     <RootType FullName="Microsoft.AdMediator.WindowsPhone81.AdMediatorControl">
       <RootProperty Name="Id" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
+      <RootProperty Name="MinHeight" />
+      <RootProperty Name="MinWidth" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootEvent Name="Loaded" />
@@ -350,6 +350,8 @@
       <RootProperty Name="UseLayoutRounding" />
     </RootType>
     <RootType FullName="Anitro.UserDashboardPage" />
+    <RootType FullName="Anitro.Converters.BooleanToVisibilityConverter" />
+    <RootType FullName="Anitro.Converters.AdVisibilityConverter" />
     <RootType FullName="Windows.UI.Color" />
     <RootType FullName="Windows.UI.Xaml.Media.AlignmentX" />
     <RootType FullName="Windows.UI.Xaml.Media.AlignmentY" />
