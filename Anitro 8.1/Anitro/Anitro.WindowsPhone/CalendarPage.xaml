@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="LibraryPage_Loaded">
 
     <Grid>
         <ProgressRing x:Name="ApplicationProgressBar" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,0,0" Height="68" Width="68" IsActive="False"/>
@@ -16,43 +17,50 @@
                 <ListBox x:Name="listbox_sunday" Background="Transparent" FontSize="26"
 					     Tapped="CalendarEntryListBox_Tapped"
 					     ItemTemplate="{StaticResource CalendarListBox_ItemsTemplate}"
-					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" />
+					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" 
+                         ItemsSource="{Binding calendarDaySunday}" />
             </PivotItem>
             <PivotItem x:Name="mondayPivotItem" Header="Monday">
                 <ListBox x:Name="listbox_monday" Background="Transparent" FontSize="26"
 					     Tapped="CalendarEntryListBox_Tapped"
 					     ItemTemplate="{StaticResource CalendarListBox_ItemsTemplate}"
-					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" />
+					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" 
+                         ItemsSource="{Binding calendarDayMonday}" />
             </PivotItem>
             <PivotItem x:Name="tuesdayPivotItem" Header="Tuesday">
                 <ListBox x:Name="listbox_tuesday" Background="Transparent" FontSize="26"
 					     Tapped="CalendarEntryListBox_Tapped"
 					     ItemTemplate="{StaticResource CalendarListBox_ItemsTemplate}"
-					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" />
+					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" 
+                         ItemsSource="{Binding calendarDayTuesday}" />
             </PivotItem>
             <PivotItem x:Name="wednesdayPivotItem" Header="Wednesday">
                 <ListBox x:Name="listbox_wednesday" Background="Transparent" FontSize="26"
 					     Tapped="CalendarEntryListBox_Tapped"
 					     ItemTemplate="{StaticResource CalendarListBox_ItemsTemplate}"
-					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" />
+					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" 
+                         ItemsSource="{Binding calendarDayWednesday}" />
             </PivotItem>
             <PivotItem x:Name="thursdayPivotItem" Header="Thursday">
                 <ListBox x:Name="listbox_thursday" Background="Transparent" FontSize="26"
 					     Tapped="CalendarEntryListBox_Tapped"
 					     ItemTemplate="{StaticResource CalendarListBox_ItemsTemplate}"
-					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" />
+					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" 
+                         ItemsSource="{Binding calendarDayThursday}" />
             </PivotItem>
             <PivotItem x:Name="fridayPivotItem" Header="Friday">
                 <ListBox x:Name="listbox_friday" Background="Transparent" FontSize="26"
 					     Tapped="CalendarEntryListBox_Tapped"
 					     ItemTemplate="{StaticResource CalendarListBox_ItemsTemplate}"
-					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" />
+					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" 
+                         ItemsSource="{Binding calendarDayFriday}" />
             </PivotItem>
             <PivotItem x:Name="saturdayPivotItem" Header="Saturday">
                 <ListBox x:Name="listbox_saturday" Background="Transparent" FontSize="26"
 					     Tapped="CalendarEntryListBox_Tapped"
 					     ItemTemplate="{StaticResource CalendarListBox_ItemsTemplate}"
-					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" />
+					     ItemContainerStyle="{StaticResource CalendarListBox_ItemContainerStyle}" 
+                         ItemsSource="{Binding calendarDaySaturday}" />
             </PivotItem>
         </Pivot>
     </Grid>

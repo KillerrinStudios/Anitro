@@ -32,6 +32,8 @@ namespace Anitro
         // Used to determine when we are loging out so we can freeze and potential page navigation
         bool loggingOut = false;
 
+        string pageParameter;
+
         public SettingsPage()
         {
             this.InitializeComponent();
@@ -45,6 +47,12 @@ namespace Anitro
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            pageParameter = e.Parameter as string;
+            switch (pageParameter)
+            {
+                case "Unlock": settingsPivot.SelectedIndex = 1; break;
+            }
 
             // Set Text
             if (Consts.LoggedInUser.IsLoggedIn) {

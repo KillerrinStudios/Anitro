@@ -71,16 +71,14 @@ namespace Anitro
             Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 
             // Bind the Correct Values to the Pivot Headers
-            List<DateTime> daysInOrderFromNow;
-
             // Get the days in order
+            List<DateTime> daysInOrderFromNow;
             daysInOrderFromNow = new List<DateTime>();
             for (int i = 0; i < 7; i++)
             {
                 DateTime day = DateTime.Now.AddDays(i);
                 daysInOrderFromNow.Add(day);
             }
-
             pageParameter.Today = DateTime.Now;
             DayOfWeek todayDayOfWeek = pageParameter.Today.DayOfWeek;
 

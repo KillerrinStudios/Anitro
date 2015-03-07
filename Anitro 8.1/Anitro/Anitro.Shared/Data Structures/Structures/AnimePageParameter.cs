@@ -20,7 +20,8 @@ namespace Anitro.Data_Structures.Structures
             Search,
             Recent,
             LibraryPage,
-            Favourites
+            Favourites,
+            Calendar
         }
 
         public string slug;
