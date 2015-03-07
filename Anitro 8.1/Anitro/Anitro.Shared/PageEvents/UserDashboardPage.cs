@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media.Imaging;
 #if WINDOWS_PHONE_APP
 using Microsoft.Advertising.Mobile.UI;
 using Microsoft.Advertising.Mobile.Common;
+using Anitro.ViewModels;
 #else
 using Microsoft.Advertising.WinRT.UI;
 //using Microsoft.Advertising.WinRT.Common;
@@ -213,7 +214,6 @@ namespace Anitro
         private void AnimeLibrary_Clicked(object sender, RoutedEventArgs e)
         {
             if (!libraryLoaded || Consts.forceLibrarySave) return;
-            //!activityFeedLoaded || 
 
             // Remove the Event Handler for a safe transition
 #if WINDOWS_PHONE_APP
@@ -225,6 +225,32 @@ namespace Anitro
             LibraryPageParameter sendParam = new LibraryPageParameter(pageParameter.user, LibraryType.Anime);
             Frame.Navigate(typeof(LibraryPage), sendParam);
         }
+
+        private async void Calendar_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (!libraryLoaded || Consts.forceLibrarySave) return;
+
+            if (!InAppPurchaseHelper.licensesOwned.AnitroUnlocked)
+            {
+                Debug.WriteLine("User does not own Anitro");
+                PremiumFeaturesMessageBoxResult result = await Consts.PremiumFeatureMessageBox(this.Dispatcher, Frame);
+
+                Debug.WriteLine("User did not purchase the Anitro Unlock, so exit early");
+                if (result == PremiumFeaturesMessageBoxResult.NavigateToUnlock) { Frame.Navigate(typeof(SettingsPage), "Unlock");}
+                if (result != PremiumFeaturesMessageBoxResult.Purchased) { return; }
+            }
+
+
+#if WINDOWS_PHONE_APP
+            Windows.Phone.UI.Input.HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
+#endif
+            APIv1.FeedbackEventHandler -= APIv1_FeedbackEventHandler;
+            Consts.UpdateLoggedInUser(pageParameter.user);
+
+            CalendarPageViewModel sendParam = new CalendarPageViewModel(pageParameter.user);
+            Frame.Navigate(typeof(CalendarPage), sendParam);
+        }
+
         private void WaifuShow_Clicked(object sender, RoutedEventArgs e)
         {
             if (!libraryLoaded || !userInfoLoaded || refreshingUserInfo || Consts.forceLibrarySave) return;

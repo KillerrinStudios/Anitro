@@ -13,6 +13,9 @@ namespace Anitro.Data_Structures
         Login,
         UserInfo,
 
+        // Other
+        CalendarInfo,
+
         // Anime
         GetAnime,
         GetFavourites,

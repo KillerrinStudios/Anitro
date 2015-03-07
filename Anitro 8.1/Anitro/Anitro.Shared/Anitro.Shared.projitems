@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)APIs\Events\LibraryUpdatedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\Events\LoggedInEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\Hummingbird\APIv1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APIs\Hummingbird\APIUnofficial.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\Hummingbird\APIv2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\Hummingbird\Helpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APIs\InAppPurchaseHelper.cs" />
@@ -33,6 +34,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\ActivityFeedObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Anime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\APIConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\CalendarEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\Unofficial APIs\CalendarDataset.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\Anime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\Genre.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\V1\LibraryList.cs" />
@@ -62,6 +65,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\AnitroLaunchType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\LibraryType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\PageType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\PremiumFeaturesMessageBoxResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\PrivacySettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Enumerators\SearchFilter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data Structures\Interfaces\IOnlineServiceConnector.cs" />
@@ -81,6 +85,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)PageEvents\LibraryPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageEvents\MainPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageEvents\UserDashboardPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalendarPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XamlControlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +101,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Data Structures\API Classes\Hummingbird\StatusFeed\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Metro Calendar.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\CancelledEarcon.wav" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\CortanaGo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\CortanaMicrophone.png" />

@@ -83,6 +83,22 @@ namespace Anitro.Data_Structures.API_Classes
         #endregion
 
         #region Constructors
+        public Anime()
+        {
+            MediaType = Enumerators.MediaType.None;
+            AiringStatus = Enumerators.AiringStatus.None;
+            Genres = new List<MediaGenre>();
+        }
+        public Anime(string romanjiTitle)
+        {
+            RomanjiTitle = romanjiTitle;
+            EnglishTitle = romanjiTitle;
+
+            MediaType = Enumerators.MediaType.None;
+            AiringStatus = Enumerators.AiringStatus.None;
+            Genres = new List<MediaGenre>();
+        }
+
         public Anime(Anitro.Data_Structures.API_Classes.Hummingbird.V1.Anime o)
         {
             try {
@@ -167,13 +183,6 @@ namespace Anitro.Data_Structures.API_Classes
                 WebUrlString = o.url;
             }
             catch (Exception) { WebUrlString = ""; }
-        }
-
-        public Anime()
-        {
-            MediaType = Enumerators.MediaType.None;
-            AiringStatus = Enumerators.AiringStatus.None;
-            Genres = new List<MediaGenre>();
         }
         #endregion
 

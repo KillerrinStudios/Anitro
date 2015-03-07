@@ -49,8 +49,8 @@ Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compil
 Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method XamlControlHelper.AnitroAdControlSettings
 Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method XamlControlHelper.AnitroAdMediatorSettings
 Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method XamlTypeInfoProvider.InitTypeTables
-Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method XamlTypeInfoProvider.Activate_4_AdMediatorControl
-Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method XamlTypeInfoProvider.Activate_7_AdSdkParameters
+Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method XamlTypeInfoProvider.Activate_5_AdMediatorControl
+Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method XamlTypeInfoProvider.Activate_8_AdSdkParameters
 Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method XamlTypeInfoProvider.get_OtherProviders
 Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method XamlTypeInfoProvider.get_0_AdMediatorControl_Id
 Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method XamlTypeInfoProvider.set_0_AdMediatorControl_Id
@@ -60,6 +60,7 @@ Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compil
 Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method <Anime>d__b.MoveNext
 Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method <StatusFeed>d__21.MoveNext
 Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method <ParseAnimeLibrary>d__47.MoveNext
+Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method <Calendar>d__0.MoveNext
 Strong name validation failed. (Exception from HRESULT: 0x8013141A) while compiling method <UserInfo>d__0.MoveNext
 MDIL image C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\obj\Release\MDIL\Anitro.WindowsPhone.exe generated successfully.
 

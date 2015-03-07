@@ -106,6 +106,9 @@
       <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\Metro Calendar.png">
+      <PackagePath>Assets\Metro Calendar.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.Shared\Assets\CortanaGo.png">
       <PackagePath>Assets\CortanaGo.png</PackagePath>
     </AppxPackagedFile>
@@ -163,6 +166,9 @@
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\About.xbf">
       <PackagePath>About.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\CalendarPage.xbf">
+      <PackagePath>CalendarPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\LibraryPage.xbf">
       <PackagePath>LibraryPage.xbf</PackagePath>
     </AppxPackagedFile>
@@ -183,6 +189,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\SettingsPage.xbf">
       <PackagePath>SettingsPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Themes\Calendar.xbf">
+      <PackagePath>Themes\Calendar.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Andrew\Documents\GitHub\Anitro\Anitro 8.1\Anitro\Anitro.WindowsPhone\bin\Release\Themes\Activity Feed.xbf">
       <PackagePath>Themes\Activity Feed.xbf</PackagePath>

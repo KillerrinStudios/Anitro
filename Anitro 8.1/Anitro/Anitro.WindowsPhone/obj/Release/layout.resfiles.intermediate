@@ -4,6 +4,7 @@ Assets\CortanaMicrophone.png
 Assets\download.png
 Assets\edit.png
 Assets\ListeningEarcon.wav
+Assets\Metro Calendar.png
 Assets\microphone.png
 Assets\stop.png
 Assets\UnlockWhite.png
@@ -19,6 +20,7 @@ About.xbf
 AnimePage.xbf
 Anitro.WindowsPhone.xr.xml
 App.xbf
+CalendarPage.xbf
 LibraryPage.xbf
 LoggedOutPage.xbf
 LoginPage.xbf
@@ -28,6 +30,7 @@ SettingsPage.xbf
 Themes\Activity Feed.xbf
 Themes\Anime Favourites.xbf
 Themes\Anime Library.xbf
+Themes\Calendar.xbf
 Themes\Recent.xbf
 Themes\Search.xbf
 Themes\UIThemes.xbf

@@ -4,16 +4,17 @@
     <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
+    <RootPropertyPathName Name="EpisodeNumber" />
+    <RootPropertyPathName Name="Anime" />
+    <RootPropertyPathName Name="EnglishTitle" />
+    <RootPropertyPathName Name="RomanjiTitle" />
+    <RootPropertyPathName Name="CoverImageUrlString" />
     <RootPropertyPathName Name="Content" />
     <RootPropertyPathName Name="TimeStamp" />
     <RootPropertyPathName Name="Header" />
     <RootPropertyPathName Name="StoryImage" />
-    <RootPropertyPathName Name="Anime" />
     <RootPropertyPathName Name="EpisodeCount" />
     <RootPropertyPathName Name="EpisodesWatched" />
-    <RootPropertyPathName Name="EnglishTitle" />
-    <RootPropertyPathName Name="RomanjiTitle" />
-    <RootPropertyPathName Name="CoverImageUrlString" />
     <RootPropertyPathName Name="Synopsis" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -100,16 +101,6 @@
       <RootProperty Name="ResourceKey" />
     </RootType>
     <RootType FullName="Anitro.About" />
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="PrimaryCommands" />
-      <RootProperty Name="SecondaryCommands" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Label" />
-      <RootProperty Name="Visibility" />
-      <RootEvent Name="Click" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
@@ -135,6 +126,27 @@
       <RootProperty Name="RenderTransform" />
       <RootProperty Name="Margin" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
+      <RootProperty Name="Background" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="ItemContainerStyle" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootEvent Name="Tapped" />
+      <RootEvent Name="Loaded" />
+    </RootType>
+    <RootType FullName="Anitro.CalendarPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="SecondaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+      <RootProperty Name="Visibility" />
+      <RootEvent Name="Click" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.GridView">
       <RootProperty Name="Margin" />
       <RootProperty Name="IsItemClickEnabled" />
@@ -142,16 +154,6 @@
       <RootProperty Name="ItemsPanel" />
       <RootProperty Name="ItemContainerStyle" />
       <RootEvent Name="ItemClick" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="ItemContainerStyle" />
-      <RootEvent Name="Tapped" />
-      <RootEvent Name="Loaded" />
     </RootType>
     <RootType FullName="Anitro.LibraryPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Image">

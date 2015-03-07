@@ -11,6 +11,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes/UIThemes.xaml" />
                 
+                <ResourceDictionary Source="Themes/Calendar.xaml" />
                 <ResourceDictionary Source="Themes/Activity Feed.xaml" />
                 <ResourceDictionary Source="Themes/Anime Library.xaml" />
                 <ResourceDictionary Source="Themes/Anime Favourites.xaml" />

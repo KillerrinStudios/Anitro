@@ -148,63 +148,65 @@ namespace Anitro.Anitro_WindowsPhone_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[27];
+            _typeNameTable = new string[28];
             _typeNameTable[0] = "Anitro.About";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "Anitro.LibraryPage";
-            _typeNameTable[4] = "Microsoft.AdMediator.WindowsPhone81.AdMediatorControl";
-            _typeNameTable[5] = "Windows.UI.Xaml.Controls.Control";
-            _typeNameTable[6] = "String";
-            _typeNameTable[7] = "Microsoft.AdMediator.Core.Models.AdSdkParameters";
-            _typeNameTable[8] = "Object";
-            _typeNameTable[9] = "System.Collections.Generic.IDictionary`2<String, TimeSpan>";
-            _typeNameTable[10] = "TimeSpan";
-            _typeNameTable[11] = "System.ValueType";
-            _typeNameTable[12] = "Int32";
-            _typeNameTable[13] = "Int64";
-            _typeNameTable[14] = "Double";
-            _typeNameTable[15] = "Anitro.AnimePage";
-            _typeNameTable[16] = "Anitro.LoggedOutPage";
-            _typeNameTable[17] = "Anitro.LoginPage";
-            _typeNameTable[18] = "Anitro.MainPage";
-            _typeNameTable[19] = "Anitro.SearchPage";
-            _typeNameTable[20] = "Anitro.SettingsPage";
-            _typeNameTable[21] = "Anitro.Converters.RelativeDateTimeConverter";
-            _typeNameTable[22] = "Anitro.UserDashboardPage";
-            _typeNameTable[23] = "Anitro.Converters.BooleanToVisibilityConverter";
-            _typeNameTable[24] = "Anitro.Converters.AdVisibilityConverter";
-            _typeNameTable[25] = "Windows.UI.Color";
-            _typeNameTable[26] = "Byte";
+            _typeNameTable[3] = "Anitro.CalendarPage";
+            _typeNameTable[4] = "Anitro.LibraryPage";
+            _typeNameTable[5] = "Microsoft.AdMediator.WindowsPhone81.AdMediatorControl";
+            _typeNameTable[6] = "Windows.UI.Xaml.Controls.Control";
+            _typeNameTable[7] = "String";
+            _typeNameTable[8] = "Microsoft.AdMediator.Core.Models.AdSdkParameters";
+            _typeNameTable[9] = "Object";
+            _typeNameTable[10] = "System.Collections.Generic.IDictionary`2<String, TimeSpan>";
+            _typeNameTable[11] = "TimeSpan";
+            _typeNameTable[12] = "System.ValueType";
+            _typeNameTable[13] = "Int32";
+            _typeNameTable[14] = "Int64";
+            _typeNameTable[15] = "Double";
+            _typeNameTable[16] = "Anitro.AnimePage";
+            _typeNameTable[17] = "Anitro.LoggedOutPage";
+            _typeNameTable[18] = "Anitro.LoginPage";
+            _typeNameTable[19] = "Anitro.MainPage";
+            _typeNameTable[20] = "Anitro.SearchPage";
+            _typeNameTable[21] = "Anitro.SettingsPage";
+            _typeNameTable[22] = "Anitro.Converters.RelativeDateTimeConverter";
+            _typeNameTable[23] = "Anitro.UserDashboardPage";
+            _typeNameTable[24] = "Anitro.Converters.BooleanToVisibilityConverter";
+            _typeNameTable[25] = "Anitro.Converters.AdVisibilityConverter";
+            _typeNameTable[26] = "Windows.UI.Color";
+            _typeNameTable[27] = "Byte";
 
-            _typeTable = new global::System.Type[27];
+            _typeTable = new global::System.Type[28];
             _typeTable[0] = typeof(global::Anitro.About);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::Anitro.LibraryPage);
-            _typeTable[4] = typeof(global::Microsoft.AdMediator.WindowsPhone81.AdMediatorControl);
-            _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.Control);
-            _typeTable[6] = typeof(global::System.String);
-            _typeTable[7] = typeof(global::Microsoft.AdMediator.Core.Models.AdSdkParameters);
-            _typeTable[8] = typeof(global::System.Object);
-            _typeTable[9] = typeof(global::System.Collections.Generic.IDictionary<global::System.String, global::System.TimeSpan>);
-            _typeTable[10] = typeof(global::System.TimeSpan);
-            _typeTable[11] = typeof(global::System.ValueType);
-            _typeTable[12] = typeof(global::System.Int32);
-            _typeTable[13] = typeof(global::System.Int64);
-            _typeTable[14] = typeof(global::System.Double);
-            _typeTable[15] = typeof(global::Anitro.AnimePage);
-            _typeTable[16] = typeof(global::Anitro.LoggedOutPage);
-            _typeTable[17] = typeof(global::Anitro.LoginPage);
-            _typeTable[18] = typeof(global::Anitro.MainPage);
-            _typeTable[19] = typeof(global::Anitro.SearchPage);
-            _typeTable[20] = typeof(global::Anitro.SettingsPage);
-            _typeTable[21] = typeof(global::Anitro.Converters.RelativeDateTimeConverter);
-            _typeTable[22] = typeof(global::Anitro.UserDashboardPage);
-            _typeTable[23] = typeof(global::Anitro.Converters.BooleanToVisibilityConverter);
-            _typeTable[24] = typeof(global::Anitro.Converters.AdVisibilityConverter);
-            _typeTable[25] = typeof(global::Windows.UI.Color);
-            _typeTable[26] = typeof(global::System.Byte);
+            _typeTable[3] = typeof(global::Anitro.CalendarPage);
+            _typeTable[4] = typeof(global::Anitro.LibraryPage);
+            _typeTable[5] = typeof(global::Microsoft.AdMediator.WindowsPhone81.AdMediatorControl);
+            _typeTable[6] = typeof(global::Windows.UI.Xaml.Controls.Control);
+            _typeTable[7] = typeof(global::System.String);
+            _typeTable[8] = typeof(global::Microsoft.AdMediator.Core.Models.AdSdkParameters);
+            _typeTable[9] = typeof(global::System.Object);
+            _typeTable[10] = typeof(global::System.Collections.Generic.IDictionary<global::System.String, global::System.TimeSpan>);
+            _typeTable[11] = typeof(global::System.TimeSpan);
+            _typeTable[12] = typeof(global::System.ValueType);
+            _typeTable[13] = typeof(global::System.Int32);
+            _typeTable[14] = typeof(global::System.Int64);
+            _typeTable[15] = typeof(global::System.Double);
+            _typeTable[16] = typeof(global::Anitro.AnimePage);
+            _typeTable[17] = typeof(global::Anitro.LoggedOutPage);
+            _typeTable[18] = typeof(global::Anitro.LoginPage);
+            _typeTable[19] = typeof(global::Anitro.MainPage);
+            _typeTable[20] = typeof(global::Anitro.SearchPage);
+            _typeTable[21] = typeof(global::Anitro.SettingsPage);
+            _typeTable[22] = typeof(global::Anitro.Converters.RelativeDateTimeConverter);
+            _typeTable[23] = typeof(global::Anitro.UserDashboardPage);
+            _typeTable[24] = typeof(global::Anitro.Converters.BooleanToVisibilityConverter);
+            _typeTable[25] = typeof(global::Anitro.Converters.AdVisibilityConverter);
+            _typeTable[26] = typeof(global::Windows.UI.Color);
+            _typeTable[27] = typeof(global::System.Byte);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -240,20 +242,21 @@ namespace Anitro.Anitro_WindowsPhone_XamlTypeInfo
         }
 
         private object Activate_0_About() { return new global::Anitro.About(); }
-        private object Activate_3_LibraryPage() { return new global::Anitro.LibraryPage(); }
-        private object Activate_4_AdMediatorControl() { return new global::Microsoft.AdMediator.WindowsPhone81.AdMediatorControl(); }
-        private object Activate_7_AdSdkParameters() { return new global::Microsoft.AdMediator.Core.Models.AdSdkParameters(); }
-        private object Activate_15_AnimePage() { return new global::Anitro.AnimePage(); }
-        private object Activate_16_LoggedOutPage() { return new global::Anitro.LoggedOutPage(); }
-        private object Activate_17_LoginPage() { return new global::Anitro.LoginPage(); }
-        private object Activate_18_MainPage() { return new global::Anitro.MainPage(); }
-        private object Activate_19_SearchPage() { return new global::Anitro.SearchPage(); }
-        private object Activate_20_SettingsPage() { return new global::Anitro.SettingsPage(); }
-        private object Activate_21_RelativeDateTimeConverter() { return new global::Anitro.Converters.RelativeDateTimeConverter(); }
-        private object Activate_22_UserDashboardPage() { return new global::Anitro.UserDashboardPage(); }
-        private object Activate_23_BooleanToVisibilityConverter() { return new global::Anitro.Converters.BooleanToVisibilityConverter(); }
-        private object Activate_24_AdVisibilityConverter() { return new global::Anitro.Converters.AdVisibilityConverter(); }
-        private void MapAdd_9_IDictionary(object instance, object key, object item)
+        private object Activate_3_CalendarPage() { return new global::Anitro.CalendarPage(); }
+        private object Activate_4_LibraryPage() { return new global::Anitro.LibraryPage(); }
+        private object Activate_5_AdMediatorControl() { return new global::Microsoft.AdMediator.WindowsPhone81.AdMediatorControl(); }
+        private object Activate_8_AdSdkParameters() { return new global::Microsoft.AdMediator.Core.Models.AdSdkParameters(); }
+        private object Activate_16_AnimePage() { return new global::Anitro.AnimePage(); }
+        private object Activate_17_LoggedOutPage() { return new global::Anitro.LoggedOutPage(); }
+        private object Activate_18_LoginPage() { return new global::Anitro.LoginPage(); }
+        private object Activate_19_MainPage() { return new global::Anitro.MainPage(); }
+        private object Activate_20_SearchPage() { return new global::Anitro.SearchPage(); }
+        private object Activate_21_SettingsPage() { return new global::Anitro.SettingsPage(); }
+        private object Activate_22_RelativeDateTimeConverter() { return new global::Anitro.Converters.RelativeDateTimeConverter(); }
+        private object Activate_23_UserDashboardPage() { return new global::Anitro.UserDashboardPage(); }
+        private object Activate_24_BooleanToVisibilityConverter() { return new global::Anitro.Converters.BooleanToVisibilityConverter(); }
+        private object Activate_25_AdVisibilityConverter() { return new global::Anitro.Converters.AdVisibilityConverter(); }
+        private void MapAdd_10_IDictionary(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.String, global::System.TimeSpan>)instance;
             var newKey = (global::System.String)key;
@@ -286,48 +289,55 @@ namespace Anitro.Anitro_WindowsPhone_XamlTypeInfo
                 xamlType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  Anitro.LibraryPage
+            case 3:   //  Anitro.CalendarPage
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_LibraryPage;
+                userType.Activator = Activate_3_CalendarPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  Microsoft.AdMediator.WindowsPhone81.AdMediatorControl
+            case 4:   //  Anitro.LibraryPage
+                userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_4_LibraryPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 5:   //  Microsoft.AdMediator.WindowsPhone81.AdMediatorControl
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Control"));
-                userType.Activator = Activate_4_AdMediatorControl;
+                userType.Activator = Activate_5_AdMediatorControl;
                 userType.AddMemberName("Id");
                 userType.AddMemberName("AdSdkOptionalParameters");
                 userType.AddMemberName("AdSdkTimeouts");
                 xamlType = userType;
                 break;
 
-            case 5:   //  Windows.UI.Xaml.Controls.Control
+            case 6:   //  Windows.UI.Xaml.Controls.Control
                 xamlType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 6:   //  String
+            case 7:   //  String
                 xamlType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 7:   //  Microsoft.AdMediator.Core.Models.AdSdkParameters
+            case 8:   //  Microsoft.AdMediator.Core.Models.AdSdkParameters
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 8:   //  Object
+            case 9:   //  Object
                 xamlType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 9:   //  System.Collections.Generic.IDictionary`2<String, TimeSpan>
+            case 10:   //  System.Collections.Generic.IDictionary`2<String, TimeSpan>
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.DictionaryAdd = MapAdd_9_IDictionary;
+                userType.DictionaryAdd = MapAdd_10_IDictionary;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 10:   //  TimeSpan
+            case 11:   //  TimeSpan
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.AddMemberName("Days");
                 userType.AddMemberName("Hours");
@@ -343,94 +353,94 @@ namespace Anitro.Anitro_WindowsPhone_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 11:   //  System.ValueType
+            case 12:   //  System.ValueType
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 12:   //  Int32
+            case 13:   //  Int32
                 xamlType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 13:   //  Int64
+            case 14:   //  Int64
                 xamlType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 14:   //  Double
+            case 15:   //  Double
                 xamlType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 15:   //  Anitro.AnimePage
+            case 16:   //  Anitro.AnimePage
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_15_AnimePage;
+                userType.Activator = Activate_16_AnimePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 16:   //  Anitro.LoggedOutPage
+            case 17:   //  Anitro.LoggedOutPage
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_16_LoggedOutPage;
+                userType.Activator = Activate_17_LoggedOutPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 17:   //  Anitro.LoginPage
+            case 18:   //  Anitro.LoginPage
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_17_LoginPage;
+                userType.Activator = Activate_18_LoginPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 18:   //  Anitro.MainPage
+            case 19:   //  Anitro.MainPage
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_18_MainPage;
+                userType.Activator = Activate_19_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 19:   //  Anitro.SearchPage
+            case 20:   //  Anitro.SearchPage
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_19_SearchPage;
+                userType.Activator = Activate_20_SearchPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 20:   //  Anitro.SettingsPage
+            case 21:   //  Anitro.SettingsPage
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_20_SettingsPage;
+                userType.Activator = Activate_21_SettingsPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 21:   //  Anitro.Converters.RelativeDateTimeConverter
+            case 22:   //  Anitro.Converters.RelativeDateTimeConverter
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_21_RelativeDateTimeConverter;
+                userType.Activator = Activate_22_RelativeDateTimeConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 22:   //  Anitro.UserDashboardPage
+            case 23:   //  Anitro.UserDashboardPage
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_22_UserDashboardPage;
+                userType.Activator = Activate_23_UserDashboardPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 23:   //  Anitro.Converters.BooleanToVisibilityConverter
+            case 24:   //  Anitro.Converters.BooleanToVisibilityConverter
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_23_BooleanToVisibilityConverter;
+                userType.Activator = Activate_24_BooleanToVisibilityConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 24:   //  Anitro.Converters.AdVisibilityConverter
+            case 25:   //  Anitro.Converters.AdVisibilityConverter
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_24_AdVisibilityConverter;
+                userType.Activator = Activate_25_AdVisibilityConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 25:   //  Windows.UI.Color
+            case 26:   //  Windows.UI.Color
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.AddMemberName("A");
                 userType.AddMemberName("B");
@@ -439,7 +449,7 @@ namespace Anitro.Anitro_WindowsPhone_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 26:   //  Byte
+            case 27:   //  Byte
                 userType = new global::Anitro.Anitro_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
@@ -1064,5 +1074,6 @@ namespace Anitro.Anitro_WindowsPhone_XamlTypeInfo
         }
     }
 }
+
 
 

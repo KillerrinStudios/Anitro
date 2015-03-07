@@ -303,7 +303,6 @@ namespace Anitro.Data_Structures
         #endregion
         #endregion
 
-
         #region Helper Methods
         public bool AddToRecent(LibraryObject temp, bool save = true)
         {

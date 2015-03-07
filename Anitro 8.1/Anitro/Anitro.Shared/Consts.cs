@@ -8,6 +8,11 @@ using Windows.ApplicationModel.Store;
 using Windows.System;
 
 using Anitro.Data_Structures;
+using Windows.UI.Popups;
+using Anitro.APIs;
+using Windows.UI.Core;
+using Windows.UI.Xaml.Controls;
+using Anitro.Data_Structures.Enumerators;
 
 namespace Anitro
 {
@@ -69,6 +74,40 @@ namespace Anitro
             {
                 LoggedInUser = new User(user);
             }
+        }
+
+        private static PremiumFeaturesMessageBoxResult PremiumFeaturesMessageBoxResult;
+        public static async Task<PremiumFeaturesMessageBoxResult> PremiumFeatureMessageBox(CoreDispatcher dispatcher, Frame frame)
+        {
+            Debug.WriteLine("PremiumFeatureMessageBox(): User requires the Anitro Unlock");
+
+            PremiumFeaturesMessageBoxResult = PremiumFeaturesMessageBoxResult.OkOrCancelled;
+
+            var messageDialog = new MessageDialog("This feature requires the \"Anitro Unlock\" IAP to use");
+            messageDialog.Commands.Add(new UICommand("Ok", delegate(IUICommand command)
+                {
+                    PremiumFeaturesMessageBoxResult = PremiumFeaturesMessageBoxResult.OkOrCancelled;
+                })
+            );
+            messageDialog.Commands.Add(new UICommand("Purchase", delegate(IUICommand command)
+                {
+                    InAppPurchaseHelper.PurchaseAnitroUnlock();
+
+                    if (InAppPurchaseHelper.licensesOwned.AnitroUnlocked) { PremiumFeaturesMessageBoxResult = PremiumFeaturesMessageBoxResult.Purchased; }
+                    else { PremiumFeaturesMessageBoxResult = PremiumFeaturesMessageBoxResult.OkOrCancelled; }
+                })
+            );
+            //messageDialog.Commands.Add(new UICommand("What's Anitro Unlock?", delegate(IUICommand command)
+            //    {
+            //        PremiumFeaturesMessageBoxResult = PremiumFeaturesMessageBoxResult.NavigateToUnlock;
+            //    })
+            //);
+
+            messageDialog.DefaultCommandIndex = 0; // Set the command that will be invoked by default
+            messageDialog.CancelCommandIndex = 0; // Set the command to be invoked when escape is pressed
+            await messageDialog.ShowAsync();
+
+            return PremiumFeaturesMessageBoxResult;
         }
     }
 }

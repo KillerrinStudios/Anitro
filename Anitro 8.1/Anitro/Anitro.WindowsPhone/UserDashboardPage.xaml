@@ -82,6 +82,12 @@
                                     <TextBlock Text="Anime Library" HorizontalAlignment="Right" FontSize="28" />
                                 </StackPanel>
                             </Button>
+                            <Button BorderThickness="0" Click="Calendar_Clicked">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Assets/Metro Calendar.png" Width="38" Height="38" HorizontalAlignment="Left" Margin="0,0,12,0" />
+                                    <TextBlock Text="Calendar" HorizontalAlignment="Right" FontSize="28" />
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
 
 
