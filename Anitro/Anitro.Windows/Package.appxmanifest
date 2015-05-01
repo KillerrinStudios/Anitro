@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="59141KillerrinStudios.Anitro" Publisher="CN=CB9966B0-97F1-4167-993A-C177C5B8B46A" Version="1.2.2.2" />
+  <Properties>
+    <DisplayName>Anitro</DisplayName>
+    <PublisherDisplayName>Killerrin Studios</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Anitro.Windows.App">
+      <m2:VisualElements DisplayName="Anitro" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Anitro.Windows" ForegroundText="light" BackgroundColor="#0f5164">
+        <m2:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" ShortName="Anitro" Square70x70Logo="Assets\Square70x70Logo.png" DefaultSize="square150x150Logo">
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="Assets\SplashScreen.png" />
+      </m2:VisualElements>
+      <Extensions>
+        <Extension Category="windows.protocol">
+          <Protocol Name="anitro">
+            <DisplayName>Anitro</DisplayName>
+          </Protocol>
+        </Extension>
+        <Extension Category="windows.search" />
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="internetClientServer" />
+  </Capabilities>
+</Package>
