@@ -99,13 +99,46 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\UserAccountButton.cs" />
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Controls\MenuButton.xaml.cs">
+      <DependentUpon>MenuButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProgressIndicator.xaml.cs">
+      <DependentUpon>ProgressIndicator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UserAccountButton.xaml.cs">
+      <DependentUpon>UserAccountButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\EnumSpaceConverter.cs" />
+    <Compile Include="Converters\EnumStringConverter.cs" />
+    <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\OppositeBooleanConverter.cs" />
+    <Compile Include="Pages\Hummingbird\HummingbirdDashboardPage.xaml.cs">
+      <DependentUpon>HummingbirdDashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Helpers\StringHelpers.cs" />
+    <Compile Include="Services\APIServiceCollection.cs" />
+    <Compile Include="Models\Enums\NavigationLocation.cs" />
+    <Compile Include="Pages\Hummingbird\HummingbirdLoginPage.xaml.cs">
+      <DependentUpon>HummingbirdLoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\HummingbirdUser.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Pages\DefaultNoUserPage.xaml.cs">
+      <DependentUpon>DefaultNoUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Services\ProgressService.cs" />
+    <Compile Include="ViewModels\AnitroViewModelBase.cs" />
+    <Compile Include="ViewModels\Hummingbird\HummingbirdDashboardViewModel.cs" />
+    <Compile Include="ViewModels\Hummingbird\HummingbirdLoginViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ModelBase.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -114,6 +147,8 @@
     <None Include="Anitro_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\appbar.arrow.left.png" />
+    <Content Include="Assets\Menu Images\Calendar.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -128,16 +163,41 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="Controls\MenuButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProgressIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UserAccountButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Hummingbird\HummingbirdDashboardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Hummingbird\HummingbirdLoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Pages\DefaultNoUserPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Anime Tracking Service Wrapper.UAP">
+      <HintPath>..\..\Anime-Tracking-Service-Wrapper\Anime Tracking Service Wrapper.UAP\bin\Release\Anime Tracking Service Wrapper.UAP.dll</HintPath>
+    </Reference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

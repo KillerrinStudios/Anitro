@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Anitro.Pages;
+using GalaSoft.MvvmLight.Ioc;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,11 +30,13 @@ namespace Anitro
         /// </summary>
         public App()
         {
+            // Now, Initialize the App
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
         }
 
         /// <summary>

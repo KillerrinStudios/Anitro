@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="Anitro.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Anitro"
+    xmlns:appControls="using:Anitro.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=vm_MainViewModel}">
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Phone">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainNavigation.DisplayMode" Value="CompactOverlay" />
+                        <Setter Target="MainNavigation.IsPaneOpen" Value="True" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Desktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainNavigation.DisplayMode" Value="CompactInline" />
+                        <Setter Target="MainNavigation.IsPaneOpen" Value="True" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        <SplitView x:Name="MainNavigation" DisplayMode="CompactInline" IsPaneOpen="False">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Vertical" Grid.Column="0">
+                        <Button x:Name="MainNavigation_HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="MainNavigation_HamburgerButton_Click"/>
+                    </StackPanel>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="0">
+                            <appControls:MenuButton x:Name="dashboardMenuButton"    Command="{Binding NavigateDashboardCommand}"     Header="Dashboard" />
+                            <appControls:MenuButton x:Name="animeLibraryMenuButton" Command="{Binding NavigateAnimeLibraryCommand}"  Header="Anime Library" />
+                            <appControls:MenuButton x:Name="mangaLibraryMenuButton" Command="{Binding NavigateMangaLibraryCommand}"  Header="Manga Library" />
+                            <appControls:MenuButton x:Name="calendarMenuButton"     Command="{Binding NavigateCalendarCommand}"      Header="Calendar"      HeaderImage="ms-appx:///Assets/Menu Images/Calendar.png"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="5,0,0,0">
+                            <TextBlock Text="Accounts" Style="{ThemeResource SubheaderTextBlockStyle}" Margin="0,0,0,10" />
+
+                            <appControls:UserAccountButton Header="{Binding HummingbirdUser.Service, Converter={StaticResource EnumStringConverter}}" Username="{Binding HummingbirdUser.UserInfo.Username}" Avatar="{Binding HummingbirdUser.UserInfo.AvatarUrl}" IsSelected="{Binding HummingbirdUser.Selected}"
+                                                           SwitchUserCommand="{Binding SwitchUserCommand}" LoginCommand="{Binding LoginCommand}" LogoutCommand="{Binding LogoutCommand}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Rectangle x:Name="MainNavigation_Pane_DividerRectangle" Grid.Column="1" Grid.RowSpan="2" 
+                               Margin="0,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Stretch"
+                               Stroke="#0CFFFFFF" Width="1"/>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                    <Frame x:Name="MainFrame" Loaded="MainFrame_Loaded" />
+                    <appControls:ProgressIndicator x:Name="MainProgressIndicator" Loaded="MainProgressIndicator_Loaded"
+                                                   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0"
+                                                   Visibility="Collapsed"/>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>
