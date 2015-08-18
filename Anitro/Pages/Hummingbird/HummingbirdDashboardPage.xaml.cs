@@ -29,5 +29,12 @@ namespace Anitro.Pages.Hummingbird
         {
             this.InitializeComponent();
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            ViewModel.User = e.Parameter as Models.HummingbirdUser;
+            ViewModel.OnNavigatedTo();
+        }
     }
 }

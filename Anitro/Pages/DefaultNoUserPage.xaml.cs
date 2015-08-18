@@ -25,6 +25,11 @@ namespace Anitro.Pages
         public DefaultNoUserPage()
         {
             this.InitializeComponent();
+            Loaded += DefaultNoUserPage_Loaded;
+        }
+
+        private void DefaultNoUserPage_Loaded(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

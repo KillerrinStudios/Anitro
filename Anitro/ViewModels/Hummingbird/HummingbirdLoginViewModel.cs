@@ -55,6 +55,11 @@ namespace Anitro.ViewModels.Hummingbird
             }
         }
 
+        public override void OnNavigatedTo()
+        {
+            MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Login;
+        }
+
         public override void ResetViewModel()
         {
             UserLoginInfo = new UserLoginInfo();
@@ -141,8 +146,6 @@ namespace Anitro.ViewModels.Hummingbird
                     hummingbirdUser.HummingbirdUserInfo = rawUserInfo;
 
                     MainViewModel.Instance.SwitchUser(ServiceName.Hummingbird);
-                    MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Dashboard;
-                    NavigationService.Navigate(typeof(HummingbirdDashboardPage));
                     NavigationService.RemoveLastPage();
                 }
                 else

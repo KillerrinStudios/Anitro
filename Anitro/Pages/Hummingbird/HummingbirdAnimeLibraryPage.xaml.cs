@@ -1,5 +1,4 @@
-﻿using Anitro.ViewModels;
-using Anitro.ViewModels.Hummingbird;
+﻿using Anitro.ViewModels.Hummingbird;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,11 +21,11 @@ namespace Anitro.Pages.Hummingbird
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HummingbirdLoginPage : Page
+    public sealed partial class HummingbirdAnimeLibraryPage : Page
     {
-        public HummingbirdLoginViewModel ViewModel { get { return (HummingbirdLoginViewModel)DataContext; } }
+        public HummingbirdAnimeLibraryViewModel ViewModel { get { return (HummingbirdAnimeLibraryViewModel)DataContext; } }
 
-        public HummingbirdLoginPage()
+        public HummingbirdAnimeLibraryPage()
         {
             this.InitializeComponent();
         }
@@ -34,20 +33,8 @@ namespace Anitro.Pages.Hummingbird
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            ViewModel.User = e.Parameter as Models.HummingbirdUser;
             ViewModel.OnNavigatedTo();
-        }
-
-        private void TextBox_KeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == Windows.System.VirtualKey.Enter)
-            {
-                if (string.IsNullOrWhiteSpace(PasswordBox.Password))
-                    PasswordBox.Focus(FocusState.Programmatic);
-                else if (string.IsNullOrWhiteSpace(UsernameTextBox.Text))
-                    UsernameTextBox.Focus(FocusState.Programmatic);
-                else
-                    ViewModel.Login();
-            }
         }
     }
 }

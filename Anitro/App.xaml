@@ -4,9 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Anitro"
     xmlns:Converters="using:Anitro.Converters"
+    xmlns:Templates="using:Anitro.Templates"
     RequestedTheme="Dark">
 
     <Application.Resources>
+        
+        <!-- Consts -->
+        <consts:AdaptiveTriggerConsts x:Key="AdaptiveTriggerConsts" xmlns:consts="using:Anitro.Helpers" />
+        
         <!-- MVVM -->
         <vm:ViewModelLocator x:Key="Locator" xmlns:vm="using:Anitro.ViewModels" />
         
@@ -15,8 +20,11 @@
         <Converters:EnumStringConverter x:Key="EnumStringConverter" />
         <Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibility" xmlns:Converters="using:Anitro.Converters" />
         <Converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibility" xmlns:Converters="using:Anitro.Converters" />
+        <Converters:RelativeDateTimeConverter x:Key="RelativeDateTime" xmlns:Converters="using:Anitro.Converters"/>
 
         <!-- Custom Triggers -->
+        
+        <!-- Custom Themes -->
         
     </Application.Resources>
 </Application>

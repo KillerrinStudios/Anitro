@@ -43,6 +43,7 @@ namespace Anitro.ViewModels
             }
         }
 
+        public abstract void OnNavigatedTo();
         public abstract void ResetViewModel();
     }
 }

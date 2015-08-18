@@ -1,0 +1,140 @@
+﻿<Page
+    x:Class="Anitro.Pages.Hummingbird.HummingbirdAnimeLibraryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Anitro.Pages.Hummingbird"
+    xmlns:Templates="using:Anitro.Templates"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdAnimeLibraryViewModel}">
+
+    <Page.Resources>
+        <Templates:LibraryTemplateSelector x:Key="TemplatedLibraryTemplateSelector"
+                    TemplateCurrentlyWatching="{StaticResource ListPickerFlyoutPresenterContentTemplate}"
+                    TemplatePlanToWatch="{StaticResource ListPickerFlyoutPresenterContentTemplate}"
+                    TemplateCompleted="{StaticResource ListPickerFlyoutPresenterContentTemplate}"
+                    TemplateOnHold="{StaticResource ListPickerFlyoutPresenterContentTemplate}"
+                    TemplateDropped="{StaticResource ListPickerFlyoutPresenterContentTemplate}"/>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Hub>
+            <Hub.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Image Source="{Binding User.HummingbirdUserInfo.cover_image}"/>
+                        <Rectangle Fill="#3F000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                            <Image Source="{Binding User.UserInfo.AvatarUrl}" Width="75" />
+
+                            <StackPanel Orientation="Vertical" Margin="5,0,0,0" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding User.UserInfo.Username}" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                                <TextBlock Text="Library" Style="{ThemeResource BodyTextBlockStyle}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </Hub.HeaderTemplate>
+
+            <!-- Recent -->
+            <HubSection>
+                <HubSection.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Recent" Grid.Column="0" VerticalAlignment="Center"/>
+                            <Button  Content="" FontFamily="Segoe MDL2 Assets" Width="50" Height="50"
+                                     Grid.Column="1" Background="Transparent" 
+                                     Command="{Binding ClearRecentCommand}"/>
+                        </Grid>
+                    </DataTemplate>
+                </HubSection.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <ListView x:Name="recentGridView" ItemsSource="{Binding User.AnimeLibrary.Recent}">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" ItemWidth="125"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,5,0,5">
+                                        <Image Source="{Binding CoverImageUrl}" Stretch="Uniform"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+
+            <!-- Library -->
+            <HubSection>
+                <HubSection.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Library" Grid.Column="0" VerticalAlignment="Center"/>
+                            <Button  Content="" FontFamily="Segoe MDL2 Assets" Width="50" Height="50"
+                                     Grid.Column="1" Background="Transparent" 
+                                     Command="{Binding RefreshLibraryCommand}"/>
+                        </Grid>
+                    </DataTemplate>
+                </HubSection.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+
+            <!-- Favourites -->
+            <HubSection>
+                <HubSection.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Favourites" Grid.Column="0" VerticalAlignment="Center"/>
+                            <Button  Content="" FontFamily="Segoe MDL2 Assets" Width="50" Height="50"
+                                     Grid.Column="1" Background="Transparent" 
+                                     Command="{Binding RefreshFavouritesCommand}"/>
+                        </Grid>
+                    </DataTemplate>
+                </HubSection.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <ListView x:Name="favouritesGridView" ItemsSource="{Binding User.AnimeLibrary.Favourites}">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid Orientation="Vertical" ItemWidth="150"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,5,0,5">
+                                        <Image Source="{Binding CoverImageUrl}" Stretch="Uniform"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+    </Grid>
+</Page>

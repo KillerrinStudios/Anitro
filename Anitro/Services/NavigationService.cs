@@ -19,6 +19,13 @@ namespace Anitro.Services
         private Frame m_frame;
         public Frame Frame { get { return m_frame; } }
 
+        private object m_parameter = new object();
+        public object Parameter
+        {
+            get { return m_parameter; }
+            set { m_parameter = value; }
+        }
+
         public NavigationService(Frame frame)
         {
             m_frame = frame;
@@ -54,14 +61,10 @@ namespace Anitro.Services
         #endregion
 
         #region Navigation
-        public bool Navigate(Type type)
-        {
-            return m_frame.Navigate(type);
-        }
-
         public bool Navigate(Type type, object parameter)
         {
-            return m_frame.Navigate(type, parameter);
+            Parameter = parameter;
+            return m_frame.Navigate(type, Parameter);
         }
 
         public bool GoBack()

@@ -6,15 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Image Source="ms-appx:///Assets/Icons/appbar.arrow.left.png" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        
+        <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="36"
+                   Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
         <StackPanel Orientation="Vertical"
                     Margin="10,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="User not selected" Style="{ThemeResource HeaderTextBlockStyle}" HorizontalAlignment="Center"/>
-            
+
             <TextBlock Text="Please select an account or login" Style="{ThemeResource SubheaderTextBlockStyle}" 
                        Margin="0,20,0,0"  HorizontalAlignment="Center" />
         </StackPanel>

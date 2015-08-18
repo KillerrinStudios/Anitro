@@ -11,6 +11,18 @@ namespace Anitro.Models
 {
     public abstract class User : ModelBase
     {
+        private bool m_selected = false;
+        public bool Selected
+        {
+            get { return m_selected; }
+            set
+            {
+                if (m_selected == value) return;
+                m_selected = value;
+                RaisePropertyChanged(nameof(Selected));
+            }
+        }
+
         private ServiceName m_service = ServiceName.Unknown;
         public ServiceName Service
         {
@@ -47,15 +59,27 @@ namespace Anitro.Models
             }
         }
 
-        private bool m_selected = false;
-        public bool Selected
+        private Library m_animelibrary = new Library();
+        public Library AnimeLibrary
         {
-            get { return m_selected; }
+            get { return m_animelibrary; }
             set
             {
-                if (m_selected == value) return;
-                m_selected = value;
-                RaisePropertyChanged(nameof(Selected));
+                if (m_animelibrary == value) return;
+                m_animelibrary = value;
+                RaisePropertyChanged(nameof(AnimeLibrary));
+            }
+        }
+
+        private Library m_mangaLibrary = new Library();
+        public Library MangaLibrary
+        {
+            get { return m_mangaLibrary; }
+            set
+            {
+                if (m_mangaLibrary == value) return;
+                m_mangaLibrary = value;
+                RaisePropertyChanged(nameof(MangaLibrary));
             }
         }
     }

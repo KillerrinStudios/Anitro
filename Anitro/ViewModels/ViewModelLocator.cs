@@ -25,6 +25,8 @@ namespace Anitro.ViewModels
     /// </summary>
     public class ViewModelLocator
     {
+        public static ViewModelLocator Instance;
+
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
@@ -46,30 +48,21 @@ namespace Anitro.ViewModels
             SimpleIoc.Default.Register<MainViewModel>();
             //SimpleIoc.Default.Register<HummingbirdLoginViewModel>();
             SimpleIoc.Default.Register<HummingbirdDashboardViewModel>();
+            SimpleIoc.Default.Register<HummingbirdAnimeLibraryViewModel>();
+
+            // Set the Instance
+            Instance = this;
         }
 
-        public MainViewModel vm_MainViewModel
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
-        public HummingbirdLoginViewModel vm_HummingbirdLoginViewModel
-        {
-            get
-            {
-                return new HummingbirdLoginViewModel();
-                //return ServiceLocator.Current.GetInstance<HummingbirdLoginViewModel>();
-            }
-        }
-        public HummingbirdDashboardViewModel vm_HummingbirdDashboardViewModel
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<HummingbirdDashboardViewModel>();
-            }
-        }
+        public MainViewModel vm_MainViewModel { get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
+
+        #region Hummingbird
+        //return ServiceLocator.Current.GetInstance<HummingbirdLoginViewModel>();
+        public HummingbirdLoginViewModel vm_HummingbirdLoginViewModel { get { return new HummingbirdLoginViewModel(); } }
+
+        public HummingbirdDashboardViewModel vm_HummingbirdDashboardViewModel { get { return ServiceLocator.Current.GetInstance<HummingbirdDashboardViewModel>(); } }
+        public HummingbirdAnimeLibraryViewModel vm_HummingbirdAnimeLibraryViewModel { get { return ServiceLocator.Current.GetInstance<HummingbirdAnimeLibraryViewModel>(); } }
+        #endregion
 
         public static void Cleanup()
         {

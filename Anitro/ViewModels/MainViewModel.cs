@@ -27,6 +27,17 @@ namespace Anitro.ViewModels
     {
         public static MainViewModel Instance {  get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
 
+        private User m_user;
+        public User CurrentUser
+        {
+            get { return m_user; }
+            set
+            {
+                m_user = value;
+                RaisePropertyChanged(nameof(CurrentUser));
+            }
+        }
+
         private HummingbirdUser m_hummingbirdUser = new HummingbirdUser();
         public HummingbirdUser HummingbirdUser
         {
@@ -72,6 +83,11 @@ namespace Anitro.ViewModels
             ResetViewModel();
         }
 
+        public override void OnNavigatedTo()
+        {
+
+        }
+
         public override void ResetViewModel()
         {
             HummingbirdUser = new HummingbirdUser();
@@ -97,6 +113,11 @@ namespace Anitro.ViewModels
             Debug.WriteLine("Navigate Dashboard");
             if (!CanNavigate)
                 return;
+
+            if (CurrentUser is HummingbirdUser)
+            {
+                NavigationService.Navigate(typeof(HummingbirdDashboardPage), CurrentUser);
+            }
         }
         #endregion
 
@@ -117,6 +138,11 @@ namespace Anitro.ViewModels
             Debug.WriteLine("Navigate Anime Library");
             if (!CanNavigate)
                 return;
+
+            if (CurrentUser is HummingbirdUser)
+            {
+                NavigationService.Navigate(typeof(HummingbirdAnimeLibraryPage), CurrentUser);
+            }
         }
         #endregion
 
@@ -137,6 +163,11 @@ namespace Anitro.ViewModels
             Debug.WriteLine("Navigate Manga Library");
             if (!CanNavigate)
                 return;
+
+            if (CurrentUser is HummingbirdUser)
+            {
+
+            }
         }
         #endregion
 
@@ -173,15 +204,17 @@ namespace Anitro.ViewModels
                 });
             }
         }
-        public void SwitchUser(ServiceName service)
+        public void SwitchUser(ServiceName service, User user = null)
         {
             Debug.WriteLine("Switch To User On Service {0}", service);
             if (!CanNavigate)
                 return;
 
-            if (service == ServiceName.Hummingbird)
+            SetSelectedUser(service, user);
+
+            if (CurrentNavigationLocation == NavigationLocation.Login)
             {
-                HummingbirdUser.Selected = true;
+                NavigateDashboard();
             }
         }
         #endregion
@@ -203,9 +236,8 @@ namespace Anitro.ViewModels
             if (!CanNavigate)
                 return;
 
-            CurrentNavigationLocation = NavigationLocation.Login;
             if (service == ServiceName.Hummingbird)
-                NavigationService.Navigate(typeof(HummingbirdLoginPage));
+                NavigationService.Navigate(typeof(HummingbirdLoginPage), null);
         }
 
         #endregion
@@ -234,10 +266,25 @@ namespace Anitro.ViewModels
             if (!CanNavigate)
                 return;
 
-            NavigationService.Navigate(typeof(DefaultNoUserPage));
+            NavigationService.Navigate(typeof(DefaultNoUserPage), null);
             CurrentNavigationLocation = NavigationLocation.Default;
         }
         #endregion
+
+        private void SetSelectedUser(ServiceName service, User user)
+        {
+            if (CurrentUser != null)
+                CurrentUser.Selected = false;
+
+            if (user == null)
+            {
+                if (service == ServiceName.Hummingbird)
+                    CurrentUser = HummingbirdUser;
+            }
+            else CurrentUser = user;
+
+            CurrentUser.Selected = true;
+        }
         #endregion
     }
 }
