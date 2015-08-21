@@ -4,6 +4,8 @@ using AnimeTrackingServiceWrapper.UniversalServiceModels;
 using AnimeTrackingServiceWrapper.UniversalServiceModels.ActivityFeed;
 using Anitro.Models;
 using Anitro.Models.Enums;
+using Anitro.Models.Page_Parameters;
+using Anitro.Pages.Hummingbird;
 using Anitro.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -53,10 +55,14 @@ namespace Anitro.ViewModels.Hummingbird
                 User.UserInfo.AvatarUrl = new System.Uri("https://static.hummingbird.me/users/avatars/000/007/415/thumb/TyrilCropped1.png?1401236074", System.UriKind.Absolute);
                 User.HummingbirdUserInfo.cover_image = "https://static.hummingbird.me/users/cover_images/000/007/415/thumb/Zamma_resiz.jpg?1401237213";
 
+                User.LoginInfo.Username = "Design Time";
+                User.LoginInfo.AuthToken = "AuthToken";
+
                 AnimeObject anime = new AnimeObject();
                 anime.RomanjiTitle = "Gate: Jieitai Kanochi nite, Kaku Tatakaeri";
                 anime.EnglishTitle = "GATE";
                 anime.CoverImageUrl = new Uri("https://static.hummingbird.me/anime/poster_images/000/010/085/large/85a5d8cc2972ae422158be7069076be41435868848_full.jpg?1435924413", UriKind.Absolute);
+                anime.EpisodeCount = 24;
 
                 // Recent
                 User.AnimeLibrary.Recent.Add(anime);
@@ -67,12 +73,25 @@ namespace Anitro.ViewModels.Hummingbird
                 User.AnimeLibrary.Recent.Add(anime);
 
                 // Library
-                //User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(anime);
-                //User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(anime);
-                //User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(anime);
-                //User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(anime);
-                //User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(anime);
-                //User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(anime);
+                LibraryObject currentlyWatchinglibraryObject = new LibraryObject();
+                currentlyWatchinglibraryObject.Anime = anime;
+                currentlyWatchinglibraryObject.EpisodesWatched = 6;
+                currentlyWatchinglibraryObject.Section = LibrarySection.CurrentlyWatching;
+
+                LibraryObject completedLibraryObject = new LibraryObject();
+                completedLibraryObject.Anime = anime;
+                completedLibraryObject.Rating = 3.5;
+                completedLibraryObject.Section = LibrarySection.Completed;
+
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(currentlyWatchinglibraryObject);
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
 
                 // Favourites
                 User.AnimeLibrary.Favourites.Add(anime);
@@ -103,7 +122,7 @@ namespace Anitro.ViewModels.Hummingbird
 
         }
 
-        #region Commands
+        #region Refresh Commands
         #region Refresh Library
         public RelayCommand ClearRecentCommand
         {
@@ -187,6 +206,98 @@ namespace Anitro.ViewModels.Hummingbird
         }
 
         #endregion
+        #endregion
+
+        #region Navigation Commands
+        #region Library Item Clicked
+        public RelayCommand<LibraryObject> LibraryItemClickedCommand
+        {
+            get
+            {
+                return new RelayCommand<LibraryObject>((libraryObject) =>
+                {
+                    LibraryItemClicked(libraryObject);
+                });
+            }
+        }
+
+        public void LibraryItemClicked(LibraryObject libraryObject)
+        {
+            Debug.WriteLine("Library Item Clicked");
+            NavigateAnimeDetailsPage(libraryObject.Anime);
+        }
+        #endregion
+
+        #region Recent Item Clicked
+        public RelayCommand<AnimeObject> RecentItemClickedCommand
+        {
+            get
+            {
+                return new RelayCommand<AnimeObject>((animeObject) =>
+                {
+                    RecentItemClicked(animeObject);
+                });
+            }
+        }
+        public void RecentItemClicked(AnimeObject animeObject)
+        {
+            Debug.WriteLine("Recent Item Clicked");
+            NavigateAnimeDetailsPage(animeObject);
+        }
+        #endregion
+
+        #region Favourite Item Clicked
+        public RelayCommand<AnimeObject> FavouriteItemClickedCommand
+        {
+            get
+            {
+                return new RelayCommand<AnimeObject>((animeObject) =>
+                {
+                    FavouriteItemClicked(animeObject);
+                });
+            }
+        }
+        public void FavouriteItemClicked(AnimeObject animeObject)
+        {
+            Debug.WriteLine("Favourite Item Clicked");
+            NavigateAnimeDetailsPage(animeObject);
+        }
+        #endregion
+
+        /// <summary>
+        /// Gets the Library Object from the Currently Logged In User
+        /// </summary>
+        /// <param name="animeObject"></param>
+        /// <returns></returns>
+        private LibraryObject GetLibraryObject(AnimeObject animeObject)
+        {
+            HummingbirdUser loggedInUser = MainViewModel.Instance.HummingbirdUser;
+            if (loggedInUser == null)
+                return new LibraryObject(animeObject);
+
+            LibraryObject libraryObject = loggedInUser.AnimeLibrary.FindInLibrary(animeObject);
+
+            if (libraryObject == null)
+                libraryObject = new LibraryObject(animeObject);
+            return libraryObject;
+        }
+
+        private void NavigateAnimeDetailsPage(AnimeObject animeObject)
+        {
+            LibraryObject libraryObject = GetLibraryObject(animeObject);
+
+            HummingbirdAnimeDetailsParameter parameter = new HummingbirdAnimeDetailsParameter();
+            parameter.User = MainViewModel.Instance.HummingbirdUser;
+            parameter.LibraryObject = libraryObject;
+
+            NavigationService.Navigate(typeof(HummingbirdAnimeDetailsPage), parameter);
+
+            // Add this Anime to the Recent
+            if ((parameter.User?.AnimeLibrary.Recent.Contains(animeObject)).Value == false)
+            {
+                parameter.User?.AnimeLibrary.Recent.Add(animeObject);
+            }
+        }
         #endregion
     }
 }

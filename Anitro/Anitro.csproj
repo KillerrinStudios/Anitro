@@ -17,7 +17,8 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Anitro_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Anitro_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>4B5E113960748CCA9F272F3B9FED729BF79193FC</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -93,6 +94,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Anitro_StoreKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -105,28 +107,37 @@
     <Compile Include="Controls\ProgressIndicator.xaml.cs">
       <DependentUpon>ProgressIndicator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Rating\StaticRating.xaml.cs">
+      <DependentUpon>StaticRating.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Rating\Star.xaml.cs">
+      <DependentUpon>Star.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UserAccountButton.xaml.cs">
       <DependentUpon>UserAccountButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\EnumSpaceConverter.cs" />
+    <Compile Include="Converters\ObjectStringConverter.cs" />
     <Compile Include="Converters\EnumStringConverter.cs" />
     <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\OppositeBooleanConverter.cs" />
     <Compile Include="Converters\RelativeDateTimeConverter.cs" />
     <Compile Include="Helpers\AdaptiveTriggerConsts.cs" />
-    <Compile Include="Interfaces\SearchLibraryFilter.cs" />
-    <Compile Include="Interfaces\LibrarySectionFilter.cs" />
-    <Compile Include="Interfaces\IFilter.cs" />
-    <Compile Include="Interfaces\NoFilter.cs" />
-    <Compile Include="Models\FilteredObservableCollection.cs" />
+    <Compile Include="Models\SearchLibraryFilter.cs" />
+    <Compile Include="Models\LibrarySectionFilter.cs" />
+    <Compile Include="Models\FilteredLibraryObservableCollection.cs" />
     <Compile Include="Models\Library.cs" />
+    <Compile Include="Pages\Hummingbird\HummingbirdAnimeDetailsPage.xaml.cs">
+      <DependentUpon>HummingbirdAnimeDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Hummingbird\HummingbirdAnimeLibraryPage.xaml.cs">
       <DependentUpon>HummingbirdAnimeLibraryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Hummingbird\HummingbirdDashboardPage.xaml.cs">
       <DependentUpon>HummingbirdDashboardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Page Parameters\HummingbirdAnimeDetailsParameter.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Helpers\StringHelpers.cs" />
     <Compile Include="Services\APIServiceCollection.cs" />
@@ -147,6 +158,7 @@
     <Compile Include="Templates\LibraryTemplateSelector.cs" />
     <Compile Include="Templates\SocialFeedTemplateSelector.cs" />
     <Compile Include="ViewModels\AnitroViewModelBase.cs" />
+    <Compile Include="ViewModels\Hummingbird\HummingbirdAnimeDetailsViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdAnimeLibraryViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdDashboardViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdLoginViewModel.cs" />
@@ -163,6 +175,7 @@
   <ItemGroup>
     <Content Include="Assets\Icons\appbar.arrow.left.png" />
     <Content Include="Assets\Menu Images\Calendar.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -185,7 +198,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Rating\StaticRating.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Rating\Star.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\UserAccountButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Hummingbird\HummingbirdAnimeDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,6 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

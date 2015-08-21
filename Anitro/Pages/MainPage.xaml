@@ -32,7 +32,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         
-        <SplitView x:Name="MainNavigation" DisplayMode="CompactInline" IsPaneOpen="False">
+        <SplitView x:Name="MainNavigation" DisplayMode="CompactInline" IsPaneOpen="False" >
             <SplitView.Pane>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -50,19 +50,23 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <StackPanel Orientation="Vertical" Grid.Row="0">
-                            <appControls:MenuButton x:Name="dashboardMenuButton"    Command="{Binding NavigateDashboardCommand}"     Header="Dashboard" />
-                            <appControls:MenuButton x:Name="animeLibraryMenuButton" Command="{Binding NavigateAnimeLibraryCommand}"  Header="Anime Library" />
-                            <appControls:MenuButton x:Name="mangaLibraryMenuButton" Command="{Binding NavigateMangaLibraryCommand}"  Header="Manga Library" />
-                            <appControls:MenuButton x:Name="calendarMenuButton"     Command="{Binding NavigateCalendarCommand}"      Header="Calendar"      HeaderImage="ms-appx:///Assets/Menu Images/Calendar.png"/>
-                        </StackPanel>
+                        <ScrollViewer Grid.Row="0">
+                            <StackPanel Orientation="Vertical">
+                                <appControls:MenuButton x:Name="dashboardMenuButton"    Command="{Binding NavigateDashboardCommand}"     Header="Dashboard" />
+                                <appControls:MenuButton x:Name="animeLibraryMenuButton" Command="{Binding NavigateAnimeLibraryCommand}"  Header="Anime Library" />
+                                <appControls:MenuButton x:Name="mangaLibraryMenuButton" Command="{Binding NavigateMangaLibraryCommand}"  Header="Manga Library" />
+                                <appControls:MenuButton x:Name="calendarMenuButton"     Command="{Binding NavigateCalendarCommand}"      Header="Calendar"      HeaderImage="ms-appx:///Assets/Menu Images/Calendar.png"/>
+                            </StackPanel>
+                        </ScrollViewer>
 
-                        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="5,0,0,0">
-                            <TextBlock Text="Accounts" Style="{ThemeResource SubheaderTextBlockStyle}" Margin="0,0,0,10" />
+                        <ScrollViewer Grid.Row="1">
+                            <StackPanel Orientation="Vertical" Margin="5,0,0,0">
+                                <TextBlock Text="Accounts" Style="{ThemeResource SubheaderTextBlockStyle}" Margin="0,0,0,10" />
 
-                            <appControls:UserAccountButton Header="{Binding HummingbirdUser.Service, Converter={StaticResource EnumStringConverter}}" Username="{Binding HummingbirdUser.UserInfo.Username}" Avatar="{Binding HummingbirdUser.UserInfo.AvatarUrl}" IsSelected="{Binding HummingbirdUser.Selected}"
-                                                           SwitchUserCommand="{Binding SwitchUserCommand}" LoginCommand="{Binding LoginCommand}" LogoutCommand="{Binding LogoutCommand}"/>
-                        </StackPanel>
+                                <appControls:UserAccountButton Header="{Binding HummingbirdUser.Service, Converter={StaticResource EnumStringConverter}}" Username="{Binding HummingbirdUser.UserInfo.Username}" Avatar="{Binding HummingbirdUser.UserInfo.AvatarUrl}" IsSelected="{Binding HummingbirdUser.Selected}"
+                                                               SwitchUserCommand="{Binding SwitchUserCommand}" LoginCommand="{Binding LoginCommand}" LogoutCommand="{Binding LogoutCommand}"/>
+                            </StackPanel>
+                        </ScrollViewer>
                     </Grid>
 
                     <Rectangle x:Name="MainNavigation_Pane_DividerRectangle" Grid.Column="1" Grid.RowSpan="2" 

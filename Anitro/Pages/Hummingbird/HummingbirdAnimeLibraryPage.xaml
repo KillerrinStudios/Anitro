@@ -6,16 +6,115 @@
     xmlns:Templates="using:Anitro.Templates"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Anitro.Controls.Rating"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdAnimeLibraryViewModel}">
 
     <Page.Resources>
         <Templates:LibraryTemplateSelector x:Key="TemplatedLibraryTemplateSelector"
-                    TemplateCurrentlyWatching="{StaticResource ListPickerFlyoutPresenterContentTemplate}"
-                    TemplatePlanToWatch="{StaticResource ListPickerFlyoutPresenterContentTemplate}"
-                    TemplateCompleted="{StaticResource ListPickerFlyoutPresenterContentTemplate}"
-                    TemplateOnHold="{StaticResource ListPickerFlyoutPresenterContentTemplate}"
-                    TemplateDropped="{StaticResource ListPickerFlyoutPresenterContentTemplate}"/>
+                    TemplateCurrentlyWatching="{StaticResource LibraryCurrentlyWatchingItemTemplate}"
+                    TemplatePlanToWatch="{StaticResource LibraryPlanToWatchItemTemplate}"
+                    TemplateCompleted="{StaticResource LibraryCompletedItemTemplate}"
+                    TemplateOnHold="{StaticResource LibraryPlanToWatchItemTemplate}"
+                    TemplateDropped="{StaticResource LibraryPlanToWatchItemTemplate}"/>
+
+        <DataTemplate x:Key="LibraryTitlesOnlyItemTemplate">
+            <Grid Margin="0,5,0,5">
+                <TextBlock Text="{Binding Anime.RomanjiTitle}" Style="{ThemeResource TitleTextBlockStyle}" TextWrapping="Wrap"/>
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="LibraryCurrentlyWatchingItemTemplate">
+            <Grid Margin="0,5,0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Image Source="{Binding Anime.CoverImageUrl}"
+                       Grid.Row="0" Grid.RowSpan="2"/>
+
+                <Grid Grid.Row="1" Background="#CC000000">
+                    <Grid Margin="2,2,2,2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Text="{Binding Anime.RomanjiTitle}" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}"
+                               TextWrapping="Wrap" Grid.Row="0"/>
+
+                        <StackPanel Orientation="Vertical" Margin="0,5,0,0" 
+                                    HorizontalAlignment="Center" Grid.Row="1">
+                            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Center">
+                                <Run Text="Watched: " />
+                                <Run Text="{Binding EpisodesWatched}" />
+                                <Run Text="/" />
+                                <Run Text="{Binding Anime.EpisodeCount}" />
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="LibraryPlanToWatchItemTemplate">
+            <Grid Margin="0,5,0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="{Binding Anime.CoverImageUrl}"
+                       Grid.Row="0" Grid.RowSpan="2"/>
+
+                <Grid Grid.Row="1" Background="#CC000000">
+                    <Grid Margin="2,2,2,2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="{Binding Anime.RomanjiTitle}" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}"
+                               TextWrapping="Wrap" Grid.Row="0"/>
+
+                        <StackPanel Orientation="Vertical" Margin="0,5,0,0" 
+                                    HorizontalAlignment="Center" Grid.Row="1">
+
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="LibraryCompletedItemTemplate">
+            <Grid Margin="0,5,0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="{Binding Anime.CoverImageUrl}"
+                       Grid.Row="0" Grid.RowSpan="2"/>
+
+                <Grid Grid.Row="1" Background="#CC000000">
+                    <Grid Margin="2,2,2,2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="{Binding Anime.RomanjiTitle}" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}"
+                               TextWrapping="Wrap" Grid.Row="0"/>
+
+                        <StackPanel Orientation="Vertical" Margin="0,5,0,0" 
+                                    HorizontalAlignment="Center" Grid.Row="1">
+                            <controls:StaticRating NumberOfStars="5" Value="3.5" 
+                                                   StarForegroundColor="Gold"
+                                                   StarOutlineColor="Transparent"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </DataTemplate>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -39,28 +138,20 @@
             </Hub.HeaderTemplate>
 
             <!-- Recent -->
-            <HubSection>
-                <HubSection.HeaderTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Text="Recent" Grid.Column="0" VerticalAlignment="Center"/>
-                            <Button  Content="" FontFamily="Segoe MDL2 Assets" Width="50" Height="50"
-                                     Grid.Column="1" Background="Transparent" 
-                                     Command="{Binding ClearRecentCommand}"/>
-                        </Grid>
-                    </DataTemplate>
-                </HubSection.HeaderTemplate>
+            <HubSection Header="Recent" Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
                 <DataTemplate>
                     <Grid>
-                        <ListView x:Name="recentGridView" ItemsSource="{Binding User.AnimeLibrary.Recent}">
+                        <Button Width="50" Height="50" Margin="60,-45,0,0" VerticalAlignment="Top"
+                                Background="Transparent" 
+                                Command="{Binding ClearRecentCommand}">
+                            <SymbolIcon Symbol="Clear"/>
+                        </Button>
+
+                        <ListView x:Name="recentListView"  IsItemClickEnabled="True" ItemClick="RecentListView_ItemClick"
+                                  ItemsSource="{Binding User.AnimeLibrary.Recent}">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" ItemWidth="125"/>
+                                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" ItemWidth="125" />
                                 </ItemsPanelTemplate>
                             </ListView.ItemsPanel>
                             <ListView.ItemTemplate>
@@ -76,49 +167,96 @@
             </HubSection>
 
             <!-- Library -->
-            <HubSection>
-                <HubSection.HeaderTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Text="Library" Grid.Column="0" VerticalAlignment="Center"/>
-                            <Button  Content="" FontFamily="Segoe MDL2 Assets" Width="50" Height="50"
-                                     Grid.Column="1" Background="Transparent" 
-                                     Command="{Binding RefreshLibraryCommand}"/>
-                        </Grid>
-                    </DataTemplate>
-                </HubSection.HeaderTemplate>
+            <HubSection Header="Library" MinWidth="350">
                 <DataTemplate>
                     <Grid>
-                        
+                        <Button Grid.Column="1" Width="50" Height="50" Margin="60,-45,0,0" VerticalAlignment="Top"
+                                Background="Transparent" 
+                                Command="{Binding RefreshLibraryCommand}">
+                            <SymbolIcon Symbol="Refresh"/>
+                        </Button>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Vertical" Grid.Row="0" Margin="0,0,5,5">
+                                <ToggleButton x:Name="libraryFilters" Content="Filters" IsChecked="False" 
+                                              HorizontalAlignment="Stretch"/>
+                                <StackPanel Orientation="Vertical" Margin="0,5,0,0" 
+                                            Visibility="{Binding ElementName=libraryFilters, Path=IsChecked, Converter={StaticResource BooleanToVisibility}}">
+
+                                    <ComboBox x:Name="librarySectionFilterComboBox" HorizontalAlignment="Stretch" SelectedIndex="0" SelectionChanged="librarySectionFilterComboBox_SelectionChanged">
+                                        <ComboBoxItem Content="All"/>
+                                        <ComboBoxItem Content="Currently Watching"/>
+                                        <ComboBoxItem Content="Plan to Watch"/>
+                                        <ComboBoxItem Content="Completed"/>
+                                        <ComboBoxItem Content="On Hold"/>
+                                        <ComboBoxItem Content="Dropped"/>
+                                        <ComboBoxItem Content="None" />
+                                    </ComboBox>
+
+                                    <TextBox x:Name="librarySearchFilterTextBox" Margin="0,5,0,0"
+                                             PlaceholderText="Search" TextChanged="librarySearchFilterTextBox_TextChanged"
+                                             Text="{Binding User.AnimeLibrary.LibraryCollection.SearchFilter.SearchTerm, Mode=OneWay}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <Grid Grid.Row="1">
+                                <ListView x:Name="libraryZoomedInListView" IsItemClickEnabled="True" ItemClick="LibraryListView_ItemClick"
+                                      ItemsSource="{Binding User.AnimeLibrary.LibraryCollection.FilteredCollection}" 
+                                      ItemTemplateSelector="{StaticResource TemplatedLibraryTemplateSelector}"
+                                      ScrollViewer.IsVerticalScrollChainingEnabled="False">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <ItemsWrapGrid Orientation="Horizontal" 
+                                                   MaximumRowsOrColumns="2" 
+                                                   ItemWidth="175" />
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                </ListView>
+                                
+                                <!--
+                                <SemanticZoom Grid.Row="1" IsZoomedInViewActive="False" >
+                                <SemanticZoom.ZoomedInView>
+                                    
+                                </SemanticZoom.ZoomedInView>
+                                <SemanticZoom.ZoomedOutView>
+                                    <ListView x:Name="libraryZoomedOutListView" 
+                                              ItemsSource="{Binding User.AnimeLibrary.LibraryCollection.FilteredCollection}"
+                                              ItemTemplate="{StaticResource LibraryTitlesOnlyItemTemplate}"
+                                              ScrollViewer.IsVerticalScrollChainingEnabled="False">
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <ItemsWrapGrid Orientation="Horizontal" 
+                                                   MaximumRowsOrColumns="1" 
+                                                   ItemWidth="300" />
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                    </ListView>
+                                </SemanticZoom.ZoomedOutView>
+                            </SemanticZoom>
+                                -->
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </DataTemplate>
             </HubSection>
 
             <!-- Favourites -->
-            <HubSection>
-                <HubSection.HeaderTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Text="Favourites" Grid.Column="0" VerticalAlignment="Center"/>
-                            <Button  Content="" FontFamily="Segoe MDL2 Assets" Width="50" Height="50"
-                                     Grid.Column="1" Background="Transparent" 
-                                     Command="{Binding RefreshFavouritesCommand}"/>
-                        </Grid>
-                    </DataTemplate>
-                </HubSection.HeaderTemplate>
+            <HubSection Header="Favourites">
                 <DataTemplate>
                     <Grid>
-                        <ListView x:Name="favouritesGridView" ItemsSource="{Binding User.AnimeLibrary.Favourites}">
+                        <Button Grid.Column="1" Width="50" Height="50" Margin="90,-45,0,0" VerticalAlignment="Top"
+                                Background="Transparent" 
+                                Command="{Binding RefreshFavouritesCommand}">
+                            <SymbolIcon Symbol="Refresh"/>
+                        </Button>
+
+                        <ListView x:Name="favouritesListView" IsItemClickEnabled="True" ItemClick="FavouritesListView_ItemClick"
+                                  ItemsSource="{Binding User.AnimeLibrary.Favourites}" >
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <ItemsWrapGrid Orientation="Vertical" ItemWidth="150"/>

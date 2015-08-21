@@ -16,6 +16,9 @@ namespace Anitro.Models.Enums
         Calendar,
         Search,
 
-        Login
+        Login,
+
+        AnimeDetails,
+        MangaDetails
     }
 }

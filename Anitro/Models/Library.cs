@@ -1,6 +1,5 @@
 ﻿using AnimeTrackingServiceWrapper.Helpers;
 using AnimeTrackingServiceWrapper.UniversalServiceModels;
-using Anitro.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,8 +11,8 @@ namespace Anitro.Models
 {
     public class Library : ModelBase
     {
-        FilteredObservableCollection<LibraryObject> m_libraryCollection = new FilteredObservableCollection<LibraryObject>();
-        public FilteredObservableCollection<LibraryObject> LibraryCollection
+        FilteredLibraryObservableCollection m_libraryCollection = new FilteredLibraryObservableCollection();
+        public FilteredLibraryObservableCollection LibraryCollection
         {
             get { return m_libraryCollection; }
             set
@@ -50,11 +49,27 @@ namespace Anitro.Models
 
         public Library()
         {
-            LibraryCollection.CurrentFirstFilter = new LibrarySectionFilter<LibraryObject>(LibrarySection.All);
-            LibraryCollection.FirstFilterSet.Add(LibraryCollection.CurrentFirstFilter);
+        }
 
-            LibraryCollection.CurrentSecondFilter = new SearchLibraryFilter<LibraryObject>();
-            LibraryCollection.SecondFilterSet.Add(LibraryCollection.CurrentSecondFilter);
+
+        public bool IsInLibrary(AnimeObject anime)
+        {
+            foreach (var item in LibraryCollection.UnfilteredCollection)
+            {
+                if (anime.ID.ID == item.Anime.ID.ID)
+                    return true;
+            }
+            return false;
+        }
+
+        public LibraryObject FindInLibrary(AnimeObject anime)
+        {
+            foreach (var item in LibraryCollection.UnfilteredCollection)
+            {
+                if (anime.ID.ID == item.Anime.ID.ID)
+                    return item;
+            }
+            return null;
         }
     }
 }

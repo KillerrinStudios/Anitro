@@ -1,4 +1,6 @@
-﻿using Anitro.ViewModels.Hummingbird;
+﻿using AnimeTrackingServiceWrapper.Converters;
+using AnimeTrackingServiceWrapper.UniversalServiceModels;
+using Anitro.ViewModels.Hummingbird;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,6 +37,35 @@ namespace Anitro.Pages.Hummingbird
             base.OnNavigatedTo(e);
             ViewModel.User = e.Parameter as Models.HummingbirdUser;
             ViewModel.OnNavigatedTo();
+        }
+
+        private void librarySearchFilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ViewModel.User.AnimeLibrary.LibraryCollection.SearchFilter.SearchTerm = ((TextBox)sender).Text;
+            ViewModel.User.AnimeLibrary.LibraryCollection.ApplyFilters();
+        }
+
+        private void librarySectionFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            ComboBoxItem comboBoxItem = (ComboBoxItem)comboBox.SelectedItem;
+            ViewModel.User.AnimeLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySectionConverter.StringToLibrarySection((string)comboBoxItem.Content);
+            ViewModel.User.AnimeLibrary.LibraryCollection.ApplyFilters();
+        }
+
+        private void LibraryListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ViewModel.LibraryItemClicked((LibraryObject)e.ClickedItem);
+        }
+
+        private void FavouritesListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ViewModel.FavouriteItemClicked((AnimeObject)e.ClickedItem);
+        }
+
+        private void RecentListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ViewModel.RecentItemClicked((AnimeObject)e.ClickedItem);
         }
     }
 }

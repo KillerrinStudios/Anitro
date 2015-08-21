@@ -17,6 +17,7 @@
         
         <!-- Converters -->
         <ATSW:AiringStatusConverter x:Key="ATSWConverters" xmlns:ATSW="using:AnimeTrackingServiceWrapper.Converters" />
+        <Converters:ObjectStringConverter x:Key="ObjectStringConverter" />
         <Converters:EnumStringConverter x:Key="EnumStringConverter" />
         <Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibility" xmlns:Converters="using:Anitro.Converters" />
         <Converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibility" xmlns:Converters="using:Anitro.Converters" />

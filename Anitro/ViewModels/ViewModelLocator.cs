@@ -46,7 +46,6 @@ namespace Anitro.ViewModels
             //}
 
             SimpleIoc.Default.Register<MainViewModel>();
-            //SimpleIoc.Default.Register<HummingbirdLoginViewModel>();
             SimpleIoc.Default.Register<HummingbirdDashboardViewModel>();
             SimpleIoc.Default.Register<HummingbirdAnimeLibraryViewModel>();
 
@@ -57,8 +56,8 @@ namespace Anitro.ViewModels
         public MainViewModel vm_MainViewModel { get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
 
         #region Hummingbird
-        //return ServiceLocator.Current.GetInstance<HummingbirdLoginViewModel>();
         public HummingbirdLoginViewModel vm_HummingbirdLoginViewModel { get { return new HummingbirdLoginViewModel(); } }
+        public HummingbirdAnimeDetailsViewModel vm_HummingbirdAnimeDetailsViewModel { get { return new HummingbirdAnimeDetailsViewModel(); } }
 
         public HummingbirdDashboardViewModel vm_HummingbirdDashboardViewModel { get { return ServiceLocator.Current.GetInstance<HummingbirdDashboardViewModel>(); } }
         public HummingbirdAnimeLibraryViewModel vm_HummingbirdAnimeLibraryViewModel { get { return ServiceLocator.Current.GetInstance<HummingbirdAnimeLibraryViewModel>(); } }
