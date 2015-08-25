@@ -20,7 +20,6 @@ namespace Anitro.Controls.Rating
 {
     public sealed partial class StaticRating : UserControl
     {
-
         public StaticRating()
         {
             InitializeComponent();
@@ -121,6 +120,95 @@ namespace Anitro.Controls.Rating
         }
         #endregion
 
+        #region Star Size
+        /// <summary>
+        /// Gets or sets the Value property.  
+        /// </summary>
+        public int StarSize
+        {
+            get { return (int)GetValue(StarSizeProperty); }
+            set { SetValue(StarSizeProperty, value); }
+        }
+
+        /// <summary>
+        /// Value Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty StarSizeProperty =
+            DependencyProperty.Register(nameof(StarSize),
+                typeof(int),
+                typeof(StaticRating),
+                new PropertyMetadata(Star.DEFAULT_STAR_SIZE, new PropertyChangedCallback(OnStarSizeChanged)));
+
+        /// <summary>
+        /// Handles changes to the Value property.
+        /// </summary>
+        private static void OnStarSizeChanged(DependencyObject d,
+            DependencyPropertyChangedEventArgs e)
+        {
+            StaticRating ratingsControl = (StaticRating)d;
+            SetupStars(ratingsControl);
+        }
+        #endregion
+
+        #region Star Scale Width
+        /// <summary>
+        /// Gets or sets the Value property.  
+        /// </summary>
+        public double StarScaleWidth
+        {
+            get { return (double)GetValue(StarScaleWidthProperty); }
+            set { SetValue(StarScaleWidthProperty, value); }
+        }
+
+        /// <summary>
+        /// Value Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty StarScaleWidthProperty =
+            DependencyProperty.Register(nameof(StarScaleWidth),
+                typeof(double),
+                typeof(StaticRating),
+                new PropertyMetadata(1.0, new PropertyChangedCallback(OnStarScaleWidthChanged)));
+
+        /// <summary>
+        /// Handles changes to the Value property.
+        /// </summary>
+        private static void OnStarScaleWidthChanged(DependencyObject d,
+            DependencyPropertyChangedEventArgs e)
+        {
+            StaticRating ratingsControl = (StaticRating)d;
+        }
+        #endregion
+
+        #region Star Scale Height
+        /// <summary>
+        /// Gets or sets the Value property.  
+        /// </summary>
+        public double StarScaleHeight
+        {
+            get { return (double)GetValue(StarScaleHeightProperty); }
+            set { SetValue(StarScaleHeightProperty, value); }
+        }
+
+        /// <summary>
+        /// Value Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty StarScaleHeightProperty =
+            DependencyProperty.Register(nameof(StarScaleHeight),
+                typeof(double),
+                typeof(StaticRating),
+                new PropertyMetadata(1.0, new PropertyChangedCallback(OnStarScaleHeightChanged)));
+
+        /// <summary>
+        /// Handles changes to the Value property.
+        /// </summary>
+        private static void OnStarScaleHeightChanged(DependencyObject d,
+            DependencyPropertyChangedEventArgs e)
+        {
+            StaticRating ratingsControl = (StaticRating)d;
+        }
+        #endregion
+
+
         #region Value
         /// <summary>
         /// Gets or sets the Value property.  
@@ -199,6 +287,10 @@ namespace Anitro.Controls.Rating
                 star.BackgroundColor = ratingsControl.BackgroundColor;
                 star.StarForegroundColor = ratingsControl.StarForegroundColor;
                 star.StarOutlineColor = ratingsControl.StarOutlineColor;
+                star.StarScaleWidth = ratingsControl.StarScaleWidth;
+                star.StarScaleHeight = ratingsControl.StarScaleHeight;
+                star.StarSize = ratingsControl.StarSize;
+
                 if (localValue > 1)
                     star.Value = 1.0;
                 else if (localValue > 0)

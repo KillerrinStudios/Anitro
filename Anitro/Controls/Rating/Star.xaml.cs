@@ -11,22 +11,22 @@ namespace Anitro.Controls.Rating
 {
     public sealed partial class Star : UserControl
     {
-        private const Int32 STAR_SIZE = 12;
+        public const Int32 DEFAULT_STAR_SIZE = 12;
 
         public Star()
         {
             this.DataContext = this;
             InitializeComponent();
 
-            gdStar.Width = STAR_SIZE;
-            gdStar.Height = STAR_SIZE;
+            gdStar.Width = DEFAULT_STAR_SIZE;
+            gdStar.Height = DEFAULT_STAR_SIZE;
             gdStar.Clip = new RectangleGeometry
             {
-                Rect = new Rect(0, 0, STAR_SIZE, STAR_SIZE)
+                Rect = new Rect(0, 0, DEFAULT_STAR_SIZE, DEFAULT_STAR_SIZE)
             };
 
-            mask.Width = STAR_SIZE;
-            mask.Height = STAR_SIZE;
+            mask.Width = DEFAULT_STAR_SIZE;
+            mask.Height = DEFAULT_STAR_SIZE;
             this.SizeChanged += new SizeChangedEventHandler(Star_SizeChanged);
         }
 
@@ -154,9 +154,111 @@ namespace Anitro.Controls.Rating
 
             starControl.FillStarColor();
 
-            Int32 marginLeftOffset = (Int32)(starControl.Value * (double)STAR_SIZE);
+            Int32 marginLeftOffset = (Int32)(starControl.Value * (double)starControl.StarSize);
             starControl.InvalidateArrange();
             starControl.InvalidateMeasure();
+        }
+        #endregion
+
+        #region Star Size
+        /// <summary>
+        /// Gets or sets the Value property.  
+        /// </summary>
+        public int StarSize
+        {
+            get { return (int)GetValue(StarSizeProperty); }
+            set { SetValue(StarSizeProperty, value); }
+        }
+
+        /// <summary>
+        /// Value Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty StarSizeProperty =
+            DependencyProperty.Register(nameof(StarSize),
+                typeof(int),
+                typeof(Star),
+                new PropertyMetadata(DEFAULT_STAR_SIZE, new PropertyChangedCallback(OnStarSizeChanged)));
+
+        /// <summary>
+        /// Handles changes to the Value property.
+        /// </summary>
+        private static void OnStarSizeChanged(DependencyObject d,
+            DependencyPropertyChangedEventArgs e)
+        {
+            Star starControl = (Star)d;
+
+            starControl.gdStar.Width = starControl.StarSize;
+            starControl.gdStar.Height = starControl.StarSize;
+            starControl.gdStar.Clip = new RectangleGeometry
+            {
+                Rect = new Rect(0, 0, starControl.StarSize, starControl.StarSize)
+            };
+            starControl.mask.Width = starControl.StarSize;
+            starControl.mask.Height = starControl.StarSize;
+
+            starControl.FillStarColor();
+
+            Int32 marginLeftOffset = (Int32)(starControl.Value * (double)starControl.StarSize);
+            starControl.InvalidateArrange();
+            starControl.InvalidateMeasure();
+        }
+        #endregion
+
+        #region Star Scale Width
+        /// <summary>
+        /// Gets or sets the Value property.  
+        /// </summary>
+        public double StarScaleWidth
+        {
+            get { return (double)GetValue(StarScaleWidthProperty); }
+            set { SetValue(StarScaleWidthProperty, value); }
+        }
+
+        /// <summary>
+        /// Value Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty StarScaleWidthProperty =
+            DependencyProperty.Register(nameof(StarScaleWidth),
+                typeof(double),
+                typeof(Star),
+                new PropertyMetadata(1.0, new PropertyChangedCallback(OnStarScaleWidthChanged)));
+
+        /// <summary>
+        /// Handles changes to the Value property.
+        /// </summary>
+        private static void OnStarScaleWidthChanged(DependencyObject d,
+            DependencyPropertyChangedEventArgs e)
+        {
+            Star starControl = (Star)d;
+        }
+        #endregion
+
+        #region Star Scale Height
+        /// <summary>
+        /// Gets or sets the Value property.  
+        /// </summary>
+        public double StarScaleHeight
+        {
+            get { return (double)GetValue(StarScaleHeightProperty); }
+            set { SetValue(StarScaleHeightProperty, value); }
+        }
+
+        /// <summary>
+        /// Value Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty StarScaleHeightProperty =
+            DependencyProperty.Register(nameof(StarScaleHeight),
+                typeof(double),
+                typeof(Star),
+                new PropertyMetadata(1.0, new PropertyChangedCallback(OnStarScaleHeightChanged)));
+
+        /// <summary>
+        /// Handles changes to the Value property.
+        /// </summary>
+        private static void OnStarScaleHeightChanged(DependencyObject d,
+            DependencyPropertyChangedEventArgs e)
+        {
+            Star starControl = (Star)d;
         }
         #endregion
 

@@ -3,10 +3,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Anitro.Pages.Hummingbird"
+    xmlns:ratingControls="using:Anitro.Controls.Rating"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdAnimeDetailsViewModel}">
+
+    <Page.Resources>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
@@ -31,15 +35,37 @@
         </VisualStateManager.VisualStateGroups>
 
         <Hub Header="{Binding LibraryObject.Anime.RomanjiTitle}">
-            <HubSection Header="Library" Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
+            <HubSection Header="Library" Width="200"
+                        Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
                 <DataTemplate>
                     <Grid>
                         <ScrollViewer>
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical" Margin="0,0,10,0">
                                 <TextBlock Text="{Binding LibraryObject.LastWatched, Converter={StaticResource RelativeDateTime}}"
                                            Style="{ThemeResource BodyTextBlockStyle}"/>
-                                
-                                
+
+                                <ratingControls:StaticRating NumberOfStars="5" Value="{Binding LibraryObject.Rating, Mode=OneWay}" StarSize="12"
+                                                             StarScaleWidth="2.0" StarScaleHeight="2.0"
+                                                             StarForegroundColor="Gold" StarOutlineColor="Transparent" RenderTransformOrigin="0.5,0.5" >
+                                    <ratingControls:StaticRating.RenderTransform>
+                                        <CompositeTransform ScaleX="2" ScaleY="2"/>
+                                    </ratingControls:StaticRating.RenderTransform>
+                                </ratingControls:StaticRating>
+
+                                <Slider Minimum="0.0" Value="{Binding LibraryObject.Rating, Mode=TwoWay}" Maximum="5.0"/>
+
+                                <ComboBox x:Name="librarySectionComboBox" Header="Library Section" 
+                                          HorizontalAlignment="Stretch" Margin="0,10,0,0"
+                                          SelectionChanged="librarySectionComboBox_SelectionChanged" Loaded="librarySectionComboBox_Loaded">
+                                    <ComboBoxItem Content="None" />
+                                    <ComboBoxItem Content="Currently Watching"/>
+                                    <ComboBoxItem Content="Plan to Watch"/>
+                                    <ComboBoxItem Content="Completed"/>
+                                    <ComboBoxItem Content="On Hold"/>
+                                    <ComboBoxItem Content="Dropped"/>
+                                </ComboBox>
+
+
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>

@@ -6,7 +6,7 @@
     xmlns:Templates="using:Anitro.Templates"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Anitro.Controls.Rating"
+    xmlns:ratingControls="using:Anitro.Controls.Rating"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdAnimeLibraryViewModel}">
 
@@ -107,9 +107,9 @@
 
                         <StackPanel Orientation="Vertical" Margin="0,5,0,0" 
                                     HorizontalAlignment="Center" Grid.Row="1">
-                            <controls:StaticRating NumberOfStars="5" Value="3.5" 
-                                                   StarForegroundColor="Gold"
-                                                   StarOutlineColor="Transparent"/>
+                            <ratingControls:StaticRating NumberOfStars="5" Value="3.5" 
+                                                         StarForegroundColor="Gold"
+                                                         StarOutlineColor="Transparent"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -188,7 +188,7 @@
                                 <StackPanel Orientation="Vertical" Margin="0,5,0,0" 
                                             Visibility="{Binding ElementName=libraryFilters, Path=IsChecked, Converter={StaticResource BooleanToVisibility}}">
 
-                                    <ComboBox x:Name="librarySectionFilterComboBox" HorizontalAlignment="Stretch" SelectedIndex="0" SelectionChanged="librarySectionFilterComboBox_SelectionChanged">
+                                    <ComboBox x:Name="librarySectionFilterComboBox" HorizontalAlignment="Stretch" SelectedIndex="1" SelectionChanged="librarySectionFilterComboBox_SelectionChanged">
                                         <ComboBoxItem Content="All"/>
                                         <ComboBoxItem Content="Currently Watching"/>
                                         <ComboBoxItem Content="Plan to Watch"/>

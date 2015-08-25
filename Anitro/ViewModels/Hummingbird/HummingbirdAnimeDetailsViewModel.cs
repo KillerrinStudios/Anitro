@@ -77,6 +77,8 @@ namespace Anitro.ViewModels.Hummingbird
                 LibraryObject libraryObject = new LibraryObject();
                 libraryObject.Anime = anime;
                 libraryObject.EpisodesWatched = 6;
+                libraryObject.Rating = 4.0;
+                libraryObject.LastWatched = DateTime.Now;
                 libraryObject.Section = LibrarySection.CurrentlyWatching;
 
                 LibraryObject = libraryObject;

@@ -1,4 +1,6 @@
-﻿using Anitro.Models.Page_Parameters;
+﻿using AnimeTrackingServiceWrapper.Converters;
+using AnimeTrackingServiceWrapper.UniversalServiceModels;
+using Anitro.Models.Page_Parameters;
 using Anitro.ViewModels.Hummingbird;
 using System;
 using System.Collections.Generic;
@@ -40,6 +42,29 @@ namespace Anitro.Pages.Hummingbird
             ViewModel.LibraryObject = parameter.LibraryObject;
 
             ViewModel.OnNavigatedTo();
+        }
+
+        private void librarySectionComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            var comboBox = (ComboBox)sender;
+
+            switch (ViewModel.LibraryObject.Section)
+            {
+                case LibrarySection.CurrentlyWatching: comboBox.SelectedIndex = 1; break;
+                case LibrarySection.PlanToWatch: comboBox.SelectedIndex = 2; break;
+                case LibrarySection.Completed: comboBox.SelectedIndex = 3; break;
+                case LibrarySection.OnHold: comboBox.SelectedIndex = 4; break;
+                case LibrarySection.Dropped: comboBox.SelectedIndex = 5; break;
+                case LibrarySection.None:
+                default: comboBox.SelectedIndex = 0; break;
+            }
+        }
+
+        private void librarySectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            ComboBoxItem comboBoxItem = (ComboBoxItem)comboBox.SelectedItem;
+            ViewModel.LibraryObject.Section = LibrarySectionConverter.StringToLibrarySection((string)comboBoxItem.Content);
         }
     }
 }
