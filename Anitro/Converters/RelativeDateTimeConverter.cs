@@ -21,6 +21,9 @@ namespace Anitro.Converters
             var difference = DateTime.UtcNow - utcValue;
             //Debug.WriteLine("Difference Calculated");
 
+            if (utcValue == DateTime.MinValue) return "";
+            else if (utcValue == DateTime.MaxValue) return "";
+
             string result = "";
             if (difference.TotalSeconds < 2.0)
                 result = "a second ago";

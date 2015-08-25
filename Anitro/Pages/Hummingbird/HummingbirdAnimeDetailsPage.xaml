@@ -9,8 +9,47 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdAnimeDetailsViewModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot Title="{Binding LibraryObject.Anime.RomanjiTitle}">
-            
-        </Pivot>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Phone">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneMinimumWidth}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Desktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=DesktopMinimumWidth}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Hub Header="{Binding LibraryObject.Anime.RomanjiTitle}">
+            <HubSection Header="Library" Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
+                <DataTemplate>
+                    <Grid>
+                        <ScrollViewer>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding LibraryObject.LastWatched, Converter={StaticResource RelativeDateTime}}"
+                                           Style="{ThemeResource BodyTextBlockStyle}"/>
+                                
+                                
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Anime">
+                <DataTemplate>
+
+                </DataTemplate>
+            </HubSection>
+        </Hub>
     </Grid>
 </Page>

@@ -293,10 +293,7 @@ namespace Anitro.ViewModels.Hummingbird
             NavigationService.Navigate(typeof(HummingbirdAnimeDetailsPage), parameter);
 
             // Add this Anime to the Recent
-            if ((parameter.User?.AnimeLibrary.Recent.Contains(animeObject)).Value == false)
-            {
-                parameter.User?.AnimeLibrary.Recent.Add(animeObject);
-            }
+            parameter.User?.AnimeLibrary.AddToRecent(animeObject);
         }
         #endregion
     }

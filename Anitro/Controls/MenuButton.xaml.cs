@@ -30,9 +30,9 @@ namespace Anitro.Controls
         }
 
         #region IsSelected
-        public bool IsSelected
+        public bool? IsSelected
         {
-            get { return (bool)GetValue(IsSelectedProperty); }
+            get { return (bool?)GetValue(IsSelectedProperty); }
             set
             {
                 if (value == null) return;
@@ -40,12 +40,12 @@ namespace Anitro.Controls
             }
         }
         public static readonly DependencyProperty IsSelectedProperty =
-            DependencyProperty.Register(nameof(IsSelected), typeof(bool), typeof(MenuButton), new PropertyMetadata(false, OnIsSelectedPropertyChanged));
+            DependencyProperty.Register(nameof(IsSelected), typeof(bool?), typeof(MenuButton), new PropertyMetadata(false, OnIsSelectedPropertyChanged));
 
         private static void OnIsSelectedPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             MenuButton button = (d as MenuButton);
-            if (button.IsSelected)
+            if (button.IsSelected.Value)
                 button.Background = (Application.Current.Resources["SystemControlBackgroundAccentBrush"] as SolidColorBrush);
             else
                 button.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(0, 255, 255, 255));

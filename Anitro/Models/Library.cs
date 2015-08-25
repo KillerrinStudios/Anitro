@@ -51,6 +51,18 @@ namespace Anitro.Models
         {
         }
 
+        public void AddToRecent(AnimeObject anime)
+        {
+            if (Recent.Contains(anime) == false)
+            {
+                Recent.Insert(0, anime);
+            }
+
+            while (Recent.Count > 6)
+            {
+                Recent.RemoveAt(Recent.Count - 1);
+            }
+        }
 
         public bool IsInLibrary(AnimeObject anime)
         {

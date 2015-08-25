@@ -38,7 +38,6 @@ namespace Anitro.Controls
             get { return (bool)GetValue(IsSelectedProperty); }
             set
             {
-                if (value == null) return;
                 SetValue(IsSelectedProperty, value);
             }
         }

@@ -9,15 +9,36 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=vm_MainViewModel}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="PhoneSmall">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneSmallMinimumWidth}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainNavigation.DisplayMode" Value="CompactOverlay" />
+                        <Setter Target="MainNavigation.IsPaneOpen" Value="False" />
+                        
+                        <Setter Target="MainNavigation_PanelHamburgerButton.Visibility" Value="Collapsed"/>
+                        <Setter Target="MainNavigation.CompactPaneLength" Value="0"/>
+                        <Setter Target="TopNavigationBar.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
                 <VisualState x:Name="Phone">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneMinimumWidth}"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="MainNavigation.DisplayMode" Value="CompactOverlay" />
-                        <Setter Target="MainNavigation.IsPaneOpen" Value="True" />
+                        <Setter Target="MainNavigation.IsPaneOpen" Value="False" />
+
+                        <Setter Target="MainNavigation_PanelHamburgerButton.Visibility" Value="Visible"/>
+                        <Setter Target="MainNavigation.CompactPaneLength" Value="48"/>
+                        <Setter Target="TopNavigationBar.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Desktop">
@@ -27,12 +48,23 @@
                     <VisualState.Setters>
                         <Setter Target="MainNavigation.DisplayMode" Value="CompactInline" />
                         <Setter Target="MainNavigation.IsPaneOpen" Value="True" />
+
+                        <Setter Target="MainNavigation_PanelHamburgerButton.Visibility" Value="Visible"/>
+                        <Setter Target="MainNavigation.CompactPaneLength" Value="48"/>
+                        <Setter Target="TopNavigationBar.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+
+        <StackPanel x:Name="TopNavigationBar" Orientation="Horizontal" Grid.Row="0" 
+                    Background="{Binding ElementName=MainNavigation, Path=PaneBackground}"
+                    Visibility="Collapsed">
+            <Button x:Name="MainNavigation_TopHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="MainNavigation_HamburgerButton_Click"/>
+        </StackPanel>
         
-        <SplitView x:Name="MainNavigation" DisplayMode="CompactInline" IsPaneOpen="False" >
+        <SplitView x:Name="MainNavigation" DisplayMode="CompactInline" IsPaneOpen="False" CompactPaneLength="48"
+                   Grid.Row="1">
             <SplitView.Pane>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -41,7 +73,7 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Orientation="Vertical" Grid.Column="0">
-                        <Button x:Name="MainNavigation_HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="MainNavigation_HamburgerButton_Click"/>
+                        <Button x:Name="MainNavigation_PanelHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="MainNavigation_HamburgerButton_Click"/>
                     </StackPanel>
 
                     <Grid Grid.Column="1">
