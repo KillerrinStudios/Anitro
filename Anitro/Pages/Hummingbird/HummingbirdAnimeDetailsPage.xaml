@@ -23,7 +23,7 @@
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Phone">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneMinimumWidth}"/>
+                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneSmallMinimumWidth}"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="mainGrid.Background" Value="{StaticResource backgroundImageBrush}" />
@@ -43,6 +43,48 @@
         <Grid x:Name="backgroundShade" Background="#BF000000"/>
 
         <Pivot Title="{Binding LibraryObject.Anime.RomanjiTitle}">
+            <PivotItem Header="Details">
+                <ScrollViewer HorizontalAlignment="Stretch" 
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                  ScrollViewer.HorizontalScrollMode="Disabled">
+                    <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                        <TextBlock Text="{Binding LibraryObject.Anime.RomanjiTitle}" Style="{ThemeResource TitleTextBlockStyle}"/>
+                        
+                        <TextBlock Text="{Binding LibraryObject.Anime.EnglishTitle}" Style="{ThemeResource SubtitleTextBlockStyle}"
+                                   Margin="0,5,0,0"/>
+                        <TextBlock Text="{Binding LibraryObject.Anime.KanjiTitle}"   Style="{ThemeResource SubtitleTextBlockStyle}"
+                                   Margin="0,5,0,0"/>
+                        
+                        <Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,20,0,10" />                        
+                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Center">
+                            <Run Text="{Binding LibraryObject.Anime.MediaType, Converter={StaticResource MediaTypeConverter}}"/>
+                            <Run Text=" - "/>
+                            <Run Text="{Binding LibraryObject.Anime.EpisodeCount}"/>
+                            <Run Text=" episodes"/>
+                            <Run Text=" - " />
+                            <Run Text="{Binding LibraryObject.Anime.AiringStatus, Converter={StaticResource AiringStatusConverter}}"/>
+                        </TextBlock>
+
+                        <ListView ItemsSource="{Binding LibraryObject.Anime.Genres}" IsItemClickEnabled="False" Margin="0,5,0,0">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid Orientation="Horizontal" ItemWidth="100"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={StaticResource MediaGenreConverter}}" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                                               TextWrapping="Wrap"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,10,0,20" />
+                        
+                        <TextBlock Text="{Binding LibraryObject.Anime.Synopsis}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </PivotItem>
             <PivotItem Header="Library"
                        Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
                 <Grid>
@@ -99,9 +141,9 @@
 
                             <TextBlock Text="Rewatched" Margin="0,20,0,0"/>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <Button Content="+" Width="30" Command="{Binding IncrementRewatching}"/>
+                                <Button Content="-" Width="30" Command="{Binding DecrementRewatchingCommand}"/>
                                 <TextBlock Text="{Binding LibraryObject.RewatchedTimes}" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                                <Button Content="-" Width="30" Command="{Binding DecrementRewatching}"/>
+                                <Button Content="+" Width="30" Command="{Binding IncrementRewatchingCommand}"/>
                             </StackPanel>
 
                             <ToggleSwitch Header="Private"    IsOn="{Binding LibraryObject.Private, Converter={StaticResource BooleanToPrivacySettings}, Mode=TwoWay}" Margin="0,20,0,0" 
@@ -114,48 +156,6 @@
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
-            </PivotItem>
-            <PivotItem Header="Anime">
-                <ScrollViewer HorizontalAlignment="Stretch" 
-                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                  ScrollViewer.HorizontalScrollMode="Disabled">
-                    <StackPanel Orientation="Vertical" Margin="0,0,20,0">
-                        <TextBlock Text="{Binding LibraryObject.Anime.RomanjiTitle}" Style="{ThemeResource TitleTextBlockStyle}"/>
-                        
-                        <TextBlock Text="{Binding LibraryObject.Anime.EnglishTitle}" Style="{ThemeResource SubtitleTextBlockStyle}"
-                                   Margin="0,5,0,0"/>
-                        <TextBlock Text="{Binding LibraryObject.Anime.KanjiTitle}"   Style="{ThemeResource SubtitleTextBlockStyle}"
-                                   Margin="0,5,0,0"/>
-                        
-                        <Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,20,0,10" />                        
-                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Center">
-                            <Run Text="{Binding LibraryObject.Anime.MediaType, Converter={StaticResource EnumStringConverter}}"/>
-                            <Run Text=" - "/>
-                            <Run Text="{Binding LibraryObject.Anime.EpisodeCount}"/>
-                            <Run Text=" episodes"/>
-                            <Run Text=" - " />
-                            <Run Text="{Binding LibraryObject.Anime.AiringStatus, Converter={StaticResource EnumStringConverter}}"/>
-                        </TextBlock>
-
-                        <ListView ItemsSource="{Binding LibraryObject.Anime.Genres}" IsItemClickEnabled="False" Margin="0,5,0,0">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <ItemsWrapGrid Orientation="Horizontal" ItemWidth="100"/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding}" HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                               TextWrapping="Wrap"/>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-
-                        <Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,10,0,20" />
-                        
-                        <TextBlock Text="{Binding LibraryObject.Anime.Synopsis}" Style="{ThemeResource BodyTextBlockStyle}"/>
-                    </StackPanel>
-                </ScrollViewer>
             </PivotItem>
         </Pivot>
     </Grid>

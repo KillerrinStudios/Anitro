@@ -113,8 +113,18 @@ namespace Anitro.ViewModels.Hummingbird
         }
 
         #region Increment/Decrement Commands
-        public RelayCommand IncrementRewatching { get { return new RelayCommand(() => { LibraryObject.RewatchedTimes++; }); } }
-        public RelayCommand DecrementRewatching { get { return new RelayCommand(() => { LibraryObject.RewatchedTimes--; }); } }
+        public RelayCommand IncrementRewatchingCommand { get { return new RelayCommand(() => { LibraryObject.RewatchedTimes++; }); } }
+        public RelayCommand DecrementRewatchingCommand
+        {
+            get
+            {
+                return new RelayCommand(() => 
+                    {
+                        if (LibraryObject.RewatchedTimes > 0)
+                            LibraryObject.RewatchedTimes--;
+                    });
+            }
+        }
         #endregion
     }
 }
