@@ -176,6 +176,8 @@ namespace Anitro.Controls.Rating
             DependencyPropertyChangedEventArgs e)
         {
             StaticRating ratingsControl = (StaticRating)d;
+            foreach (Star star in ratingsControl.spStars.Children)
+                star.StarScaleWidth = ratingsControl.StarScaleWidth;
         }
         #endregion
 
@@ -205,6 +207,8 @@ namespace Anitro.Controls.Rating
             DependencyPropertyChangedEventArgs e)
         {
             StaticRating ratingsControl = (StaticRating)d;
+            foreach (Star star in ratingsControl.spStars.Children)
+                star.StarScaleHeight = ratingsControl.StarScaleHeight;
         }
         #endregion
 

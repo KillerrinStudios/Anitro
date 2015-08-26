@@ -72,14 +72,27 @@ namespace Anitro.ViewModels.Hummingbird
                 anime.RomanjiTitle = "Gate: Jieitai Kanochi nite, Kaku Tatakaeri";
                 anime.EnglishTitle = "GATE";
                 anime.CoverImageUrl = new Uri("https://static.hummingbird.me/anime/poster_images/000/010/085/large/85a5d8cc2972ae422158be7069076be41435868848_full.jpg?1435924413", UriKind.Absolute);
+                anime.WebUrl = new Uri("https://hummingbird.me/anime/gate-jieitai-kanochi-nite-kaku-tatakaeri", UriKind.Absolute);
                 anime.EpisodeCount = 24;
+                anime.Service = ServiceName.Hummingbird;
+                anime.AgeRating = AgeRating.R17;
+                anime.MediaType = MediaType.TV;
+                anime.AiringStatus = AiringStatus.CurrentlyAiring;
+                anime.Genres.Add(MediaGenre.Action);
+                anime.Genres.Add(MediaGenre.Adventure);
+                anime.Genres.Add(MediaGenre.Fantasy);
+                anime.Genres.Add(MediaGenre.Military);
+                anime.Synopsis = "In August of 20XX, a portal to a parallel world, known as the \"Gate,\" suddenly appeared in Ginza, Tokyo. Monsters and troops poured out of the portal, turning the shopping district into a bloody inferno. The Japan Ground - Self Defence Force immediately took action and pushed the fantasy creatures back to the \"Gate.\" To facilitate negotiations and prepare for future fights, the JGSDF dispatched the Third Reconnaissance Team to the \"Special Region\" at the other side of the Gate. Youji Itami, a JSDF officer as well as a 33 - year - old otaku, was appointed as the leader of the Team.Amid attacks from enemy troops the team visited a variety of places and learnt a lot about the local culture and geography. Thanks to their efforts in humanitarian relief, although with some difficulties they were gradually able to reach out to the locals.They even had a cute elf, a sorceress and a demigoddess in their circle of new friends.On the other hand, the major powers outside the Gate such as the United States, China, and Russia were extremely interested in the abundant resources available in the Special Region.They began to exert diplomatic pressure over Japan. A suddenly appearing portal to an unknown world—to the major powers it may be no more than a mere asset for toppling the international order.But to our protagonists it is an invaluable opportunity to broaden knowledge, friendship, and ultimately their perspective towards the world. (Source: Baka - Tsuki)";
 
                 LibraryObject libraryObject = new LibraryObject();
                 libraryObject.Anime = anime;
                 libraryObject.EpisodesWatched = 6;
                 libraryObject.Rating = 4.0;
                 libraryObject.LastWatched = DateTime.Now;
+                libraryObject.RewatchedTimes = 1;
+                libraryObject.Private = PrivacySettings.Public;
                 libraryObject.Section = LibrarySection.CurrentlyWatching;
+                libraryObject.Notes = "AMAZING!";
 
                 LibraryObject = libraryObject;
             }
@@ -98,5 +111,10 @@ namespace Anitro.ViewModels.Hummingbird
         {
 
         }
+
+        #region Increment/Decrement Commands
+        public RelayCommand IncrementRewatching { get { return new RelayCommand(() => { LibraryObject.RewatchedTimes++; }); } }
+        public RelayCommand DecrementRewatching { get { return new RelayCommand(() => { LibraryObject.RewatchedTimes--; }); } }
+        #endregion
     }
 }

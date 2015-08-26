@@ -22,13 +22,13 @@ namespace Anitro.Helpers
         public int DesktopMinimumWidth { get { return DesktopMinimumWindowWidth; } }
         #endregion
 
-        public DisplayOrientations Orientation { get { return DisplayInformation.GetForCurrentView().CurrentOrientation; } }
+        //public DisplayOrientations Orientation { get { return DisplayInformation.GetForCurrentView().CurrentOrientation; } }
         public double WindowWidth { get { return Window.Current.Bounds.Width; } }
         public double WindowHeight { get { return Window.Current.Bounds.Height; } }
 
         public AdaptiveTriggerConsts()
         {
-            DisplayInformation.GetForCurrentView().OrientationChanged += AdaptiveTriggerConsts_OrientationChanged;
+            //DisplayInformation.GetForCurrentView().OrientationChanged += AdaptiveTriggerConsts_OrientationChanged;
             Window.Current.SizeChanged += Current_SizeChanged;
         }
 
@@ -41,7 +41,7 @@ namespace Anitro.Helpers
 
         private void AdaptiveTriggerConsts_OrientationChanged(DisplayInformation sender, object args)
         {
-            RaisePropertyChanged(nameof(Orientation));
+            //RaisePropertyChanged(nameof(Orientation));
         }
         #endregion
 
@@ -54,9 +54,8 @@ namespace Anitro.Helpers
             {
                 if (disposing)
                 {
-                    DisplayInformation.GetForCurrentView().OrientationChanged -= AdaptiveTriggerConsts_OrientationChanged;
+                    //DisplayInformation.GetForCurrentView().OrientationChanged -= AdaptiveTriggerConsts_OrientationChanged;
                     Window.Current.SizeChanged -= Current_SizeChanged;
-
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.

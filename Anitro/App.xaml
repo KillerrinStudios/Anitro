@@ -10,7 +10,7 @@
     <Application.Resources>
         
         <!-- Consts -->
-        <consts:AdaptiveTriggerConsts x:Key="AdaptiveTriggerConsts" xmlns:consts="using:Anitro.Helpers" />
+        <Consts:AdaptiveTriggerConsts x:Key="AdaptiveTriggerConsts" xmlns:Consts="using:Anitro.Helpers" />
         
         <!-- MVVM -->
         <vm:ViewModelLocator x:Key="Locator" xmlns:vm="using:Anitro.ViewModels" />

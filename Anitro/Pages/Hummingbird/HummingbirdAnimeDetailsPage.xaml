@@ -10,9 +10,15 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdAnimeDetailsViewModel}">
 
     <Page.Resources>
+        <Converters:BooleanToPrivacySettings x:Key="BooleanToPrivacySettings" xmlns:Converters="using:Anitro.Converters" />
+
+        <!--
+        <ImageBrush x:Key="backgroundImageBrush" Stretch="Fill" ImageSource="http://images2.fanpop.com/images/photos/7000000/Space-Art-Wallpaper-space-7076682-1440-900.jpg"/>
+        -->
+        <ImageBrush x:Key="backgroundImageBrush" Stretch="Fill" ImageSource="{Binding LibraryObject.Anime.CoverImageUrl}"/>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="mainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Phone">
@@ -20,7 +26,7 @@
                         <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneMinimumWidth}"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-
+                        <Setter Target="mainGrid.Background" Value="{StaticResource backgroundImageBrush}" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Desktop">
@@ -28,54 +34,129 @@
                         <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=DesktopMinimumWidth}"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-
+                        <Setter Target="mainGrid.Background" Value="{StaticResource backgroundImageBrush}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Hub Header="{Binding LibraryObject.Anime.RomanjiTitle}">
-            <HubSection Header="Library" Width="200"
-                        Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
-                <DataTemplate>
-                    <Grid>
-                        <ScrollViewer>
-                            <StackPanel Orientation="Vertical" Margin="0,0,10,0">
-                                <TextBlock Text="{Binding LibraryObject.LastWatched, Converter={StaticResource RelativeDateTime}}"
-                                           Style="{ThemeResource BodyTextBlockStyle}"/>
+        <Grid x:Name="backgroundShade" Background="#BF000000"/>
 
-                                <ratingControls:StaticRating NumberOfStars="5" Value="{Binding LibraryObject.Rating, Mode=OneWay}" StarSize="12"
-                                                             StarScaleWidth="2.0" StarScaleHeight="2.0"
+        <Pivot Title="{Binding LibraryObject.Anime.RomanjiTitle}">
+            <PivotItem Header="Library"
+                       Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
+                <Grid>
+                    <ScrollViewer HorizontalAlignment="Stretch" 
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                      ScrollViewer.HorizontalScrollMode="Disabled">
+                        <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                            <TextBlock Style="{ThemeResource BodyTextBlockStyle}">
+                                    <Run Text="Last Updated"/>
+                                    <Run Text="{Binding LibraryObject.LastWatched, Converter={StaticResource RelativeDateTime}}"/>
+                            </TextBlock>
+
+                            <Slider Minimum="0.0" Value="{Binding LibraryObject.Rating, Mode=TwoWay}" Maximum="5.0"
+                                        Margin="0,20,0,0" TickPlacement="Inline" TickFrequency="1">
+                                <Slider.HeaderTemplate>
+                                    <DataTemplate>
+                                        <ratingControls:StaticRating NumberOfStars="5" Value="{Binding LibraryObject.Rating, Mode=OneWay}"
+                                                             HorizontalAlignment="Center"
                                                              StarForegroundColor="Gold" StarOutlineColor="Transparent" RenderTransformOrigin="0.5,0.5" >
-                                    <ratingControls:StaticRating.RenderTransform>
-                                        <CompositeTransform ScaleX="2" ScaleY="2"/>
-                                    </ratingControls:StaticRating.RenderTransform>
-                                </ratingControls:StaticRating>
+                                            <ratingControls:StaticRating.RenderTransform>
+                                                <CompositeTransform ScaleX="1.5" ScaleY="1.5"/>
+                                            </ratingControls:StaticRating.RenderTransform>
+                                        </ratingControls:StaticRating>
+                                    </DataTemplate>
+                                </Slider.HeaderTemplate>
+                            </Slider>
 
-                                <Slider Minimum="0.0" Value="{Binding LibraryObject.Rating, Mode=TwoWay}" Maximum="5.0"/>
-
-                                <ComboBox x:Name="librarySectionComboBox" Header="Library Section" 
-                                          HorizontalAlignment="Stretch" Margin="0,10,0,0"
+                            <ComboBox x:Name="librarySectionComboBox" Header="Library Section" 
+                                          HorizontalAlignment="Stretch" Margin="0,20,0,0"
                                           SelectionChanged="librarySectionComboBox_SelectionChanged" Loaded="librarySectionComboBox_Loaded">
-                                    <ComboBoxItem Content="None" />
-                                    <ComboBoxItem Content="Currently Watching"/>
-                                    <ComboBoxItem Content="Plan to Watch"/>
-                                    <ComboBoxItem Content="Completed"/>
-                                    <ComboBoxItem Content="On Hold"/>
-                                    <ComboBoxItem Content="Dropped"/>
-                                </ComboBox>
+                                <ComboBoxItem Content="None" />
+                                <ComboBoxItem Content="Currently Watching"/>
+                                <ComboBoxItem Content="Plan to Watch"/>
+                                <ComboBoxItem Content="Completed"/>
+                                <ComboBoxItem Content="On Hold"/>
+                                <ComboBoxItem Content="Dropped"/>
+                            </ComboBox>
 
+                            <Slider Minimum="0" Value="{Binding LibraryObject.EpisodesWatched, Mode=TwoWay}" Maximum="{Binding LibraryObject.Anime.EpisodeCount}"
+                                        Margin="0,20,0,0" TickPlacement="Inline" TickFrequency="1" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                                <Slider.HeaderTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="Episodes Watched"/>
+                                            <TextBlock HorizontalAlignment="Right">
+                                                    <Run Text="{Binding LibraryObject.EpisodesWatched}"/>
+                                                    <Run Text="/" />
+                                                    <Run Text="{Binding LibraryObject.Anime.EpisodeCount}"/>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </Slider.HeaderTemplate>
+                            </Slider>
 
+                            <TextBlock Text="Rewatched" Margin="0,20,0,0"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Button Content="+" Width="30" Command="{Binding IncrementRewatching}"/>
+                                <TextBlock Text="{Binding LibraryObject.RewatchedTimes}" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                                <Button Content="-" Width="30" Command="{Binding DecrementRewatching}"/>
                             </StackPanel>
-                        </ScrollViewer>
-                    </Grid>
-                </DataTemplate>
-            </HubSection>
-            <HubSection Header="Anime">
-                <DataTemplate>
 
-                </DataTemplate>
-            </HubSection>
-        </Hub>
+                            <ToggleSwitch Header="Private"    IsOn="{Binding LibraryObject.Private, Converter={StaticResource BooleanToPrivacySettings}, Mode=TwoWay}" Margin="0,20,0,0" 
+                                              OnContent="Private" OffContent="Public"/>
+                            <ToggleSwitch Header="Rewatching" IsOn="{Binding LibraryObject.Rewatching, Mode=TwoWay}" Margin="0,10,0,0" 
+                                              OnContent="Yes" OffContent="No"/>
+
+                            <TextBox Text="{Binding LibraryObject.Notes, Mode=TwoWay}" PlaceholderText="Notes"
+                                         Margin="0,20,0,0" MinHeight="100" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Anime">
+                <ScrollViewer HorizontalAlignment="Stretch" 
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                  ScrollViewer.HorizontalScrollMode="Disabled">
+                    <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                        <TextBlock Text="{Binding LibraryObject.Anime.RomanjiTitle}" Style="{ThemeResource TitleTextBlockStyle}"/>
+                        
+                        <TextBlock Text="{Binding LibraryObject.Anime.EnglishTitle}" Style="{ThemeResource SubtitleTextBlockStyle}"
+                                   Margin="0,5,0,0"/>
+                        <TextBlock Text="{Binding LibraryObject.Anime.KanjiTitle}"   Style="{ThemeResource SubtitleTextBlockStyle}"
+                                   Margin="0,5,0,0"/>
+                        
+                        <Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,20,0,10" />                        
+                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Center">
+                            <Run Text="{Binding LibraryObject.Anime.MediaType, Converter={StaticResource EnumStringConverter}}"/>
+                            <Run Text=" - "/>
+                            <Run Text="{Binding LibraryObject.Anime.EpisodeCount}"/>
+                            <Run Text=" episodes"/>
+                            <Run Text=" - " />
+                            <Run Text="{Binding LibraryObject.Anime.AiringStatus, Converter={StaticResource EnumStringConverter}}"/>
+                        </TextBlock>
+
+                        <ListView ItemsSource="{Binding LibraryObject.Anime.Genres}" IsItemClickEnabled="False" Margin="0,5,0,0">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid Orientation="Horizontal" ItemWidth="100"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                                               TextWrapping="Wrap"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,10,0,20" />
+                        
+                        <TextBlock Text="{Binding LibraryObject.Anime.Synopsis}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </PivotItem>
+        </Pivot>
     </Grid>
 </Page>
