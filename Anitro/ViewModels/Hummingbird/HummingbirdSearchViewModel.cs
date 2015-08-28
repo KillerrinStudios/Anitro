@@ -69,11 +69,19 @@ namespace Anitro.ViewModels.Hummingbird
         #region Visibility
         public bool AnimeLibraryVisible
         {
-            get { return APIServiceCollections.HummingbirdV1API.AnimeAPI.Supported && User.LoginInfo.HasUsername; }
+            get
+            {
+                if (!APIServiceCollections.HummingbirdV1API.AnimeAPI.Supported) return false;
+                return User.LoginInfo.HasUsername;
+            }
         }
         public bool mangaLibraryVisible
         {
-            get { return APIServiceCollections.HummingbirdV1API.MangaAPI.Supported && User.LoginInfo.HasUsername; }
+            get
+            {
+                if (!APIServiceCollections.HummingbirdV1API.MangaAPI.Supported) return false;
+                return User.LoginInfo.HasUsername;
+            }
         }
         #endregion
 

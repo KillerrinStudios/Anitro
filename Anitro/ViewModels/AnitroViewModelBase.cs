@@ -32,6 +32,15 @@ namespace Anitro.ViewModels
             }
         }
 
+        public bool HasMediaService { get { return SimpleIoc.Default.IsRegistered<MediaService>(); } }
+        public MediaService MediaService
+        {
+            get
+            {
+                return SimpleIoc.Default.GetInstance<MediaService>(); ;
+            }
+        }
+
         private APIProgressReport m_APIFeedback = new APIProgressReport();
         public APIProgressReport APIFeedback
         {

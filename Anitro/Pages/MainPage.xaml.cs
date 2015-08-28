@@ -73,5 +73,13 @@ namespace Anitro.Pages
                 SimpleIoc.Default.Register<ProgressService>(() => { return new ProgressService(MainProgressIndicator); });
             }
         }
+
+        private void MainMediaElement_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!SimpleIoc.Default.IsRegistered<MediaService>())
+            {
+                SimpleIoc.Default.Register<MediaService>(() => { return new MediaService(MainMediaElement); });
+            }
+        }
     }
 }

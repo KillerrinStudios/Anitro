@@ -8,7 +8,35 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdSearchViewModel}">
     <Page.Resources>
-        <DataTemplate x:Key="SearchItemTemplate">
+        <DataTemplate x:Key="OnlineSearchItemTemplate">
+            <Grid Margin="0,5,0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="{Binding CoverImageUrl}"
+                       Grid.Row="0" Grid.RowSpan="2"/>
+
+                <Grid Grid.Row="1" Background="#CC000000">
+                    <Grid Margin="2,2,2,2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="{Binding RomanjiTitle}" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}"
+                               TextWrapping="Wrap" Grid.Row="0"/>
+
+                        <StackPanel Orientation="Vertical" Margin="0,5,0,0" 
+                                    HorizontalAlignment="Center" Grid.Row="1">
+
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="LibrarySearchItemTemplate">
             <Grid Margin="0,5,0,5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -90,7 +118,7 @@
                         <Grid>
                             <ListView x:Name="animeLibraryZoomedInListView" IsItemClickEnabled="True" ItemClick="OnlineLibraryListView_ItemClick"
                                       ItemsSource="{Binding OnlineSearchResults}" 
-                                      ItemTemplate="{StaticResource SearchItemTemplate}"
+                                      ItemTemplate="{StaticResource OnlineSearchItemTemplate}"
                                       ScrollViewer.IsVerticalScrollChainingEnabled="False">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -108,7 +136,7 @@
                         <Grid>
                             <ListView x:Name="animeLibraryZoomedInListView" IsItemClickEnabled="True" ItemClick="AnimeLibraryListView_ItemClick"
                                       ItemsSource="{Binding User.AnimeLibrary.LibraryCollection.FilteredCollection}" 
-                                      ItemTemplate="{StaticResource SearchItemTemplate}"
+                                      ItemTemplate="{StaticResource LibrarySearchItemTemplate}"
                                       ScrollViewer.IsVerticalScrollChainingEnabled="False">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -126,7 +154,7 @@
                         <Grid>
                             <ListView x:Name="mangaLibraryZoomedInListView" IsItemClickEnabled="True" ItemClick="MangaLibraryListView_ItemClick"
                                       ItemsSource="{Binding User.MangaLibrary.LibraryCollection.FilteredCollection}" 
-                                      ItemTemplate="{StaticResource SearchItemTemplate}"
+                                      ItemTemplate="{StaticResource LibrarySearchItemTemplate}"
                                       ScrollViewer.IsVerticalScrollChainingEnabled="False">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
