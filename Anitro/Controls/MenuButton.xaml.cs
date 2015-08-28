@@ -85,5 +85,44 @@ namespace Anitro.Controls
             button.menuHeaderImage.Source = new BitmapImage(button.HeaderImage);
         }
         #endregion
+
+        #region Symbol
+        public Symbol Symbol
+        {
+            get { return (Symbol)GetValue(SymbolProperty); }
+            set
+            {
+                SetValue(SymbolProperty, value);
+            }
+        }
+        public static readonly DependencyProperty SymbolProperty =
+            DependencyProperty.Register(nameof(Symbol), typeof(Symbol), typeof(MenuButton), new PropertyMetadata(Symbol.Emoji, OnSymbolPropertyChanged));
+
+        private static void OnSymbolPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            MenuButton button = (d as MenuButton);
+            button.menuSymbolImage.Symbol = button.Symbol;
+        }
+        #endregion
+
+        #region SymbolVisibility
+        public Visibility SymbolIconVisibility
+        {
+            get { return (Visibility)GetValue(SymbolIconVisibilityProperty); }
+            set
+            {
+                SetValue(SymbolIconVisibilityProperty, value);
+            }
+        }
+        public static readonly DependencyProperty SymbolIconVisibilityProperty =
+            DependencyProperty.Register(nameof(SymbolIconVisibility), typeof(Visibility), typeof(MenuButton), new PropertyMetadata(Visibility.Collapsed, OnSymbolVisibilityPropertyChanged));
+
+        private static void OnSymbolVisibilityPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            MenuButton button = (d as MenuButton);
+            button.menuSymbolImage.Visibility = button.SymbolIconVisibility;
+        }
+        #endregion
+
     }
 }

@@ -58,6 +58,7 @@ namespace Anitro.ViewModels
         #region Hummingbird
         public HummingbirdLoginViewModel vm_HummingbirdLoginViewModel { get { return new HummingbirdLoginViewModel(); } }
         public HummingbirdAnimeDetailsViewModel vm_HummingbirdAnimeDetailsViewModel { get { return new HummingbirdAnimeDetailsViewModel(); } }
+        public HummingbirdSearchViewModel vm_HummingbirdSearchViewModel { get { return new HummingbirdSearchViewModel(); } }
 
         public HummingbirdDashboardViewModel vm_HummingbirdDashboardViewModel { get { return ServiceLocator.Current.GetInstance<HummingbirdDashboardViewModel>(); } }
         public HummingbirdAnimeLibraryViewModel vm_HummingbirdAnimeLibraryViewModel { get { return ServiceLocator.Current.GetInstance<HummingbirdAnimeLibraryViewModel>(); } }

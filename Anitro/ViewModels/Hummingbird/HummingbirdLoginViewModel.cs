@@ -60,6 +60,11 @@ namespace Anitro.ViewModels.Hummingbird
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Login;
         }
 
+        public override void OnNavigatedFrom()
+        {
+
+        }
+
         public override void ResetViewModel()
         {
             UserLoginInfo = new UserLoginInfo();
@@ -77,7 +82,7 @@ namespace Anitro.ViewModels.Hummingbird
             }
         }
 
-        Progress<APIProgressReport> m_loginProgress;
+        
         bool m_currentlyLoggingIn = false;
         public void Login()
         {
@@ -88,7 +93,7 @@ namespace Anitro.ViewModels.Hummingbird
                 return;
             }
 
-            m_loginProgress = new Progress<APIProgressReport>();
+            Progress<APIProgressReport> m_loginProgress = new Progress<APIProgressReport>();
             m_loginProgress.ProgressChanged += LoginProgress_ProgressChanged;
 
             APIServiceCollection.Instance.HummingbirdV1API.Login(UserLoginInfo.Username, UserLoginInfo.Password, m_loginProgress);

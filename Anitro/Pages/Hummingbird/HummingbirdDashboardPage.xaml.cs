@@ -1,4 +1,5 @@
-﻿using Anitro.ViewModels.Hummingbird;
+﻿using AnimeTrackingServiceWrapper.UniversalServiceModels.ActivityFeed;
+using Anitro.ViewModels.Hummingbird;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,6 +36,21 @@ namespace Anitro.Pages.Hummingbird
             base.OnNavigatedTo(e);
             ViewModel.User = e.Parameter as Models.HummingbirdUser;
             ViewModel.OnNavigatedTo();
+        }
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            ViewModel.OnNavigatedFrom();
+            base.OnNavigatedFrom(e);
+        }
+
+        private void SocialListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AActivityFeedItem item = ((ListBox)sender).SelectedItem as AActivityFeedItem;
+            if (item is ActivityFeedMediaUpdate)
+            {
+                ActivityFeedMediaUpdate mediaUpdateItem = ((ActivityFeedMediaUpdate)item);
+                ViewModel.GetAnimeAndNavigate(mediaUpdateItem.MediaID);
+            }
         }
     }
 }

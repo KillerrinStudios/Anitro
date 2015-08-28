@@ -44,6 +44,11 @@ namespace Anitro.Pages
             base.OnNavigatedTo(e);
             ViewModel.OnNavigatedTo();
         }
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            ViewModel.OnNavigatedFrom();
+            base.OnNavigatedFrom(e);
+        }
 
         private void MainNavigation_HamburgerButton_Click(object sender, RoutedEventArgs e)
         {

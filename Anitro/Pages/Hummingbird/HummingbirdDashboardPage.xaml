@@ -251,6 +251,7 @@
                                  HorizontalAlignment="Stretch" Grid.Row="0" />
                         
                         <ListBox ItemsSource="{Binding User.ActivityFeed}" ItemTemplateSelector="{StaticResource TemplatedSocialFeedTemplateSelector}"
+                                 SelectionChanged="SocialListBox_SelectionChanged"
                                  Background="Transparent" Grid.Row="1" HorizontalContentAlignment="Stretch" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" />
                     </Grid>

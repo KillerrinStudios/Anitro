@@ -44,6 +44,12 @@ namespace Anitro.Pages.Hummingbird
             ViewModel.OnNavigatedTo();
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            ViewModel.OnNavigatedFrom();
+            base.OnNavigatedFrom(e);
+        }
+
         private void librarySectionComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             var comboBox = (ComboBox)sender;

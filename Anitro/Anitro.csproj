@@ -78,6 +78,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -130,6 +131,7 @@
     <Compile Include="Converters\OppositeBooleanConverter.cs" />
     <Compile Include="Converters\RelativeDateTimeConverter.cs" />
     <Compile Include="Helpers\AdaptiveTriggerConsts.cs" />
+    <Compile Include="Models\Page Parameters\HummingbirdSearchParameter.cs" />
     <Compile Include="Models\SearchLibraryFilter.cs" />
     <Compile Include="Models\LibrarySectionFilter.cs" />
     <Compile Include="Models\FilteredLibraryObservableCollection.cs" />
@@ -144,6 +146,9 @@
       <DependentUpon>HummingbirdDashboardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Page Parameters\HummingbirdAnimeDetailsParameter.cs" />
+    <Compile Include="Pages\Hummingbird\HummingbirdSearchPage.xaml.cs">
+      <DependentUpon>HummingbirdSearchPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Helpers\StringHelpers.cs" />
     <Compile Include="Services\APIServiceCollection.cs" />
@@ -164,6 +169,7 @@
     <Compile Include="Templates\LibraryTemplateSelector.cs" />
     <Compile Include="Templates\SocialFeedTemplateSelector.cs" />
     <Compile Include="ViewModels\AnitroViewModelBase.cs" />
+    <Compile Include="ViewModels\Hummingbird\HummingbirdSearchViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdAnimeDetailsViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdAnimeLibraryViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdDashboardViewModel.cs" />
@@ -233,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Hummingbird\HummingbirdLoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Hummingbird\HummingbirdSearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

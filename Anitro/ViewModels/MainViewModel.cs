@@ -8,6 +8,8 @@ using GalaSoft.MvvmLight.Command;
 using Microsoft.Practices.ServiceLocation;
 using System.Diagnostics;
 using System;
+using Anitro.Models.Page_Parameters;
+using AnimeTrackingServiceWrapper.UniversalServiceModels;
 
 namespace Anitro.ViewModels
 {
@@ -84,6 +86,11 @@ namespace Anitro.ViewModels
         }
 
         public override void OnNavigatedTo()
+        {
+
+        }
+
+        public override void OnNavigatedFrom()
         {
 
         }
@@ -190,6 +197,36 @@ namespace Anitro.ViewModels
                 return;
         }
         #endregion
+
+        #region Navigate Search Command
+        public RelayCommand NavigateSearchCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    NavigateSearch();
+                });
+            }
+        }
+
+        public void NavigateSearch()
+        {
+            Debug.WriteLine("Navigate Search");
+            if (!CanNavigate)
+                return;
+
+            if (CurrentUser is HummingbirdUser)
+            {
+                HummingbirdSearchParameter parameter = new HummingbirdSearchParameter();
+                parameter.User = HummingbirdUser;
+                parameter.SearchTerms = "";
+                parameter.Filter = SearchFilter.Everything;
+                NavigationService.Navigate(typeof(HummingbirdSearchPage), parameter);
+            }
+        }
+        #endregion
+
         #endregion
 
         #region User Interaction Commands

@@ -107,10 +107,48 @@ namespace Anitro.ViewModels.Hummingbird
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.AnimeDetails;
         }
 
+        public override void OnNavigatedFrom()
+        {
+
+        }
+
         public override void ResetViewModel()
         {
 
         }
+
+        #region Get Anime
+        public RelayCommand<ServiceID> GetAnimeCommand
+        {
+            get
+            {
+                return new RelayCommand<ServiceID>((serviceID) =>
+                {
+                    GetAnime(serviceID);
+                });
+            }
+        }
+
+        public void GetAnime(ServiceID serviceID)
+        {
+            if (string.IsNullOrWhiteSpace(serviceID.ID))
+                return;
+            Debug.WriteLine("Getting Anime");
+            Progress<APIProgressReport> m_getAnimeDetailsProgress = new Progress<APIProgressReport>();
+            m_getAnimeDetailsProgress.ProgressChanged += M_getAnimeDetailsProgress_ProgressChanged;
+            APIServiceCollection.Instance.HummingbirdV1API.AnimeAPI.GetAnime(serviceID.ID, m_getAnimeDetailsProgress);
+        }
+
+        private void M_getAnimeDetailsProgress_ProgressChanged(object sender, APIProgressReport e)
+        {
+            ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage);
+            if (e.CurrentAPIResonse == APIResponse.Successful)
+            {
+                ProgressService.Reset();
+                LibraryObject = HummingbirdAnimeLibraryViewModel.GetLibraryObject((AnimeObject)e.Parameter.Converted);
+            }
+        }
+        #endregion
 
         #region Increment/Decrement Commands
         public RelayCommand IncrementRewatchingCommand { get { return new RelayCommand(() => { LibraryObject.RewatchedTimes++; }); } }

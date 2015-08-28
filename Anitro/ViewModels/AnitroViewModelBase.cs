@@ -43,7 +43,10 @@ namespace Anitro.ViewModels
             }
         }
 
+        public APIServiceCollection APIServiceCollections { get { return APIServiceCollection.Instance; } }
+
         public abstract void OnNavigatedTo();
+        public abstract void OnNavigatedFrom();
         public abstract void ResetViewModel();
     }
 }

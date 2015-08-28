@@ -38,6 +38,11 @@ namespace Anitro.Pages.Hummingbird
             ViewModel.User = e.Parameter as Models.HummingbirdUser;
             ViewModel.OnNavigatedTo();
         }
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            ViewModel.OnNavigatedFrom();
+            base.OnNavigatedFrom(e);
+        }
 
         private void librarySearchFilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

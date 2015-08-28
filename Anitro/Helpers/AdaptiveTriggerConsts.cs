@@ -1,4 +1,5 @@
 ﻿using Anitro.Models;
+using Anitro.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace Anitro.Helpers
 {
     public class AdaptiveTriggerConsts : ModelBase, IDisposable
     {
+        public static AdaptiveTriggerConsts Instance;
+
         #region Minimum Window Widths
         public const int PhoneSmallMinimumWindowWidth = 0;
         public int PhoneSmallMinimumWidth { get { return PhoneSmallMinimumWindowWidth; } }
@@ -22,14 +25,20 @@ namespace Anitro.Helpers
         public int DesktopMinimumWidth { get { return DesktopMinimumWindowWidth; } }
         #endregion
 
+        #region Window Sizes
         //public DisplayOrientations Orientation { get { return DisplayInformation.GetForCurrentView().CurrentOrientation; } }
         public double WindowWidth { get { return Window.Current.Bounds.Width; } }
         public double WindowHeight { get { return Window.Current.Bounds.Height; } }
+        #endregion
+
+        public APIServiceCollection APIServiceCollection { get { return APIServiceCollection.Instance; } }
 
         public AdaptiveTriggerConsts()
         {
             //DisplayInformation.GetForCurrentView().OrientationChanged += AdaptiveTriggerConsts_OrientationChanged;
             Window.Current.SizeChanged += Current_SizeChanged;
+
+            Instance = this;
         }
 
         #region Raise Property Changed Events

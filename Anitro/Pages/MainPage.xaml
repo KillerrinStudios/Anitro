@@ -60,7 +60,7 @@
         <StackPanel x:Name="TopNavigationBar" Orientation="Horizontal" Grid.Row="0" 
                     Background="{Binding ElementName=MainNavigation, Path=PaneBackground}"
                     Visibility="Collapsed">
-            <Button x:Name="MainNavigation_TopHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="MainNavigation_HamburgerButton_Click"/>
+            <Button x:Name="MainNavigation_TopHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="MainNavigation_HamburgerButton_Click" />
         </StackPanel>
         
         <SplitView x:Name="MainNavigation" DisplayMode="CompactInline" IsPaneOpen="False" CompactPaneLength="48"
@@ -87,7 +87,8 @@
                                 <appControls:MenuButton x:Name="dashboardMenuButton"    Command="{Binding NavigateDashboardCommand}"     Header="Dashboard" />
                                 <appControls:MenuButton x:Name="animeLibraryMenuButton" Command="{Binding NavigateAnimeLibraryCommand}"  Header="Anime Library" />
                                 <appControls:MenuButton x:Name="mangaLibraryMenuButton" Command="{Binding NavigateMangaLibraryCommand}"  Header="Manga Library" />
-                                <appControls:MenuButton x:Name="calendarMenuButton"     Command="{Binding NavigateCalendarCommand}"      Header="Calendar"      HeaderImage="ms-appx:///Assets/Menu Images/Calendar.png"/>
+                                <appControls:MenuButton x:Name="calendarMenuButton"     Command="{Binding NavigateCalendarCommand}"      Header="Calendar"      Symbol="Calendar" SymbolIconVisibility="Visible"/>
+                                <appControls:MenuButton x:Name="searchMenuButton"       Command="{Binding NavigateSearchCommand}"        Header="Search"        Symbol="Find"     SymbolIconVisibility="Visible"/>
                             </StackPanel>
                         </ScrollViewer>
 

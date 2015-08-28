@@ -12,9 +12,6 @@
     <Page.Resources>
         <Converters:BooleanToPrivacySettings x:Key="BooleanToPrivacySettings" xmlns:Converters="using:Anitro.Converters" />
 
-        <!--
-        <ImageBrush x:Key="backgroundImageBrush" Stretch="Fill" ImageSource="http://images2.fanpop.com/images/photos/7000000/Space-Art-Wallpaper-space-7076682-1440-900.jpg"/>
-        -->
         <ImageBrush x:Key="backgroundImageBrush" Stretch="Fill" ImageSource="{Binding LibraryObject.Anime.CoverImageUrl}"/>
     </Page.Resources>
 
@@ -51,9 +48,9 @@
                         <TextBlock Text="{Binding LibraryObject.Anime.RomanjiTitle}" Style="{ThemeResource TitleTextBlockStyle}"/>
                         
                         <TextBlock Text="{Binding LibraryObject.Anime.EnglishTitle}" Style="{ThemeResource SubtitleTextBlockStyle}"
-                                   Margin="0,5,0,0"/>
+                                   Margin="0,0,0,0"/>
                         <TextBlock Text="{Binding LibraryObject.Anime.KanjiTitle}"   Style="{ThemeResource SubtitleTextBlockStyle}"
-                                   Margin="0,5,0,0"/>
+                                   Margin="0,0,0,0"/>
                         
                         <Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,20,0,10" />                        
                         <TextBlock Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Center">
@@ -68,7 +65,7 @@
                         <ListView ItemsSource="{Binding LibraryObject.Anime.Genres}" IsItemClickEnabled="False" Margin="0,5,0,0">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <ItemsWrapGrid Orientation="Horizontal" ItemWidth="100"/>
+                                    <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Center" ItemWidth="110"/>
                                 </ItemsPanelTemplate>
                             </ListView.ItemsPanel>
                             <ListView.ItemTemplate>

@@ -12,6 +12,8 @@ using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Diagnostics;
 
 namespace Anitro.ViewModels.Hummingbird
@@ -117,6 +119,11 @@ namespace Anitro.ViewModels.Hummingbird
                 RefreshFavourites();
         }
 
+        public override void OnNavigatedFrom()
+        {
+
+        }
+
         public override void ResetViewModel()
         {
 
@@ -168,8 +175,23 @@ namespace Anitro.ViewModels.Hummingbird
             if (e.CurrentAPIResonse == APIResponse.Successful)
             {
                 ProgressService.Reset();
+
                 List<LibraryObject> libraryObjects = e.Parameter.Converted as List<LibraryObject>;
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection = new ObservableCollection<LibraryObject>(libraryObjects);
+                var groupedQuery = from lO in libraryObjects
+                                   group lO by lO.Section into grouped
+                                   orderby grouped.Key
+                                   select grouped;
+
+                List<LibraryObject> groupedLibraryObjects = new List<LibraryObject>();
+                foreach (var group in groupedQuery)
+                {
+                    foreach (var lO in group)
+                    {
+                        groupedLibraryObjects.Add(lO);
+                    }
+                }
+
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection = new ObservableCollection<LibraryObject>(groupedLibraryObjects);
             }
         }
         #endregion
@@ -269,7 +291,7 @@ namespace Anitro.ViewModels.Hummingbird
         /// </summary>
         /// <param name="animeObject"></param>
         /// <returns></returns>
-        private LibraryObject GetLibraryObject(AnimeObject animeObject)
+        public static LibraryObject GetLibraryObject(AnimeObject animeObject)
         {
             HummingbirdUser loggedInUser = MainViewModel.Instance.HummingbirdUser;
             if (loggedInUser == null)
@@ -282,7 +304,7 @@ namespace Anitro.ViewModels.Hummingbird
             return libraryObject;
         }
 
-        private void NavigateAnimeDetailsPage(AnimeObject animeObject)
+        public void NavigateAnimeDetailsPage(AnimeObject animeObject)
         {
             LibraryObject libraryObject = GetLibraryObject(animeObject);
 

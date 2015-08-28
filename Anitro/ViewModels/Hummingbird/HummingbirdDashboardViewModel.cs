@@ -79,6 +79,19 @@ namespace Anitro.ViewModels.Hummingbird
         {
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Dashboard;
             RefreshActivityFeed();
+
+            HummingbirdAnimeLibraryViewModel libraryVM = ViewModelLocator.Instance.vm_HummingbirdAnimeLibraryViewModel;
+            libraryVM.User = User;
+
+            if (User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Count == 0)
+                libraryVM.RefreshLibrary();
+            if (User.AnimeLibrary.Favourites.Count == 0)
+                libraryVM.RefreshFavourites();
+        }
+
+        public override void OnNavigatedFrom()
+        {
+
         }
 
         public override void ResetViewModel()
@@ -87,7 +100,6 @@ namespace Anitro.ViewModels.Hummingbird
         }
 
         #region Commands
-
         #region Refresh Activity Feed
         public RelayCommand RefreshActivityFeedCommand
         {
@@ -117,7 +129,42 @@ namespace Anitro.ViewModels.Hummingbird
                 User.ActivityFeed = e.Parameter.Converted as ObservableCollection<AActivityFeedItem>;
             }
         }
+        #endregion
 
+        #region Navigate Anime Details Page
+        public RelayCommand<ServiceID> GetAnimeAndNavigateCommand
+        {
+            get
+            {
+                return new RelayCommand<ServiceID>((serviceID) =>
+                {
+                    GetAnimeAndNavigate(serviceID);
+                });
+            }
+        }
+
+        public void GetAnimeAndNavigate(ServiceID serviceID)
+        {
+            Debug.WriteLine("Getting Anime");
+            if (string.IsNullOrWhiteSpace(serviceID.ID))
+                return;
+            if (User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Count == 0)
+                return;
+
+            Progress<APIProgressReport> m_getAnimeDetailsProgress = new Progress<APIProgressReport>();
+            m_getAnimeDetailsProgress.ProgressChanged += M_getAnimeDetailsProgress_ProgressChanged;
+            APIServiceCollection.Instance.HummingbirdV1API.AnimeAPI.GetAnime(serviceID.ID, m_getAnimeDetailsProgress);
+        }
+
+        private void M_getAnimeDetailsProgress_ProgressChanged(object sender, APIProgressReport e)
+        {
+            ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage);
+            if (e.CurrentAPIResonse == APIResponse.Successful)
+            {
+                ProgressService.Reset();
+                ViewModelLocator.Instance.vm_HummingbirdAnimeLibraryViewModel.NavigateAnimeDetailsPage((AnimeObject)e.Parameter.Converted);
+            }
+        }
         #endregion
         #endregion
     }

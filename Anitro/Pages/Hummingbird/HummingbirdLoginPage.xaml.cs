@@ -36,6 +36,11 @@ namespace Anitro.Pages.Hummingbird
             base.OnNavigatedTo(e);
             ViewModel.OnNavigatedTo();
         }
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            ViewModel.OnNavigatedFrom();
+            base.OnNavigatedFrom(e);
+        }
 
         private void TextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {

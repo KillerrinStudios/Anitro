@@ -9,22 +9,16 @@ namespace Anitro.Services
 {
     public class APIServiceCollection
     {
-        private static APIServiceCollection m_instance = new APIServiceCollection();
-        public static APIServiceCollection Instance
-        {
-            get
-            {
-                if (m_instance == null) m_instance = new APIServiceCollection();
-                return m_instance;
-            }
-        }
+        public static APIServiceCollection Instance { get; } = new APIServiceCollection();
 
-        // The Services
-        public HummingbirdV1Service HummingbirdV1API = new HummingbirdV1Service("");
+        #region Services
+        public HummingbirdV1Service HummingbirdV1API { get; } = new HummingbirdV1Service("");
+        #endregion
 
         // Setup and Load the API Services
         private APIServiceCollection()
         {
+
         }
     }
 }
