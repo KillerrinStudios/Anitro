@@ -128,6 +128,54 @@ namespace Anitro.ViewModels.Hummingbird
                 ProgressService.Reset();
                 User.ActivityFeed = e.Parameter.Converted as ObservableCollection<AActivityFeedItem>;
             }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
+            }
+        }
+        #endregion
+
+        #region Post To Activity Feed
+        public RelayCommand<string> PostToActivityFeedCommand
+        {
+            get
+            {
+                return new RelayCommand<string>((message) =>
+                {
+                    PostToActivityFeed(message);
+                });
+            }
+        }
+
+        public void PostToActivityFeed(string message)
+        {
+            Debug.WriteLine("Posting to Activity Feed");
+            if (string.IsNullOrWhiteSpace(message)) return;
+
+            HummingbirdUser loggedInUser = MainViewModel.Instance.HummingbirdUser;
+            if (loggedInUser == null) return;
+
+            Progress<APIProgressReport> m_postToActivityFeedprogress = new Progress<APIProgressReport>();
+            m_postToActivityFeedprogress.ProgressChanged += M_postToActivityFeedprogress_ProgressChanged; ;
+            APIServiceCollection.Instance.HummingbirdV1API.SocialAPI.PostStatusUpdate(loggedInUser.LoginInfo,
+                                                                                      loggedInUser.UserInfo,
+                                                                                      User.UserInfo,
+                                                                                      message,
+                                                                                      m_postToActivityFeedprogress);
+        }
+
+        private void M_postToActivityFeedprogress_ProgressChanged(object sender, APIProgressReport e)
+        {
+            ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage);
+            if (e.CurrentAPIResonse == APIResponse.Successful)
+            {
+                ProgressService.Reset();
+                User.ActivityFeed.Insert(0, (AActivityFeedItem)e.Parameter.Converted);
+            }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
+            }
         }
         #endregion
 
@@ -163,6 +211,10 @@ namespace Anitro.ViewModels.Hummingbird
             {
                 ProgressService.Reset();
                 ViewModelLocator.Instance.vm_HummingbirdAnimeLibraryViewModel.NavigateAnimeDetailsPage((AnimeObject)e.Parameter.Converted);
+            }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
             }
         }
         #endregion

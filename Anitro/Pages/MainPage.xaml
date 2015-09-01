@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="VisualStateGroup">
+            <VisualStateGroup x:Name="VisualStateGroup" CurrentStateChanged="VisualStateGroup_CurrentStateChanged">
                 <VisualState x:Name="PhoneSmall">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneSmallMinimumWidth}"/>
@@ -62,11 +62,10 @@
         <StackPanel x:Name="TopNavigationBar" Orientation="Horizontal" Grid.Row="0" 
                     Background="{Binding ElementName=MainNavigation, Path=PaneBackground}"
                     Visibility="Collapsed">
-            <Button x:Name="MainNavigation_TopHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="MainNavigation_HamburgerButton_Click" />
+            <Button x:Name="MainNavigation_TopHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Command="{Binding TogglePaneCommand}" />
         </StackPanel>
 
-        <SplitView x:Name="MainNavigation" DisplayMode="CompactInline" IsPaneOpen="False" CompactPaneLength="48"
-                   Grid.Row="1">
+        <SplitView x:Name="MainNavigation" DisplayMode="CompactInline" IsPaneOpen="{Binding IsPaneOpen, Mode=TwoWay}" CompactPaneLength="48" Grid.Row="1">
             <SplitView.Pane>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -75,7 +74,7 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Orientation="Vertical" Grid.Column="0">
-                        <Button x:Name="MainNavigation_PanelHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="MainNavigation_HamburgerButton_Click"/>
+                        <Button x:Name="MainNavigation_PanelHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Command="{Binding TogglePaneCommand}"/>
                     </StackPanel>
 
                     <Grid Grid.Column="1">
@@ -86,11 +85,11 @@
 
                         <ScrollViewer Grid.Row="0">
                             <StackPanel Orientation="Vertical">
-                                <appControls:MenuButton x:Name="dashboardMenuButton"    Command="{Binding NavigateDashboardCommand}"     Header="Dashboard" />
-                                <appControls:MenuButton x:Name="animeLibraryMenuButton" Command="{Binding NavigateAnimeLibraryCommand}"  Header="Anime Library" />
-                                <appControls:MenuButton x:Name="mangaLibraryMenuButton" Command="{Binding NavigateMangaLibraryCommand}"  Header="Manga Library" />
-                                <appControls:MenuButton x:Name="calendarMenuButton"     Command="{Binding NavigateCalendarCommand}"      Header="Calendar"      Symbol="Calendar" SymbolIconVisibility="Visible"/>
-                                <appControls:MenuButton x:Name="searchMenuButton"       Command="{Binding NavigateSearchCommand}"        Header="Search"        Symbol="Find"     SymbolIconVisibility="Visible"/>
+                                <appControls:MenuButton x:Name="dashboardMenuButton"    GroupName="menuButtons"  Command="{Binding NavigateDashboardCommand}"     Header="Dashboard"     Symbol="Home" />
+                                <appControls:MenuButton x:Name="animeLibraryMenuButton" GroupName="menuButtons"  Command="{Binding NavigateAnimeLibraryCommand}"  Header="Anime Library" Symbol="Library"/>
+                                <appControls:MenuButton x:Name="mangaLibraryMenuButton" GroupName="menuButtons"  Command="{Binding NavigateMangaLibraryCommand}"  Header="Manga Library" Symbol="Library"/>
+                                <appControls:MenuButton x:Name="calendarMenuButton"     GroupName="menuButtons"  Command="{Binding NavigateCalendarCommand}"      Header="Calendar"      Symbol="Calendar" SymbolIconVisibility="Visible"/>
+                                <appControls:MenuButton x:Name="searchMenuButton"       GroupName="menuButtons"  Command="{Binding NavigateSearchCommand}"        Header="Search"        Symbol="Find"     SymbolIconVisibility="Visible"/>
                             </StackPanel>
                         </ScrollViewer>
 

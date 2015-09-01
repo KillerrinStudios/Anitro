@@ -50,11 +50,15 @@ namespace Anitro.Pages
             base.OnNavigatedFrom(e);
         }
 
-        private void MainNavigation_HamburgerButton_Click(object sender, RoutedEventArgs e)
+        #region Unavoidable Control Events 
+        private void VisualStateGroup_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)
         {
-            MainNavigation.IsPaneOpen = !MainNavigation.IsPaneOpen;
+            ViewModel.CurrentVisualState = e.NewState;
         }
+        #endregion
 
+
+        #region Loaded
         private void MainFrame_Loaded(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(DefaultNoUserPage));
@@ -81,5 +85,6 @@ namespace Anitro.Pages
                 SimpleIoc.Default.Register<MediaService>(() => { return new MediaService(MainMediaElement); });
             }
         }
+        #endregion
     }
 }

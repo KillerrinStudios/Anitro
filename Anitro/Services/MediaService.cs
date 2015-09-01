@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Media.SpeechSynthesis;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -20,6 +22,10 @@ namespace Anitro.Services
         public void SetSource(Uri source)
         {
             m_mediaElement.Source = source;
+        }
+        public void SetSource(IRandomAccessStream randomAccessStream, string mimeType)
+        {
+            m_mediaElement.SetSource(randomAccessStream, mimeType);
         }
 
         public void Play()

@@ -52,5 +52,14 @@ namespace Anitro.Pages.Hummingbird
                 ViewModel.GetAnimeAndNavigate(mediaUpdateItem.MediaID);
             }
         }
+
+        private void socialFeedTextBox_KeyUp(object sender, KeyRoutedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                ViewModel.PostToActivityFeed(textBox.Text);
+            }
+        }
     }
 }

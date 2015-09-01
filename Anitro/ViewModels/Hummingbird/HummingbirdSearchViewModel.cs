@@ -72,6 +72,7 @@ namespace Anitro.ViewModels.Hummingbird
             get
             {
                 if (!APIServiceCollections.HummingbirdV1API.AnimeAPI.Supported) return false;
+                if (User == null) return false;
                 return User.LoginInfo.HasUsername;
             }
         }
@@ -80,6 +81,7 @@ namespace Anitro.ViewModels.Hummingbird
             get
             {
                 if (!APIServiceCollections.HummingbirdV1API.MangaAPI.Supported) return false;
+                if (User == null) return false;
                 return User.LoginInfo.HasUsername;
             }
         }
@@ -94,10 +96,11 @@ namespace Anitro.ViewModels.Hummingbird
                 if (m_searchTerms == value) return;
 
                 m_searchTerms = value;
+                RaisePropertyChanged(nameof(SearchTerms));
+
+                if (User == null) return;
                 User.AnimeLibrary.LibraryCollection.SearchFilter.SearchTerm = value;
                 User.MangaLibrary.LibraryCollection.SearchFilter.SearchTerm = value;
-
-                RaisePropertyChanged(nameof(SearchTerms));
             }
         }
 
@@ -188,6 +191,8 @@ namespace Anitro.ViewModels.Hummingbird
         public override void OnNavigatedTo()
         {
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Search;
+
+            if (User == null) return;
             User.AnimeLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySection.All;
             User.MangaLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySection.All;
         }
@@ -223,7 +228,6 @@ namespace Anitro.ViewModels.Hummingbird
         }
         #endregion
 
-
         #region Get Anime
         public RelayCommand<ServiceID> GetAnimeCommand
         {
@@ -254,6 +258,10 @@ namespace Anitro.ViewModels.Hummingbird
             {
                 ProgressService.Reset();
             }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
+            }
         }
         #endregion
 
@@ -276,8 +284,11 @@ namespace Anitro.ViewModels.Hummingbird
                 return;
 
             // Search Local
-            User.AnimeLibrary.LibraryCollection.ApplyFilters();
-            User.MangaLibrary.LibraryCollection.ApplyFilters();
+            if (User != null)
+            {
+                User.AnimeLibrary.LibraryCollection.ApplyFilters();
+                User.MangaLibrary.LibraryCollection.ApplyFilters();
+            }
 
             // Search Online
             Progress<APIProgressReport> m_searchAnimeDetailsProgress = new Progress<APIProgressReport>();
@@ -292,6 +303,10 @@ namespace Anitro.ViewModels.Hummingbird
             {
                 ProgressService.Reset();
                 OnlineSearchResults = new ObservableCollection<AnimeObject>((List<AnimeObject>)e.Parameter.Converted);
+            }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
             }
         }
         #endregion
@@ -316,6 +331,8 @@ namespace Anitro.ViewModels.Hummingbird
 
         public void UpdateAutoSuggestions()
         {
+            if (User == null) return;
+
             ObservableCollection<AnimeObject> autoSuggestions = new ObservableCollection<AnimeObject>();
 
             foreach (var item in User.AnimeLibrary.LibraryCollection.UnfilteredCollection)

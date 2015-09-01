@@ -17,12 +17,17 @@ namespace Anitro.Helpers
         #region Minimum Window Widths
         public const int PhoneSmallMinimumWindowWidth = 0;
         public int PhoneSmallMinimumWidth { get { return PhoneSmallMinimumWindowWidth; } }
+        public const string PhoneSmallMinimumWidthName = "PhoneSmall";
 
         public const int PhoneMinimumWindowWidth = 480;
         public int PhoneMinimumWidth { get { return PhoneMinimumWindowWidth; } }
+        public const string PhoneMinimumWidthName = "Phone";
+
 
         public const int DesktopMinimumWindowWidth = 720;
         public int DesktopMinimumWidth { get { return DesktopMinimumWindowWidth; } }
+        public const string DesktopMinimumWidthName = "Desktop";
+
         #endregion
 
         #region Window Sizes

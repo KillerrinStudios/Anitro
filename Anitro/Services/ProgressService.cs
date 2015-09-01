@@ -1,6 +1,7 @@
 ﻿using Anitro.Controls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,15 +84,18 @@ namespace Anitro.Services
         }
         #endregion
 
-        public void SetIndicator(bool isRingEnabled, double percentage, string message)
+        public void SetIndicator(bool isRingEnabled, double percentage, string message, bool debugWriteLine = true)
         {
             IsRingEnabled = isRingEnabled;
             m_progressIndicator.PercentageCompleted = percentage;
             m_progressIndicator.StatusMessage = message;
+
+            if (debugWriteLine)
+                Debug.WriteLine(string.Format("{0} | {1} | {2}", isRingEnabled, percentage, message));
         }
-        public void SetIndicatorAndShow(bool isRingEnabled, double percentage, string message)
+        public void SetIndicatorAndShow(bool isRingEnabled, double percentage, string message, bool debugWriteLine = true)
         {
-            SetIndicator(isRingEnabled, percentage, message);
+            SetIndicator(isRingEnabled, percentage, message, debugWriteLine);
             Show();
         }
     }

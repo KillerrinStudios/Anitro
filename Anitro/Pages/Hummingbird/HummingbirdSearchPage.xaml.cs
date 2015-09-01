@@ -1,4 +1,5 @@
 ﻿using AnimeTrackingServiceWrapper.UniversalServiceModels;
+using Anitro.Models;
 using Anitro.Models.Page_Parameters;
 using Anitro.ViewModels.Hummingbird;
 using System;
@@ -36,8 +37,8 @@ namespace Anitro.Pages.Hummingbird
         {
             base.OnNavigatedTo(e);
 
-            HummingbirdSearchParameter parameter = (HummingbirdSearchParameter)e.Parameter;
-            ViewModel.User = parameter.User;
+            SearchParameter parameter = (SearchParameter)e.Parameter;
+            ViewModel.User = parameter.User as HummingbirdUser;
             ViewModel.SearchTerms = parameter.SearchTerms;
             ViewModel.Filter = parameter.Filter;
             ViewModel.OnNavigatedTo();

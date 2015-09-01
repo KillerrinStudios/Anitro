@@ -1,4 +1,4 @@
-﻿<Button
+﻿<RadioButton
     x:Class="Anitro.Controls.MenuButton"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,7 +10,16 @@
     d:DesignWidth="400"
     Background="Transparent"
     BorderThickness="0"
-    x:Name="parent">
+    x:Name="parent" 
+    Checked="parent_Checked"
+    Unchecked="parent_Unchecked"
+    IsChecked="False">
+    
+    <RadioButton.Template>
+        <ControlTemplate>
+            
+        </ControlTemplate>
+    </RadioButton.Template>
 
     <Grid x:Name="LayoutRoot" DataContext="{Binding ElementName=parent}">
         <StackPanel Orientation="Horizontal">
@@ -21,4 +30,4 @@
             <TextBlock Text="{Binding Header}" Style="{ThemeResource TitleTextBlockStyle}" VerticalAlignment="Center"/>
         </StackPanel>
     </Grid>
-</Button>
+</RadioButton>

@@ -10,6 +10,8 @@ using System.Diagnostics;
 using System;
 using Anitro.Models.Page_Parameters;
 using AnimeTrackingServiceWrapper.UniversalServiceModels;
+using Windows.UI.Xaml;
+using Anitro.Helpers;
 
 namespace Anitro.ViewModels
 {
@@ -64,6 +66,20 @@ namespace Anitro.ViewModels
             }
         }
 
+        private bool m_isPaneOpen = true;
+        public bool IsPaneOpen
+        {
+            get { return m_isPaneOpen; }
+            set
+            {
+                if (m_isPaneOpen == value) return;
+                m_isPaneOpen = value;
+                RaisePropertyChanged(nameof(IsPaneOpen));
+            }
+        }
+
+        public VisualState CurrentVisualState;
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -101,6 +117,17 @@ namespace Anitro.ViewModels
             CurrentNavigationLocation = NavigationLocation.Default;
         }
 
+        #region Commands
+        public RelayCommand TogglePaneCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    IsPaneOpen = !IsPaneOpen;
+                });
+            }
+        }
 
         #region Navigation Commands
         #region Navigate Dashboard Command
@@ -124,6 +151,11 @@ namespace Anitro.ViewModels
             if (CurrentUser is HummingbirdUser)
             {
                 NavigationService.Navigate(typeof(HummingbirdDashboardPage), CurrentUser);
+            }
+
+            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
+            {
+                IsPaneOpen = false;
             }
         }
         #endregion
@@ -150,6 +182,11 @@ namespace Anitro.ViewModels
             {
                 NavigationService.Navigate(typeof(HummingbirdAnimeLibraryPage), CurrentUser);
             }
+
+            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
+            {
+                IsPaneOpen = false;
+            }
         }
         #endregion
 
@@ -175,6 +212,11 @@ namespace Anitro.ViewModels
             {
 
             }
+
+            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
+            {
+                IsPaneOpen = false;
+            }
         }
         #endregion
 
@@ -195,6 +237,11 @@ namespace Anitro.ViewModels
             Debug.WriteLine("Navigate Calendar");
             if (!CanNavigate)
                 return;
+
+            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
+            {
+                IsPaneOpen = false;
+            }
         }
         #endregion
 
@@ -216,13 +263,23 @@ namespace Anitro.ViewModels
             if (!CanNavigate)
                 return;
 
+            SearchParameter parameter = new SearchParameter();
+            parameter.SearchTerms = "";
+            parameter.Filter = SearchFilter.Everything;
+
             if (CurrentUser is HummingbirdUser)
             {
-                HummingbirdSearchParameter parameter = new HummingbirdSearchParameter();
                 parameter.User = HummingbirdUser;
-                parameter.SearchTerms = "";
-                parameter.Filter = SearchFilter.Everything;
                 NavigationService.Navigate(typeof(HummingbirdSearchPage), parameter);
+            }
+            else
+            {
+                NavigationService.Navigate(typeof(HummingbirdSearchPage), parameter);
+            }
+
+            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
+            {
+                IsPaneOpen = false;
             }
         }
         #endregion
@@ -275,6 +332,11 @@ namespace Anitro.ViewModels
 
             if (service == ServiceName.Hummingbird)
                 NavigationService.Navigate(typeof(HummingbirdLoginPage), null);
+
+            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
+            {
+                IsPaneOpen = false;
+            }
         }
 
         #endregion
@@ -322,6 +384,7 @@ namespace Anitro.ViewModels
 
             CurrentUser.Selected = true;
         }
+        #endregion
         #endregion
     }
 }

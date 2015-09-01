@@ -193,6 +193,10 @@ namespace Anitro.ViewModels.Hummingbird
 
                 User.AnimeLibrary.LibraryCollection.UnfilteredCollection = new ObservableCollection<LibraryObject>(groupedLibraryObjects);
             }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
+            }
         }
         #endregion
 
@@ -224,6 +228,10 @@ namespace Anitro.ViewModels.Hummingbird
                 ProgressService.Reset();
                 List<AnimeObject> animeObjects = e.Parameter.Converted as List<AnimeObject>;
                 User.AnimeLibrary.Favourites = new ObservableCollection<AnimeObject>(animeObjects);
+            }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
             }
         }
 

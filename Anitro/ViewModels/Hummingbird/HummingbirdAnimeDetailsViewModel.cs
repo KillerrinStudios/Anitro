@@ -2,6 +2,7 @@
 using AnimeTrackingServiceWrapper.Implementation.HummingbirdV1.Models;
 using AnimeTrackingServiceWrapper.UniversalServiceModels;
 using AnimeTrackingServiceWrapper.UniversalServiceModels.ActivityFeed;
+using Anitro.Helpers;
 using Anitro.Models;
 using Anitro.Models.Enums;
 using Anitro.Services;
@@ -11,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using Windows.Storage;
+using Windows.System.UserProfile;
 
 namespace Anitro.ViewModels.Hummingbird
 {
@@ -147,6 +150,10 @@ namespace Anitro.ViewModels.Hummingbird
                 ProgressService.Reset();
                 LibraryObject = HummingbirdAnimeLibraryViewModel.GetLibraryObject((AnimeObject)e.Parameter.Converted);
             }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
+            }
         }
         #endregion
 
@@ -162,6 +169,22 @@ namespace Anitro.ViewModels.Hummingbird
                             LibraryObject.RewatchedTimes--;
                     });
             }
+        }
+        #endregion
+
+        #region Set as Lockscreen
+        public RelayCommand SetAsLockscreenCommand { get { return new RelayCommand(() => { SetAsLockscreen(); }); } }
+        public async void SetAsLockscreen()
+        {
+            Debug.WriteLine("Setting as Lockscreen");
+        }
+        #endregion
+
+        #region Pin to Start
+        public RelayCommand PinToStartCommand { get { return new RelayCommand(() => { PinToStart(); }); } }
+        public async void PinToStart()
+        {
+            Debug.WriteLine("Pinning to Start");
         }
         #endregion
     }

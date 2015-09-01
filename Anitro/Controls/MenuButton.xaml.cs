@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Anitro.Controls
 {
-    public sealed partial class MenuButton : Button
+    public sealed partial class MenuButton : RadioButton
     {
         public MenuButton()
         {
@@ -28,29 +28,6 @@ namespace Anitro.Controls
                 LayoutRoot.DataContext = this;
             }
         }
-
-        #region IsSelected
-        public bool? IsSelected
-        {
-            get { return (bool?)GetValue(IsSelectedProperty); }
-            set
-            {
-                if (value == null) return;
-                SetValue(IsSelectedProperty, value);
-            }
-        }
-        public static readonly DependencyProperty IsSelectedProperty =
-            DependencyProperty.Register(nameof(IsSelected), typeof(bool?), typeof(MenuButton), new PropertyMetadata(false, OnIsSelectedPropertyChanged));
-
-        private static void OnIsSelectedPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            MenuButton button = (d as MenuButton);
-            if (button.IsSelected.Value)
-                button.Background = (Application.Current.Resources["SystemControlBackgroundAccentBrush"] as SolidColorBrush);
-            else
-                button.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(0, 255, 255, 255));
-        }
-        #endregion
 
         #region Header
         public string Header
@@ -124,5 +101,22 @@ namespace Anitro.Controls
         }
         #endregion
 
+        private void parent_Checked(object sender, RoutedEventArgs e)
+        {
+            SetBackground();
+        }
+
+        private void parent_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SetBackground();
+        }
+
+        private void SetBackground()
+        {
+            if (IsChecked.Value)
+                LayoutRoot.Background = (Application.Current.Resources["SystemControlBackgroundAccentBrush"] as SolidColorBrush);
+            else
+                LayoutRoot.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(0, 255, 255, 255));
+        }
     }
 }

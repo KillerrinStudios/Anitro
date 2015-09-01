@@ -247,8 +247,22 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBox PlaceholderText="Write something..." 
-                                 HorizontalAlignment="Stretch" Grid.Row="0" />
+                        <Grid Grid.Row="0" x:Name="socialFeedPostBox" 
+                              Visibility="Visible">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBox x:Name="socialFeedTextBox" IsEnabled="False"
+                                     PlaceholderText="Disabled until the API Availability" 
+                                     HorizontalAlignment="Stretch" Grid.Column="0" 
+                                     KeyUp="socialFeedTextBox_KeyUp"/>
+                            <Button Content="Send" IsEnabled="False"
+                                    Grid.Column="1" 
+                                    Command="{Binding PostToActivityFeedCommand}" 
+                                    CommandParameter="{Binding ElementName=socialFeedTextBox, Path=Text}"/>
+                        </Grid>
                         
                         <ListBox ItemsSource="{Binding User.ActivityFeed}" ItemTemplateSelector="{StaticResource TemplatedSocialFeedTemplateSelector}"
                                  SelectionChanged="SocialListBox_SelectionChanged"
