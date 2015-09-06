@@ -86,10 +86,6 @@
                         <ScrollViewer Grid.Row="0">
                             <StackPanel Orientation="Vertical">
                                 <appControls:MenuButton x:Name="dashboardMenuButton"    GroupName="menuButtons"  Command="{Binding NavigateDashboardCommand}"     Header="Dashboard"     Symbol="Home" />
-                                <appControls:MenuButton x:Name="animeLibraryMenuButton" GroupName="menuButtons"  Command="{Binding NavigateAnimeLibraryCommand}"  Header="Anime Library" Symbol="Library"/>
-                                <appControls:MenuButton x:Name="mangaLibraryMenuButton" GroupName="menuButtons"  Command="{Binding NavigateMangaLibraryCommand}"  Header="Manga Library" Symbol="Library"/>
-                                <appControls:MenuButton x:Name="calendarMenuButton"     GroupName="menuButtons"  Command="{Binding NavigateCalendarCommand}"      Header="Calendar"      Symbol="Calendar" SymbolIconVisibility="Visible"/>
-                                <appControls:MenuButton x:Name="searchMenuButton"       GroupName="menuButtons"  Command="{Binding NavigateSearchCommand}"        Header="Search"        Symbol="Find"     SymbolIconVisibility="Visible"/>
                             </StackPanel>
                         </ScrollViewer>
 

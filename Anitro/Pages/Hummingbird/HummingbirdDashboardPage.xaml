@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Anitro.Pages.Hummingbird"
     xmlns:Templates="using:Anitro.Templates"
+    xmlns:appControls="using:Anitro.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -271,6 +272,22 @@
                     </Grid>
                 </DataTemplate>
             </HubSection>
+
+            <HubSection Header="Dashboard">
+                <DataTemplate>
+                    <Grid>
+                        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                            <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                                <appControls:MenuButton x:Name="animeLibraryMenuButton" GroupName="menuButtons"  Command="{Binding NavigateAnimeLibraryCommand}"  Header="Anime Library" Symbol="Library"/>
+                                <!--<appControls:MenuButton x:Name="mangaLibraryMenuButton" GroupName="menuButtons"  Command="{Binding NavigateMangaLibraryCommand}"  Header="Manga Library" Symbol="Library"/>-->
+                                <appControls:MenuButton x:Name="calendarMenuButton"     GroupName="menuButtons"  Command="{Binding NavigateCalendarCommand}"      Header="Calendar"      Symbol="Calendar" SymbolIconVisibility="Visible"/>
+                                <appControls:MenuButton x:Name="searchMenuButton"       GroupName="menuButtons"  Command="{Binding NavigateSearchCommand}"        Header="Search"        Symbol="Find"     SymbolIconVisibility="Visible"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            
             <HubSection Header="User Details" Width="325">
                 <DataTemplate>
                     <Grid>

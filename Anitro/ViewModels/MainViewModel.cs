@@ -148,142 +148,15 @@ namespace Anitro.ViewModels
             if (!CanNavigate)
                 return;
 
+            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
+                IsPaneOpen = false;
+
             if (CurrentUser is HummingbirdUser)
             {
                 NavigationService.Navigate(typeof(HummingbirdDashboardPage), CurrentUser);
             }
-
-            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
-            {
-                IsPaneOpen = false;
-            }
         }
         #endregion
-
-        #region Navigate Anime Library Command
-        public RelayCommand NavigateAnimeLibraryCommand
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                  {
-                      NavigateAnimeLibrary();
-                  });
-            }
-        }
-
-        public void NavigateAnimeLibrary()
-        {
-            Debug.WriteLine("Navigate Anime Library");
-            if (!CanNavigate)
-                return;
-
-            if (CurrentUser is HummingbirdUser)
-            {
-                NavigationService.Navigate(typeof(HummingbirdAnimeLibraryPage), CurrentUser);
-            }
-
-            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
-            {
-                IsPaneOpen = false;
-            }
-        }
-        #endregion
-
-        #region Navigate Manga Library Command
-        public RelayCommand NavigateMangaLibraryCommand
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    NavigateMangaLibrary();
-                });
-            }
-        }
-
-        public void NavigateMangaLibrary()
-        {
-            Debug.WriteLine("Navigate Manga Library");
-            if (!CanNavigate)
-                return;
-
-            if (CurrentUser is HummingbirdUser)
-            {
-
-            }
-
-            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
-            {
-                IsPaneOpen = false;
-            }
-        }
-        #endregion
-
-        #region Navigate Calendar Command
-        public RelayCommand NavigateCalendarCommand
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    NavigateCalendar();
-                });
-            }
-        }
-
-        public void NavigateCalendar()
-        {
-            Debug.WriteLine("Navigate Calendar");
-            if (!CanNavigate)
-                return;
-
-            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
-            {
-                IsPaneOpen = false;
-            }
-        }
-        #endregion
-
-        #region Navigate Search Command
-        public RelayCommand NavigateSearchCommand
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    NavigateSearch();
-                });
-            }
-        }
-
-        public void NavigateSearch()
-        {
-            Debug.WriteLine("Navigate Search");
-            if (!CanNavigate)
-                return;
-
-            SearchParameter parameter = new SearchParameter();
-            parameter.SearchTerms = "";
-            parameter.Filter = SearchFilter.Everything;
-
-            if (CurrentUser is HummingbirdUser)
-            {
-                parameter.User = HummingbirdUser;
-                NavigationService.Navigate(typeof(HummingbirdSearchPage), parameter);
-            }
-            else
-            {
-                NavigationService.Navigate(typeof(HummingbirdSearchPage), parameter);
-            }
-
-            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
-            {
-                IsPaneOpen = false;
-            }
-        }
-        #endregion
-
         #endregion
 
         #region User Interaction Commands
@@ -334,9 +207,7 @@ namespace Anitro.ViewModels
                 NavigationService.Navigate(typeof(HummingbirdLoginPage), null);
 
             if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
-            {
                 IsPaneOpen = false;
-            }
         }
 
         #endregion
@@ -382,6 +253,7 @@ namespace Anitro.ViewModels
             }
             else CurrentUser = user;
 
+            if (CurrentUser == null) return;
             CurrentUser.Selected = true;
         }
         #endregion

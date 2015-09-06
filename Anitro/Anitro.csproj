@@ -142,6 +142,9 @@
     <Compile Include="Models\LibrarySectionFilter.cs" />
     <Compile Include="Models\FilteredLibraryObservableCollection.cs" />
     <Compile Include="Models\Library.cs" />
+    <Compile Include="Pages\Hummingbird\HummingbirdCalendarPage.xaml.cs">
+      <DependentUpon>HummingbirdCalendarPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Hummingbird\HummingbirdAnimeDetailsPage.xaml.cs">
       <DependentUpon>HummingbirdAnimeDetailsPage.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,7 @@
     <Compile Include="Templates\LibraryTemplateSelector.cs" />
     <Compile Include="Templates\SocialFeedTemplateSelector.cs" />
     <Compile Include="ViewModels\AnitroViewModelBase.cs" />
+    <Compile Include="ViewModels\Hummingbird\HummingbirdCalendarViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdSearchViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdAnimeDetailsViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdAnimeLibraryViewModel.cs" />
@@ -238,6 +242,10 @@
     <Page Include="Controls\UserAccountButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Hummingbird\HummingbirdCalendarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Hummingbird\HummingbirdAnimeDetailsPage.xaml">
       <SubType>Designer</SubType>

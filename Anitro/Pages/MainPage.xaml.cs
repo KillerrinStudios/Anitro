@@ -57,7 +57,6 @@ namespace Anitro.Pages
         }
         #endregion
 
-
         #region Loaded
         private void MainFrame_Loaded(object sender, RoutedEventArgs e)
         {

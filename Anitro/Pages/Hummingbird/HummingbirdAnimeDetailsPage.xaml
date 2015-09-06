@@ -57,7 +57,7 @@
                             <Run Text="{Binding LibraryObject.Anime.MediaType, Converter={StaticResource MediaTypeConverter}}"/>
                             <Run Text=" - "/>
                             <Run Text="{Binding LibraryObject.Anime.EpisodeCount}"/>
-                            <Run Text=" episodes"/>
+                            <Run Text=" Episodes"/>
                             <Run Text=" - " />
                             <Run Text="{Binding LibraryObject.Anime.AiringStatus, Converter={StaticResource AiringStatusConverter}}"/>
                         </TextBlock>

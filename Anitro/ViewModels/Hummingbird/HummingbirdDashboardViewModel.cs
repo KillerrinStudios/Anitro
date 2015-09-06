@@ -4,6 +4,8 @@ using AnimeTrackingServiceWrapper.UniversalServiceModels;
 using AnimeTrackingServiceWrapper.UniversalServiceModels.ActivityFeed;
 using Anitro.Models;
 using Anitro.Models.Enums;
+using Anitro.Models.Page_Parameters;
+using Anitro.Pages.Hummingbird;
 using Anitro.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -216,6 +218,78 @@ namespace Anitro.ViewModels.Hummingbird
             {
                 ProgressService.Reset();
             }
+        }
+        #endregion
+        #endregion
+
+        #region Navigation Commands
+        #region Navigate Anime Library Command
+        public RelayCommand NavigateAnimeLibraryCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    NavigateAnimeLibrary();
+                });
+            }
+        }
+
+        public void NavigateAnimeLibrary()
+        {
+            Debug.WriteLine("Navigating Hummingbird Anime Library");
+            if (!CanNavigate)
+                return;
+
+            NavigationService.Navigate(typeof(HummingbirdAnimeLibraryPage), User);
+        }
+        #endregion
+
+        #region Navigate Calendar Command
+        public RelayCommand NavigateCalendarCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    NavigateCalendar();
+                });
+            }
+        }
+
+        public void NavigateCalendar()
+        {
+            Debug.WriteLine("Navigating Hummingbird Calendar");
+            if (!CanNavigate)
+                return;
+
+            NavigationService.Navigate(typeof(HummingbirdCalendarPage), null);
+        }
+        #endregion
+
+        #region Navigate Search Command
+        public RelayCommand NavigateSearchCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    NavigateSearch();
+                });
+            }
+        }
+
+        public void NavigateSearch()
+        {
+            Debug.WriteLine("Navigating Hummingbird Search");
+            if (!CanNavigate)
+                return;
+
+            SearchParameter parameter = new SearchParameter();
+            parameter.SearchTerms = "";
+            parameter.Filter = SearchFilter.Everything;
+            parameter.User = User;
+            NavigationService.Navigate(typeof(HummingbirdSearchPage), parameter);
         }
         #endregion
         #endregion

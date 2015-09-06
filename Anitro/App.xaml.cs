@@ -154,8 +154,6 @@ namespace Anitro
             return rootFrame;
         }
 
-
-
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>
