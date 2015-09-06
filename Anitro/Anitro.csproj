@@ -105,6 +105,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ExpanderView.xaml.cs">
+      <DependentUpon>ExpanderView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MenuButton.xaml.cs">
       <DependentUpon>MenuButton.xaml</DependentUpon>
     </Compile>
@@ -132,11 +135,14 @@
     <Compile Include="Converters\OppositeBooleanConverter.cs" />
     <Compile Include="Converters\RelativeDateTimeConverter.cs" />
     <Compile Include="Helpers\AdaptiveTriggerConsts.cs" />
+    <Compile Include="Helpers\DateTimeExtensions.cs" />
     <Compile Include="Killerrin Studios Toolkit\CortanaTools.cs" />
     <Compile Include="Killerrin Studios Toolkit\StorageTask.cs" />
+    <Compile Include="Models\CalendarEntryCollection.cs" />
     <Compile Include="Models\Enums\AnitroLaunchActivation.cs" />
     <Compile Include="Models\AnitroLaunchArgs.cs" />
     <Compile Include="Models\Enums\AnitroLaunchReason.cs" />
+    <Compile Include="Models\Page Parameters\HummingbirdCalendarParameter.cs" />
     <Compile Include="Models\Page Parameters\SearchParameter.cs" />
     <Compile Include="Models\SearchLibraryFilter.cs" />
     <Compile Include="Models\LibrarySectionFilter.cs" />
@@ -219,6 +225,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\ExpanderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\MenuButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

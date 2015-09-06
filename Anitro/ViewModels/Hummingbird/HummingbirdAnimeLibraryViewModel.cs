@@ -130,7 +130,7 @@ namespace Anitro.ViewModels.Hummingbird
         }
 
         #region Refresh Commands
-        #region Refresh Library
+        #region Clear Recent
         public RelayCommand ClearRecentCommand
         {
             get

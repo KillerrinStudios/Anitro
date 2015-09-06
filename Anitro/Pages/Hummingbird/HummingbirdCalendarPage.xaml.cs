@@ -36,6 +36,10 @@ namespace Anitro.Pages.Hummingbird
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            HummingbirdCalendarParameter parameter = e.Parameter as HummingbirdCalendarParameter;
+            ViewModel.User = parameter.User;
+
             ViewModel.OnNavigatedTo();
         }
 

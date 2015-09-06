@@ -86,5 +86,17 @@ namespace Anitro.Models
                 RaisePropertyChanged(nameof(MangaLibrary));
             }
         }
+
+        private CalendarEntryCollection m_calendar = new CalendarEntryCollection();
+        public CalendarEntryCollection Calendar
+        {
+            get { return m_calendar; }
+            set
+            {
+                if (m_calendar == value) return;
+                m_calendar = value;
+                RaisePropertyChanged(nameof(Calendar));
+            }
+        }
     }
 }

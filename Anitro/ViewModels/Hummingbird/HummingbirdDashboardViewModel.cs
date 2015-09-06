@@ -263,7 +263,10 @@ namespace Anitro.ViewModels.Hummingbird
             if (!CanNavigate)
                 return;
 
-            NavigationService.Navigate(typeof(HummingbirdCalendarPage), null);
+            HummingbirdCalendarParameter parameter = new HummingbirdCalendarParameter();
+            parameter.User = User;
+
+            NavigationService.Navigate(typeof(HummingbirdCalendarPage), parameter);
         }
         #endregion
 
