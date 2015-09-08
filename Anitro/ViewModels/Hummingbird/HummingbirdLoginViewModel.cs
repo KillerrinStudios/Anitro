@@ -71,18 +71,9 @@ namespace Anitro.ViewModels.Hummingbird
         }
 
 
-        public RelayCommand LoginCommand
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    Login();
-                });
-            }
-        }
+        #region Login Command
+        public RelayCommand LoginCommand { get { return new RelayCommand(() => { Login(); }); } }
 
-        
         bool m_currentlyLoggingIn = false;
         public void Login()
         {
@@ -100,8 +91,7 @@ namespace Anitro.ViewModels.Hummingbird
             m_currentlyLoggingIn = true;
         }
 
-        Progress<APIProgressReport> m_userDetailsProgress;
-        private void LoginProgress_ProgressChanged(object sender, APIProgressReport e)
+        private async void LoginProgress_ProgressChanged(object sender, APIProgressReport e)
         {
             Debug.WriteLine("LoginProgress_ProgressChanged: {0}", e);
             ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage);
@@ -109,46 +99,17 @@ namespace Anitro.ViewModels.Hummingbird
 
             if (e.CurrentAPIResonse != APIResponse.ContinuingExecution)
             {
-                ProgressService.DisableRing();
+                ProgressService.DisableRing(); 
                 ProgressService.PercentageVisibility = Windows.UI.Xaml.Visibility.Collapsed;
 
                 if (e.CurrentAPIResonse == APIResponse.Successful)
                 {
                     UserLoginInfo = e.Parameter.Converted as UserLoginInfo;
 
-                    m_userDetailsProgress = new Progress<APIProgressReport>();
-                    m_userDetailsProgress.ProgressChanged += GetUserDetailsProgress_ProgressChanged;
-                    APIServiceCollection.Instance.HummingbirdV1API.GetUserInfo(UserLoginInfo.Username, m_userDetailsProgress);
-                }
-                else
-                {
-                    m_currentlyLoggingIn = false;
-                }
-            }
-        }
-
-        UserInfo convertedUserInfo;
-        UserObjectHummingbirdV1 rawUserInfo;
-        private void GetUserDetailsProgress_ProgressChanged(object sender, APIProgressReport e)
-        {
-            Debug.WriteLine("GetUserDetailsProgress_ProgressChanged: {0}", e);
-            ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage);
-            APIFeedback = e;
-
-            if (e.CurrentAPIResonse != APIResponse.ContinuingExecution)
-            {
-                if (e.CurrentAPIResonse == APIResponse.Successful)
-                {
-                    ProgressService.Hide();
-                    ProgressService.Reset();
-
-                    convertedUserInfo = e.Parameter.Converted as UserInfo;
-                    rawUserInfo = e.Parameter.Raw as UserObjectHummingbirdV1;
-
                     HummingbirdUser hummingbirdUser = MainViewModel.Instance.HummingbirdUser;
                     hummingbirdUser.LoginInfo = UserLoginInfo;
-                    hummingbirdUser.UserInfo = convertedUserInfo;
-                    hummingbirdUser.HummingbirdUserInfo = rawUserInfo;
+
+                    await HummingbirdUser.Save(hummingbirdUser);
 
                     MainViewModel.Instance.SwitchUser(ServiceName.Hummingbird);
                     NavigationService.RemoveLastPage();
@@ -159,5 +120,6 @@ namespace Anitro.ViewModels.Hummingbird
                 }
             }
         }
+        #endregion
     }
 }

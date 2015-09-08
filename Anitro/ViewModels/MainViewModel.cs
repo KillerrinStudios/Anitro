@@ -12,6 +12,7 @@ using Anitro.Models.Page_Parameters;
 using AnimeTrackingServiceWrapper.UniversalServiceModels;
 using Windows.UI.Xaml;
 using Anitro.Helpers;
+using System.Threading.Tasks;
 
 namespace Anitro.ViewModels
 {
@@ -30,6 +31,17 @@ namespace Anitro.ViewModels
     public class MainViewModel : AnitroViewModelBase
     {
         public static MainViewModel Instance {  get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
+
+        private LicencesOwned m_anitroLicense = new LicencesOwned();
+        public LicencesOwned AnitroLicense
+        {
+            get { return m_anitroLicense; }
+            set
+            {
+                m_anitroLicense = value;
+                RaisePropertyChanged(nameof(AnitroLicense));
+            }
+        }
 
         private User m_user;
         public User CurrentUser
@@ -103,7 +115,7 @@ namespace Anitro.ViewModels
 
         public override void OnNavigatedTo()
         {
-
+            InitialSetup();
         }
 
         public override void OnNavigatedFrom()
@@ -116,6 +128,37 @@ namespace Anitro.ViewModels
             HummingbirdUser = new HummingbirdUser();
             CurrentNavigationLocation = NavigationLocation.Default;
         }
+
+        #region Startup Methods
+        private async Task InitialSetup()
+        {
+            HummingbirdUser = await HummingbirdUser.Load();
+            CheckProductLicense();
+        }
+
+        public void CheckProductLicense()
+        {
+            Progress<APIProgressReport> m_productLicense = new Progress<APIProgressReport>();
+            m_productLicense.ProgressChanged += M_productLicense_ProgressChanged;
+            InAppPurchaseHelper.CheckProductInformation(m_productLicense);
+        }
+        private void M_productLicense_ProgressChanged(object sender, APIProgressReport e)
+        {
+            if (e.CurrentAPIResonse == APIResponse.Successful)
+                Debug.WriteLine("Product License retrieved successfully");
+            else
+                Debug.WriteLine("Product License couldn't be retrieved: Setting to Default");
+            Debug.WriteLine(AnitroLicense.ToString());
+
+            NavigateToDefaultUser();
+        }
+
+        private void NavigateToDefaultUser()
+        {
+            if (HummingbirdUser.LoginInfo.IsUserLoggedIn)
+                SwitchUser(ServiceName.Hummingbird, HummingbirdUser);
+        }
+        #endregion
 
         #region Commands
         public RelayCommand TogglePaneCommand
@@ -175,11 +218,15 @@ namespace Anitro.ViewModels
         {
             Debug.WriteLine("Switch To User On Service {0}", service);
             if (!CanNavigate)
+            {
+                Debug.WriteLine("Can't Navigate");
                 return;
+            }
 
             SetSelectedUser(service, user);
 
-            if (CurrentNavigationLocation == NavigationLocation.Login)
+            if (CurrentNavigationLocation == NavigationLocation.Default ||
+                CurrentNavigationLocation == NavigationLocation.Login)
             {
                 NavigateDashboard();
             }
@@ -231,6 +278,7 @@ namespace Anitro.ViewModels
             if (service == ServiceName.Hummingbird)
             {
                 HummingbirdUser = new HummingbirdUser();
+                HummingbirdUser.DeleteUser();
             }
 
             if (!CanNavigate)

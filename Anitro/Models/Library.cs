@@ -83,5 +83,14 @@ namespace Anitro.Models
             }
             return null;
         }
+
+        public LibraryObject SelectRandomTitle()
+        {
+            int count = LibraryCollection.UnfilteredCollection.Count;
+            if (count == 0) return null;
+
+            Random random = new Random();
+            return LibraryCollection.UnfilteredCollection[random.Next(count) - 1];
+        }
     }
 }

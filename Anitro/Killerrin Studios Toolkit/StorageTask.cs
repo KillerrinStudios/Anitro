@@ -23,6 +23,8 @@ namespace Killerrin_Studios_Toolkit
 
     public class StorageTask
     {
+        public static StorageTask Instance { get; } = new StorageTask();
+
         #region Properties
         #region Prefix's and FileNames
         public const string SolutionPrefix = "ms-appx:///";
@@ -150,6 +152,28 @@ namespace Killerrin_Studios_Toolkit
         {
             await item.DeleteAsync(deletionOption);
             return true;
+        }
+        #endregion
+
+        #region Converters
+        public static StorageFile IStorageItemToStorageFile(IStorageItem item)
+        {
+            if (item is StorageFile) return (StorageFile)item;
+            return null;
+        }
+        public static StorageFolder IStorageItemToStorageFolder(IStorageItem item)
+        {
+            if (item is StorageFolder) return (StorageFolder)item;
+            return null;
+        }
+
+        public static IStorageItem StorageFileToIStorageItem(StorageFile file)
+        {
+            return (IStorageItem)file;
+        }
+        public static IStorageItem StorageFolderToIStorageItem(StorageFolder folder)
+        {
+            return (IStorageItem)folder;
         }
         #endregion
     }

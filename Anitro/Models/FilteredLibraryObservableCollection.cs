@@ -114,7 +114,7 @@ namespace Anitro.Models
             ApplyFilters();
         }
 
-        public RelayCommand ApplyFilterCommand { get { return new RelayCommand(() => { ApplyFilters(); }); } }
+        //public RelayCommand ApplyFilterCommand { get { return new RelayCommand(() => { ApplyFilters(); }); } }
         public void ApplyFilters()
         {
             Debug.WriteLine("Applying Filters");

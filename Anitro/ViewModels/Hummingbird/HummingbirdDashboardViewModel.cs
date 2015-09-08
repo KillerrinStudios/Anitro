@@ -85,6 +85,8 @@ namespace Anitro.ViewModels.Hummingbird
             HummingbirdAnimeLibraryViewModel libraryVM = ViewModelLocator.Instance.vm_HummingbirdAnimeLibraryViewModel;
             libraryVM.User = User;
 
+            RefreshUserDetails();
+
             if (User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Count == 0)
                 libraryVM.RefreshLibrary();
             if (User.AnimeLibrary.Favourites.Count == 0)
@@ -102,18 +104,9 @@ namespace Anitro.ViewModels.Hummingbird
         }
 
         #region Commands
+        #region Activity Feed
         #region Refresh Activity Feed
-        public RelayCommand RefreshActivityFeedCommand
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    RefreshActivityFeed();
-                });
-            }
-        }
-
+        public RelayCommand RefreshActivityFeedCommand { get { return new RelayCommand(() => { RefreshActivityFeed(); }); } }
         public void RefreshActivityFeed(int index = 0)
         {
             Debug.WriteLine("Refreshing Activity Feed");
@@ -138,17 +131,7 @@ namespace Anitro.ViewModels.Hummingbird
         #endregion
 
         #region Post To Activity Feed
-        public RelayCommand<string> PostToActivityFeedCommand
-        {
-            get
-            {
-                return new RelayCommand<string>((message) =>
-                {
-                    PostToActivityFeed(message);
-                });
-            }
-        }
-
+        public RelayCommand<string> PostToActivityFeedCommand { get { return new RelayCommand<string>((message) => { PostToActivityFeed(message); }); } }
         public void PostToActivityFeed(string message)
         {
             Debug.WriteLine("Posting to Activity Feed");
@@ -182,17 +165,7 @@ namespace Anitro.ViewModels.Hummingbird
         #endregion
 
         #region Navigate Anime Details Page
-        public RelayCommand<ServiceID> GetAnimeAndNavigateCommand
-        {
-            get
-            {
-                return new RelayCommand<ServiceID>((serviceID) =>
-                {
-                    GetAnimeAndNavigate(serviceID);
-                });
-            }
-        }
-
+        public RelayCommand<ServiceID> GetAnimeAndNavigateCommand { get { return new RelayCommand<ServiceID>((serviceID) => { GetAnimeAndNavigate(serviceID); }); } }
         public void GetAnimeAndNavigate(ServiceID serviceID)
         {
             Debug.WriteLine("Getting Anime");
@@ -213,6 +186,36 @@ namespace Anitro.ViewModels.Hummingbird
             {
                 ProgressService.Reset();
                 ViewModelLocator.Instance.vm_HummingbirdAnimeLibraryViewModel.NavigateAnimeDetailsPage((AnimeObject)e.Parameter.Converted);
+            }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
+            }
+        }
+        #endregion
+        #endregion
+
+        #region Refresh User Details Command
+        public RelayCommand RefreshUserDetailsCommand { get { return new RelayCommand(() => { RefreshUserDetails(); }); } }
+        public void RefreshUserDetails()
+        {
+            Progress<APIProgressReport> userDetailsProgress = new Progress<APIProgressReport>();
+            userDetailsProgress.ProgressChanged += RefreshUserDetailsProgress_ProgressChanged;
+            APIServiceCollection.Instance.HummingbirdV1API.GetUserInfo(User.LoginInfo.Username, userDetailsProgress);
+        }
+        private void RefreshUserDetailsProgress_ProgressChanged(object sender, APIProgressReport e)
+        {
+            Debug.WriteLine("GetUserDetailsProgress_ProgressChanged: {0}", e);
+            ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage);
+
+            if (e.CurrentAPIResonse == APIResponse.Successful)
+            {
+                ProgressService.Reset();
+                User.UserInfo = e.Parameter.Converted as UserInfo;
+                User.HummingbirdUserInfo = e.Parameter.Raw as UserObjectHummingbirdV1;
+
+                if (User.LoginInfo.IsUserLoggedIn)
+                    HummingbirdUser.Save(User);
             }
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
             {

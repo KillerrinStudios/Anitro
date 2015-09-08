@@ -98,6 +98,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="WindowsStoreProxy.xml" />
+    <None Include="AdMediator.config" />
     <None Include="Anitro_StoreKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
@@ -136,6 +138,9 @@
     <Compile Include="Converters\RelativeDateTimeConverter.cs" />
     <Compile Include="Helpers\AdaptiveTriggerConsts.cs" />
     <Compile Include="Helpers\DateTimeExtensions.cs" />
+    <Compile Include="Helpers\InAppPurchaseHelper.cs" />
+    <Compile Include="Killerrin Studios Toolkit\DebugTools.cs" />
+    <Compile Include="Models\LicensesOwned.cs" />
     <Compile Include="Killerrin Studios Toolkit\CortanaTools.cs" />
     <Compile Include="Killerrin Studios Toolkit\StorageTask.cs" />
     <Compile Include="Models\CalendarEntryCollection.cs" />
@@ -292,6 +297,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.AdMediator.Universal, Version=1.0">
+      <Name>Microsoft Advertising Universal SDK</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.Advertising.Xaml, Version=10.0">
+      <Name>Microsoft Advertising SDK for XAML</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
     <SDKReference Include="WindowsDesktop, Version=10.0.10240.0">
       <Name>Windows Desktop Extensions for the UWP</Name>
     </SDKReference>
@@ -307,6 +321,9 @@
   <ItemGroup>
     <Folder Include="Abstract\" />
     <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

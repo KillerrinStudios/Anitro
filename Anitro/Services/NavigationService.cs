@@ -18,6 +18,7 @@ namespace Anitro.Services
 
         private Frame m_frame;
         public Frame Frame { get { return m_frame; } }
+        public Type CurrentPage { get { return Frame.CurrentSourcePageType; } }
 
         private object m_parameter = new object();
         public object Parameter

@@ -23,6 +23,7 @@ namespace Anitro.Models
             }
         }
 
+        public LibrarySectionFilter() { }
         public LibrarySectionFilter(LibrarySection section)
         {
             LibrarySelection = section;

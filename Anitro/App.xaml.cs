@@ -1,4 +1,5 @@
-﻿using Anitro.Models;
+﻿using Anitro.Helpers;
+using Anitro.Models;
 using Anitro.Models.Enums;
 using Anitro.Pages;
 using GalaSoft.MvvmLight.Ioc;
@@ -34,13 +35,35 @@ namespace Anitro
         /// </summary>
         public App()
         {
+            UnhandledException += App_UnhandledException;
+
             // Now, Initialize the App
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+        }
 
+        void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            if (e != null)
+            {
+                Exception exception = e.Exception;
+                if (exception is NullReferenceException && exception.ToString().ToUpper().Contains("SOMA"))
+                {
+                    Debug.WriteLine("Handled Smaato null reference exception {0}", exception);
+                    e.Handled = true;
+                    return;
+                }
+            }
+            // APP SPECIFIC HANDLING HERE
+
+            if (Debugger.IsAttached)
+            {
+                // An unhandled exception has occurred; break into the debugger
+                Debugger.Break();
+            }
         }
 
         /// <summary>
@@ -83,7 +106,7 @@ namespace Anitro
                 var rulePath = speechRecognitionResult.RulePath[0];
                 launchArgs.Activation = AnitroLaunchActivation.VoiceCommand;
                 launchArgs.LaunchReason = AnitroLaunchArgs.ParseLaunchReason(rulePath);
-                launchArgs.Parameter = speechRecognitionResult.SemanticInterpretation.Properties["dictatedSearchTerms"][0];
+                launchArgs.Parameter = speechRecognitionResult.SemanticInterpretation.Properties["DictatedTerms"][0];
             }
             else if (args.Kind == ActivationKind.Protocol)
             {
@@ -119,8 +142,8 @@ namespace Anitro
 
         public Frame CreateRootFrame(ApplicationExecutionState PreviousExecutionState, AnitroLaunchArgs launchArgs)
         {
-            // Update the Cortana VD File here because we want to make sure it is installed everytime the Root Frame is created
-            CortanaTools.UpdateCortanaVDFile(new Uri("ms-appx:///AnitroVoiceCommandDefinition.xml"));
+            // Run Code which has to be run every Launch
+            CortanaTools.InstallCortanaVDFile(new Uri("ms-appx:///AnitroVoiceCommandDefinition.xml"));
 
             // Create the Root Frame
             Frame rootFrame = Window.Current.Content as Frame;

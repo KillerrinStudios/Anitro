@@ -29,6 +29,8 @@
         <ListView x:Name="ContentListView" Grid.Row="1" 
                   Visibility="{Binding ElementName=HeaderButton, Path=IsChecked, Converter={StaticResource BooleanToVisibility}}" 
                   ItemsSource="{Binding ElementName=parent, Path=ContentItemsSource}"
-                  ItemTemplate="{Binding ElementName=parent, Path=ContentItemTemplate}"/>
+                  ItemTemplate="{Binding ElementName=parent, Path=ContentItemTemplate}"
+                  ItemClick="ContentListView_ItemClick"
+                  SelectionChanged="ContentListView_SelectionChanged"/>
     </Grid>
 </UserControl>

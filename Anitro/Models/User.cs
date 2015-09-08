@@ -3,6 +3,7 @@ using AnimeTrackingServiceWrapper.Abstract;
 using AnimeTrackingServiceWrapper.UniversalServiceModels;
 using Anitro.Services;
 using Anitro.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,7 @@ namespace Anitro.Models
             }
         }
 
+        [JsonIgnore]
         public AService APIService { get { return APIServiceCollection.Instance.HummingbirdV1API; } }
 
         private UserLoginInfo m_loginInfo = new UserLoginInfo();

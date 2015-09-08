@@ -1,5 +1,7 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -103,5 +105,34 @@ namespace Anitro.Controls
             view.ContentListView.ItemsSource = view.ContentItemsSource;
         }
         #endregion
+
+
+        #region ItemClicked Command
+        public RelayCommand<object> ItemClickedCommand
+        {
+            get { return (RelayCommand<object>)GetValue(ItemClickedCommandProperty); }
+            set
+            {
+                if (value == null) return;
+                SetValue(ItemClickedCommandProperty, value);
+            }
+        }
+        public static readonly DependencyProperty ItemClickedCommandProperty =
+            DependencyProperty.Register(nameof(ItemClickedCommand), typeof(RelayCommand<object>), typeof(ExpanderView), new PropertyMetadata(new RelayCommand<object>((s) => { })));
+
+        private void ContentListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Debug.WriteLine("ExpanderView: Item Clicked");
+            //if (ItemClickedCommand.CanExecute(e.ClickedItem))
+            //    ItemClickedCommand.Execute(e.ClickedItem);
+        }
+        #endregion
+
+        private void ContentListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Debug.WriteLine("ExpanderView: Selection Changed");
+            if (ItemClickedCommand.CanExecute(ContentListView.SelectedItem))
+                ItemClickedCommand.Execute(ContentListView.SelectedItem);
+        }
     }
 }

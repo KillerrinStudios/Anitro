@@ -15,6 +15,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Anitro.ViewModels.Hummingbird
 {
@@ -30,7 +31,7 @@ namespace Anitro.ViewModels.Hummingbird
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class HummingbirdAnimeLibraryViewModel : AnitroViewModelBase
+    public class HummingbirdAnimeLibraryViewModel : AnitroViewModelBase 
     {
         private HummingbirdUser m_user = new HummingbirdUser();
         public HummingbirdUser User
@@ -146,21 +147,14 @@ namespace Anitro.ViewModels.Hummingbird
         {
             Debug.WriteLine("Clear Recent");
             User.AnimeLibrary.Recent.Clear();
+
+            if (User.LoginInfo.IsUserLoggedIn)
+                HummingbirdUser.Save(User);
         }
         #endregion
 
         #region Refresh Library
-        public RelayCommand RefreshLibraryCommand
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    RefreshLibrary();
-                });
-            }
-        }
-
+        public RelayCommand RefreshLibraryCommand { get { return new RelayCommand(() => { RefreshLibrary(); }); } }
         public void RefreshLibrary()
         {
             Debug.WriteLine("Refreshing Library");
@@ -191,7 +185,7 @@ namespace Anitro.ViewModels.Hummingbird
                     }
                 }
 
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection = new ObservableCollection<LibraryObject>(groupedLibraryObjects);
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection = new ObservableCollection<LibraryObject>(groupedLibraryObjects); 
             }
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
             {
@@ -201,16 +195,7 @@ namespace Anitro.ViewModels.Hummingbird
         #endregion
 
         #region Refresh Favourites
-        public RelayCommand RefreshFavouritesCommand
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    RefreshFavourites();
-                });
-            }
-        }
+        public RelayCommand RefreshFavouritesCommand { get { return new RelayCommand(() => { RefreshFavourites(); }); } }
 
         public void RefreshFavourites()
         {

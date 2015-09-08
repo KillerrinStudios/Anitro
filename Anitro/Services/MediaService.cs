@@ -13,12 +13,19 @@ namespace Anitro.Services
 {
     public class MediaService
     {
-        public MediaElement m_mediaElement;
+        private MediaElement m_mediaElement;
+        public MediaElement MediaPlayer
+        {
+            get { return m_mediaElement; }
+            protected set { m_mediaElement = value; }
+        }
+
         public MediaService(MediaElement mediaElement)
         {
             m_mediaElement = mediaElement;
         }
 
+        #region Set Source
         public void SetSource(Uri source)
         {
             m_mediaElement.Source = source;
@@ -27,12 +34,15 @@ namespace Anitro.Services
         {
             m_mediaElement.SetSource(randomAccessStream, mimeType);
         }
+        #endregion
 
+        #region Play Pause Stop
         public void Play()
         {
             m_mediaElement.Play();
         }
 
+        public bool CanPause { get { return m_mediaElement.CanPause; } }
         public void Pause()
         {
             m_mediaElement.Pause();
@@ -42,7 +52,6 @@ namespace Anitro.Services
         {
             m_mediaElement.Stop();
         }
-
-        public bool CanPause { get { return m_mediaElement.CanPause; } }
+        #endregion
     }
 }

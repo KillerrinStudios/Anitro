@@ -19,11 +19,11 @@
             <!-- ListenFor elements provide ways to say the command, including references to 
             {PhraseLists} and {PhraseTopics} as well as [optional] words -->
             <ListenFor> Search </ListenFor>
-            <ListenFor> Search {dictatedSearchTerms}</ListenFor>
-            <ListenFor> Search [for] {dictatedSearchTerms} </ListenFor>
+            <ListenFor> Search {DictatedTerms}</ListenFor>
+            <ListenFor> Search [for] {DictatedTerms} </ListenFor>
             <ListenFor> Find </ListenFor>
-            <ListenFor> Find {dictatedSearchTerms} </ListenFor>
-            <ListenFor> Find [me] {dictatedSearchTerms} </ListenFor>
+            <ListenFor> Find {DictatedTerms} </ListenFor>
+            <ListenFor> Find [me] {DictatedTerms} </ListenFor>
 
             <!--Feedback provides the displayed and spoken text when your command is triggered -->
             <Feedback> Searching ... </Feedback>
@@ -34,23 +34,23 @@
       
         <Command Name="GoToDetails">
           <Example> Go To 'steins gate' </Example>
-          <ListenFor> Go To {dictatedSearchTerms}</ListenFor>
-          <ListenFor> Head To {dictatedSearchTerms}</ListenFor>
-          <ListenFor> Load Up {dictatedSearchTerms}</ListenFor>
+          <ListenFor> Go To {DictatedTerms}</ListenFor>
+          <ListenFor> Head To {DictatedTerms}</ListenFor>
+          <ListenFor> Load Up {DictatedTerms}</ListenFor>
           <Feedback> Going there now</Feedback>
           <Navigate Target="MainPage.xaml" />
         </Command>
           
         <Command Name="StatusUpdate">
           <Example> Post 'steins gate is amazing!' </Example>
-          <ListenFor> Post {dictatedSearchTerms}</ListenFor>
+          <ListenFor> Post {DictatedTerms}</ListenFor>
           <Feedback> Posting to your Activity Feed... </Feedback>
           <Navigate Target="MainPage.xaml" />
         </Command>
       
         <Command Name="RateShow">
           <Example> Rate 'steins gate 5 stars' </Example>
-          <ListenFor> Rate {dictatedSearchTerms}</ListenFor>
+          <ListenFor> Rate {DictatedTerms}</ListenFor>
           <Feedback> Rating now</Feedback>
           <Navigate Target="MainPage.xaml" />
         </Command>
@@ -66,10 +66,10 @@
       
         <Command Name="comedic_wiafu">
           <Example> My Waifu '...' </Example>
-          <ListenFor> My Waifu {dictatedSearchTerms}</ListenFor>
-          <ListenFor> My Wife {dictatedSearchTerms}</ListenFor>
-          <ListenFor> My Husbando {dictatedSearchTerms}</ListenFor>
-          <ListenFor> My Husband {dictatedSearchTerms}</ListenFor>
+          <ListenFor> My Waifu {DictatedTerms}</ListenFor>
+          <ListenFor> My Wife {DictatedTerms}</ListenFor>
+          <ListenFor> My Husbando {DictatedTerms}</ListenFor>
+          <ListenFor> My Husband {DictatedTerms}</ListenFor>
           <Feedback> I thought I was your Waifu? </Feedback>
           <Navigate Target="MainPage.xaml" />
         </Command>
@@ -83,7 +83,7 @@
         </Command>
         -->
 
-        <PhraseTopic Label="dictatedSearchTerms" Scenario="Search">
+        <PhraseTopic Label="DictatedTerms" Scenario="Search">
             <Subject> Anitro </Subject>
         </PhraseTopic>
 

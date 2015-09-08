@@ -13,190 +13,166 @@
     <Page.Resources>
         <DataTemplate x:Key="CalendarListViewDataTemplate">
             <Grid>
-                <TextBlock Text="Content"/>
-                <TextBlock Text="{Binding UserInfo.Username}"/>
+                <TextBlock Text="{Binding Title}"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
     
     <Grid x:Name="mainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                
+            </Grid>
+            
+            <Button Width="50" Height="50" Background="Transparent" Grid.Column="1"
+                    Command="{Binding RefreshCalendarCommand}">
+                <SymbolIcon Symbol="Refresh"/>
+            </Button>
+        </Grid>
+        
+        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.Row="1">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
 
-                <customControls:ExpanderView Grid.Column="0" Grid.Row="0" 
-                                             IsExpanded="True"
-                                             ContentItemsSource="{Binding User.Calendar.Sunday}">
-                    <customControls:ExpanderView.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding SundayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                <StackPanel Orientation="Vertical" Grid.Column="0">
+                    <customControls:ExpanderView IsExpanded="{Binding IsSunday}"
+                                             ContentItemsSource="{Binding User.Calendar.Sunday}"
+                                             ContentItemTemplate="{StaticResource CalendarListViewDataTemplate}"
+                                             ItemClickedCommand="{Binding CalendarItemClickedCommand}">
+                        <customControls:ExpanderView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding SundayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
+                                    <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
                                         <Run Text="{Binding User.Calendar.Sunday.Count}"/>
                                         <Run Text="Items"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </customControls:ExpanderView.HeaderTemplate>
-                    <customControls:ExpanderView.ContentItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="{Binding}" />
-                            </Grid>
-                        </DataTemplate>
-                    </customControls:ExpanderView.ContentItemTemplate>
-                </customControls:ExpanderView>
-                <customControls:ExpanderView Grid.Column="1" Grid.Row="0" 
-                                             IsExpanded="False"
-                                             ContentItemsSource="{Binding User.Calendar.Monday}">
-                    <customControls:ExpanderView.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding MondayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </customControls:ExpanderView.HeaderTemplate>
+                    </customControls:ExpanderView>
+                    <customControls:ExpanderView IsExpanded="{Binding IsTuesday}"
+                                             ContentItemsSource="{Binding User.Calendar.Tuesday}"
+                                             ContentItemTemplate="{StaticResource CalendarListViewDataTemplate}"
+                                             ItemClickedCommand="{Binding CalendarItemClickedCommand}">
+                        <customControls:ExpanderView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding TuesdayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
-                                        <Run Text="{Binding User.Calendar.Monday.Count}"/>
-                                        <Run Text="Items"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </customControls:ExpanderView.HeaderTemplate>
-                    <customControls:ExpanderView.ContentItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="{Binding}" />
-                            </Grid>
-                        </DataTemplate>
-                    </customControls:ExpanderView.ContentItemTemplate>
-                </customControls:ExpanderView>
-
-                <customControls:ExpanderView Grid.Column="0" Grid.Row="1" 
-                                             IsExpanded="False"
-                                             ContentItemsSource="{Binding User.Calendar.Tuesday}">
-                    <customControls:ExpanderView.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding TuesdayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
+                                    <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
                                         <Run Text="{Binding User.Calendar.Tuesday.Count}"/>
                                         <Run Text="Items"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </customControls:ExpanderView.HeaderTemplate>
-                    <customControls:ExpanderView.ContentItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="{Binding}" />
-                            </Grid>
-                        </DataTemplate>
-                    </customControls:ExpanderView.ContentItemTemplate>
-                </customControls:ExpanderView>
-                <customControls:ExpanderView Grid.Column="1" Grid.Row="1" 
-                                             IsExpanded="False"
-                                             ContentItemsSource="{Binding User.Calendar.Wednesday}">
-                    <customControls:ExpanderView.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding WednesdayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </customControls:ExpanderView.HeaderTemplate>
+                    </customControls:ExpanderView>
+                    <customControls:ExpanderView IsExpanded="{Binding IsThursday}"
+                                             ContentItemsSource="{Binding User.Calendar.Thursday}"
+                                             ContentItemTemplate="{StaticResource CalendarListViewDataTemplate}"
+                                             ItemClickedCommand="{Binding CalendarItemClickedCommand}">
+                        <customControls:ExpanderView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding ThursdayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
-                                        <Run Text="{Binding User.Calendar.Wednesday.Count}"/>
-                                        <Run Text="Items"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </customControls:ExpanderView.HeaderTemplate>
-                    <customControls:ExpanderView.ContentItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="{Binding}" />
-                            </Grid>
-                        </DataTemplate>
-                    </customControls:ExpanderView.ContentItemTemplate>
-                </customControls:ExpanderView>
-
-                <customControls:ExpanderView Grid.Column="0" Grid.Row="2" 
-                                             IsExpanded="False"
-                                             ContentItemsSource="{Binding User.Calendar.Thursday}">
-                    <customControls:ExpanderView.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding ThursdayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
+                                    <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
                                         <Run Text="{Binding User.Calendar.Thursday.Count}"/>
                                         <Run Text="Items"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </customControls:ExpanderView.HeaderTemplate>
-                    <customControls:ExpanderView.ContentItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="{Binding}" />
-                            </Grid>
-                        </DataTemplate>
-                    </customControls:ExpanderView.ContentItemTemplate>
-                </customControls:ExpanderView>
-                <customControls:ExpanderView Grid.Column="1" Grid.Row="2" 
-                                             IsExpanded="False"
-                                             ContentItemsSource="{Binding User.Calendar.Friday}">
-                    <customControls:ExpanderView.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding FridayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </customControls:ExpanderView.HeaderTemplate>
+                    </customControls:ExpanderView>
+                    <customControls:ExpanderView IsExpanded="{Binding IsSaturday}"
+                                             ContentItemsSource="{Binding User.Calendar.Saturday}"
+                                             ContentItemTemplate="{StaticResource CalendarListViewDataTemplate}"
+                                             ItemClickedCommand="{Binding CalendarItemClickedCommand}">
+                        <customControls:ExpanderView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding SaturdayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
-                                        <Run Text="{Binding User.Calendar.Friday.Count}"/>
-                                        <Run Text="Items"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </customControls:ExpanderView.HeaderTemplate>
-                    <customControls:ExpanderView.ContentItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="{Binding}" />
-                            </Grid>
-                        </DataTemplate>
-                    </customControls:ExpanderView.ContentItemTemplate>
-                </customControls:ExpanderView>
-
-                <customControls:ExpanderView Grid.Column="0" Grid.Row="3" 
-                                             IsExpanded="False"
-                                             ContentItemsSource="{Binding User.Calendar.Saturday}">
-                    <customControls:ExpanderView.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding SaturdayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
+                                    <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
                                         <Run Text="{Binding User.Calendar.Saturday.Count}"/>
                                         <Run Text="Items"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </customControls:ExpanderView.HeaderTemplate>
-                    <customControls:ExpanderView.ContentItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="{Binding}" />
-                            </Grid>
-                        </DataTemplate>
-                    </customControls:ExpanderView.ContentItemTemplate>
-                </customControls:ExpanderView>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </customControls:ExpanderView.HeaderTemplate>
+                    </customControls:ExpanderView>
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <customControls:ExpanderView IsExpanded="{Binding IsMonday}"
+                                             ContentItemsSource="{Binding User.Calendar.Monday}"
+                                             ContentItemTemplate="{StaticResource CalendarListViewDataTemplate}"
+                                             ItemClickedCommand="{Binding CalendarItemClickedCommand}">
+                        <customControls:ExpanderView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding MondayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                    <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
+                                        <Run Text="{Binding User.Calendar.Monday.Count}"/>
+                                        <Run Text="Items"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </customControls:ExpanderView.HeaderTemplate>
+                    </customControls:ExpanderView>
+
+                    <customControls:ExpanderView IsExpanded="{Binding IsWednesday}"
+                                             ContentItemsSource="{Binding User.Calendar.Wednesday}"
+                                             ContentItemTemplate="{StaticResource CalendarListViewDataTemplate}"
+                                             ItemClickedCommand="{Binding CalendarItemClickedCommand}">
+                        <customControls:ExpanderView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding WednesdayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                    <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
+                                        <Run Text="{Binding User.Calendar.Wednesday.Count}"/>
+                                        <Run Text="Items"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </customControls:ExpanderView.HeaderTemplate>
+                    </customControls:ExpanderView>
+
+                    <customControls:ExpanderView IsExpanded="{Binding IsFriday}"
+                                             ContentItemsSource="{Binding User.Calendar.Friday}"
+                                             ContentItemTemplate="{StaticResource CalendarListViewDataTemplate}"
+                                             ItemClickedCommand="{Binding CalendarItemClickedCommand}">
+                        <customControls:ExpanderView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding FridayHeader}" HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                    <TextBlock Margin="56,0,0,0" HorizontalAlignment="Right" Style="{ThemeResource CaptionTextBlockStyle}">
+                                        <Run Text="{Binding User.Calendar.Friday.Count}"/>
+                                        <Run Text="Items"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </customControls:ExpanderView.HeaderTemplate>
+                    </customControls:ExpanderView>
+                </StackPanel>
             </Grid> 
         </ScrollViewer>
     </Grid>

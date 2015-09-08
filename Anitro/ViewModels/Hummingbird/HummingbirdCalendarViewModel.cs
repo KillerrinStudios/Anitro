@@ -128,6 +128,26 @@ namespace Anitro.ViewModels.Hummingbird
         }
         #endregion
 
+        #region Expanders
+        public bool IsSunday { get { return DateTime.Now.DayOfWeek == DayOfWeek.Sunday; } }
+        public bool IsMonday { get { return DateTime.Now.DayOfWeek == DayOfWeek.Monday; } }
+        public bool IsTuesday { get { return DateTime.Now.DayOfWeek == DayOfWeek.Tuesday; } }
+        public bool IsWednesday { get { return DateTime.Now.DayOfWeek == DayOfWeek.Wednesday; } }
+        public bool IsThursday { get { return DateTime.Now.DayOfWeek == DayOfWeek.Thursday; } }
+        public bool IsFriday { get { return DateTime.Now.DayOfWeek == DayOfWeek.Friday; } }
+        public bool IsSaturday { get { return DateTime.Now.DayOfWeek == DayOfWeek.Saturday; } }
+        #endregion
+
+        #region Dates
+        public DateTime Sunday;
+        public DateTime Monday;
+        public DateTime Tuesday;
+        public DateTime Wednesday;
+        public DateTime Thursday;
+        public DateTime Friday;
+        public DateTime Saturday;
+        #endregion
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -159,8 +179,7 @@ namespace Anitro.ViewModels.Hummingbird
         {
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Calendar;
 
-            RefreshCalendar();
-            GenerateHeaders();
+            SetDate(DateTime.Now);
         }
 
         public override void OnNavigatedFrom()
@@ -172,6 +191,35 @@ namespace Anitro.ViewModels.Hummingbird
         {
 
         }
+
+
+        #region Set Date Command
+        public RelayCommand<DateTime> SetDateCommand
+        {
+            get
+            {
+                return new RelayCommand<DateTime>((date) =>
+                {
+                    SetDate(date);
+                });
+            }
+        }
+        public void SetDate(DateTime date)
+        {
+            Debug.WriteLine("Setting Date: " + date.ToString());
+            DateTime startOfWeek = date.StartOfWeek(DayOfWeek.Sunday);
+                                                                                                Sunday = startOfWeek;
+            SundayHeader    += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0); Monday = startOfWeek;
+            MondayHeader    += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0); Tuesday = startOfWeek;
+            TuesdayHeader   += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0); Wednesday = startOfWeek;
+            WednesdayHeader += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0); Thursday = startOfWeek;
+            ThursdayHeader  += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0); Friday = startOfWeek;
+            FridayHeader    += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0); Saturday = startOfWeek;
+            SaturdayHeader  += " " + startOfWeek.Day;
+
+            RefreshCalendar();
+        }
+        #endregion
 
         #region Refresh Calendar
         public RelayCommand RefreshCalendarCommand
@@ -189,23 +237,30 @@ namespace Anitro.ViewModels.Hummingbird
         {
             Debug.WriteLine("Refreshing Calendar");
             Progress<APIProgressReport> m_refreshCalendarProgress = new Progress<APIProgressReport>();
-            m_refreshCalendarProgress.ProgressChanged += M_refreshCalendarProgress_ProgressChanged; ;
+            m_refreshCalendarProgress.ProgressChanged += M_refreshCalendarProgress_ProgressChanged;
             APIServiceCollection.Instance.HummingbirdV1API.CalendarAPI.GetCalendar(User.UserInfo.Username, m_refreshCalendarProgress);
         }
 
         private void M_refreshCalendarProgress_ProgressChanged(object sender, APIProgressReport e)
         {
-            ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage);
+            ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage, false);
             if (e.CurrentAPIResonse == APIResponse.Successful)
             {
                 ProgressService.Reset();
+                CalendarRootHummingbird_Undocumented raw = (CalendarRootHummingbird_Undocumented)e.Parameter.Raw;
 
                 User.Calendar.Unfiltered.Clear();
                 List<CalendarEntry> calendarEntries = (List<CalendarEntry>)e.Parameter.Converted;
+
                 foreach (var entry in calendarEntries)
                 {
-                    Debug.WriteLine(entry);
-                    User.Calendar.Add(entry);
+                    //Debug.WriteLine(entry);
+
+                    if (entry.Date >= Sunday && 
+                        entry.Date <= Saturday)
+                    {
+                        User.Calendar.Add(entry);
+                    }
                 }
             }
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
@@ -215,17 +270,43 @@ namespace Anitro.ViewModels.Hummingbird
         }
         #endregion
 
-        public void GenerateHeaders()
+        #region Calendar Item Clicked Command
+        public RelayCommand<object> CalendarItemClickedCommand
         {
-            DateTime startOfWeek = DateTime.Now.StartOfWeek(DayOfWeek.Sunday);
-
-            SundayHeader    += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0);
-            MondayHeader    += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0);
-            TuesdayHeader   += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0);
-            WednesdayHeader += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0);
-            ThursdayHeader  += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0);
-            FridayHeader    += " " + startOfWeek.Day;   startOfWeek = startOfWeek.AddDays(1.0);
-            SaturdayHeader  += " " + startOfWeek.Day;
+            get
+            {
+                return new RelayCommand<object>((item) =>
+                {
+                    CalendarItemClicked(item);
+                });
+            }
         }
+
+        public void CalendarItemClicked(object item)
+        {
+            Debug.WriteLine("Calendar Item Clicked");
+            if (item == null) return;
+
+            CalendarEntry entry = item as CalendarEntry;
+            AnimeObject anime = GetAnimeFromCalendarEntry(entry);
+
+            if (anime == null) return;
+            ViewModelLocator.Instance.vm_HummingbirdAnimeLibraryViewModel.NavigateAnimeDetailsPage(anime);
+        }
+
+        public AnimeObject GetAnimeFromCalendarEntry(CalendarEntry entry)
+        {
+            if (entry == null) return null;
+
+            foreach (var libraryObject in User.AnimeLibrary.LibraryCollection.UnfilteredCollection)
+            {
+                if (libraryObject.Anime.DoesNameFitSearch(entry.Title))
+                    return libraryObject.Anime;
+            }
+
+            return null;
+        }
+        #endregion
+
     }
 }

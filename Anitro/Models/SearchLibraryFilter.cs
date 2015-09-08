@@ -23,6 +23,7 @@ namespace Anitro.Models
             }
         }
 
+        public SearchLibraryFilter() { }
         public SearchLibraryFilter(string searchTerm)
         {
             SearchTerm = searchTerm;

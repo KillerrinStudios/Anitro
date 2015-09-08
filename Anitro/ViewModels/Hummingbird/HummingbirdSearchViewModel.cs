@@ -7,10 +7,12 @@ using Anitro.Models.Enums;
 using Anitro.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Killerrin_Studios_Toolkit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using Windows.Media.SpeechRecognition;
 
 namespace Anitro.ViewModels.Hummingbird
 {
@@ -76,7 +78,7 @@ namespace Anitro.ViewModels.Hummingbird
                 return User.LoginInfo.HasUsername;
             }
         }
-        public bool mangaLibraryVisible
+        public bool MangaLibraryVisible
         {
             get
             {
@@ -325,7 +327,42 @@ namespace Anitro.ViewModels.Hummingbird
 
         public void SearchBoxMicrophone()
         {
-            SearchAnime();
+            Progress<APIProgressReport> cortanaProgress = new Progress<APIProgressReport>();
+            cortanaProgress.ProgressChanged += CortanaProgress_ProgressChanged;
+
+            string exampleText = "";
+            exampleText = User?.AnimeLibrary.SelectRandomTitle()?.Anime.RomanjiTitle ?? "Steins;Gate";
+            CortanaTools.Instance.StartListening(cortanaProgress, exampleText);
+        }
+
+        private void CortanaProgress_ProgressChanged(object sender, APIProgressReport e)
+        {
+            if (e.CurrentAPIResonse == APIResponse.Successful)
+            {
+                Debug.WriteLine("Cortana Succeeded");
+                SpeechRecognitionResult result = e.Parameter.Converted as SpeechRecognitionResult;
+                if (string.IsNullOrWhiteSpace(result.Text)) return;
+
+                if (HasMediaService)
+                    CortanaTools.SynthesizeVoice("Searching " + result.Text, MediaService.MediaPlayer);
+
+                SearchTerms = result.Text;
+                SearchAnime();
+            }
+            else if (e.CurrentAPIResonse == APIResponse.ContinuingExecution)
+            {
+                Debug.WriteLine("Cortana Hypothosis Suggested");
+                SpeechRecognitionHypothesis hypothosis = e.Parameter.Converted as SpeechRecognitionHypothesis;
+                if (string.IsNullOrWhiteSpace(hypothosis.Text)) return;
+
+                SearchTerms = hypothosis.Text;
+                SearchAnime();
+            }
+            else
+            {
+                Debug.WriteLine("Cortana Failed");
+                SearchTerms = "";
+            }
         }
         #endregion
 
