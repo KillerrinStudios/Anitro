@@ -9,9 +9,11 @@ using Windows.UI.Xaml;
 
 namespace Anitro.Services
 {
-    public class ProgressService
+    public class ProgressService : ServiceBase
     {
         private ProgressIndicator m_progressIndicator;
+        public ProgressIndicator ProgressIndicator { get { return m_progressIndicator; } }
+
         public ProgressService(ProgressIndicator progressIndicator)
         {
             m_progressIndicator = progressIndicator;
@@ -19,6 +21,8 @@ namespace Anitro.Services
 
         public void Reset()
         {
+            if (!ServiceEnabled) return;
+
             IsRingEnabled = false;
 
             PercentageVisibility = Visibility.Visible;
@@ -84,8 +88,10 @@ namespace Anitro.Services
         }
         #endregion
 
-        public void SetIndicator(bool isRingEnabled, double percentage, string message, bool debugWriteLine = true)
+        public void SetIndicator(bool isRingEnabled, double percentage, string message, bool debugWriteLine = false)
         {
+            if (!ServiceEnabled) return;
+
             IsRingEnabled = isRingEnabled;
             m_progressIndicator.PercentageCompleted = percentage;
             m_progressIndicator.StatusMessage = message;
@@ -93,7 +99,7 @@ namespace Anitro.Services
             if (debugWriteLine)
                 Debug.WriteLine(string.Format("{0} | {1} | {2}", isRingEnabled, percentage, message));
         }
-        public void SetIndicatorAndShow(bool isRingEnabled, double percentage, string message, bool debugWriteLine = true)
+        public void SetIndicatorAndShow(bool isRingEnabled, double percentage, string message, bool debugWriteLine = false)
         {
             SetIndicator(isRingEnabled, percentage, message, debugWriteLine);
             Show();

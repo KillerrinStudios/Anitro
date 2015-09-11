@@ -12,6 +12,7 @@ namespace Anitro.Models.Enums
 
         Search,
         GoToDetails,
+        ShowMyLibrary,
         StatusUpdate,
         RateShow,
 

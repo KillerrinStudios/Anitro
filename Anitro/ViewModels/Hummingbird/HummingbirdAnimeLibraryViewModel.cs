@@ -110,6 +110,11 @@ namespace Anitro.ViewModels.Hummingbird
             }
         }
 
+        public override void Loaded()
+        {
+
+        }
+
         public override void OnNavigatedTo()
         {
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.AnimeLibrary;
@@ -147,7 +152,7 @@ namespace Anitro.ViewModels.Hummingbird
         {
             Debug.WriteLine("Clear Recent");
             User.AnimeLibrary.Recent.Clear();
-
+            
             if (User.LoginInfo.IsUserLoggedIn)
                 HummingbirdUser.Save(User);
         }
@@ -169,6 +174,7 @@ namespace Anitro.ViewModels.Hummingbird
             if (e.CurrentAPIResonse == APIResponse.Successful)
             {
                 ProgressService.Reset();
+                Debug.WriteLine("Anime Library: " + e.ToString());
 
                 List<LibraryObject> libraryObjects = e.Parameter.Converted as List<LibraryObject>;
                 var groupedQuery = from lO in libraryObjects
@@ -185,11 +191,16 @@ namespace Anitro.ViewModels.Hummingbird
                     }
                 }
 
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection = new ObservableCollection<LibraryObject>(groupedLibraryObjects); 
+                User.AnimeLibrary.LibraryCollection.UnfilteredCollection = new ObservableCollection<LibraryObject>(groupedLibraryObjects);
+
+                if (User.LoginInfo.IsUserLoggedIn)
+                    HummingbirdUser.Save(User);
+
             }
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
             {
                 ProgressService.Reset();
+                Debug.WriteLine("Anime Library: " + e.ToString());
             }
         }
         #endregion
@@ -211,8 +222,13 @@ namespace Anitro.ViewModels.Hummingbird
             if (e.CurrentAPIResonse == APIResponse.Successful)
             {
                 ProgressService.Reset();
+                Debug.WriteLine("Anime Favourites: " + e.ToString());
+
                 List<AnimeObject> animeObjects = e.Parameter.Converted as List<AnimeObject>;
                 User.AnimeLibrary.Favourites = new ObservableCollection<AnimeObject>(animeObjects);
+
+                if (User.LoginInfo.IsUserLoggedIn)
+                    HummingbirdUser.Save(User);
             }
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
             {
@@ -290,7 +306,7 @@ namespace Anitro.ViewModels.Hummingbird
             if (loggedInUser == null)
                 return new LibraryObject(animeObject);
 
-            LibraryObject libraryObject = loggedInUser.AnimeLibrary.FindInLibrary(animeObject);
+            LibraryObject libraryObject = loggedInUser.AnimeLibrary.FindInLibrary(animeObject.ID);
 
             if (libraryObject == null)
                 libraryObject = new LibraryObject(animeObject);

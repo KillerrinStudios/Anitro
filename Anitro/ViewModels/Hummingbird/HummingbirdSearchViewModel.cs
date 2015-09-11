@@ -188,15 +188,27 @@ namespace Anitro.ViewModels.Hummingbird
             {
                 // Code runs "for real"
             }
-        } 
+        }
+
+        public override void Loaded()
+        {
+
+        }
 
         public override void OnNavigatedTo()
         {
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Search;
 
-            if (User == null) return;
-            User.AnimeLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySection.All;
-            User.MangaLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySection.All;
+            if (User != null)
+            {
+                User.AnimeLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySection.All;
+                User.MangaLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySection.All;
+            }
+
+            if (!string.IsNullOrWhiteSpace(SearchTerms))
+            {
+                SearchAnime();
+            }
         }
 
         public override void OnNavigatedFrom()

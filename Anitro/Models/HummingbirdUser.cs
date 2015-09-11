@@ -49,7 +49,7 @@ namespace Anitro.Models
         }
 
         #region Save/Load/Delete
-        public static string Filename { get; } = "Hummingbird.user";
+        public const string Filename = "Hummingbird.AnitroUser";
         public async static Task<bool> Save(HummingbirdUser user)
         {
             Debug.WriteLine("Saving Hummingbird User");
@@ -58,6 +58,7 @@ namespace Anitro.Models
             StorageTask storageTask = new StorageTask();
             bool result = await storageTask.CreateFile(StorageTask.LocalFolder, Filename, json);
 
+            Debug.WriteLine("Hummingbird User Save Result: " + result.ToString());
             return result;
         }
 
@@ -74,6 +75,8 @@ namespace Anitro.Models
                 string json = await storageTask.ReadFileString(StorageTask.IStorageItemToStorageFile(storageItem));
                 JObject jObject = JObject.Parse(json);
                 HummingbirdUser user = JsonConvert.DeserializeObject<HummingbirdUser>(jObject.ToString());
+
+                Debug.WriteLine("Hummingbird User Load Result: True");
                 return user;
             }
 

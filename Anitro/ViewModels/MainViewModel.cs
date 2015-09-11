@@ -39,6 +39,8 @@ namespace Anitro.ViewModels
             set
             {
                 m_anitroLicense = value;
+
+                Debug.WriteLine("Updating Anitro License");
                 RaisePropertyChanged(nameof(AnitroLicense));
             }
         }
@@ -66,18 +68,6 @@ namespace Anitro.ViewModels
             }
         }
 
-        private NavigationLocation m_currentNavigationLocation = NavigationLocation.Default;
-        public NavigationLocation CurrentNavigationLocation
-        {
-            get { return m_currentNavigationLocation; }
-            set
-            {
-                if (m_currentNavigationLocation == value) return;
-                m_currentNavigationLocation = value;
-                RaisePropertyChanged(nameof(CurrentNavigationLocation));
-            }
-        }
-
         private bool m_isPaneOpen = true;
         public bool IsPaneOpen
         {
@@ -87,6 +77,18 @@ namespace Anitro.ViewModels
                 if (m_isPaneOpen == value) return;
                 m_isPaneOpen = value;
                 RaisePropertyChanged(nameof(IsPaneOpen));
+            }
+        }
+
+        private NavigationLocation m_currentNavigationLocation = NavigationLocation.Default;
+        public NavigationLocation CurrentNavigationLocation
+        {
+            get { return m_currentNavigationLocation; }
+            set
+            {
+                if (m_currentNavigationLocation == value) return;
+                m_currentNavigationLocation = value;
+                RaisePropertyChanged(nameof(CurrentNavigationLocation));
             }
         }
 
@@ -111,6 +113,20 @@ namespace Anitro.ViewModels
             }
 
             ResetViewModel();
+        }
+
+        public override void Loaded()
+        {
+            if (!LaunchArgs.Handled)
+            {
+                if (LaunchArgs.LaunchReason == AnitroLaunchReason.Normal)
+                    LaunchArgs.Handled = true;
+                else if (LaunchArgs.LaunchReason == AnitroLaunchReason.Lockscreen)
+                {
+                    NavigationService.Navigate(typeof(SettingsPage), null);
+                    LaunchArgs.Handled = true;
+                }
+            }
         }
 
         public override void OnNavigatedTo()
@@ -150,17 +166,16 @@ namespace Anitro.ViewModels
                 Debug.WriteLine("Product License couldn't be retrieved: Setting to Default");
             Debug.WriteLine(AnitroLicense.ToString());
 
-            NavigateToDefaultUser();
+            NavigateToDefault();
         }
 
-        private void NavigateToDefaultUser()
+        private void NavigateToDefault()
         {
             if (HummingbirdUser.LoginInfo.IsUserLoggedIn)
                 SwitchUser(ServiceName.Hummingbird, HummingbirdUser);
         }
         #endregion
 
-        #region Commands
         public RelayCommand TogglePaneCommand
         {
             get
@@ -198,6 +213,78 @@ namespace Anitro.ViewModels
             {
                 NavigationService.Navigate(typeof(HummingbirdDashboardPage), CurrentUser);
             }
+        }
+        #endregion
+
+        #region Navigate Settings Command
+        public RelayCommand NavigateSettingsCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    NavigateSettings();
+                });
+            }
+        }
+
+        public void NavigateSettings()
+        {
+            Debug.WriteLine("Navigate Settings");
+            if (!CanNavigate)
+                return;
+
+            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
+                IsPaneOpen = false;
+
+            NavigationService.Navigate(typeof(SettingsPage), null);
+        }
+        #endregion
+
+        #region Navigate About Command
+        public RelayCommand NavigateAboutCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    NavigateAbout();
+                });
+            }
+        }
+
+        public void NavigateAbout()
+        {
+            Debug.WriteLine("Navigate About");
+            if (!CanNavigate)
+                return;
+
+            if (CurrentVisualState?.Name != AdaptiveTriggerConsts.DesktopMinimumWidthName)
+                IsPaneOpen = false;
+
+            NavigationService.Navigate(typeof(AboutPage), null);
+        }
+        #endregion
+
+        #region Rate App Command
+        public RelayCommand RateAppCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    RateApp();
+                });
+            }
+        }
+
+        public void RateApp()
+        {
+            Debug.WriteLine("Rating App");
+            if (!CanNavigate)
+                return;
+
+            ViewModelLocator.Instance.vm_AboutViewModel.ApplicationData.LaunchReview();
         }
         #endregion
         #endregion
@@ -304,7 +391,6 @@ namespace Anitro.ViewModels
             if (CurrentUser == null) return;
             CurrentUser.Selected = true;
         }
-        #endregion
         #endregion
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AnimeTrackingServiceWrapper.UniversalServiceModels;
 using Anitro.ViewModels;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,9 +14,8 @@ namespace Anitro.Models
 {
     public class FilteredLibraryObservableCollection : ModelBase
     {
-
         #region Collection
-        ObservableCollection<LibraryObject> m_unfilteredCollection = new ObservableCollection<LibraryObject>();
+        private ObservableCollection<LibraryObject> m_unfilteredCollection = new ObservableCollection<LibraryObject>();
         public ObservableCollection<LibraryObject> UnfilteredCollection
         {
             get { return m_unfilteredCollection; }
@@ -27,12 +27,12 @@ namespace Anitro.Models
                 m_unfilteredCollection.CollectionChanged += M_unfilteredCollection_CollectionChanged;
 
                 RaisePropertyChanged(nameof(UnfilteredCollection));
-
                 ApplyFilters();
             }
         }
 
-        ObservableCollection<LibraryObject> m_filteredCollection = new ObservableCollection<LibraryObject>();
+        private ObservableCollection<LibraryObject> m_filteredCollection = new ObservableCollection<LibraryObject>();
+        [JsonIgnore]
         public ObservableCollection<LibraryObject> FilteredCollection
         {
             get { return m_filteredCollection; }
@@ -46,7 +46,8 @@ namespace Anitro.Models
         #endregion
 
         #region Filters
-        LibrarySectionFilter m_librarySectionFilter = new LibrarySectionFilter(LibrarySection.All);
+        private LibrarySectionFilter m_librarySectionFilter = new LibrarySectionFilter(LibrarySection.All);
+        [JsonIgnore]
         public LibrarySectionFilter LibrarySelectionFilter
         {
             get { return m_librarySectionFilter; }
@@ -60,7 +61,8 @@ namespace Anitro.Models
             }
         }
 
-        SearchLibraryFilter m_searchLibraryFilter = new SearchLibraryFilter("");
+        private SearchLibraryFilter m_searchLibraryFilter = new SearchLibraryFilter("");
+        [JsonIgnore]
         public SearchLibraryFilter SearchFilter
         {
             get { return m_searchLibraryFilter; }
@@ -117,7 +119,7 @@ namespace Anitro.Models
         //public RelayCommand ApplyFilterCommand { get { return new RelayCommand(() => { ApplyFilters(); }); } }
         public void ApplyFilters()
         {
-            Debug.WriteLine("Applying Filters");
+            //Debug.WriteLine("Applying Filters");
             ObservableCollection<LibraryObject> filtered = new ObservableCollection<LibraryObject>(UnfilteredCollection);
 
             if (LibrarySelectionFilter != null)

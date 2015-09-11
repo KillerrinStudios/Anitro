@@ -175,10 +175,14 @@ namespace Anitro.ViewModels.Hummingbird
             }
         }
 
+        public override void Loaded()
+        {
+
+        }
+
         public override void OnNavigatedTo()
         {
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Calendar;
-
             SetDate(DateTime.Now);
         }
 

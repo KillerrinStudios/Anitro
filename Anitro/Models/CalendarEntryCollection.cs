@@ -112,7 +112,7 @@ namespace Anitro.Models
 
         public CalendarEntryCollection()
         {
-
+            Unfiltered.CollectionChanged += M_unfiltered_CollectionChanged;
         }
         public CalendarEntryCollection(IList<CalendarEntry> list)
         {

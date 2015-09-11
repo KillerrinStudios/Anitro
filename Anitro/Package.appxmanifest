@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Anitro.App">
-      <uap:VisualElements DisplayName="Anitro" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Anitro" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Anitro" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Anitro is an Anime Management application which utilizes the new and growing in popularity, Hummingbird service, and will allow you to view and manage your entire profile" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
@@ -32,6 +32,17 @@
             <uap:DisplayName>Anitro</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="anime">
+            <uap:DisplayName>Anime</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="manga">
+            <uap:DisplayName>Manga</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+        <uap:Extension Category="windows.search" />
       </Extensions>
     </Application>
   </Applications>

@@ -13,7 +13,6 @@
         <Example> ... </Example>
         
         <Command Name="Search">
-            <!-- The Command example appears in the drill-down help page for your app -->
             <Example> Search 'steins gate' </Example>
 
             <!-- ListenFor elements provide ways to say the command, including references to 
@@ -25,36 +24,42 @@
             <ListenFor> Find {DictatedTerms} </ListenFor>
             <ListenFor> Find [me] {DictatedTerms} </ListenFor>
 
-            <!--Feedback provides the displayed and spoken text when your command is triggered -->
             <Feedback> Searching ... </Feedback>
-
-            <!-- Navigate specifies the desired page or invocation destination for the Command-->
             <Navigate Target="MainPage.xaml" />
         </Command>
-      
-        <Command Name="GoToDetails">
-          <Example> Go To 'steins gate' </Example>
-          <ListenFor> Go To {DictatedTerms}</ListenFor>
-          <ListenFor> Head To {DictatedTerms}</ListenFor>
-          <ListenFor> Load Up {DictatedTerms}</ListenFor>
-          <Feedback> Going there now</Feedback>
+
+        <Command Name="ShowMyLibrary">
+          <Example> Show my 'Anime' Library </Example>
+          <ListenFor> Go to my {DictatedTerms} library</ListenFor>
+          <ListenFor> Show my {DictatedTerms} library</ListenFor>
+          <Feedback> Loading up your library</Feedback>
           <Navigate Target="MainPage.xaml" />
         </Command>
-          
+      
         <Command Name="StatusUpdate">
           <Example> Post 'steins gate is amazing!' </Example>
           <ListenFor> Post {DictatedTerms}</ListenFor>
           <Feedback> Posting to your Activity Feed... </Feedback>
           <Navigate Target="MainPage.xaml" />
         </Command>
-      
-        <Command Name="RateShow">
-          <Example> Rate 'steins gate 5 stars' </Example>
-          <ListenFor> Rate {DictatedTerms}</ListenFor>
-          <Feedback> Rating now</Feedback>
+
+        <Command Name="GoToDetails">
+          <Example> Go To 'steins gate' </Example>
+          <ListenFor> Go To {DictatedTerms}</ListenFor>
+          <ListenFor> Head to {DictatedTerms}</ListenFor>
+          <ListenFor> Load up {DictatedTerms}</ListenFor>
+          <Feedback> Going there now</Feedback>
           <Navigate Target="MainPage.xaml" />
         </Command>
       
+        <!--
+        <Command Name="RateShow">
+          <Example> Rate 'steins gate 5' stars </Example>
+          <ListenFor> Rate {DictatedTerms} [stars]</ListenFor>
+          <Feedback> Rating now</Feedback>
+          <Navigate Target="MainPage.xaml" />
+        </Command>
+        --> 
       
         <!-- Comedic Commands -->
         <Command Name="comedic_favouriteAnime">
@@ -87,9 +92,11 @@
             <Subject> Anitro </Subject>
         </PhraseTopic>
 
-        <!--<PhraseTopic Label="naturalLanguage" Scenario="Natural Language">
+        <!--
+        <PhraseTopic Label="naturalLanguage" Scenario="Natural Language">
             <Subject> MSDN </Subject>
-        </PhraseTopic>-->
+        </PhraseTopic>
+        -->
 
     </CommandSet>
 </VoiceCommands>

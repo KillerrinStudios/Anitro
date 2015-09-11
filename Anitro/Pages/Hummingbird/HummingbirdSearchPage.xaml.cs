@@ -33,6 +33,11 @@ namespace Anitro.Pages.Hummingbird
             this.InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Loaded();
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -99,8 +104,7 @@ namespace Anitro.Pages.Hummingbird
             LibraryObject libraryObject = (LibraryObject)e.ClickedItem;
             ViewModel.NavigateAnimeDetails(libraryObject.Anime);
         }
+
         #endregion
-
-
     }
 }

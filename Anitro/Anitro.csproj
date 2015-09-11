@@ -140,12 +140,15 @@
     <Compile Include="Helpers\DateTimeExtensions.cs" />
     <Compile Include="Helpers\InAppPurchaseHelper.cs" />
     <Compile Include="Killerrin Studios Toolkit\DebugTools.cs" />
+    <Compile Include="Killerrin Studios Toolkit\KillerrinApplicationData.cs" />
+    <Compile Include="Killerrin Studios Toolkit\LockscreenTools.cs" />
+    <Compile Include="Killerrin Studios Toolkit\TileManager.cs" />
     <Compile Include="Models\LicensesOwned.cs" />
     <Compile Include="Killerrin Studios Toolkit\CortanaTools.cs" />
     <Compile Include="Killerrin Studios Toolkit\StorageTask.cs" />
     <Compile Include="Models\CalendarEntryCollection.cs" />
     <Compile Include="Models\Enums\AnitroLaunchActivation.cs" />
-    <Compile Include="Models\AnitroLaunchArgs.cs" />
+    <Compile Include="Models\Page Parameters\AnitroLaunchArgs.cs" />
     <Compile Include="Models\Enums\AnitroLaunchReason.cs" />
     <Compile Include="Models\Page Parameters\HummingbirdCalendarParameter.cs" />
     <Compile Include="Models\Page Parameters\SearchParameter.cs" />
@@ -153,6 +156,9 @@
     <Compile Include="Models\LibrarySectionFilter.cs" />
     <Compile Include="Models\FilteredLibraryObservableCollection.cs" />
     <Compile Include="Models\Library.cs" />
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Hummingbird\HummingbirdCalendarPage.xaml.cs">
       <DependentUpon>HummingbirdCalendarPage.xaml</DependentUpon>
     </Compile>
@@ -168,6 +174,9 @@
     <Compile Include="Models\Page Parameters\HummingbirdAnimeDetailsParameter.cs" />
     <Compile Include="Pages\Hummingbird\HummingbirdSearchPage.xaml.cs">
       <DependentUpon>HummingbirdSearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Helpers\StringHelpers.cs" />
@@ -187,8 +196,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MediaService.cs" />
     <Compile Include="Services\ProgressService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Templates\LibraryTemplateSelector.cs" />
     <Compile Include="Templates\SocialFeedTemplateSelector.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\AnitroViewModelBase.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdCalendarViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdSearchViewModel.cs" />
@@ -196,6 +207,7 @@
     <Compile Include="ViewModels\Hummingbird\HummingbirdAnimeLibraryViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdDashboardViewModel.cs" />
     <Compile Include="ViewModels\Hummingbird\HummingbirdLoginViewModel.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
@@ -258,6 +270,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\Hummingbird\HummingbirdCalendarPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -281,6 +297,10 @@
     <Page Include="Pages\Hummingbird\HummingbirdSearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>

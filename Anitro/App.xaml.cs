@@ -1,5 +1,5 @@
 ﻿using Anitro.Helpers;
-using Anitro.Models;
+using Anitro.Models.Page_Parameters;
 using Anitro.Models.Enums;
 using Anitro.Pages;
 using GalaSoft.MvvmLight.Ioc;
@@ -83,9 +83,7 @@ namespace Anitro
             #endregion
 
             AnitroLaunchArgs args = new AnitroLaunchArgs();
-            args.Activation = AnitroLaunchActivation.Normal;
-            args.LaunchReason = AnitroLaunchReason.Normal;
-            args.Parameter = e.Arguments;
+            args.ParseSecondaryTile(e.Arguments);
             Frame rootFrame = CreateRootFrame(e.PreviousExecutionState, args);
 
             // Ensure the current window is active
@@ -98,41 +96,55 @@ namespace Anitro
 
             AnitroLaunchArgs launchArgs = new AnitroLaunchArgs();
 
-            if (args.Kind == ActivationKind.VoiceCommand)
-            {
-                var commandArgs = args as Windows.ApplicationModel.Activation.VoiceCommandActivatedEventArgs;
-                var speechRecognitionResult = commandArgs.Result;
+            try {
+                if (args.Kind == ActivationKind.VoiceCommand)
+                {
+                    var commandArgs = args as Windows.ApplicationModel.Activation.VoiceCommandActivatedEventArgs;
+                    var speechRecognitionResult = commandArgs.Result;
 
-                var rulePath = speechRecognitionResult.RulePath[0];
-                launchArgs.Activation = AnitroLaunchActivation.VoiceCommand;
-                launchArgs.LaunchReason = AnitroLaunchArgs.ParseLaunchReason(rulePath);
-                launchArgs.Parameter = speechRecognitionResult.SemanticInterpretation.Properties["DictatedTerms"][0];
+                    var rulePath = speechRecognitionResult.RulePath[0];
+                    launchArgs.Activation = AnitroLaunchActivation.VoiceCommand;
+                    launchArgs.LaunchReason = AnitroLaunchArgs.ParseLaunchReason(rulePath);
+
+                    // Staying because Speech is a bitch and this will debug
+                    //foreach (var key in speechRecognitionResult.SemanticInterpretation.Properties.Keys)
+                    //{
+                    //    foreach (var param in speechRecognitionResult.SemanticInterpretation.Properties[key])
+                    //    {
+                    //        Debug.WriteLine(key + ", " + param);
+                    //    }
+                    //}
+                    //Debug.WriteLine(speechRecognitionResult.SemanticInterpretation.Properties["DictatedTerms"][0]);
+
+                    launchArgs.Parameter = speechRecognitionResult.SemanticInterpretation.Properties["DictatedTerms"][0];
+                }
+                else if (args.Kind == ActivationKind.Protocol)
+                {
+                    var commandArgs = args as Windows.ApplicationModel.Activation.ProtocolActivatedEventArgs;
+                    Debug.WriteLine(commandArgs.Uri.OriginalString);
+
+                    launchArgs.Activation = AnitroLaunchActivation.Protocol;
+                    launchArgs.ParseProtocol(commandArgs.Uri);
+                }
+                else if (args.Kind == ActivationKind.Search)
+                {
+                    var commandArgs = args as Windows.ApplicationModel.Activation.SearchActivatedEventArgs;
+                    launchArgs.Activation = AnitroLaunchActivation.Search;
+                    launchArgs.LaunchReason = AnitroLaunchReason.Search;
+                    launchArgs.Parameter = AnitroLaunchArgs.CreateSearchParameter(commandArgs.QueryText);
+                }
+                else if (args.Kind == ActivationKind.LockScreen)
+                {
+                    var commandArgs = args as Windows.ApplicationModel.Activation.LockScreenActivatedEventArgs;
+                    launchArgs.Activation = AnitroLaunchActivation.Lockscreen;
+                    launchArgs.LaunchReason = AnitroLaunchReason.Lockscreen;
+                }
+                else
+                {
+                    launchArgs = new AnitroLaunchArgs();
+                }
             }
-            else if (args.Kind == ActivationKind.Protocol)
-            {
-                var commandArgs = args as Windows.ApplicationModel.Activation.ProtocolActivatedEventArgs;
-                launchArgs.Activation = AnitroLaunchActivation.Protocol;
-                launchArgs.ParseProtocol(commandArgs.Uri);
-            }
-            else if (args.Kind == ActivationKind.Search)
-            {
-                var commandArgs = args as Windows.ApplicationModel.Activation.SearchActivatedEventArgs;
-                launchArgs.Activation = AnitroLaunchActivation.Search;
-                launchArgs.LaunchReason = AnitroLaunchReason.Search;
-                launchArgs.Parameter = commandArgs.QueryText;
-            }
-            else if (args.Kind == ActivationKind.LockScreen)
-            {
-                var commandArgs = args as Windows.ApplicationModel.Activation.LockScreenActivatedEventArgs;
-                launchArgs.Activation = AnitroLaunchActivation.Lockscreen;
-                launchArgs.LaunchReason = AnitroLaunchReason.Lockscreen;
-            }
-            else
-            {
-                launchArgs.Activation = AnitroLaunchActivation.Normal;
-                launchArgs.LaunchReason = AnitroLaunchReason.Normal;
-                launchArgs.Parameter = "";
-            }
+            catch (Exception) { launchArgs = new AnitroLaunchArgs(); }
 
             Frame rootFrame = CreateRootFrame(args.PreviousExecutionState, launchArgs);
 
@@ -140,8 +152,15 @@ namespace Anitro
             Window.Current.Activate();
         }
 
+        protected override void OnSearchActivated(SearchActivatedEventArgs args)
+        {
+            base.OnSearchActivated(args);
+        }
+
         public Frame CreateRootFrame(ApplicationExecutionState PreviousExecutionState, AnitroLaunchArgs launchArgs)
         {
+            Debug.WriteLine(launchArgs.ToString());
+
             // Run Code which has to be run every Launch
             CortanaTools.InstallCortanaVDFile(new Uri("ms-appx:///AnitroVoiceCommandDefinition.xml"));
 

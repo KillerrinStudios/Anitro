@@ -5,15 +5,18 @@ using AnimeTrackingServiceWrapper.UniversalServiceModels.ActivityFeed;
 using Anitro.Helpers;
 using Anitro.Models;
 using Anitro.Models.Enums;
+using Anitro.Models.Page_Parameters;
 using Anitro.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Killerrin_Studios_Toolkit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Windows.Storage;
 using Windows.System.UserProfile;
+using Windows.UI.StartScreen;
 
 namespace Anitro.ViewModels.Hummingbird
 {
@@ -43,17 +46,34 @@ namespace Anitro.ViewModels.Hummingbird
             }
         }
 
-        public LibraryObject m_libraryObject = new LibraryObject();
+        private LibraryObject m_libraryObject = new LibraryObject();
         public LibraryObject LibraryObject
         {
             get { return m_libraryObject; }
             set
             {
                 if (m_libraryObject == value) return;
+
+                m_libraryObject.PropertyChanged -= M_libraryObject_PropertyChanged;
                 m_libraryObject = value;
+                m_libraryObject.PropertyChanged += M_libraryObject_PropertyChanged;
+
                 RaisePropertyChanged(nameof(LibraryObject));
+                RaisePropertyChanged(nameof(IsFavourited));
             }
         }
+
+        public bool IsFavourited
+        {
+            get
+            {
+                if (!(User.LoginInfo.IsUserLoggedIn)) return false;
+                if (User.AnimeLibrary.IsFavourited(LibraryObject.Anime))
+                    return true;
+                return false;
+            }
+        }
+
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -105,6 +125,11 @@ namespace Anitro.ViewModels.Hummingbird
             }
         }
 
+        public override void Loaded()
+        {
+
+        }
+
         public override void OnNavigatedTo()
         {
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.AnimeDetails;
@@ -112,13 +137,94 @@ namespace Anitro.ViewModels.Hummingbird
 
         public override void OnNavigatedFrom()
         {
-
+            if (User.LoginInfo.IsUserLoggedIn)
+                HummingbirdUser.Save(User);
         }
 
         public override void ResetViewModel()
         {
 
         }
+
+        #region Update/Remove Anime
+        private void M_libraryObject_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(LibraryObject.Section))
+            {
+                if (LibraryObject.Section == LibrarySection.None)
+                {
+                    RemoveAnime();
+                    return;
+                }
+            }
+            UpdateAnime();
+        }
+
+        #region Update Anime In Library
+        public RelayCommand UpdateCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    UpdateAnime();
+                });
+            }
+        }
+
+        public void UpdateAnime()
+        {
+            Debug.WriteLine("Updating Anime");
+            if (!User.LoginInfo.IsUserLoggedIn) return;
+            if (LibraryObject == null) return;
+            if (LibraryObject.Section == LibrarySection.None) { RemoveAnime(); return; }
+
+            Progress<APIProgressReport> updateAnimeProgress = new Progress<APIProgressReport>();
+            updateAnimeProgress.ProgressChanged += UpdateAnimeProgress_ProgressChanged;
+            APIServiceCollection.Instance.HummingbirdV1API.AnimeAPI.UpdateAnimeInLibrary(User.LoginInfo, LibraryObject, updateAnimeProgress);
+        }
+
+        private void UpdateAnimeProgress_ProgressChanged(object sender, APIProgressReport e)
+        {
+            ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage);
+            if (e.CurrentAPIResonse == APIResponse.Successful)
+            {
+                ProgressService.Reset();
+            }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
+            }
+        }
+        #endregion
+
+        #region Remove Anime From Library
+        public void RemoveAnime()
+        {
+            Debug.WriteLine("Removing Anime");
+            if (!User.LoginInfo.IsUserLoggedIn) return;
+            if (LibraryObject == null) return;
+            if (LibraryObject.Section != LibrarySection.None) return;
+
+            Progress<APIProgressReport> removeAnimeProgress = new Progress<APIProgressReport>();
+            removeAnimeProgress.ProgressChanged += RemoveAnimeProgress_ProgressChanged;
+            APIServiceCollection.Instance.HummingbirdV1API.AnimeAPI.RemoveAnimeFromLibrary(User.LoginInfo, LibraryObject.Anime.ID.ID, removeAnimeProgress);
+        }
+
+        private void RemoveAnimeProgress_ProgressChanged(object sender, APIProgressReport e)
+        {
+            ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage);
+            if (e.CurrentAPIResonse == APIResponse.Successful)
+            {
+                ProgressService.Reset();
+            }
+            else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
+            {
+                ProgressService.Reset();
+            }
+        }
+        #endregion
+        #endregion
 
         #region Get Anime
         public RelayCommand<ServiceID> GetAnimeCommand
@@ -136,6 +242,7 @@ namespace Anitro.ViewModels.Hummingbird
         {
             if (string.IsNullOrWhiteSpace(serviceID.ID))
                 return;
+
             Debug.WriteLine("Getting Anime");
             Progress<APIProgressReport> m_getAnimeDetailsProgress = new Progress<APIProgressReport>();
             m_getAnimeDetailsProgress.ProgressChanged += M_getAnimeDetailsProgress_ProgressChanged;
@@ -172,11 +279,27 @@ namespace Anitro.ViewModels.Hummingbird
         }
         #endregion
 
-        #region Set as Lockscreen
+        #region Favourite
+        public RelayCommand FavouriteCommand { get { return new RelayCommand(() => { Favourite(); }); } }
+        public async void Favourite()
+        {
+            if (IsFavourited)
+            {
+                Debug.WriteLine("Unfavouriting");
+
+                return;
+            }
+
+            Debug.WriteLine("Favouriting");
+        }
+        #endregion
+
+        #region Set as Lock screen
         public RelayCommand SetAsLockscreenCommand { get { return new RelayCommand(() => { SetAsLockscreen(); }); } }
         public async void SetAsLockscreen()
         {
             Debug.WriteLine("Setting as Lockscreen");
+            await LockscreenTools.Instance.SetLockscreenImage(LibraryObject.Anime.CoverImageUrl, LibraryObject.Anime.ID.ID);
         }
         #endregion
 
@@ -185,6 +308,16 @@ namespace Anitro.ViewModels.Hummingbird
         public async void PinToStart()
         {
             Debug.WriteLine("Pinning to Start");
+            AnitroLaunchArgs launchArgs = new AnitroLaunchArgs();
+            launchArgs.LaunchReason = AnitroLaunchReason.GoToDetails;
+            launchArgs.Parameter = AnitroLaunchArgs.CreateAnimeParameter(LibraryObject.Anime.ID.ID);
+
+            SecondaryTile tile = await TileManager.Instance.CreateTile(LibraryObject.Anime.ID.ID,
+                                                                       LibraryObject.Anime.RomanjiTitle,
+                                                                       launchArgs.CreateProtocol(),
+                                                                       new TileImages(LibraryObject.Anime.CoverImageUrl),
+                                                                       false);
+            await TileManager.Instance.Pin(tile, Windows.UI.Popups.Placement.Default);
         }
         #endregion
     }

@@ -1,6 +1,7 @@
 ﻿using Anitro.Controls;
 using Anitro.Helpers;
 using Anitro.Models.Enums;
+using Anitro.Models.Page_Parameters;
 using Anitro.Services;
 using Anitro.ViewModels;
 using GalaSoft.MvvmLight.Ioc;
@@ -39,9 +40,15 @@ namespace Anitro.Pages
             this.InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Loaded();
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            ViewModel.LaunchArgs = e.Parameter as AnitroLaunchArgs;
             ViewModel.OnNavigatedTo();
         }
         protected override void OnNavigatedFrom(NavigationEventArgs e)

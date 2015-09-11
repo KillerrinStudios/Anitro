@@ -1,5 +1,6 @@
 ﻿using AnimeTrackingServiceWrapper.Helpers;
 using AnimeTrackingServiceWrapper.UniversalServiceModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +12,7 @@ namespace Anitro.Models
 {
     public class Library : ModelBase
     {
-        FilteredLibraryObservableCollection m_libraryCollection = new FilteredLibraryObservableCollection();
+        private FilteredLibraryObservableCollection m_libraryCollection = new FilteredLibraryObservableCollection();
         public FilteredLibraryObservableCollection LibraryCollection
         {
             get { return m_libraryCollection; }
@@ -23,7 +24,7 @@ namespace Anitro.Models
             }
         }
 
-        ObservableCollection<AnimeObject> m_recent = new ObservableCollection<AnimeObject>();
+        private ObservableCollection<AnimeObject> m_recent = new ObservableCollection<AnimeObject>();
         public ObservableCollection<AnimeObject> Recent
         {
             get { return m_recent; }
@@ -35,7 +36,7 @@ namespace Anitro.Models
             }
         }
 
-        ObservableCollection<AnimeObject> m_favourites = new ObservableCollection<AnimeObject>();
+        private ObservableCollection<AnimeObject> m_favourites = new ObservableCollection<AnimeObject>();
         public ObservableCollection<AnimeObject> Favourites
         {
             get { return m_favourites; }
@@ -64,21 +65,33 @@ namespace Anitro.Models
             }
         }
 
-        public bool IsInLibrary(AnimeObject anime)
+        public bool IsInLibrary(ServiceID id)
         {
             foreach (var item in LibraryCollection.UnfilteredCollection)
             {
-                if (anime.ID.ID == item.Anime.ID.ID)
+                if (id.ID == item.Anime.ID.ID)
                     return true;
             }
             return false;
         }
 
-        public LibraryObject FindInLibrary(AnimeObject anime)
+        public bool IsFavourited(AnimeObject anime)
+        {
+            foreach (var favourite in Favourites)
+            {
+                if (favourite.DoesNameFitSearch(anime.ID.ID))
+                    return true;
+                if (favourite.DoesNameFitSearch(anime.RomanjiTitle))
+                    return true;
+            }
+            return false;
+        }
+
+        public LibraryObject FindInLibrary(ServiceID id)
         {
             foreach (var item in LibraryCollection.UnfilteredCollection)
             {
-                if (anime.ID.ID == item.Anime.ID.ID)
+                if (id.ID == item.Anime.ID.ID)
                     return item;
             }
             return null;

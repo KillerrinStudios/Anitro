@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    Loaded="Page_Loaded"
     DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdAnimeDetailsViewModel}">
 
     <Page.Resources>
@@ -158,9 +159,16 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar Visibility="Collapsed" IsOpen="False">
-            <AppBarButton Content="Pin" Icon="Pin" Command="{Binding PinToStartCommand}"/>
-            <AppBarButton Content="Set as Lockscreen" Icon="SetLockScreen" Command="{Binding SetAsLockscreenCommand}"/>
+        <CommandBar Visibility="Visible" IsOpen="True">
+            <AppBarButton Content="Save" Icon="Save" Command="{Binding UpdateCommand}" ToolTipService.ToolTip="Save"
+                          Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}"/>
+
+            <AppBarToggleButton Content="Favourite" Icon="Favorite" Command="{Binding FavouriteCommand}" IsChecked="{Binding IsFavourited}" ToolTipService.ToolTip="Favourite/Unfavourite"
+                                Visibility="Collapsed"/> <!-- Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}"/> -->
+
+            <AppBarSeparator />
+            <AppBarButton Content="Pin"  Icon="Pin"  Command="{Binding PinToStartCommand}" ToolTipService.ToolTip="Pin to Start"/>
+            <AppBarButton Content="Set as Lockscreen" Icon="SetLockScreen" Command="{Binding SetAsLockscreenCommand}" ToolTipService.ToolTip="Set as Lockscreen Image"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

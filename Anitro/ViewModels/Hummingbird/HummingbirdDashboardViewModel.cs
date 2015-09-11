@@ -12,6 +12,7 @@ using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Anitro.ViewModels.Hummingbird
 {
@@ -77,6 +78,69 @@ namespace Anitro.ViewModels.Hummingbird
             }
         }
 
+        public override void Loaded()
+        {
+            if (!LaunchArgs.Handled)
+            {
+                if (LaunchArgs.LaunchReason == AnitroLaunchReason.StatusUpdate)
+                {
+                    PostToActivityFeed(LaunchArgs.GetWorthwhileParameter());
+                    LaunchArgs.Handled = true;
+                }
+                else if (LaunchArgs.LaunchReason == AnitroLaunchReason.Search)
+                {
+                    NavigateSearch(LaunchArgs.GetWorthwhileParameter());
+                    LaunchArgs.Handled = true;
+                }
+                else if (LaunchArgs.LaunchReason == AnitroLaunchReason.ShowMyLibrary)
+                {
+                    if (LaunchArgs.Parameter.ToLower().Contains("anime"))
+                        NavigateAnimeLibrary();
+                    else if (LaunchArgs.Parameter.ToLower().Contains("manga"))
+                        NavigateAnimeLibrary();
+                    LaunchArgs.Handled = true;
+                }
+                else if (LaunchArgs.LaunchReason == AnitroLaunchReason.GoToDetails)
+                {
+                    Progress<APIProgressReport> goToDetailsLaunchDelay = new Progress<APIProgressReport>();
+                    goToDetailsLaunchDelay.ProgressChanged += GoToDetailsLaunchDelay_ProgressChanged;
+                    GoToDetailsLaunchDelay(goToDetailsLaunchDelay);
+                }
+            }
+        }
+
+        #region GoTo Details Launch Delay
+        private async Task GoToDetailsLaunchDelay(IProgress<APIProgressReport> progress)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(1.75));
+            progress.Report(new APIProgressReport(100.0, "GoToDetailsLaunchDelay Completed", APIResponse.Successful, "", ""));
+        }
+
+        private void GoToDetailsLaunchDelay_ProgressChanged(object sender, APIProgressReport e)
+        {
+            string worthwhileParam = LaunchArgs.GetWorthwhileParameter();
+            AnimeObject anime = null;
+
+            foreach (var item in User.AnimeLibrary.LibraryCollection.UnfilteredCollection)
+            {
+                if (item.Anime.DoesNameFitSearch(worthwhileParam))
+                {
+                    anime = item.Anime;
+                    break;
+                }
+            }
+
+            if (anime != null)
+            {
+                ViewModelLocator.Instance.vm_HummingbirdAnimeLibraryViewModel.NavigateAnimeDetailsPage(anime);
+            }
+            else
+                NavigateSearch(worthwhileParam);
+
+            LaunchArgs.Handled = true;
+        }
+        #endregion
+
         public override void OnNavigatedTo()
         {
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Dashboard;
@@ -87,9 +151,10 @@ namespace Anitro.ViewModels.Hummingbird
 
             RefreshUserDetails();
 
-            if (User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Count == 0)
+            Library animeLibrary = User.AnimeLibrary;
+            if (animeLibrary.LibraryCollection.UnfilteredCollection.Count == 0)
                 libraryVM.RefreshLibrary();
-            if (User.AnimeLibrary.Favourites.Count == 0)
+            if (animeLibrary.Favourites.Count == 0)
                 libraryVM.RefreshFavourites();
         }
 
@@ -122,10 +187,12 @@ namespace Anitro.ViewModels.Hummingbird
             {
                 ProgressService.Reset();
                 User.ActivityFeed = e.Parameter.Converted as ObservableCollection<AActivityFeedItem>;
+                Debug.WriteLine("Refresh Activity Feed: " + e.ToString());
             }
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
             {
                 ProgressService.Reset();
+                Debug.WriteLine("Refresh Activity Feed: " + e.ToString());
             }
         }
         #endregion
@@ -156,10 +223,12 @@ namespace Anitro.ViewModels.Hummingbird
             {
                 ProgressService.Reset();
                 User.ActivityFeed.Insert(0, (AActivityFeedItem)e.Parameter.Converted);
+                Debug.WriteLine("Post To Activity Feed: " + e.ToString());
             }
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
             {
                 ProgressService.Reset();
+                Debug.WriteLine("Post To Activity Feed: " + e.ToString());
             }
         }
         #endregion
@@ -186,10 +255,12 @@ namespace Anitro.ViewModels.Hummingbird
             {
                 ProgressService.Reset();
                 ViewModelLocator.Instance.vm_HummingbirdAnimeLibraryViewModel.NavigateAnimeDetailsPage((AnimeObject)e.Parameter.Converted);
+                Debug.WriteLine("Get Anime Details: " + e.ToString());
             }
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
             {
                 ProgressService.Reset();
+                Debug.WriteLine("Get Anime Details: " + e.ToString());
             }
         }
         #endregion
@@ -211,6 +282,8 @@ namespace Anitro.ViewModels.Hummingbird
             if (e.CurrentAPIResonse == APIResponse.Successful)
             {
                 ProgressService.Reset();
+
+                Debug.WriteLine("Get User Details: " + e.ToString());
                 User.UserInfo = e.Parameter.Converted as UserInfo;
                 User.HummingbirdUserInfo = e.Parameter.Raw as UserObjectHummingbirdV1;
 
@@ -220,6 +293,7 @@ namespace Anitro.ViewModels.Hummingbird
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
             {
                 ProgressService.Reset();
+                Debug.WriteLine("Get User Details: " + e.ToString());
             }
         }
         #endregion
@@ -280,19 +354,20 @@ namespace Anitro.ViewModels.Hummingbird
             {
                 return new RelayCommand(() =>
                 {
-                    NavigateSearch();
+                    NavigateSearch("");
                 });
             }
         }
 
-        public void NavigateSearch()
+        public void NavigateSearch(string searchQuery)
         {
             Debug.WriteLine("Navigating Hummingbird Search");
+
             if (!CanNavigate)
                 return;
 
             SearchParameter parameter = new SearchParameter();
-            parameter.SearchTerms = "";
+            parameter.SearchTerms = searchQuery;
             parameter.Filter = SearchFilter.Everything;
             parameter.User = User;
             NavigationService.Navigate(typeof(HummingbirdSearchPage), parameter);

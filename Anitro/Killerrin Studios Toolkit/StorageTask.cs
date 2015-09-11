@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,10 @@ namespace Killerrin_Studios_Toolkit
                 default: return new Uri(path, UriKind.RelativeOrAbsolute);
             }
         }
+        public static Uri GetPath(IStorageItem item)
+        {
+            return new Uri(item.Path, UriKind.Absolute);
+        }
         #endregion
 
         #region Storage Folders
@@ -75,7 +80,7 @@ namespace Killerrin_Studios_Toolkit
             return vault;
         }
 
-        #region Get Files/Folders
+        #region Publisher Folder
         public StorageFolder GetPublisherCacheFolder(string folderName)
         {
             return ApplicationData.Current.GetPublisherCacheFolder(folderName);
@@ -84,17 +89,40 @@ namespace Killerrin_Studios_Toolkit
         {
             await ApplicationData.Current.ClearPublisherCacheFolderAsync(folderName);
         }
+        #endregion
 
-
+        #region Get Files/Folders
+        #region Files
+        public async Task<StorageFile> GetFileFromPath(Uri uri)
+        {
+            return await StorageFile.GetFileFromPathAsync(uri.OriginalString);
+        }
         public async Task<StorageFile> GetFile(StorageFolder folder, string fileName)
         {
             return await folder.GetFileAsync(fileName);
+        }
+        public async Task<IReadOnlyList<StorageFile>> GetAllFilesInFolder(StorageFolder folder)
+        {
+            return await folder.GetFilesAsync();
+        }
+        #endregion
+
+        #region Folders
+        public async Task<StorageFolder> GetFolderFromPath(Uri uri)
+        {
+            return await StorageFolder.GetFolderFromPathAsync(uri.OriginalString);
         }
         public async Task<StorageFolder> GetFolder(StorageFolder folder, string folderName)
         {
             return await folder.GetFolderAsync(folderName);
         }
-        public async Task<IReadOnlyList<IStorageItem>> GetItems(StorageFolder folder, CommonFileQuery query)
+        public async Task<IReadOnlyList<StorageFolder>> GetAllFoldersInFolder(StorageFolder folder)
+        {
+            return await folder.GetFoldersAsync();
+        }
+        #endregion
+
+        public async Task<IReadOnlyList<IStorageItem>> GetAllItemsInFolder(StorageFolder folder, CommonFileQuery query)
         {
             return await folder.GetItemsAsync();
         }
@@ -102,36 +130,84 @@ namespace Killerrin_Studios_Toolkit
 
         #region Create/Read
         #region Create
+        public async Task<StorageFolder> CreateFolder(StorageFolder folder, string folderName, CreationCollisionOption colisionOptions)
+        {
+            StorageFolder storageFolder = await folder.CreateFolderAsync(folderName, colisionOptions);
+            return storageFolder;
+        }
+
         public async Task<bool> CreateFile(StorageFolder folder, string fileName, IBuffer buffer)
         {
+            Debug.WriteLine("Creating File: " + fileName);
             CreationCollisionOption collisionOption = CreationCollisionOption.ReplaceExisting;
 
             StorageFile file = await folder.CreateFileAsync(fileName, collisionOption);
             await FileIO.WriteBufferAsync(file, buffer);
+            Debug.WriteLine("File Path: " + GetPath(file));
+
+            return true;
+        }
+        public async Task<bool> CreateFile(StorageFolder folder, string fileName, byte[] bytes)
+        {
+            Debug.WriteLine("Creating File: " + fileName);
+            CreationCollisionOption collisionOption = CreationCollisionOption.ReplaceExisting;
+
+            StorageFile file = await folder.CreateFileAsync(fileName, collisionOption);
+            await FileIO.WriteBytesAsync(file, bytes);
+            Debug.WriteLine("File Path: " + GetPath(file));
+
             return true;
         }
         public async Task<bool> CreateFile(StorageFolder folder, string fileName, string content)
         {
+            Debug.WriteLine("Creating File: " + fileName);
             CreationCollisionOption collisionOption = CreationCollisionOption.ReplaceExisting;
 
             StorageFile file = await folder.CreateFileAsync(fileName, collisionOption);
             await FileIO.WriteTextAsync(file, content);
+            Debug.WriteLine("File Path: " + GetPath(file));
+
             return true;
+        }
+        #endregion
+
+        #region Save from Server
+        public async Task<bool> SaveFileFromServer(StorageFolder folder, string fileName, Uri serverURI)
+        {
+            //if (folder == null) return false;
+            //if (string.IsNullOrWhiteSpace(fileName)) return false;
+            //if (serverURI == null) return false;
+
+            try
+            {
+                Debug.WriteLine("Opening Client");
+                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+
+                Debug.WriteLine("Getting Image Bytes");
+                byte[] data = await client.GetByteArrayAsync(serverURI);
+                return await CreateFile(folder, fileName, data);
+            }
+            catch (Exception) { }
+
+            return false;
         }
         #endregion
 
         #region Read
         public async Task<IBuffer> ReadFileBuffer(StorageFile file)
         {
+            if (file == null) return null;
             IBuffer buffer = await FileIO.ReadBufferAsync(file);
             return buffer;
         }
         public async Task<string> ReadFileString(StorageFile file)
         {
+            if (file == null) return null;
             return await FileIO.ReadTextAsync(file);
         }
         public async Task<byte[]> ReadFileBytes(StorageFile file)
         {
+            if (file == null) return null;
             IBuffer buffer = await FileIO.ReadBufferAsync(file);
             DataReader reader = DataReader.FromBuffer(buffer);
 
@@ -142,15 +218,38 @@ namespace Killerrin_Studios_Toolkit
         #endregion
         #endregion
 
-        #region Helpers
-        public async Task<IStorageItem> DoesItemExist(StorageFolder folder, string fileName)
+        #region Move/Copy
+        public async Task<StorageFile> Copy (StorageFile item, StorageFolder destination)
         {
-            var storageItem = await folder.TryGetItemAsync(fileName);
+            return await item.CopyAsync(destination);
+        }
+        public async Task<bool> Move(StorageFile item, StorageFolder destination)
+        {
+            await item.MoveAsync(destination);
+            return true;
+        }
+        #endregion
+
+        public async Task<IStorageItem> DoesItemExist(StorageFolder folder, string name)
+        {
+            var storageItem = await folder.TryGetItemAsync(name);
             return storageItem;
         }
+
+        #region Delete
         public async Task<bool> DeleteItem(IStorageItem item, StorageDeleteOption deletionOption)
         {
             await item.DeleteAsync(deletionOption);
+            return true;
+        }
+
+        public async Task<bool> DeleteAllFilesInFolder(StorageFolder folder)
+        {
+            var files = await GetAllFilesInFolder(folder);
+            foreach (var file in files)
+            {
+                await StorageTask.Instance.DeleteItem(file, StorageDeleteOption.Default);
+            }
             return true;
         }
         #endregion

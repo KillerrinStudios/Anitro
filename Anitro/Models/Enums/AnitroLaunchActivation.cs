@@ -9,6 +9,7 @@ namespace Anitro.Models.Enums
     public enum AnitroLaunchActivation
     {
         Normal,
+        SecondaryTile,
 
         VoiceCommand,
         Protocol,
