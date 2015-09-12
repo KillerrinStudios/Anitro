@@ -143,6 +143,7 @@
     <Compile Include="Killerrin Studios Toolkit\KillerrinApplicationData.cs" />
     <Compile Include="Killerrin Studios Toolkit\LockscreenTools.cs" />
     <Compile Include="Killerrin Studios Toolkit\TileManager.cs" />
+    <Compile Include="Models\Enums\PremiumFeaturesMessageBoxResult.cs" />
     <Compile Include="Models\LicensesOwned.cs" />
     <Compile Include="Killerrin Studios Toolkit\CortanaTools.cs" />
     <Compile Include="Killerrin Studios Toolkit\StorageTask.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="Models\Enums\AnitroLaunchActivation.cs" />
     <Compile Include="Models\Page Parameters\AnitroLaunchArgs.cs" />
     <Compile Include="Models\Enums\AnitroLaunchReason.cs" />
+    <Compile Include="Models\Page Parameters\HummingbirdDashboardParameter.cs" />
     <Compile Include="Models\Page Parameters\HummingbirdCalendarParameter.cs" />
     <Compile Include="Models\Page Parameters\SearchParameter.cs" />
     <Compile Include="Models\SearchLibraryFilter.cs" />

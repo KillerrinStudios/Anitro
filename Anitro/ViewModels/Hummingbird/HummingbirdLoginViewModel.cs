@@ -100,7 +100,6 @@ namespace Anitro.ViewModels.Hummingbird
         {
             Debug.WriteLine("LoginProgress_ProgressChanged: {0}", e);
             ProgressService.SetIndicatorAndShow(true, e.Percentage, e.StatusMessage);
-            APIFeedback = e;
 
             if (e.CurrentAPIResonse != APIResponse.ContinuingExecution)
             {
@@ -109,6 +108,7 @@ namespace Anitro.ViewModels.Hummingbird
 
                 if (e.CurrentAPIResonse == APIResponse.Successful)
                 {
+                    ProgressService.Reset();
                     UserLoginInfo = e.Parameter.Converted as UserLoginInfo;
 
                     HummingbirdUser hummingbirdUser = MainViewModel.Instance.HummingbirdUser;

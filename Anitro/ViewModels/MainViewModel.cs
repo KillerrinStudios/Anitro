@@ -13,6 +13,7 @@ using AnimeTrackingServiceWrapper.UniversalServiceModels;
 using Windows.UI.Xaml;
 using Anitro.Helpers;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace Anitro.ViewModels
 {
@@ -31,20 +32,9 @@ namespace Anitro.ViewModels
     public class MainViewModel : AnitroViewModelBase
     {
         public static MainViewModel Instance {  get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
+        public VisualState CurrentVisualState;
 
-        private LicencesOwned m_anitroLicense = new LicencesOwned();
-        public LicencesOwned AnitroLicense
-        {
-            get { return m_anitroLicense; }
-            set
-            {
-                m_anitroLicense = value;
-
-                Debug.WriteLine("Updating Anitro License");
-                RaisePropertyChanged(nameof(AnitroLicense));
-            }
-        }
-
+        #region Properties
         private User m_user;
         public User CurrentUser
         {
@@ -68,6 +58,7 @@ namespace Anitro.ViewModels
             }
         }
 
+        public RelayCommand TogglePaneCommand { get { return new RelayCommand(() => { IsPaneOpen = !IsPaneOpen; }); } }
         private bool m_isPaneOpen = true;
         public bool IsPaneOpen
         {
@@ -91,8 +82,7 @@ namespace Anitro.ViewModels
                 RaisePropertyChanged(nameof(CurrentNavigationLocation));
             }
         }
-
-        public VisualState CurrentVisualState;
+        #endregion
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -176,17 +166,6 @@ namespace Anitro.ViewModels
         }
         #endregion
 
-        public RelayCommand TogglePaneCommand
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    IsPaneOpen = !IsPaneOpen;
-                });
-            }
-        }
-
         #region Navigation Commands
         #region Navigate Dashboard Command
         public RelayCommand NavigateDashboardCommand
@@ -211,7 +190,9 @@ namespace Anitro.ViewModels
 
             if (CurrentUser is HummingbirdUser)
             {
-                NavigationService.Navigate(typeof(HummingbirdDashboardPage), CurrentUser);
+                HummingbirdDashboardParameter parameter = new HummingbirdDashboardParameter();
+                parameter.User = HummingbirdUser;
+                NavigationService.Navigate(typeof(HummingbirdDashboardPage), parameter);
             }
         }
         #endregion

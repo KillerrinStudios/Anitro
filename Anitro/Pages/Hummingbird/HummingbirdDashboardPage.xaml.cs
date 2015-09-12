@@ -1,4 +1,5 @@
 ﻿using AnimeTrackingServiceWrapper.UniversalServiceModels.ActivityFeed;
+using Anitro.Models.Page_Parameters;
 using Anitro.ViewModels.Hummingbird;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,8 @@ namespace Anitro.Pages.Hummingbird
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ViewModel.User = e.Parameter as Models.HummingbirdUser;
+            HummingbirdDashboardParameter parameter = e.Parameter as HummingbirdDashboardParameter;
+            ViewModel.User = parameter.User;
             ViewModel.OnNavigatedTo();
         }
         protected override void OnNavigatedFrom(NavigationEventArgs e)

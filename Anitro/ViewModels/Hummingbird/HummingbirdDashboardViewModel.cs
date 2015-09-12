@@ -143,6 +143,7 @@ namespace Anitro.ViewModels.Hummingbird
 
         public override void OnNavigatedTo()
         {
+            Debug.WriteLine("Dashboard: On Navigated To");
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Dashboard;
             RefreshActivityFeed();
 
@@ -340,10 +341,26 @@ namespace Anitro.ViewModels.Hummingbird
             if (!CanNavigate)
                 return;
 
+            if (!AnitroLicense.AnitroUnlocked)
+            {
+                Progress<APIProgressReport> anitroUnlockPurchaseAttempt = new Progress<APIProgressReport>();
+                anitroUnlockPurchaseAttempt.ProgressChanged += AnitroUnlockPurchaseAttempt_ProgressChanged;
+                AnitroLicense.PremiumFeatureMessageBox(anitroUnlockPurchaseAttempt);
+                return;
+            }
+
             HummingbirdCalendarParameter parameter = new HummingbirdCalendarParameter();
             parameter.User = User;
-
             NavigationService.Navigate(typeof(HummingbirdCalendarPage), parameter);
+        }
+
+        private void AnitroUnlockPurchaseAttempt_ProgressChanged(object sender, APIProgressReport e)
+        {
+            PremiumFeaturesMessageBoxResult result = (PremiumFeaturesMessageBoxResult)e.Parameter.Converted;
+            if (result == PremiumFeaturesMessageBoxResult.Purchased)
+                NavigateCalendar();
+            else if (result == PremiumFeaturesMessageBoxResult.NavigateToUnlock)
+                MainViewModel.Instance.NavigateSettings();
         }
         #endregion
 

@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Killerrin_Studios_Toolkit;
 using Windows.ApplicationModel.Email;
+using Windows.UI.Popups;
 
 namespace Anitro.ViewModels
 {
@@ -70,5 +71,16 @@ namespace Anitro.ViewModels
         {
 
         }
+
+        #region Unlock Anitro
+        public RelayCommand UnlockAnitroCommand { get { return new RelayCommand(() => { UnlockAnitro(); }); } }
+        public async void UnlockAnitro()
+        {
+            if (AnitroLicense.AnitroUnlocked) return;
+            Debug.WriteLine("Unlock Anitro");
+
+            InAppPurchaseHelper.PurchaseAnitroUnlock();
+        }
+        #endregion
     }
 }

@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace Anitro.ViewModels
 {
     public abstract class AnitroViewModelBase : ViewModelBase
     {
+        #region Services
         public bool CanNavigate { get { return SimpleIoc.Default.IsRegistered<NavigationService>(); } }
         public NavigationService NavigationService
         {
@@ -41,18 +43,9 @@ namespace Anitro.ViewModels
                 return SimpleIoc.Default.GetInstance<MediaService>(); ;
             }
         }
+        #endregion
 
-        private APIProgressReport m_APIFeedback = new APIProgressReport();
-        public APIProgressReport APIFeedback
-        {
-            get { return m_APIFeedback; }
-            set
-            {
-                m_APIFeedback = value;
-                RaisePropertyChanged(nameof(APIFeedback));
-            }
-        }
-
+        #region All View Models
         private static AnitroLaunchArgs m_anitroLaunchArgs = null;
         public AnitroLaunchArgs LaunchArgs
         {
@@ -65,7 +58,21 @@ namespace Anitro.ViewModels
             }
         }
 
+        private static LicencesOwned m_anitroLicense = new LicencesOwned();
+        public LicencesOwned AnitroLicense
+        {
+            get { return m_anitroLicense; }
+            set
+            {
+                m_anitroLicense = value;
+
+                Debug.WriteLine("Updating Anitro License");
+                RaisePropertyChanged(nameof(AnitroLicense));
+            }
+        }
+
         public APIServiceCollection APIServiceCollections { get { return APIServiceCollection.Instance; } }
+        #endregion
 
         public abstract void Loaded();
         public abstract void OnNavigatedTo();

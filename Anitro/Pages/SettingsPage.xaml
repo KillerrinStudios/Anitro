@@ -12,6 +12,64 @@
 	DataContext="{Binding Source={StaticResource Locator}, Path=vm_SettingsViewModel}">
 
 	<Grid>
-		
-	</Grid>
+        <Pivot x:Name="settingsPivot">
+            <PivotItem Header="Unlock">
+                <Grid Margin="10,0,5,0">
+                    <ScrollViewer VerticalAlignment="Stretch">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Name="purchaseThankYouMessage" Style="{ThemeResource TitleTextBlockStyle}"
+                                       Text="Thank you for purchasing the full version of Anitro!"
+                                       Margin="0,0,0,20" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center"
+                                       Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource BooleanToVisibility}}" />
+
+                            <StackPanel x:Name="productInformation_StackPanel" Orientation="Vertical" Margin="0,0,0,0">
+                                <TextBlock  TextWrapping="Wrap">
+                                    <Run>Do you like Anitro and want to help support its development? Why not consider purchasing the Anitro Unlock?</Run>
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run>Between school and work, I am only able to improve Anitro on my spare time. </Run>
+                                    <Run>By purchasing the Anitro Unlock, you will be allowing me to purchase caffeine which will go to supporting the late night coding sessions involved with improving Anitro!</Run>
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run>The full app features:</Run>
+                                    <LineBreak />
+                                    <Run>· Removed Ads</Run>
+                                    <LineBreak />
+                                    <Run>· Calendar</Run>
+                                    <LineBreak />
+                                    <Run>· Future Premium Items</Run>
+                                    <LineBreak />
+                                    <Run>· Many Thanks :)</Run>
+                                </TextBlock>
+
+                                <Button x:Name="unlockAnitro_Button" Margin="0,20,0,0" 
+                                        Background="{ThemeResource SystemControlBackgroundAccentBrush}" 
+                                        IsEnabled="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource OppositeBooleanConverter}}" 
+                                        Command="{Binding UnlockAnitroCommand}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Grid.Column="0">
+                                            <TextBlock Text="Unlock Anitro" Style="{ThemeResource TitleTextBlockStyle}"/>
+                                            <TextBlock Text="Unlocks all app functionality" TextWrapping="Wrap" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Grid.Column="1" Margin="5,0,0,0">
+                                            <TextBlock Text="$0.99" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Right"/>
+                                            <TextBlock x:Name="purchasedText" Text="Purchased" HorizontalAlignment="Right"
+                                                       Style="{ThemeResource BodyTextBlockStyle}" 
+                                                       Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource BooleanToVisibility}}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </PivotItem>
+        </Pivot>
+    </Grid>
 </Page>
