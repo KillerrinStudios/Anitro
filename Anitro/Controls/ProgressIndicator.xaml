@@ -11,15 +11,19 @@
     x:Name="parent">
 
     <Grid x:Name="LayoutRoot" DataContext="{Binding ElementName=parent}">
-        <StackPanel Orientation="Horizontal">
-            <ProgressRing Width="50" Height="50" IsActive="{Binding IsRingActive}"/>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10,0,0,0">
-                <TextBlock HorizontalAlignment="Center" Visibility="{Binding PercentageVisibility}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <ProgressRing Width="50" Height="50" IsActive="{Binding IsRingActive}" Grid.Column="0"/>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10,0,10,0" Grid.Column="1">
+            <TextBlock HorizontalAlignment="Center" Visibility="{Binding PercentageVisibility}">
                     <Run Text="{Binding PercentageCompleted}"/>
                     <Run Text="%"/>
-                </TextBlock>
-                <TextBlock Text="{Binding StatusMessage}"/>
-            </StackPanel>
+            </TextBlock>
+            <TextBlock Text="{Binding StatusMessage}" TextWrapping="Wrap" TextAlignment="Center"/>
         </StackPanel>
     </Grid>
 </UserControl>

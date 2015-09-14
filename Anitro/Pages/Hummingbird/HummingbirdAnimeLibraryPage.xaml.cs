@@ -3,6 +3,7 @@ using AnimeTrackingServiceWrapper.UniversalServiceModels;
 using Anitro.ViewModels.Hummingbird;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -77,5 +78,30 @@ namespace Anitro.Pages.Hummingbird
         {
             ViewModel.RecentItemClicked((AnimeObject)e.ClickedItem);
         }
+
+        #region Currently Watching Increment/Decrement Buttons
+        private void DecrementButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Decrement Button Clicked");
+            ViewModel.DecrementEpisodeWatchedCommand.Execute(((Button)sender).DataContext);
+        }
+        private void IncrementButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Increment Button Clicked");
+            ViewModel.IncrementEpisodeWatchedCommand.Execute(((Button)sender).DataContext);
+        }
+
+        private void IncrementDecrementStackPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.User.LoginInfo.IsUserLoggedIn)
+            {
+                ((StackPanel)sender).Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ((StackPanel)sender).Visibility = Visibility.Collapsed;
+            }
+        }
+        #endregion
     }
 }

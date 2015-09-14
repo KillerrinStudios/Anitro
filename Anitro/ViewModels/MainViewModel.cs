@@ -80,6 +80,8 @@ namespace Anitro.ViewModels
                 if (m_currentNavigationLocation == value) return;
                 m_currentNavigationLocation = value;
                 RaisePropertyChanged(nameof(CurrentNavigationLocation));
+
+                TopNavBarText = Helpers.StringHelpers.AddSpacesToSentence(m_currentNavigationLocation.ToString(), true);
             }
         }
         #endregion
@@ -162,7 +164,10 @@ namespace Anitro.ViewModels
         private void NavigateToDefault()
         {
             if (HummingbirdUser.LoginInfo.IsUserLoggedIn)
+            {
                 SwitchUser(ServiceName.Hummingbird, HummingbirdUser);
+                NavigationService.RemoveLastPage();
+            }
         }
         #endregion
 

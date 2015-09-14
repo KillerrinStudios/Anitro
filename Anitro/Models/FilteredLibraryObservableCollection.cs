@@ -77,7 +77,6 @@ namespace Anitro.Models
         }
         #endregion
 
-        #region Constructors
         public FilteredLibraryObservableCollection()
         {
             AddDefaultFilters();
@@ -92,6 +91,7 @@ namespace Anitro.Models
             AddDefaultFilters();
         }
 
+        #region Filters
         private void AddDefaultFilters()
         {
             ApplyFilters();
@@ -104,8 +104,6 @@ namespace Anitro.Models
             m_unfilteredCollection.CollectionChanged -= M_unfilteredCollection_CollectionChanged;
             m_unfilteredCollection.CollectionChanged += M_unfilteredCollection_CollectionChanged;
         }
-        #endregion
-
 
         private void Filters_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -128,6 +126,72 @@ namespace Anitro.Models
                 filtered = SearchFilter.Filter(filtered);
 
             FilteredCollection = filtered;
+
+            // Calculate Charts
+            Progress<bool> chartProgress = new Progress<bool>();
+            chartProgress.ProgressChanged += ChartProgress_ProgressChanged;
+            CalculateTotalGenres(chartProgress);
         }
+
+        #endregion
+
+        [JsonIgnore]
+        public int UnfilteredCount { get { return UnfilteredCollection.Count; } }
+        [JsonIgnore]
+        public int FilteredCount { get { return FilteredCollection.Count; } }
+
+        #region Chart Helpers
+        [JsonIgnore]
+        private List<StatisticsChartModel> m_libraryGenres = new List<StatisticsChartModel>();
+        [JsonIgnore]
+        public List<StatisticsChartModel> LibraryGenres
+        {
+            get { return m_libraryGenres; }
+            set
+            {
+                if (m_libraryGenres == value) return;
+                m_libraryGenres = value;
+                RaisePropertyChanged(nameof(LibraryGenres));
+            }
+        }
+        public async Task CalculateTotalGenres(IProgress<bool> progress)
+        {
+            m_libraryGenres.Clear();
+            foreach (var lO in UnfilteredCollection)
+            {
+                foreach (var genre in lO.Anime.Genres)
+                {
+                    bool counted = false;
+                    foreach (var genreCount in m_libraryGenres)
+                    {
+                        if (genreCount.Name == genre.ToString())
+                        {
+                            genreCount.Amount++;
+                            counted = true;
+                            break;
+                        }
+                    }
+
+                    if (!counted)
+                        m_libraryGenres.Add(new StatisticsChartModel(genre.ToString(), 0));
+                }
+            }
+
+            m_libraryGenres = m_libraryGenres.OrderByDescending(o => o.Amount).ToList();
+
+            int max = 10;
+            if (m_libraryGenres.Count > max)
+            {
+                m_libraryGenres.RemoveRange(max - 1, m_libraryGenres.Count - max);
+            }
+
+            progress.Report(true);
+        }
+
+        private void ChartProgress_ProgressChanged(object sender, bool e)
+        {
+            RaisePropertyChanged(nameof(LibraryGenres));
+        }
+        #endregion
     }
 }

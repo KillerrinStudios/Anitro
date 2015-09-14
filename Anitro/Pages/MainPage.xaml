@@ -8,7 +8,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-    Loaded="Page_Loaded"
+	Loaded="Page_Loaded"
 	DataContext="{Binding Source={StaticResource Locator}, Path=vm_MainViewModel}">
 	<Grid>
 		<Grid.RowDefinitions>
@@ -64,7 +64,8 @@
 		<StackPanel x:Name="TopNavigationBar" Orientation="Horizontal" Grid.Row="0" 
 					Background="{Binding ElementName=MainNavigation, Path=PaneBackground}"
 					Visibility="Collapsed">
-			<Button x:Name="MainNavigation_TopHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Command="{Binding TogglePaneCommand}" />
+			<Button x:Name="MainNavigation_TopHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="40" Height="40" Background="Transparent" Command="{Binding TogglePaneCommand}" />
+            <TextBlock x:Name="TopNavigationBarTextBlock" Text="{Binding TopNavBarText}" VerticalAlignment="Center" Margin="20,0,0,0"/>
 		</StackPanel>
 
 		<SplitView x:Name="MainNavigation" DisplayMode="CompactInline" IsPaneOpen="{Binding IsPaneOpen, Mode=TwoWay}" CompactPaneLength="48" Grid.Row="1">
@@ -79,25 +80,25 @@
 						<Button x:Name="MainNavigation_PanelHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Command="{Binding TogglePaneCommand}"/>
 					</StackPanel>
 
-                    <Grid Grid.Column="1">
-                        <ScrollViewer Margin="5,0,0,0">
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Vertical">
-                                    <appControls:MenuButton x:Name="dashboardMenuButton"    GroupName="menuButtons"  Command="{Binding NavigateDashboardCommand}"   Header="Dashboard"  Symbol="Home" />
-                                    <appControls:MenuButton x:Name="settingsMenuButton"     GroupName="menuButtons"  Command="{Binding NavigateSettingsCommand}"    Header="Settings"   Symbol="Setting" />
-                                    <appControls:MenuButton x:Name="aboutMenuButton"        GroupName="menuButtons"  Command="{Binding NavigateAboutCommand}"       Header="About"      Symbol="ContactInfo" />
-                                    <appControls:MenuButton x:Name="rateMenuButton"         GroupName="menuButtons"  Command="{Binding RateAppCommand}"             Header="Rate"       Symbol="Emoji2" />
-                                </StackPanel>
+					<Grid Grid.Column="1">
+						<ScrollViewer Margin="5,0,0,0">
+							<StackPanel Orientation="Vertical">
+								<StackPanel Orientation="Vertical">
+									<appControls:MenuButton x:Name="dashboardMenuButton"    GroupName="menuButtons"  Command="{Binding NavigateDashboardCommand}"   Header="Dashboard"  Symbol="Home" />
+									<appControls:MenuButton x:Name="settingsMenuButton"     GroupName="menuButtons"  Command="{Binding NavigateSettingsCommand}"    Header="Settings"   Symbol="Setting" />
+									<appControls:MenuButton x:Name="aboutMenuButton"        GroupName="menuButtons"  Command="{Binding NavigateAboutCommand}"       Header="About"      Symbol="ContactInfo" />
+									<appControls:MenuButton x:Name="rateMenuButton"         GroupName="menuButtons"  Command="{Binding RateAppCommand}"             Header="Rate"       Symbol="Emoji2" />
+								</StackPanel>
 
-                                <StackPanel Orientation="Vertical" Margin="0,20,0,0">
-                                    <TextBlock Text="Accounts" Style="{ThemeResource SubheaderTextBlockStyle}" Margin="0,0,0,10" />
+								<StackPanel Orientation="Vertical" Margin="0,20,0,0">
+									<TextBlock Text="Accounts" Style="{ThemeResource SubheaderTextBlockStyle}" Margin="0,0,0,10" />
 
-                                    <appControls:UserAccountButton Header="{Binding HummingbirdUser.Service, Converter={StaticResource EnumStringConverter}}" Username="{Binding HummingbirdUser.UserInfo.Username}" Avatar="{Binding HummingbirdUser.UserInfo.AvatarUrl}" IsSelected="{Binding HummingbirdUser.Selected}"
+									<appControls:UserAccountButton Header="{Binding HummingbirdUser.Service, Converter={StaticResource EnumStringConverter}}" Username="{Binding HummingbirdUser.UserInfo.Username}" Avatar="{Binding HummingbirdUser.UserInfo.AvatarUrl}" IsSelected="{Binding HummingbirdUser.Selected}"
 															   SwitchUserCommand="{Binding SwitchUserCommand}" LoginCommand="{Binding LoginCommand}" LogoutCommand="{Binding LogoutCommand}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </Grid>
+								</StackPanel>
+							</StackPanel>
+						</ScrollViewer>
+					</Grid>
 
 					<Rectangle x:Name="MainNavigation_Pane_DividerRectangle" Grid.Column="1" Grid.RowSpan="2" 
 							   Margin="0,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Stretch"
@@ -110,32 +111,32 @@
 						<RowDefinition Height="Auto" MaxHeight="110"/>
 						<RowDefinition Height="*"/>
 					</Grid.RowDefinitions>
-                    
-                    <Grid Grid.Row="0" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
-                        <adMediator:AdMediatorControl x:Name="adMediator_MainPage_MainBottom_One" Id="MainPage_MainBottom_One"
+					
+					<Grid Grid.Row="0" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
+						<adMediator:AdMediatorControl x:Name="adMediator_MainPage_MainTop_One" Id="MainPage_MainTop_One"
 													  HorizontalAlignment="Center" VerticalAlignment="Bottom"
-													  MinWidth="300" Width="320" MaxWidth="640" 
-													  MinHeight="50" Height="80" MaxHeight="100"
+													  MinWidth="300" MaxWidth="640" 
+													  MinHeight="50" MaxHeight="100"
 													  Loaded="AdMediator_Loaded" 
 													  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
 													  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError" />
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <Frame x:Name="MainFrame" Loaded="MainFrame_Loaded" />
-                        <appControls:ProgressIndicator x:Name="MainProgressIndicator" Loaded="MainProgressIndicator_Loaded"
+					</Grid>
+					<Grid Grid.Row="1">
+						<Frame x:Name="MainFrame" Loaded="MainFrame_Loaded" />
+						<appControls:ProgressIndicator x:Name="MainProgressIndicator" Loaded="MainProgressIndicator_Loaded"
 													   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0"
 													   Visibility="Collapsed"/>
-                    </Grid>
-                </Grid>
+					</Grid>
+				</Grid>
 			</SplitView.Content>
 		</SplitView>
 	</Grid>
 
-    <!--
-    <Page.BottomAppBar>
-        <AppBar Visibility="Visible" IsOpen="True" ClosedDisplayMode="Compact">
-            <AppBarButton Content="Test" Icon="Tag" ToolTipService.ToolTip="Tag"/>
-        </AppBar>
-    </Page.BottomAppBar>
-    -->
+	<!--
+	<Page.BottomAppBar>
+		<AppBar Visibility="Visible" IsOpen="True" ClosedDisplayMode="Compact">
+			<AppBarButton Content="Test" Icon="Tag" ToolTipService.ToolTip="Tag"/>
+		</AppBar>
+	</Page.BottomAppBar>
+	-->
 </Page>

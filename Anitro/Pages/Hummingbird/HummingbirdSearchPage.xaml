@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Anitro.Pages.Hummingbird"
+	xmlns:adMediator="using:Microsoft.AdMediator.Universal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -72,6 +73,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -169,6 +171,16 @@
                     </DataTemplate>
                 </HubSection>
             </Hub>
+        </Grid>
+
+        <Grid Grid.Row="2" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
+            <adMediator:AdMediatorControl x:Name="adMediator_SearchPage_MainBottom_One" Id="adMediator_SearchPage_MainBottom_One"
+													  HorizontalAlignment="Center" VerticalAlignment="Bottom"
+													  MinWidth="300" MaxWidth="640" 
+													  MinHeight="50" MaxHeight="100"
+													  Loaded="AdMediator_Loaded" 
+													  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
+													  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError" />
         </Grid>
     </Grid>
 </Page>

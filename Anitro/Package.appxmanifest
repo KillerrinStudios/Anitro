@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="59141KillerrinStudios.Anitro" Publisher="CN=CB9966B0-97F1-4167-993A-C177C5B8B46A" Version="2.0.0.0" />
+  <Identity Name="59141KillerrinStudios.Anitro" Publisher="CN=CB9966B0-97F1-4167-993A-C177C5B8B46A" Version="2.0.2.0" />
   <mp:PhoneIdentity PhoneProductId="0308975b-ab2b-4eaa-ac89-97cdd32a8086" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Anitro</DisplayName>
@@ -18,7 +18,7 @@
       <uap:VisualElements DisplayName="Anitro" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Anitro is an Anime Management application which utilizes the new and growing in popularity, Hummingbird service, and will allow you to view and manage your entire profile" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#0f5164" />
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="portrait" />
           <uap:Rotation Preference="landscape" />
@@ -27,9 +27,10 @@
         </uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
+        <uap:Extension Category="windows.search" />
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="anitro">
-            <uap:DisplayName>Anitro</uap:DisplayName>
+          <uap:Protocol Name="manga">
+            <uap:DisplayName>Manga</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
         <uap:Extension Category="windows.protocol">
@@ -38,11 +39,10 @@
           </uap:Protocol>
         </uap:Extension>
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="manga">
-            <uap:DisplayName>Manga</uap:DisplayName>
+          <uap:Protocol Name="anitro">
+            <uap:DisplayName>Anitro</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
-        <uap:Extension Category="windows.search" />
       </Extensions>
     </Application>
   </Applications>

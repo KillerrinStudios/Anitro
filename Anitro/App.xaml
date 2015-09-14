@@ -6,7 +6,8 @@
     xmlns:ATSW="using:AnimeTrackingServiceWrapper.Converters"
     xmlns:Converters="using:Anitro.Converters"
     xmlns:Templates="using:Anitro.Templates"
-    RequestedTheme="Dark">
+    RequestedTheme="Dark"
+    >
 
     <Application.Resources>
         

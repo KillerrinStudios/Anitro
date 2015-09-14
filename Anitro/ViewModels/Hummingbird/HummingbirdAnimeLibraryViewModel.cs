@@ -127,13 +127,32 @@ namespace Anitro.ViewModels.Hummingbird
 
         public override void OnNavigatedFrom()
         {
-
+            if (User.LoginInfo.IsUserLoggedIn)
+                HummingbirdUser.Save(User);
         }
 
         public override void ResetViewModel()
         {
 
         }
+
+        #region LibraryObject Manipulation Commands
+        #region Increment Episode Watched Favourites
+        public RelayCommand<object> DecrementEpisodeWatchedCommand { get { return new RelayCommand<object>((o) => { IncrementEpisodeWatched((LibraryObject)o, -1); }); } }
+        public RelayCommand<object> IncrementEpisodeWatchedCommand { get { return new RelayCommand<object>((o) => { IncrementEpisodeWatched((LibraryObject)o, 1); }); } }
+
+        public void IncrementEpisodeWatched(LibraryObject libraryObject, int modifier)
+        {
+            Debug.WriteLine("Incrementing Episodes Watched");
+            libraryObject.EpisodesWatched += modifier;
+
+            HummingbirdAnimeDetailsViewModel vm = ViewModelLocator.Instance.vm_HummingbirdAnimeDetailsViewModel;
+            vm.User = User;
+            vm.LibraryObject = libraryObject;
+            vm.UpdateAnime();
+        }
+        #endregion
+        #endregion
 
         #region Refresh Commands
         #region Clear Recent
@@ -235,7 +254,6 @@ namespace Anitro.ViewModels.Hummingbird
                 ProgressService.Reset();
             }
         }
-
         #endregion
         #endregion
 

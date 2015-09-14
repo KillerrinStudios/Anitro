@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ratingControls="using:Anitro.Controls.Rating"
     mc:Ignorable="d"
-    Loaded="Page_Loaded"
+    Loaded="Page_Loaded" x:Name="libraryPage"
     DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdAnimeLibraryViewModel}">
 
     <Page.Resources>
@@ -45,14 +45,20 @@
                         <TextBlock Text="{Binding Anime.RomanjiTitle}" Style="{ThemeResource FlyoutPickerTitleTextBlockStyle}"
                                TextWrapping="Wrap" Grid.Row="0"/>
 
-                        <StackPanel Orientation="Vertical" Margin="0,5,0,0" 
+                        <StackPanel x:Name="episodesWatchedStackPanel" Orientation="Vertical" Margin="0,5,0,0" 
                                     HorizontalAlignment="Center" Grid.Row="1">
+                            
                             <TextBlock Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Center">
                                 <Run Text="Watched: " />
                                 <Run Text="{Binding EpisodesWatched}" />
                                 <Run Text="/" />
                                 <Run Text="{Binding Anime.EpisodeCount}" />
                             </TextBlock>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Loaded="IncrementDecrementStackPanel_Loaded">
+                                <Button Content="v" Click="DecrementButton_Click"/>
+                                <Button Content="^" Click="IncrementButton_Click"/>
+                            </StackPanel>
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -123,7 +129,29 @@
             <Hub.HeaderTemplate>
                 <DataTemplate>
                     <Grid>
-                        <Image Source="{Binding User.HummingbirdUserInfo.cover_image}"/>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="VisualStateGroup">
+                                <VisualState x:Name="PhoneSmall">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneSmallMinimumWidth}"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="coverImage.MaxHeight" Value="100" />
+                                        <Setter Target="coverImage.Stretch" Value="Uniform" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Phone">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneMinimumWidth}"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="coverImage.MaxHeight" Value="160" />
+                                        <Setter Target="coverImage.Stretch" Value="Fill" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Image x:Name="coverImage" Source="{Binding User.HummingbirdUserInfo.cover_image}" Stretch="Fill" MaxHeight="125"/>
                         <Rectangle Fill="#3F000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">

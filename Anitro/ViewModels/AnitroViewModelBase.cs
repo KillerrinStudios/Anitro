@@ -43,6 +43,18 @@ namespace Anitro.ViewModels
                 return SimpleIoc.Default.GetInstance<MediaService>(); ;
             }
         }
+
+        public static string m_topNavBarText = "";
+        public string TopNavBarText
+        {
+            get { return m_topNavBarText; }
+            set
+            {
+                m_topNavBarText = value;
+                RaisePropertyChanged(nameof(TopNavBarText));
+            }
+        }
+
         #endregion
 
         #region All View Models

@@ -55,6 +55,8 @@ namespace Anitro.ViewModels
             Instance = this;
         }
 
+        public DefaultNoUserViewModel vm_DefaultNoUserViewModel { get { return new DefaultNoUserViewModel(); } }
+
         public MainViewModel vm_MainViewModel { get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
         public AboutViewModel vm_AboutViewModel { get { return ServiceLocator.Current.GetInstance<AboutViewModel>(); } }
         public SettingsViewModel vm_SettingsViewModel { get { return ServiceLocator.Current.GetInstance<SettingsViewModel>(); } }

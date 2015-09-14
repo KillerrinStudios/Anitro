@@ -15,7 +15,13 @@
                 <TextBox x:Name="UsernameTextBox" PlaceholderText="Username" Text="{Binding UserLoginInfo.Username, Mode=TwoWay}" KeyDown="TextBox_KeyDown"/>
                 <PasswordBox x:Name="PasswordBox" PlaceholderText="Password" Password="{Binding UserLoginInfo.Password, Mode=TwoWay}" Margin="0,5,0,0" KeyDown="TextBox_KeyDown"/>
             </StackPanel>
-            <Button x:Name="LoginButton" Content="Login" Margin="0,5,0,0" HorizontalAlignment="Stretch" Command="{Binding LoginCommand}"/>
+
+            <StackPanel Orientation="Vertical" Margin="0,5,0,0">
+                <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Stretch" Command="{Binding LoginCommand}"/>
+                <HyperlinkButton Content="Need an account?" NavigateUri="http://hummingbird.me/users/sign_up" HorizontalAlignment="Center" />
+            </StackPanel>
+
+            <Button Click="facebookExplanation_Clicked" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,50,20,0">Facebook Users, Click here</Button>
         </StackPanel>
     </Grid>
 </Page>

@@ -1,174 +1,195 @@
 ﻿<Page
-    x:Class="Anitro.Pages.Hummingbird.HummingbirdAnimeDetailsPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Anitro.Pages.Hummingbird"
-    xmlns:ratingControls="using:Anitro.Controls.Rating"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Loaded="Page_Loaded"
-    DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdAnimeDetailsViewModel}">
+	x:Class="Anitro.Pages.Hummingbird.HummingbirdAnimeDetailsPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Anitro.Pages.Hummingbird"
+	xmlns:ratingControls="using:Anitro.Controls.Rating"
+	xmlns:adMediator="using:Microsoft.AdMediator.Universal"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	Loaded="Page_Loaded"
+	DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdAnimeDetailsViewModel}">
 
-    <Page.Resources>
-        <Converters:BooleanToPrivacySettings x:Key="BooleanToPrivacySettings" xmlns:Converters="using:Anitro.Converters" />
+	<Page.Resources>
+		<Converters:BooleanToPrivacySettings x:Key="BooleanToPrivacySettings" xmlns:Converters="using:Anitro.Converters" />
 
-        <ImageBrush x:Key="backgroundImageBrush" Stretch="Fill" ImageSource="{Binding LibraryObject.Anime.CoverImageUrl}"/>
-    </Page.Resources>
+		<ImageBrush x:Key="backgroundImageBrush" Stretch="Fill" ImageSource="{Binding LibraryObject.Anime.CoverImageUrl}"/>
+	</Page.Resources>
 
-    <Grid x:Name="mainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="VisualStateGroup">
-                <VisualState x:Name="Phone">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneSmallMinimumWidth}"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="mainGrid.Background" Value="{StaticResource backgroundImageBrush}" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Desktop">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=DesktopMinimumWidth}"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="mainGrid.Background" Value="{StaticResource backgroundImageBrush}" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+	<Grid x:Name="mainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<VisualStateManager.VisualStateGroups>
+			<VisualStateGroup x:Name="VisualStateGroup">
+				<VisualState x:Name="Phone">
+					<VisualState.StateTriggers>
+						<AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneSmallMinimumWidth}"/>
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="mainGrid.Background" Value="{StaticResource backgroundImageBrush}" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState x:Name="Desktop">
+					<VisualState.StateTriggers>
+						<AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=DesktopMinimumWidth}"/>
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="mainGrid.Background" Value="{StaticResource backgroundImageBrush}" />
+					</VisualState.Setters>
+				</VisualState>
+			</VisualStateGroup>
+		</VisualStateManager.VisualStateGroups>
 
-        <Grid x:Name="backgroundShade" Background="#BF000000"/>
+		<Grid x:Name="backgroundShade" Background="#BF000000"/>
 
-        <Pivot Title="{Binding LibraryObject.Anime.RomanjiTitle}">
-            <PivotItem Header="Details">
-                <ScrollViewer HorizontalAlignment="Stretch" 
-                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                  ScrollViewer.HorizontalScrollMode="Disabled">
-                    <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+		<Pivot Title="{Binding LibraryObject.Anime.RomanjiTitle}">
+			<PivotItem Header="Details">
+				<ScrollViewer HorizontalAlignment="Stretch" 
+								  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+								  ScrollViewer.HorizontalScrollMode="Disabled">
+					<StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                        <Grid Margin="0,0,0,20" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
+                            <adMediator:AdMediatorControl x:Name="adMediator_HummingbirdAnimeDetailsPage_MainTop_One" Id="adMediator_HummingbirdAnimeDetailsPage_MainTop_One"
+													  HorizontalAlignment="Center" VerticalAlignment="Top"
+													  MinWidth="300" MaxWidth="640" 
+													  MinHeight="50" MaxHeight="100"
+													  Loaded="AdMediator_Loaded" 
+													  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
+													  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError" />
+                        </Grid>
+
                         <TextBlock Text="{Binding LibraryObject.Anime.RomanjiTitle}" Style="{ThemeResource TitleTextBlockStyle}"/>
 
-                        <TextBlock Text="{Binding LibraryObject.Anime.EnglishTitle}" Style="{ThemeResource SubtitleTextBlockStyle}"
-                                   Margin="0,0,0,0"/>
-                        <TextBlock Text="{Binding LibraryObject.Anime.KanjiTitle}"   Style="{ThemeResource SubtitleTextBlockStyle}"
-                                   Margin="0,0,0,0"/>
+						<TextBlock Text="{Binding LibraryObject.Anime.EnglishTitle}" Style="{ThemeResource SubtitleTextBlockStyle}"
+								   Margin="0,0,0,0"/>
+						<TextBlock Text="{Binding LibraryObject.Anime.KanjiTitle}"   Style="{ThemeResource SubtitleTextBlockStyle}"
+								   Margin="0,0,0,0"/>
 
-                        <Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,20,0,10" />
-                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Center">
-                            <Run Text="{Binding LibraryObject.Anime.MediaType, Converter={StaticResource MediaTypeConverter}}"/>
-                            <Run Text=" - "/>
-                            <Run Text="{Binding LibraryObject.Anime.EpisodeCount}"/>
-                            <Run Text=" Episodes"/>
-                            <Run Text=" - " />
-                            <Run Text="{Binding LibraryObject.Anime.AiringStatus, Converter={StaticResource AiringStatusConverter}}"/>
-                        </TextBlock>
+						<Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,20,0,10" />
+						<TextBlock Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Center">
+							<Run Text="{Binding LibraryObject.Anime.MediaType, Converter={StaticResource MediaTypeConverter}}"/>
+							<Run Text=" - "/>
+							<Run Text="{Binding LibraryObject.Anime.EpisodeCount}"/>
+							<Run Text=" Episodes"/>
+							<Run Text=" - " />
+							<Run Text="{Binding LibraryObject.Anime.AiringStatus, Converter={StaticResource AiringStatusConverter}}"/>
+						</TextBlock>
 
-                        <ListView ItemsSource="{Binding LibraryObject.Anime.Genres}" IsItemClickEnabled="False" Margin="0,5,0,0">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Center" ItemWidth="110"/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Converter={StaticResource MediaGenreConverter}}" HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                               TextWrapping="Wrap"/>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+						<ListView ItemsSource="{Binding LibraryObject.Anime.Genres}" IsItemClickEnabled="False" Margin="0,5,0,0">
+							<ListView.ItemsPanel>
+								<ItemsPanelTemplate>
+									<ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Center" ItemWidth="110"/>
+								</ItemsPanelTemplate>
+							</ListView.ItemsPanel>
+							<ListView.ItemTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding Converter={StaticResource MediaGenreConverter}}" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+											   TextWrapping="Wrap"/>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
 
-                        <Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,10,0,20" />
+						<Rectangle HorizontalAlignment="Stretch" Fill="#7FFFFFFF" Height="1" Margin="0,10,0,20" />
 
-                        <TextBlock Text="{Binding LibraryObject.Anime.Synopsis}" Style="{ThemeResource BodyTextBlockStyle}"/>
+						<TextBlock Text="{Binding LibraryObject.Anime.Synopsis}" Style="{ThemeResource BodyTextBlockStyle}"/>
+
+                        <Grid Margin="0,20,0,0" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
+                            <adMediator:AdMediatorControl x:Name="adMediator_HummingbirdAnimeDetailsPage_MainBottom_One" Id="adMediator_HummingbirdAnimeDetailsPage_MainBottom_One"
+													  HorizontalAlignment="Center" VerticalAlignment="Bottom"
+													  MinWidth="300" MaxWidth="640" 
+													  MinHeight="50" MaxHeight="100"
+													  Loaded="AdMediator_Loaded" 
+													  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
+													  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError" />
+                        </Grid>
                     </StackPanel>
-                </ScrollViewer>
-            </PivotItem>
-            <PivotItem Header="Library"
-                       Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
-                <Grid>
-                    <ScrollViewer HorizontalAlignment="Stretch" 
-                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                      ScrollViewer.HorizontalScrollMode="Disabled">
-                        <StackPanel Orientation="Vertical" Margin="0,0,20,0">
-                            <TextBlock Style="{ThemeResource BodyTextBlockStyle}">
-                                    <Run Text="Last Updated"/>
-                                    <Run Text="{Binding LibraryObject.LastWatched, Converter={StaticResource RelativeDateTime}}"/>
-                            </TextBlock>
+				</ScrollViewer>
+			</PivotItem>
+			<PivotItem Header="Library"
+					   Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
+				<Grid>
+					<ScrollViewer HorizontalAlignment="Stretch" 
+									  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+									  ScrollViewer.HorizontalScrollMode="Disabled">
+						<StackPanel Orientation="Vertical" Margin="0,0,20,0">
+							<TextBlock Style="{ThemeResource BodyTextBlockStyle}">
+									<Run Text="Last Updated"/>
+									<Run Text="{Binding LibraryObject.LastWatched, Converter={StaticResource RelativeDateTime}}"/>
+							</TextBlock>
 
-                            <Slider Minimum="0.0" Value="{Binding LibraryObject.Rating, Mode=TwoWay}" Maximum="5.0"
-                                        Margin="0,20,0,0" TickPlacement="Inline" TickFrequency="1">
-                                <Slider.HeaderTemplate>
-                                    <DataTemplate>
-                                        <ratingControls:StaticRating NumberOfStars="5" Value="{Binding LibraryObject.Rating, Mode=OneWay}"
-                                                             HorizontalAlignment="Center"
-                                                             StarForegroundColor="Gold" StarOutlineColor="Transparent" RenderTransformOrigin="0.5,0.5" >
-                                            <ratingControls:StaticRating.RenderTransform>
-                                                <CompositeTransform ScaleX="1.5" ScaleY="1.5"/>
-                                            </ratingControls:StaticRating.RenderTransform>
-                                        </ratingControls:StaticRating>
-                                    </DataTemplate>
-                                </Slider.HeaderTemplate>
-                            </Slider>
+							<Slider Minimum="0.0" Value="{Binding LibraryObject.Rating, Mode=TwoWay}" Maximum="5.0"
+										Margin="0,20,0,0" TickPlacement="Inline" TickFrequency="1">
+								<Slider.HeaderTemplate>
+									<DataTemplate>
+										<ratingControls:StaticRating NumberOfStars="5" Value="{Binding LibraryObject.Rating, Mode=OneWay}"
+															 HorizontalAlignment="Center"
+															 StarForegroundColor="Gold" StarOutlineColor="Transparent" RenderTransformOrigin="0.5,0.5" >
+											<ratingControls:StaticRating.RenderTransform>
+												<CompositeTransform ScaleX="1.5" ScaleY="1.5"/>
+											</ratingControls:StaticRating.RenderTransform>
+										</ratingControls:StaticRating>
+									</DataTemplate>
+								</Slider.HeaderTemplate>
+							</Slider>
 
-                            <ComboBox x:Name="librarySectionComboBox" Header="Library Section" 
-                                          HorizontalAlignment="Stretch" Margin="0,20,0,0"
-                                          SelectionChanged="librarySectionComboBox_SelectionChanged" Loaded="librarySectionComboBox_Loaded">
-                                <ComboBoxItem Content="None" />
-                                <ComboBoxItem Content="Currently Watching"/>
-                                <ComboBoxItem Content="Plan to Watch"/>
-                                <ComboBoxItem Content="Completed"/>
-                                <ComboBoxItem Content="On Hold"/>
-                                <ComboBoxItem Content="Dropped"/>
-                            </ComboBox>
+							<ComboBox x:Name="librarySectionComboBox" Header="Library Section" 
+										  HorizontalAlignment="Stretch" Margin="0,20,0,0"
+										  SelectionChanged="librarySectionComboBox_SelectionChanged" Loaded="librarySectionComboBox_Loaded">
+								<ComboBoxItem Content="None" />
+								<ComboBoxItem Content="Currently Watching"/>
+								<ComboBoxItem Content="Plan to Watch"/>
+								<ComboBoxItem Content="Completed"/>
+								<ComboBoxItem Content="On Hold"/>
+								<ComboBoxItem Content="Dropped"/>
+							</ComboBox>
 
-                            <Slider Minimum="0" Value="{Binding LibraryObject.EpisodesWatched, Mode=TwoWay}" Maximum="{Binding LibraryObject.Anime.EpisodeCount}"
-                                        Margin="0,20,0,0" TickPlacement="Inline" TickFrequency="1" ScrollViewer.HorizontalScrollBarVisibility="Visible">
-                                <Slider.HeaderTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Vertical">
-                                            <TextBlock Text="Episodes Watched"/>
-                                            <TextBlock HorizontalAlignment="Right">
-                                                    <Run Text="{Binding LibraryObject.EpisodesWatched}"/>
-                                                    <Run Text="/" />
-                                                    <Run Text="{Binding LibraryObject.Anime.EpisodeCount}"/>
-                                            </TextBlock>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </Slider.HeaderTemplate>
-                            </Slider>
+							<Slider Minimum="0" Value="{Binding LibraryObject.EpisodesWatched, Mode=TwoWay}" Maximum="{Binding LibraryObject.Anime.EpisodeCount}"
+										Margin="0,20,0,0" TickPlacement="Inline" TickFrequency="1" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+								<Slider.HeaderTemplate>
+									<DataTemplate>
+										<StackPanel Orientation="Vertical">
+											<TextBlock Text="Episodes Watched"/>
+											<TextBlock HorizontalAlignment="Right">
+													<Run Text="{Binding LibraryObject.EpisodesWatched}"/>
+													<Run Text="/" />
+													<Run Text="{Binding LibraryObject.Anime.EpisodeCount}"/>
+											</TextBlock>
+										</StackPanel>
+									</DataTemplate>
+								</Slider.HeaderTemplate>
+							</Slider>
 
-                            <TextBlock Text="Rewatched" Margin="0,20,0,0"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <Button Content="-" Width="30" Command="{Binding DecrementRewatchingCommand}"/>
-                                <TextBlock Text="{Binding LibraryObject.RewatchedTimes}" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                                <Button Content="+" Width="30" Command="{Binding IncrementRewatchingCommand}"/>
-                            </StackPanel>
+							<TextBlock Text="Rewatched" Margin="0,20,0,0"/>
+							<StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+								<Button Content="-" Width="30" Command="{Binding DecrementRewatchingCommand}"/>
+								<TextBlock Text="{Binding LibraryObject.RewatchedTimes}" VerticalAlignment="Center" Margin="5,0,5,0"/>
+								<Button Content="+" Width="30" Command="{Binding IncrementRewatchingCommand}"/>
+							</StackPanel>
 
-                            <ToggleSwitch Header="Private"    IsOn="{Binding LibraryObject.Private, Converter={StaticResource BooleanToPrivacySettings}, Mode=TwoWay}" Margin="0,20,0,0" 
-                                              OnContent="Private" OffContent="Public"/>
-                            <ToggleSwitch Header="Rewatching" IsOn="{Binding LibraryObject.Rewatching, Mode=TwoWay}" Margin="0,10,0,0" 
-                                              OnContent="Yes" OffContent="No"/>
+							<ToggleSwitch Header="Private"    IsOn="{Binding LibraryObject.Private, Converter={StaticResource BooleanToPrivacySettings}, Mode=TwoWay}" Margin="0,20,0,0" 
+											  OnContent="Private" OffContent="Public"/>
+							<ToggleSwitch Header="Rewatching" IsOn="{Binding LibraryObject.Rewatching, Mode=TwoWay}" Margin="0,10,0,0" 
+											  OnContent="Yes" OffContent="No"/>
 
-                            <TextBox Text="{Binding LibraryObject.Notes, Mode=TwoWay}" PlaceholderText="Notes"
-                                         Margin="0,20,0,0" MinHeight="100" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </ScrollViewer>
-                </Grid>
-            </PivotItem>
-        </Pivot>
-    </Grid>
+							<TextBox Text="{Binding LibraryObject.Notes, Mode=TwoWay}" PlaceholderText="Notes"
+										 Margin="0,20,0,0" MinHeight="100" TextWrapping="Wrap"/>
+						</StackPanel>
+					</ScrollViewer>
+				</Grid>
+			</PivotItem>
+		</Pivot>
+	</Grid>
 
-    <Page.BottomAppBar>
-        <CommandBar Visibility="Visible" IsOpen="True">
-            <AppBarButton Content="Save" Icon="Save" Command="{Binding UpdateCommand}" ToolTipService.ToolTip="Save"
-                          Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}"/>
+	<Page.BottomAppBar>
+		<CommandBar Visibility="Visible" IsOpen="True">
+			<AppBarButton Content="Save" Icon="Save" Command="{Binding UpdateCommand}" ToolTipService.ToolTip="Save"
+						  Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}"/>
 
-            <AppBarToggleButton Content="Favourite" Icon="Favorite" Command="{Binding FavouriteCommand}" IsChecked="{Binding IsFavourited}" ToolTipService.ToolTip="Favourite/Unfavourite"
-                                Visibility="Collapsed"/> <!-- Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}"/> -->
+			<AppBarToggleButton Content="Favourite" Icon="Favorite" Command="{Binding FavouriteCommand}" IsChecked="{Binding IsFavourited}" ToolTipService.ToolTip="Favourite/Unfavourite"
+								Visibility="Collapsed"/> <!-- Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}"/> -->
 
-            <AppBarSeparator />
-            <AppBarButton Content="Pin"  Icon="Pin"  Command="{Binding PinToStartCommand}" ToolTipService.ToolTip="Pin to Start"/>
-            <AppBarButton Content="Set as Lockscreen" Icon="SetLockScreen" Command="{Binding SetAsLockscreenCommand}" ToolTipService.ToolTip="Set as Lockscreen Image"/>
-        </CommandBar>
-    </Page.BottomAppBar>
+			<AppBarSeparator />
+			<AppBarButton Content="Pin"  Icon="Pin"  Command="{Binding PinToStartCommand}" ToolTipService.ToolTip="Pin to Start"/>
+			<AppBarButton Content="Set as Lockscreen" Icon="SetLockScreen" Command="{Binding SetAsLockscreenCommand}" ToolTipService.ToolTip="Set as Lockscreen Image"/>
+		</CommandBar>
+	</Page.BottomAppBar>
 </Page>

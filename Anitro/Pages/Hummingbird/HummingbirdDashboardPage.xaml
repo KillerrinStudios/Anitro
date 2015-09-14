@@ -5,6 +5,7 @@
     xmlns:local="using:Anitro.Pages.Hummingbird"
     xmlns:Templates="using:Anitro.Templates"
     xmlns:appControls="using:Anitro.Controls"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -222,7 +223,30 @@
             <Hub.HeaderTemplate>
                 <DataTemplate>
                     <Grid>
-                        <Image Source="{Binding User.HummingbirdUserInfo.cover_image}"/>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="VisualStateGroup">
+                                <VisualState x:Name="PhoneSmall">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneSmallMinimumWidth}"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="coverImage.MaxHeight" Value="100" />
+                                        <Setter Target="coverImage.Stretch" Value="Uniform" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Phone">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneMinimumWidth}"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="coverImage.MaxHeight" Value="160" />
+                                        <Setter Target="coverImage.Stretch" Value="Fill" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        
+                        <Image x:Name="coverImage" Source="{Binding User.HummingbirdUserInfo.cover_image}" Stretch="Fill" MaxHeight="125"/>
                         <Rectangle Fill="#3F000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
@@ -232,10 +256,6 @@
                                 <TextBlock Text="{Binding User.UserInfo.Username}" Style="{ThemeResource SubheaderTextBlockStyle}"/>
                                 <TextBlock Text="{Binding User.UserInfo.Location}" Style="{ThemeResource BodyTextBlockStyle}"/>
                             </StackPanel>
-                            <!--
-                            <TextBlock Text="'s Hummingbird Dashboard" 
-                                       VerticalAlignment="Center"/>
-                            -->
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -289,29 +309,65 @@
                 </DataTemplate>
             </HubSection>
             
-            <HubSection Header="User Details" Width="325">
+            <HubSection Header="User Details" Width="330">
                 <DataTemplate>
                     <Grid>
-                        <StackPanel Orientation="Vertical" Visibility="Visible">
-                            <TextBlock Text="{Binding User.HummingbirdUserInfo.bio}" TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                        <ScrollViewer>
+                            <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                                <TextBlock Text="{Binding User.HummingbirdUserInfo.bio}" TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                                <HyperlinkButton Content="{Binding User.UserInfo.Website}" NavigateUri="{Binding User.UserInfo.Website}" />
 
-                            <StackPanel Orientation="Vertical" Margin="0,10,0,0"
+                                <StackPanel Orientation="Vertical" Margin="0,10,0,0"
                                         Visibility="{Binding User.HummingbirdUserInfo.HasWaifu, Converter={StaticResource BooleanToVisibility}}">
-                                <TextBlock Text="{Binding User.HummingbirdUserInfo.waifu_or_husbando}" Style="{ThemeResource TitleTextBlockStyle}" />
-                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <Image Width="50" Height="50" Source="{Binding User.HummingbirdUserInfo.WaifuImageUri}"/>
-                                    <TextBlock Text="{Binding User.HummingbirdUserInfo.waifu}" Style="{ThemeResource SubtitleTextBlockStyle}" TextWrapping="Wrap"
+                                    <TextBlock Text="{Binding User.HummingbirdUserInfo.waifu_or_husbando}" Style="{ThemeResource TitleTextBlockStyle}" />
+                                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                        <Image Width="50" Height="50" Source="{Binding User.HummingbirdUserInfo.WaifuImageUri}"/>
+                                        <TextBlock Text="{Binding User.HummingbirdUserInfo.waifu}" Style="{ThemeResource SubtitleTextBlockStyle}" TextWrapping="Wrap"
                                                Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-                        </StackPanel>
+                        </ScrollViewer>
                     </Grid>
                 </DataTemplate>
             </HubSection>
-            <HubSection Header="Statistics" Width="325">
+            <HubSection Header="Statistics" Width="330">
                 <DataTemplate>
                     <Grid>
+                        <ScrollViewer>
+                            <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center">
+                                    <Run Text="You have spent "/>
+                                    <Run Text="{Binding User.HummingbirdUserInfo.LifeSpentOnAnimeInMinutes.Days}" />
+                                    <Run Text="Days" />
+                                    <Run Text="{Binding User.HummingbirdUserInfo.LifeSpentOnAnimeInMinutes.Hours}" />
+                                    <Run Text="Hours" />
+                                    <Run Text="{Binding User.HummingbirdUserInfo.LifeSpentOnAnimeInMinutes.Minutes}" />
+                                    <Run Text="Minutes" />
+                                    <Run Text="Watching Anime" />
+                                </TextBlock>
 
+                                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                                    <Charting:Chart Title="Top Genres">
+                                        <Charting:Chart.Series>
+                                            <Charting:PieSeries 
+                                                Title="Top Genres"                                                   
+                                                ItemsSource="{Binding User.AnimeLibrary.LibraryCollection.LibraryGenres}"
+                                                IndependentValuePath="Name"
+                                                DependentValuePath="Amount" 
+                                                IsSelectionEnabled="False"/>
+                                        </Charting:Chart.Series>
+                                    </Charting:Chart>
+
+                                    <TextBlock Margin="0,-20,0,0" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">
+                                        <Run Text="Out of "/>
+                                        <Run Text="{Binding User.AnimeLibrary.LibraryCollection.UnfilteredCount}"/>
+                                        <Run Text="Titles"/>
+                                    </TextBlock>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </ScrollViewer>
                     </Grid>
                 </DataTemplate>
             </HubSection>
