@@ -17,7 +17,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -70,19 +69,6 @@ namespace Anitro.Pages.Hummingbird
             {
                 ViewModel.PostToActivityFeed(textBox.Text);
             }
-        }
-
-        private void PieChart_Loaded(object sender, RoutedEventArgs e)
-        {
-            var PieChart = sender as Chart;
-
-            Random rand = new Random();
-            ObservableCollection<StatisticsChartModel> financialStuffList = new ObservableCollection<StatisticsChartModel>();
-            financialStuffList.Add(new StatisticsChartModel() { Name = "MSFT", Amount = rand.Next(0, 200) });
-            financialStuffList.Add(new StatisticsChartModel() { Name = "AAPL", Amount = rand.Next(0, 200) });
-            financialStuffList.Add(new StatisticsChartModel() { Name = "GOOG", Amount = rand.Next(0, 200) });
-            financialStuffList.Add(new StatisticsChartModel() { Name = "BBRY", Amount = rand.Next(0, 200) });
-            (PieChart.Series[0] as PieSeries).ItemsSource = financialStuffList;
         }
     }
 }

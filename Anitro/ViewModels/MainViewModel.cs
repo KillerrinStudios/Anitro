@@ -35,7 +35,7 @@ namespace Anitro.ViewModels
         public VisualState CurrentVisualState;
 
         #region Properties
-        private User m_user;
+        private User m_user = null;
         public User CurrentUser
         {
             get { return m_user; }
@@ -52,7 +52,7 @@ namespace Anitro.ViewModels
             get { return m_hummingbirdUser; }
             set
             {
-                if (m_hummingbirdUser == value) return;
+                //if (m_hummingbirdUser == value) return;
                 m_hummingbirdUser = value;
                 RaisePropertyChanged(nameof(HummingbirdUser));
             }
@@ -347,15 +347,16 @@ namespace Anitro.ViewModels
         public void Logout(ServiceName service)
         {
             Debug.WriteLine("Logout of Service {0}", service);
+            if (!CanNavigate)
+                return;
 
             if (service == ServiceName.Hummingbird)
             {
+                if (CurrentUser is HummingbirdUser) CurrentUser = null;
                 HummingbirdUser = new HummingbirdUser();
                 HummingbirdUser.DeleteUser();
             }
 
-            if (!CanNavigate)
-                return;
 
             NavigationService.Navigate(typeof(DefaultNoUserPage), null);
             CurrentNavigationLocation = NavigationLocation.Default;

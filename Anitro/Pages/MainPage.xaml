@@ -115,8 +115,8 @@
 					<Grid Grid.Row="0" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
 						<adMediator:AdMediatorControl x:Name="adMediator_MainPage_MainTop_One" Id="MainPage_MainTop_One"
 													  HorizontalAlignment="Center" VerticalAlignment="Bottom"
-													  MinWidth="300" MaxWidth="640" 
-													  MinHeight="50" MaxHeight="100"
+													  MinWidth="300" Width="300" MaxWidth="640" 
+													  MinHeight="50" Height="50" MaxHeight="100"
 													  Loaded="AdMediator_Loaded" 
 													  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
 													  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError" />

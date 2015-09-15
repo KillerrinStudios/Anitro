@@ -173,7 +173,7 @@ namespace Anitro.Models
                     }
 
                     if (!counted)
-                        m_libraryGenres.Add(new StatisticsChartModel(genre.ToString(), 0));
+                        m_libraryGenres.Add(new StatisticsChartModel(genre.ToString(), 1));
                 }
             }
 
@@ -184,6 +184,12 @@ namespace Anitro.Models
             {
                 m_libraryGenres.RemoveRange(max - 1, m_libraryGenres.Count - max);
             }
+
+            //// Remove all with 0 Amount
+            //for (int i = m_libraryGenres.Count - 1; i > 0; i--)
+            //{
+            //    if (m_libraryGenres[i].Amount == 0) m_libraryGenres.RemoveAt(i);
+            //}
 
             progress.Report(true);
         }

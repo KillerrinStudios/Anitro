@@ -21,6 +21,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.AdMediator.Universal;
+using Microsoft.AdMediator.Core;
+using Microsoft.AdMediator.Core.Models;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -96,7 +99,9 @@ namespace Anitro.Pages
         #region AdMediator
         private void AdMediator_Loaded(object sender, RoutedEventArgs e)
         {
-
+            AdMediatorControl AdMediator = sender as AdMediatorControl;
+            //AdMediator.AdSdkOptionalParameters[AdSdkNames.MicrosoftAdvertising]["Width"] = 728;
+            //AdMediator.AdSdkOptionalParameters[AdSdkNames.MicrosoftAdvertising]["Height"] = 90;
         }
 
         private void AdMediator_AdSdkError(object sender, Microsoft.AdMediator.Core.Events.AdFailedEventArgs e)

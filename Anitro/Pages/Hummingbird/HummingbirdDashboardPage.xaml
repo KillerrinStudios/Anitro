@@ -5,12 +5,12 @@
     xmlns:local="using:Anitro.Pages.Hummingbird"
     xmlns:Templates="using:Anitro.Templates"
     xmlns:appControls="using:Anitro.Controls"
-    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Loaded="Page_Loaded"
     DataContext="{Binding Source={StaticResource Locator}, Path=vm_HummingbirdDashboardViewModel}">
+    <!--xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"-->
 
     <Page.Resources>
         <Templates:SocialFeedTemplateSelector x:Key="TemplatedSocialFeedTemplateSelector"
@@ -335,38 +335,63 @@
                 <DataTemplate>
                     <Grid>
                         <ScrollViewer>
-                            <StackPanel Orientation="Vertical" Margin="0,0,20,0">
-                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center">
-                                    <Run Text="You have spent "/>
-                                    <Run Text="{Binding User.HummingbirdUserInfo.LifeSpentOnAnimeInMinutes.Days}" />
-                                    <Run Text="Days" />
-                                    <Run Text="{Binding User.HummingbirdUserInfo.LifeSpentOnAnimeInMinutes.Hours}" />
-                                    <Run Text="Hours" />
-                                    <Run Text="{Binding User.HummingbirdUserInfo.LifeSpentOnAnimeInMinutes.Minutes}" />
-                                    <Run Text="Minutes" />
-                                    <Run Text="Watching Anime" />
-                                </TextBlock>
-
-                                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Charting:Chart Title="Top Genres">
-                                        <Charting:Chart.Series>
-                                            <Charting:PieSeries 
-                                                Title="Top Genres"                                                   
-                                                ItemsSource="{Binding User.AnimeLibrary.LibraryCollection.LibraryGenres}"
-                                                IndependentValuePath="Name"
-                                                DependentValuePath="Amount" 
-                                                IsSelectionEnabled="False"/>
-                                        </Charting:Chart.Series>
-                                    </Charting:Chart>
-
-                                    <TextBlock Margin="0,-20,0,0" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">
-                                        <Run Text="Out of "/>
-                                        <Run Text="{Binding User.AnimeLibrary.LibraryCollection.UnfilteredCount}"/>
-                                        <Run Text="Titles"/>
+                            <Grid>
+                                <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center">
+                                        <Run Text="You have spent "/>
+                                        <Run Text="{Binding User.HummingbirdUserInfo.LifeSpentOnAnimeInMinutes.Days}" />
+                                        <Run Text="Days" />
+                                        <Run Text="{Binding User.HummingbirdUserInfo.LifeSpentOnAnimeInMinutes.Hours}" />
+                                        <Run Text="Hours" />
+                                        <Run Text="{Binding User.HummingbirdUserInfo.LifeSpentOnAnimeInMinutes.Minutes}" />
+                                        <Run Text="Minutes" />
+                                        <Run Text="Watching Anime" />
                                     </TextBlock>
-                                </StackPanel>
 
-                            </StackPanel>
+                                    <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                                        <!--
+                                        <Charting:Chart Title="Top Genres">
+                                            <Charting:Chart.Series>
+                                                <Charting:PieSeries 
+                                                    Title="Top Genres"                                                   
+                                                    ItemsSource="{Binding User.AnimeLibrary.LibraryCollection.LibraryGenres}"
+                                                    IndependentValuePath="Name"
+                                                    DependentValuePath="Amount" 
+                                                    IsSelectionEnabled="False"/>
+                                            </Charting:Chart.Series>
+                                        </Charting:Chart>
+                                        -->
+
+                                        <ListView Header="Top Anime Genres"
+                                                  ItemsSource="{Binding User.AnimeLibrary.LibraryCollection.LibraryGenres}"
+                                                  Height="Auto"
+                                                  ScrollViewer.VerticalScrollMode="Disabled"
+                                                  ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock>
+                                                                <Run Text="{Binding Amount}"/>
+                                                                <Run Text="{Binding Name}"/>
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center"
+                                               Margin="0,0,0,20" HorizontalAlignment="Center">
+                                            <Run Text="Out of "/>
+                                            <Run Text="{Binding User.AnimeLibrary.LibraryCollection.UnfilteredCount}"/>
+                                            <Run Text="Titles"/>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    
+                                    <TextBlock Text="" />
+                                </StackPanel>
+                            </Grid>
                         </ScrollViewer>
                     </Grid>
                 </DataTemplate>

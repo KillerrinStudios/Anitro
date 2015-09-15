@@ -32,17 +32,15 @@ namespace Anitro.Helpers
 
         #region Window Sizes
         //public DisplayOrientations Orientation { get { return DisplayInformation.GetForCurrentView().CurrentOrientation; } }
-        public double WindowWidth { get { return Window.Current.Bounds.Width; } }
-        public double WindowHeight { get { return Window.Current.Bounds.Height; } }
+        public double WindowWidth  { get { return 0.0; } } //Window.Current.Bounds.Width; } }
+        public double WindowHeight { get { return 0.0; } } //Window.Current.Bounds.Height; } }
         #endregion
 
-        public APIServiceCollection APIServiceCollection { get { return APIServiceCollection.Instance; } }
-
+        //public APIServiceCollection APIServiceCollection { get { return APIServiceCollection.Instance; } }
         public AdaptiveTriggerConsts()
         {
             //DisplayInformation.GetForCurrentView().OrientationChanged += AdaptiveTriggerConsts_OrientationChanged;
-            Window.Current.SizeChanged += Current_SizeChanged;
-
+            //Window.Current.SizeChanged += Current_SizeChanged;
             Instance = this;
         }
 
@@ -60,31 +58,24 @@ namespace Anitro.Helpers
         #endregion
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
+        private bool disposedValue = false;
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
             {
                 if (disposing)
                 {
-                    //DisplayInformation.GetForCurrentView().OrientationChanged -= AdaptiveTriggerConsts_OrientationChanged;
+                    DisplayInformation.GetForCurrentView().OrientationChanged -= AdaptiveTriggerConsts_OrientationChanged;
                     Window.Current.SizeChanged -= Current_SizeChanged;
                 }
 
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
                 disposedValue = true;
             }
         }
-
-        // This code added to correctly implement the disposable pattern.
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
         }
         #endregion
     }
