@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace Anitro.Models.Page_Parameters
 {
-    public class SearchParameter
+    public class HummingbirdSearchParameter
     {
-        public User User;
-
-        public string SearchTerms;
-        public SearchFilter Filter;
+        public string SearchTerms = "";
+        public SearchFilter Filter = SearchFilter.Everything;
     }
 }

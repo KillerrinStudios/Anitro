@@ -46,7 +46,7 @@ namespace Anitro.ViewModels.Hummingbird
         }
 
         /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
+        /// Initializes a new instance of the HummingbirdAnimeLibraryViewModel class.
         /// </summary>
         public HummingbirdAnimeLibraryViewModel()
         {
@@ -144,10 +144,21 @@ namespace Anitro.ViewModels.Hummingbird
         public void IncrementEpisodeWatched(LibraryObject libraryObject, int modifier)
         {
             Debug.WriteLine("Incrementing Episodes Watched");
+
+            if (modifier > 0)
+            {
+                if (libraryObject.AreAllEpisodesWatched)
+                    return;
+            }
+            else if (modifier < 0)
+            {
+                if (libraryObject.AreNoEpisodesWatched)
+                    return;
+            }
+
             libraryObject.EpisodesWatched += modifier;
 
             HummingbirdAnimeDetailsViewModel vm = ViewModelLocator.Instance.vm_HummingbirdAnimeDetailsViewModel;
-            vm.User = User;
             vm.LibraryObject = libraryObject;
             vm.UpdateAnime();
         }
@@ -320,7 +331,8 @@ namespace Anitro.ViewModels.Hummingbird
         /// <returns></returns>
         public static LibraryObject GetLibraryObject(AnimeObject animeObject)
         {
-            HummingbirdUser loggedInUser = MainViewModel.Instance.HummingbirdUser;
+            Debug.WriteLine("GetLibraryObject");
+            HummingbirdUser loggedInUser = MainViewModel.Instance.HummingbirdUser_LoggedIn;
             if (loggedInUser == null)
                 return new LibraryObject(animeObject);
 
@@ -333,16 +345,17 @@ namespace Anitro.ViewModels.Hummingbird
 
         public void NavigateAnimeDetailsPage(AnimeObject animeObject)
         {
+            Debug.WriteLine("NavigateAnimeDetailsPage");
             LibraryObject libraryObject = GetLibraryObject(animeObject);
 
             HummingbirdAnimeDetailsParameter parameter = new HummingbirdAnimeDetailsParameter();
-            parameter.User = MainViewModel.Instance.HummingbirdUser;
             parameter.LibraryObject = libraryObject;
 
+            Debug.WriteLine("Navigating");
             NavigationService.Navigate(typeof(HummingbirdAnimeDetailsPage), parameter);
 
             // Add this Anime to the Recent
-            parameter.User?.AnimeLibrary.AddToRecent(animeObject);
+            User?.AnimeLibrary.AddToRecent(animeObject);
         }
         #endregion
     }

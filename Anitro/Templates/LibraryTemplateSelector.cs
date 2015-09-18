@@ -47,7 +47,7 @@ namespace Anitro.Templates
             }
             else
             {
-                return base.SelectTemplate(item, container);
+                return TemplatePlanToWatch;// base.SelectTemplate(item, container);
             }
         }
     }

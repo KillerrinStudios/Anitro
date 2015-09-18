@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace Anitro.ViewModels
 {
@@ -86,9 +87,45 @@ namespace Anitro.ViewModels
         public APIServiceCollection APIServiceCollections { get { return APIServiceCollection.Instance; } }
         #endregion
 
+        #region Users
+        private static User m_currentUser = null;
+        public User CurrentUser
+        {
+            get { return m_currentUser; }
+            set
+            {
+                m_currentUser = value;
+                RaisePropertyChanged(nameof(CurrentUser));
+            }
+        }
+
+        private static HummingbirdUser m_hummingbirdUser_loggedIn = new HummingbirdUser();
+        public HummingbirdUser HummingbirdUser_LoggedIn
+        {
+            get { return m_hummingbirdUser_loggedIn; }
+            set
+            {
+                //if (m_hummingbirdUser_loggedIn == value) return;
+                m_hummingbirdUser_loggedIn = value;
+                RaisePropertyChanged(nameof(HummingbirdUser_LoggedIn));
+            }
+        }
+        #endregion
+
         public abstract void Loaded();
         public abstract void OnNavigatedTo();
         public abstract void OnNavigatedFrom();
         public abstract void ResetViewModel();
+
+        protected override void RaisePropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            if (propertyName == null) return;
+
+            try
+            {
+                base.RaisePropertyChanged(propertyName);
+            }
+            catch (Exception) { }
+        }
     }
 }

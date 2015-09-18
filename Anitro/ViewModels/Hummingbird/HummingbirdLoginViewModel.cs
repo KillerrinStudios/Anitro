@@ -111,10 +111,8 @@ namespace Anitro.ViewModels.Hummingbird
                     ProgressService.Reset();
                     UserLoginInfo = e.Parameter.Converted as UserLoginInfo;
 
-                    HummingbirdUser hummingbirdUser = MainViewModel.Instance.HummingbirdUser;
-                    hummingbirdUser.LoginInfo = UserLoginInfo;
-
-                    await HummingbirdUser.Save(hummingbirdUser);
+                    HummingbirdUser_LoggedIn.LoginInfo = UserLoginInfo;
+                    await HummingbirdUser.Save(HummingbirdUser_LoggedIn);
 
                     MainViewModel.Instance.SwitchUser(ServiceName.Hummingbird);
                     NavigationService.RemoveLastPage();

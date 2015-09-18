@@ -65,7 +65,7 @@
 					Background="{Binding ElementName=MainNavigation, Path=PaneBackground}"
 					Visibility="Collapsed">
 			<Button x:Name="MainNavigation_TopHamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="40" Height="40" Background="Transparent" Command="{Binding TogglePaneCommand}" />
-            <TextBlock x:Name="TopNavigationBarTextBlock" Text="{Binding TopNavBarText}" VerticalAlignment="Center" Margin="20,0,0,0"/>
+			<TextBlock x:Name="TopNavigationBarTextBlock" Text="{Binding TopNavBarText}" VerticalAlignment="Center" Margin="20,0,0,0"/>
 		</StackPanel>
 
 		<SplitView x:Name="MainNavigation" DisplayMode="CompactInline" IsPaneOpen="{Binding IsPaneOpen, Mode=TwoWay}" CompactPaneLength="48" Grid.Row="1">
@@ -93,7 +93,7 @@
 								<StackPanel Orientation="Vertical" Margin="0,20,0,0">
 									<TextBlock Text="Accounts" Style="{ThemeResource SubheaderTextBlockStyle}" Margin="0,0,0,10" />
 
-									<appControls:UserAccountButton Header="{Binding HummingbirdUser.Service, Converter={StaticResource EnumStringConverter}}" Username="{Binding HummingbirdUser.UserInfo.Username}" Avatar="{Binding HummingbirdUser.UserInfo.AvatarUrl}" IsSelected="{Binding HummingbirdUser.Selected}"
+                                    <appControls:UserAccountButton Header="{Binding HummingbirdUser_LoggedIn.Service, Converter={StaticResource EnumStringConverter}}" Username="{Binding HummingbirdUser_LoggedIn.UserInfo.Username}" Avatar="{Binding HummingbirdUser_LoggedIn.UserInfo.AvatarUrl}" IsSelected="{Binding HummingbirdUser_LoggedIn.Selected}"
 															   SwitchUserCommand="{Binding SwitchUserCommand}" LoginCommand="{Binding LoginCommand}" LogoutCommand="{Binding LogoutCommand}"/>
 								</StackPanel>
 							</StackPanel>
@@ -115,7 +115,7 @@
 					<Grid Grid.Row="0" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
 						<adMediator:AdMediatorControl x:Name="adMediator_MainPage_MainTop_One" Id="MainPage_MainTop_One"
 													  HorizontalAlignment="Center" VerticalAlignment="Bottom"
-													  MinWidth="300" Width="300" MaxWidth="640" 
+													  MinWidth="300" Width="320" MaxWidth="640" 
 													  MinHeight="50" Height="50" MaxHeight="100"
 													  Loaded="AdMediator_Loaded" 
 													  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"

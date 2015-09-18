@@ -52,19 +52,46 @@ namespace Anitro.Models
         {
         }
 
+        #region Add/Remove
+        public void AddToLibrary(LibraryObject libraryObject)
+        {
+            LibraryCollection.UnfilteredCollection.Insert(0, libraryObject);
+        }
+        public void RemoveFromLibrary(ServiceID id)
+        {
+            for(int i = LibraryCollection.UnfilteredCount - 1; i > 0; i--)
+            {
+                if (LibraryCollection.UnfilteredCollection[i].Anime.ID == id)
+                    LibraryCollection.UnfilteredCollection.RemoveAt(i);
+            }
+        }
+
         public void AddToRecent(AnimeObject anime)
         {
-            if (Recent.Contains(anime) == false)
+            bool notInRecent = true;
+            foreach (var recentItem in Recent)
             {
-                Recent.Insert(0, anime);
+                if (recentItem.ID.ID == anime.ID.ID)
+                {
+                    Recent.Remove(recentItem);
+                    Recent.Insert(0, recentItem);
+
+                    notInRecent = false;
+                    break;
+                }
             }
+
+            if (notInRecent)
+                Recent.Insert(0, anime);
 
             while (Recent.Count > 6)
             {
                 Recent.RemoveAt(Recent.Count - 1);
             }
         }
+        #endregion
 
+        #region Search
         public bool IsInLibrary(ServiceID id)
         {
             foreach (var item in LibraryCollection.UnfilteredCollection)
@@ -96,6 +123,7 @@ namespace Anitro.Models
             }
             return null;
         }
+        #endregion
 
         public LibraryObject SelectRandomTitle()
         {

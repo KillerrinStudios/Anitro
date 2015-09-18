@@ -156,7 +156,7 @@
     <Compile Include="Models\Enums\AnitroLaunchReason.cs" />
     <Compile Include="Models\Page Parameters\HummingbirdDashboardParameter.cs" />
     <Compile Include="Models\Page Parameters\HummingbirdCalendarParameter.cs" />
-    <Compile Include="Models\Page Parameters\SearchParameter.cs" />
+    <Compile Include="Models\Page Parameters\HummingbirdSearchParameter.cs" />
     <Compile Include="Models\SearchLibraryFilter.cs" />
     <Compile Include="Models\LibrarySectionFilter.cs" />
     <Compile Include="Models\FilteredLibraryObservableCollection.cs" />

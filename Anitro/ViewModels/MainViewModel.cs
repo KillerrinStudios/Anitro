@@ -14,6 +14,7 @@ using Windows.UI.Xaml;
 using Anitro.Helpers;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
+using Killerrin_Studios_Toolkit;
 
 namespace Anitro.ViewModels
 {
@@ -35,29 +36,6 @@ namespace Anitro.ViewModels
         public VisualState CurrentVisualState;
 
         #region Properties
-        private User m_user = null;
-        public User CurrentUser
-        {
-            get { return m_user; }
-            set
-            {
-                m_user = value;
-                RaisePropertyChanged(nameof(CurrentUser));
-            }
-        }
-
-        private HummingbirdUser m_hummingbirdUser = new HummingbirdUser();
-        public HummingbirdUser HummingbirdUser
-        {
-            get { return m_hummingbirdUser; }
-            set
-            {
-                //if (m_hummingbirdUser == value) return;
-                m_hummingbirdUser = value;
-                RaisePropertyChanged(nameof(HummingbirdUser));
-            }
-        }
-
         public RelayCommand TogglePaneCommand { get { return new RelayCommand(() => { IsPaneOpen = !IsPaneOpen; }); } }
         private bool m_isPaneOpen = true;
         public bool IsPaneOpen
@@ -94,10 +72,10 @@ namespace Anitro.ViewModels
             if (IsInDesignMode)
             {
                 // Code runs in Blend --> create design time data.
-                HummingbirdUser = new HummingbirdUser();
-                HummingbirdUser.UserInfo.Username = "Design View";
-                HummingbirdUser.UserInfo.AvatarUrl = new System.Uri("https://static.hummingbird.me/users/avatars/000/007/415/thumb/TyrilCropped1.png?1401236074", System.UriKind.Absolute);
-                HummingbirdUser.Selected = true;
+                HummingbirdUser_LoggedIn = new HummingbirdUser();
+                HummingbirdUser_LoggedIn.UserInfo.Username = "Design View";
+                HummingbirdUser_LoggedIn.UserInfo.AvatarUrl = new System.Uri("https://static.hummingbird.me/users/avatars/000/007/415/thumb/TyrilCropped1.png?1401236074", System.UriKind.Absolute);
+                HummingbirdUser_LoggedIn.Selected = true;
             }
             else
             {
@@ -109,6 +87,10 @@ namespace Anitro.ViewModels
 
         public override void Loaded()
         {
+            CortanaTools.InstallCortanaVDFile(new Uri("ms-appx:///AnitroVoiceCommandDefinition.xml"));
+            InitialSetup();
+
+            // Handle Launch Args
             if (!LaunchArgs.Handled)
             {
                 if (LaunchArgs.LaunchReason == AnitroLaunchReason.Normal)
@@ -123,7 +105,6 @@ namespace Anitro.ViewModels
 
         public override void OnNavigatedTo()
         {
-            InitialSetup();
         }
 
         public override void OnNavigatedFrom()
@@ -133,18 +114,20 @@ namespace Anitro.ViewModels
 
         public override void ResetViewModel()
         {
-            HummingbirdUser = new HummingbirdUser();
-            CurrentNavigationLocation = NavigationLocation.Default;
+            //CurrentUser = null;
+            //HummingbirdUser = new HummingbirdUser();
+            //CurrentNavigationLocation = NavigationLocation.Default;
         }
 
         #region Startup Methods
         private async Task InitialSetup()
         {
-            HummingbirdUser = await HummingbirdUser.Load();
-            CheckProductLicense();
+            HummingbirdUser_LoggedIn = await HummingbirdUser.Load();
+            await CheckProductLicense();
+            NavigateToDefault();
         }
 
-        public void CheckProductLicense()
+        public async Task CheckProductLicense()
         {
             Progress<APIProgressReport> m_productLicense = new Progress<APIProgressReport>();
             m_productLicense.ProgressChanged += M_productLicense_ProgressChanged;
@@ -157,15 +140,13 @@ namespace Anitro.ViewModels
             else
                 Debug.WriteLine("Product License couldn't be retrieved: Setting to Default");
             Debug.WriteLine(AnitroLicense.ToString());
-
-            NavigateToDefault();
         }
 
         private void NavigateToDefault()
         {
-            if (HummingbirdUser.LoginInfo.IsUserLoggedIn)
+            if (HummingbirdUser_LoggedIn.LoginInfo.IsUserLoggedIn)
             {
-                SwitchUser(ServiceName.Hummingbird, HummingbirdUser);
+                SwitchUser(ServiceName.Hummingbird, HummingbirdUser_LoggedIn);
                 NavigationService.RemoveLastPage();
             }
         }
@@ -196,7 +177,7 @@ namespace Anitro.ViewModels
             if (CurrentUser is HummingbirdUser)
             {
                 HummingbirdDashboardParameter parameter = new HummingbirdDashboardParameter();
-                parameter.User = HummingbirdUser;
+                parameter.User = HummingbirdUser_LoggedIn;
                 NavigationService.Navigate(typeof(HummingbirdDashboardPage), parameter);
             }
         }
@@ -353,7 +334,7 @@ namespace Anitro.ViewModels
             if (service == ServiceName.Hummingbird)
             {
                 if (CurrentUser is HummingbirdUser) CurrentUser = null;
-                HummingbirdUser = new HummingbirdUser();
+                HummingbirdUser_LoggedIn = new HummingbirdUser();
                 HummingbirdUser.DeleteUser();
             }
 
@@ -371,7 +352,7 @@ namespace Anitro.ViewModels
             if (user == null)
             {
                 if (service == ServiceName.Hummingbird)
-                    CurrentUser = HummingbirdUser;
+                    CurrentUser = HummingbirdUser_LoggedIn;
             }
             else CurrentUser = user;
 

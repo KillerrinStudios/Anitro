@@ -161,9 +161,6 @@ namespace Anitro
         {
             Debug.WriteLine(launchArgs.ToString());
 
-            // Run Code which has to be run every Launch
-            CortanaTools.InstallCortanaVDFile(new Uri("ms-appx:///AnitroVoiceCommandDefinition.xml"));
-
             // Create the Root Frame
             Frame rootFrame = Window.Current.Content as Frame;
 

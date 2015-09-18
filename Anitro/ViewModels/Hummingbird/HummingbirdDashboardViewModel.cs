@@ -205,13 +205,12 @@ namespace Anitro.ViewModels.Hummingbird
             Debug.WriteLine("Posting to Activity Feed");
             if (string.IsNullOrWhiteSpace(message)) return;
 
-            HummingbirdUser loggedInUser = MainViewModel.Instance.HummingbirdUser;
-            if (loggedInUser == null) return;
+            if (HummingbirdUser_LoggedIn == null) return;
 
             Progress<APIProgressReport> m_postToActivityFeedprogress = new Progress<APIProgressReport>();
             m_postToActivityFeedprogress.ProgressChanged += M_postToActivityFeedprogress_ProgressChanged; ;
-            APIServiceCollection.Instance.HummingbirdV1API.SocialAPI.PostStatusUpdate(loggedInUser.LoginInfo,
-                                                                                      loggedInUser.UserInfo,
+            APIServiceCollection.Instance.HummingbirdV1API.SocialAPI.PostStatusUpdate(HummingbirdUser_LoggedIn.LoginInfo,
+                                                                                      HummingbirdUser_LoggedIn.UserInfo,
                                                                                       User.UserInfo,
                                                                                       message,
                                                                                       m_postToActivityFeedprogress);
@@ -383,10 +382,9 @@ namespace Anitro.ViewModels.Hummingbird
             if (!CanNavigate)
                 return;
 
-            SearchParameter parameter = new SearchParameter();
+            HummingbirdSearchParameter parameter = new HummingbirdSearchParameter();
             parameter.SearchTerms = searchQuery;
             parameter.Filter = SearchFilter.Everything;
-            parameter.User = User;
             NavigationService.Navigate(typeof(HummingbirdSearchPage), parameter);
         }
         #endregion

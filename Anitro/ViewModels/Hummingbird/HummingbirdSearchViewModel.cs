@@ -30,18 +30,6 @@ namespace Anitro.ViewModels.Hummingbird
     /// </summary>
     public class HummingbirdSearchViewModel : AnitroViewModelBase
     {
-        private HummingbirdUser m_user = new HummingbirdUser();
-        public HummingbirdUser User
-        {
-            get { return m_user; }
-            set
-            {
-                if (m_user == value) return;
-                m_user = value;
-                RaisePropertyChanged(nameof(User));
-            }
-        }
-
         #region Search Results
         private ObservableCollection<AnimeObject> m_searchBoxAutoSuggestions = new ObservableCollection<AnimeObject>();
         public ObservableCollection<AnimeObject> SearchBoxAutoSuggestions
@@ -74,8 +62,8 @@ namespace Anitro.ViewModels.Hummingbird
             get
             {
                 if (!APIServiceCollections.HummingbirdV1API.AnimeAPI.Supported) return false;
-                if (User == null) return false;
-                return User.LoginInfo.HasUsername;
+                if (HummingbirdUser_LoggedIn == null) return false;
+                return HummingbirdUser_LoggedIn.LoginInfo.HasUsername;
             }
         }
         public bool MangaLibraryVisible
@@ -83,8 +71,8 @@ namespace Anitro.ViewModels.Hummingbird
             get
             {
                 if (!APIServiceCollections.HummingbirdV1API.MangaAPI.Supported) return false;
-                if (User == null) return false;
-                return User.LoginInfo.HasUsername;
+                if (HummingbirdUser_LoggedIn == null) return false;
+                return HummingbirdUser_LoggedIn.LoginInfo.HasUsername;
             }
         }
         #endregion
@@ -100,9 +88,9 @@ namespace Anitro.ViewModels.Hummingbird
                 m_searchTerms = value;
                 RaisePropertyChanged(nameof(SearchTerms));
 
-                if (User == null) return;
-                User.AnimeLibrary.LibraryCollection.SearchFilter.SearchTerm = value;
-                User.MangaLibrary.LibraryCollection.SearchFilter.SearchTerm = value;
+                if (HummingbirdUser_LoggedIn == null) return;
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.SearchFilter.SearchTerm = value;
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.SearchFilter.SearchTerm = value;
             }
         }
 
@@ -126,13 +114,13 @@ namespace Anitro.ViewModels.Hummingbird
             if (IsInDesignMode)
             {
                 // Code runs in Blend --> create design time data.
-                User = new HummingbirdUser();
-                User.UserInfo.Username = "Design Time";
-                User.UserInfo.AvatarUrl = new System.Uri("https://static.hummingbird.me/users/avatars/000/007/415/thumb/TyrilCropped1.png?1401236074", System.UriKind.Absolute);
-                User.HummingbirdUserInfo.cover_image = "https://static.hummingbird.me/users/cover_images/000/007/415/thumb/Zamma_resiz.jpg?1401237213";
+                HummingbirdUser_LoggedIn = new HummingbirdUser();
+                HummingbirdUser_LoggedIn.UserInfo.Username = "Design Time";
+                HummingbirdUser_LoggedIn.UserInfo.AvatarUrl = new System.Uri("https://static.hummingbird.me/users/avatars/000/007/415/thumb/TyrilCropped1.png?1401236074", System.UriKind.Absolute);
+                HummingbirdUser_LoggedIn.HummingbirdUserInfo.cover_image = "https://static.hummingbird.me/users/cover_images/000/007/415/thumb/Zamma_resiz.jpg?1401237213";
 
-                User.LoginInfo.Username = "Design Time";
-                User.LoginInfo.AuthToken = "AuthToken";
+                HummingbirdUser_LoggedIn.LoginInfo.Username = "Design Time";
+                HummingbirdUser_LoggedIn.LoginInfo.AuthToken = "AuthToken";
 
                 // Search
                 SearchTerms = "Gate";
@@ -163,26 +151,26 @@ namespace Anitro.ViewModels.Hummingbird
                 completedLibraryObject.Section = LibrarySection.Completed;
 
                 // Anime Library
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
 
                 // Manga Library
-                User.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
-                User.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.UnfilteredCollection.Add(completedLibraryObject);
             }
             else
             {
@@ -199,10 +187,10 @@ namespace Anitro.ViewModels.Hummingbird
         {
             MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.Search;
 
-            if (User != null)
+            if (HummingbirdUser_LoggedIn != null)
             {
-                User.AnimeLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySection.All;
-                User.MangaLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySection.All;
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySection.All;
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.LibrarySelectionFilter.LibrarySelection = LibrarySection.All;
             }
 
             if (!string.IsNullOrWhiteSpace(SearchTerms))
@@ -235,7 +223,7 @@ namespace Anitro.ViewModels.Hummingbird
 
         public void NavigateAnimeDetails(AnimeObject anime)
         {
-            Debug.WriteLine("Navigating Anime Details");
+            Debug.WriteLine("Navigating Anime Details - Search View Model");
             if (anime == null) return;
 
             ViewModelLocator.Instance.vm_HummingbirdAnimeLibraryViewModel.NavigateAnimeDetailsPage(anime);
@@ -298,10 +286,10 @@ namespace Anitro.ViewModels.Hummingbird
                 return;
 
             // Search Local
-            if (User != null)
+            if (HummingbirdUser_LoggedIn != null)
             {
-                User.AnimeLibrary.LibraryCollection.ApplyFilters();
-                User.MangaLibrary.LibraryCollection.ApplyFilters();
+                HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.ApplyFilters();
+                HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.ApplyFilters();
             }
 
             // Search Online
@@ -343,7 +331,7 @@ namespace Anitro.ViewModels.Hummingbird
             cortanaProgress.ProgressChanged += CortanaProgress_ProgressChanged;
 
             string exampleText = "";
-            exampleText = User?.AnimeLibrary.SelectRandomTitle()?.Anime.RomanjiTitle ?? "Steins;Gate";
+            exampleText = HummingbirdUser_LoggedIn?.AnimeLibrary.SelectRandomTitle()?.Anime.RomanjiTitle ?? "Steins;Gate";
             CortanaTools.Instance.StartListening(cortanaProgress, exampleText);
         }
 
@@ -363,7 +351,7 @@ namespace Anitro.ViewModels.Hummingbird
             }
             else if (e.CurrentAPIResonse == APIResponse.ContinuingExecution)
             {
-                Debug.WriteLine("Cortana Hypothosis Suggested");
+                Debug.WriteLine("Cortana Hypothesis Suggested");
                 SpeechRecognitionHypothesis hypothosis = e.Parameter.Converted as SpeechRecognitionHypothesis;
                 if (string.IsNullOrWhiteSpace(hypothosis.Text)) return;
 
@@ -380,17 +368,17 @@ namespace Anitro.ViewModels.Hummingbird
 
         public void UpdateAutoSuggestions()
         {
-            if (User == null) return;
+            if (HummingbirdUser_LoggedIn == null) return;
 
             ObservableCollection<AnimeObject> autoSuggestions = new ObservableCollection<AnimeObject>();
 
-            foreach (var item in User.AnimeLibrary.LibraryCollection.UnfilteredCollection)
+            foreach (var item in HummingbirdUser_LoggedIn.AnimeLibrary.LibraryCollection.UnfilteredCollection)
             {
                 if (item.Anime.DoesNameFitSearch(SearchTerms))
                     autoSuggestions.Add(item.Anime);
             }
 
-            foreach (var item in User.MangaLibrary.LibraryCollection.UnfilteredCollection)
+            foreach (var item in HummingbirdUser_LoggedIn.MangaLibrary.LibraryCollection.UnfilteredCollection)
             {
                 if (item.Anime.DoesNameFitSearch(SearchTerms))
                     autoSuggestions.Add(item.Anime);

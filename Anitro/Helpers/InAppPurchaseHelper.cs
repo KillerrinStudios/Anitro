@@ -119,9 +119,9 @@ namespace Anitro.Helpers
             if (!DebugTools.DebugMode)
             {
                 bool userOnWhitelist = false;
-                if (MainViewModel.Instance.HummingbirdUser.LoginInfo.IsUserLoggedIn)
+                if (MainViewModel.Instance.HummingbirdUser_LoggedIn.LoginInfo.IsUserLoggedIn)
                     if (!userOnWhitelist)
-                        userOnWhitelist = CheckProductOwnerWhitelist(MainViewModel.Instance.HummingbirdUser.LoginInfo.Username);
+                        userOnWhitelist = CheckProductOwnerWhitelist(MainViewModel.Instance.HummingbirdUser_LoggedIn.LoginInfo.Username);
 
                 if (userOnWhitelist)
                 {

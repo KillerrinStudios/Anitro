@@ -10,7 +10,6 @@ namespace Anitro.Models.Page_Parameters
 {
     public class HummingbirdAnimeDetailsParameter
     {
-        public HummingbirdUser User;
         public LibraryObject LibraryObject;
     }
 }

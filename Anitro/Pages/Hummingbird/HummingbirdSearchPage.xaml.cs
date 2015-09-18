@@ -43,8 +43,7 @@ namespace Anitro.Pages.Hummingbird
         {
             base.OnNavigatedTo(e);
 
-            SearchParameter parameter = (SearchParameter)e.Parameter;
-            ViewModel.User = parameter.User as HummingbirdUser;
+            HummingbirdSearchParameter parameter = (HummingbirdSearchParameter)e.Parameter;
             ViewModel.SearchTerms = parameter.SearchTerms;
             ViewModel.Filter = parameter.Filter;
             ViewModel.OnNavigatedTo();
@@ -90,18 +89,21 @@ namespace Anitro.Pages.Hummingbird
         #region ListView Clicked
         private void OnlineLibraryListView_ItemClick(object sender, ItemClickEventArgs e)
         {
+            Debug.WriteLine("OnlineLibraryListView_ItemClick");
             AnimeObject anime = (AnimeObject)e.ClickedItem;
             ViewModel.NavigateAnimeDetails(anime);
         }
 
         private void AnimeLibraryListView_ItemClick(object sender, ItemClickEventArgs e)
         {
+            Debug.WriteLine("AnimeLibraryListView_ItemClick");
             LibraryObject libraryObject = (LibraryObject)e.ClickedItem;
             ViewModel.NavigateAnimeDetails(libraryObject.Anime);
         }
 
         private void MangaLibraryListView_ItemClick(object sender, ItemClickEventArgs e)
         {
+            Debug.WriteLine("MangaLibraryListView_ItemClick");
             LibraryObject libraryObject = (LibraryObject)e.ClickedItem;
             ViewModel.NavigateAnimeDetails(libraryObject.Anime);
         }

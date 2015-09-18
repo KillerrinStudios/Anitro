@@ -41,6 +41,7 @@ namespace Anitro.Models
             ObservableCollection<LibraryObject> filteredCollection = new ObservableCollection<LibraryObject>();
             for (int i = 0; i < collection.Count; i++)
             {
+                if (collection[i].Section == LibrarySection.None) continue;
                 if (collection[i].Section == LibrarySelection)
                     filteredCollection.Add(collection[i]);
             }

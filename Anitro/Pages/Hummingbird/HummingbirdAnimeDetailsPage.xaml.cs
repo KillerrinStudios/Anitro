@@ -36,47 +36,59 @@ namespace Anitro.Pages.Hummingbird
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine("Hummingbird Anime Details Page: Page_Loaded");
             ViewModel.Loaded();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            Debug.WriteLine("Hummingbird Anime Details Page: OnNavigatedTo");
 
             HummingbirdAnimeDetailsParameter parameter = e.Parameter as HummingbirdAnimeDetailsParameter;
-            ViewModel.User = parameter.User;
             ViewModel.LibraryObject = parameter.LibraryObject;
-
             ViewModel.OnNavigatedTo();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            Debug.WriteLine("Hummingbird Anime Details Page: OnNavigatedFrom");
             ViewModel.OnNavigatedFrom();
             base.OnNavigatedFrom(e);
         }
 
         private void librarySectionComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            var comboBox = (ComboBox)sender;
-
-            switch (ViewModel.LibraryObject.Section)
+            Debug.WriteLine("Hummingbird Anime Details Page: librarySectionComboBox_Loaded");
+            try
             {
-                case LibrarySection.CurrentlyWatching: comboBox.SelectedIndex = 1; break;
-                case LibrarySection.PlanToWatch: comboBox.SelectedIndex = 2; break;
-                case LibrarySection.Completed: comboBox.SelectedIndex = 3; break;
-                case LibrarySection.OnHold: comboBox.SelectedIndex = 4; break;
-                case LibrarySection.Dropped: comboBox.SelectedIndex = 5; break;
-                case LibrarySection.None:
-                default: comboBox.SelectedIndex = 0; break;
+                var comboBox = (ComboBox)sender;
+
+                switch (ViewModel.LibraryObject.Section)
+                {
+                    case LibrarySection.CurrentlyWatching: comboBox.SelectedIndex = 1; break;
+                    case LibrarySection.PlanToWatch: comboBox.SelectedIndex = 2; break;
+                    case LibrarySection.Completed: comboBox.SelectedIndex = 3; break;
+                    case LibrarySection.OnHold: comboBox.SelectedIndex = 4; break;
+                    case LibrarySection.Dropped: comboBox.SelectedIndex = 5; break;
+                    case LibrarySection.None:
+                    default: comboBox.SelectedIndex = 0; break;
+                }
             }
+            catch (Exception) { }
         }
 
         private void librarySectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
-            ComboBoxItem comboBoxItem = (ComboBoxItem)comboBox.SelectedItem;
-            ViewModel.LibraryObject.Section = LibrarySectionConverter.StringToLibrarySection((string)comboBoxItem.Content);
+            Debug.WriteLine("Hummingbird Anime Details Page: librarySectionComboBox_SelectionChanged");
+            try
+            {
+                ComboBox comboBox = (ComboBox)sender;
+                ComboBoxItem comboBoxItem = (ComboBoxItem)comboBox.SelectedItem;
+                ViewModel.LibraryObject.Section = LibrarySectionConverter.StringToLibrarySection((string)comboBoxItem.Content);
+                ViewModel.UpdateAnime();
+            }
+            catch (Exception) { }
         }
 
         #region AdMediator

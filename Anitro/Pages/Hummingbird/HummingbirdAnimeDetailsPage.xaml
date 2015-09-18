@@ -47,17 +47,17 @@
 								  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
 								  ScrollViewer.HorizontalScrollMode="Disabled">
 					<StackPanel Orientation="Vertical" Margin="0,0,20,0">
-                        <Grid Margin="0,0,0,20" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
-                            <adMediator:AdMediatorControl x:Name="adMediator_HummingbirdAnimeDetailsPage_MainTop_One" Id="adMediator_HummingbirdAnimeDetailsPage_MainTop_One"
+						<Grid Margin="0,0,0,20" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
+							<adMediator:AdMediatorControl x:Name="adMediator_HummingbirdAnimeDetailsPage_MainTop_One" Id="adMediator_HummingbirdAnimeDetailsPage_MainTop_One"
 													  HorizontalAlignment="Center" VerticalAlignment="Top"
-													  MinWidth="300" MaxWidth="640" 
-													  MinHeight="50" MaxHeight="100"
+													  MinWidth="300" Width="320" MaxWidth="640" 
+													  MinHeight="50" Height="50" MaxHeight="100"
 													  Loaded="AdMediator_Loaded" 
 													  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
 													  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError" />
-                        </Grid>
+						</Grid>
 
-                        <TextBlock Text="{Binding LibraryObject.Anime.RomanjiTitle}" Style="{ThemeResource TitleTextBlockStyle}"/>
+						<TextBlock Text="{Binding LibraryObject.Anime.RomanjiTitle}" Style="{ThemeResource TitleTextBlockStyle}"/>
 
 						<TextBlock Text="{Binding LibraryObject.Anime.EnglishTitle}" Style="{ThemeResource SubtitleTextBlockStyle}"
 								   Margin="0,0,0,0"/>
@@ -92,20 +92,20 @@
 
 						<TextBlock Text="{Binding LibraryObject.Anime.Synopsis}" Style="{ThemeResource BodyTextBlockStyle}"/>
 
-                        <Grid Margin="0,20,0,0" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
-                            <adMediator:AdMediatorControl x:Name="adMediator_HummingbirdAnimeDetailsPage_MainBottom_One" Id="adMediator_HummingbirdAnimeDetailsPage_MainBottom_One"
+						<Grid Margin="0,20,0,0" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
+							<adMediator:AdMediatorControl x:Name="adMediator_HummingbirdAnimeDetailsPage_MainBottom_One" Id="adMediator_HummingbirdAnimeDetailsPage_MainBottom_One"
 													  HorizontalAlignment="Center" VerticalAlignment="Bottom"
 													  MinWidth="300" Width="300" MaxWidth="640" 
 													  MinHeight="50" Height="50" MaxHeight="100"
 													  Loaded="AdMediator_Loaded" 
 													  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
 													  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError" />
-                        </Grid>
-                    </StackPanel>
+						</Grid>
+					</StackPanel>
 				</ScrollViewer>
 			</PivotItem>
 			<PivotItem Header="Library"
-					   Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
+					   Visibility="{Binding HummingbirdUser_LoggedIn.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}">
 				<Grid>
 					<ScrollViewer HorizontalAlignment="Stretch" 
 									  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
@@ -182,10 +182,10 @@
 	<Page.BottomAppBar>
 		<CommandBar Visibility="Visible" IsOpen="True">
 			<AppBarButton Content="Save" Icon="Save" Command="{Binding UpdateCommand}" ToolTipService.ToolTip="Save"
-						  Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}"/>
+						  Visibility="{Binding HummingbirdUser_LoggedIn.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}"/>
 
 			<AppBarToggleButton Content="Favourite" Icon="Favorite" Command="{Binding FavouriteCommand}" IsChecked="{Binding IsFavourited}" ToolTipService.ToolTip="Favourite/Unfavourite"
-								Visibility="Collapsed"/> <!-- Visibility="{Binding User.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}"/> -->
+								Visibility="Collapsed"/> <!-- Visibility="{Binding HummingbirdUser_LoggedIn.LoginInfo.IsUserLoggedIn, Converter={StaticResource BooleanToVisibility}}"/> -->
 
 			<AppBarSeparator />
 			<AppBarButton Content="Pin"  Icon="Pin"  Command="{Binding PinToStartCommand}" ToolTipService.ToolTip="Pin to Start"/>

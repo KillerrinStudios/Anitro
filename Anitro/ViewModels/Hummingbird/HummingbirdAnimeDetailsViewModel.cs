@@ -34,18 +34,6 @@ namespace Anitro.ViewModels.Hummingbird
     /// </summary>
     public class HummingbirdAnimeDetailsViewModel : AnitroViewModelBase
     {
-        private HummingbirdUser m_user = new HummingbirdUser();
-        public HummingbirdUser User
-        {
-            get { return m_user; }
-            set
-            {
-                if (m_user == value) return;
-                m_user = value;
-                RaisePropertyChanged(nameof(User));
-            }
-        }
-
         private LibraryObject m_libraryObject = new LibraryObject();
         public LibraryObject LibraryObject
         {
@@ -58,8 +46,13 @@ namespace Anitro.ViewModels.Hummingbird
                 m_libraryObject = value;
                 m_libraryObject.PropertyChanged += M_libraryObject_PropertyChanged;
 
-                RaisePropertyChanged(nameof(LibraryObject));
-                RaisePropertyChanged(nameof(IsFavourited));
+                try
+                {
+                    RaisePropertyChanged(nameof(LibraryObject));
+                    RaisePropertyChanged(nameof(IsFavourited));
+                }
+                catch (Exception) { Debug.WriteLine("Exception Raising Property Changed: LibraryObject or IsFavourited"); }
+
             }
         }
 
@@ -67,9 +60,14 @@ namespace Anitro.ViewModels.Hummingbird
         {
             get
             {
-                if (!(User.LoginInfo.IsUserLoggedIn)) return false;
-                if (User.AnimeLibrary.IsFavourited(LibraryObject.Anime))
-                    return true;
+                try
+                {
+                    if (!(HummingbirdUser_LoggedIn.LoginInfo.IsUserLoggedIn)) return false;
+                    if (HummingbirdUser_LoggedIn.AnimeLibrary.IsFavourited(LibraryObject.Anime))
+                        return true;
+                }
+                catch (Exception) { }
+
                 return false;
             }
         }
@@ -83,13 +81,13 @@ namespace Anitro.ViewModels.Hummingbird
             if (IsInDesignMode)
             {
                 // Code runs in Blend --> create design time data.
-                User = new HummingbirdUser();
-                User.UserInfo.Username = "Design Time";
-                User.UserInfo.AvatarUrl = new System.Uri("https://static.hummingbird.me/users/avatars/000/007/415/thumb/TyrilCropped1.png?1401236074", System.UriKind.Absolute);
-                User.HummingbirdUserInfo.cover_image = "https://static.hummingbird.me/users/cover_images/000/007/415/thumb/Zamma_resiz.jpg?1401237213";
+                HummingbirdUser_LoggedIn = new HummingbirdUser();
+                HummingbirdUser_LoggedIn.UserInfo.Username = "Design Time";
+                HummingbirdUser_LoggedIn.UserInfo.AvatarUrl = new System.Uri("https://static.hummingbird.me/users/avatars/000/007/415/thumb/TyrilCropped1.png?1401236074", System.UriKind.Absolute);
+                HummingbirdUser_LoggedIn.HummingbirdUserInfo.cover_image = "https://static.hummingbird.me/users/cover_images/000/007/415/thumb/Zamma_resiz.jpg?1401237213";
 
-                User.LoginInfo.Username = "Design Time";
-                User.LoginInfo.AuthToken = "AuthToken";
+                HummingbirdUser_LoggedIn.LoginInfo.Username = "Design Time";
+                HummingbirdUser_LoggedIn.LoginInfo.AuthToken = "AuthToken";
 
                 AnimeObject anime = new AnimeObject();
                 anime.RomanjiTitle = "Gate: Jieitai Kanochi nite, Kaku Tatakaeri";
@@ -127,23 +125,31 @@ namespace Anitro.ViewModels.Hummingbird
 
         public override void Loaded()
         {
-
+            Debug.WriteLine("HummingbirdAnimeDetailsViewModel: Loaded");
         }
 
         public override void OnNavigatedTo()
         {
-            MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.AnimeDetails;
+            Debug.WriteLine("HummingbirdAnimeDetailsViewModel: OnNavigatedTo");
+            try
+            {
+                MainViewModel.Instance.CurrentNavigationLocation = NavigationLocation.AnimeDetails;
+            }
+            catch (Exception) { }
         }
 
         public override void OnNavigatedFrom()
         {
-            if (User.LoginInfo.IsUserLoggedIn)
-                HummingbirdUser.Save(User);
+            Debug.WriteLine("HummingbirdAnimeDetailsViewModel: OnNavigatedFrom");
+
+            //UpdateAnime();
+            if (HummingbirdUser_LoggedIn.LoginInfo.IsUserLoggedIn)
+                HummingbirdUser.Save(HummingbirdUser_LoggedIn);
         }
 
         public override void ResetViewModel()
         {
-
+            Debug.WriteLine("HummingbirdAnimeDetailsViewModel: ResetViewModel");
         }
 
         #region Update/Remove Anime
@@ -172,16 +178,32 @@ namespace Anitro.ViewModels.Hummingbird
             }
         }
 
+        private bool ___autoSetCompletion = false;
         public void UpdateAnime()
         {
             Debug.WriteLine("Updating Anime");
-            if (!User.LoginInfo.IsUserLoggedIn) return;
+            #region Early Exit
+            if (!HummingbirdUser_LoggedIn.LoginInfo.IsUserLoggedIn) return;
             if (LibraryObject == null) return;
+            if (___autoSetCompletion)
+            {
+                ___autoSetCompletion = false;
+                return;
+            }
+            #endregion
+
+            #region Library Section Changes
+            if (LibraryObject.AreAllEpisodesWatched)
+            {
+                LibraryObject.Section = LibrarySection.Completed;
+                ___autoSetCompletion = true;
+            }
             if (LibraryObject.Section == LibrarySection.None) { RemoveAnime(); return; }
+            #endregion
 
             Progress<APIProgressReport> updateAnimeProgress = new Progress<APIProgressReport>();
             updateAnimeProgress.ProgressChanged += UpdateAnimeProgress_ProgressChanged;
-            APIServiceCollection.Instance.HummingbirdV1API.AnimeAPI.UpdateAnimeInLibrary(User.LoginInfo, LibraryObject, updateAnimeProgress);
+            APIServiceCollection.Instance.HummingbirdV1API.AnimeAPI.UpdateAnimeInLibrary(HummingbirdUser_LoggedIn.LoginInfo, LibraryObject, updateAnimeProgress);
         }
 
         private void UpdateAnimeProgress_ProgressChanged(object sender, APIProgressReport e)
@@ -190,6 +212,11 @@ namespace Anitro.ViewModels.Hummingbird
             if (e.CurrentAPIResonse == APIResponse.Successful)
             {
                 ProgressService.Reset();
+
+                if (!HummingbirdUser_LoggedIn.AnimeLibrary.IsInLibrary(LibraryObject.Anime.ID))
+                {
+                    HummingbirdUser_LoggedIn.AnimeLibrary.AddToLibrary(LibraryObject);
+                }
             }
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
             {
@@ -202,13 +229,13 @@ namespace Anitro.ViewModels.Hummingbird
         public void RemoveAnime()
         {
             Debug.WriteLine("Removing Anime");
-            if (!User.LoginInfo.IsUserLoggedIn) return;
+            if (!HummingbirdUser_LoggedIn.LoginInfo.IsUserLoggedIn) return;
             if (LibraryObject == null) return;
             if (LibraryObject.Section != LibrarySection.None) return;
 
             Progress<APIProgressReport> removeAnimeProgress = new Progress<APIProgressReport>();
             removeAnimeProgress.ProgressChanged += RemoveAnimeProgress_ProgressChanged;
-            APIServiceCollection.Instance.HummingbirdV1API.AnimeAPI.RemoveAnimeFromLibrary(User.LoginInfo, LibraryObject.Anime.ID.ID, removeAnimeProgress);
+            APIServiceCollection.Instance.HummingbirdV1API.AnimeAPI.RemoveAnimeFromLibrary(HummingbirdUser_LoggedIn.LoginInfo, LibraryObject.Anime.ID.ID, removeAnimeProgress);
         }
 
         private void RemoveAnimeProgress_ProgressChanged(object sender, APIProgressReport e)
@@ -217,6 +244,7 @@ namespace Anitro.ViewModels.Hummingbird
             if (e.CurrentAPIResonse == APIResponse.Successful)
             {
                 ProgressService.Reset();
+                HummingbirdUser_LoggedIn.AnimeLibrary.RemoveFromLibrary(LibraryObject.Anime.ID);
             }
             else if (APIResponseHelpers.IsAPIResponseFailed(e.CurrentAPIResonse))
             {
