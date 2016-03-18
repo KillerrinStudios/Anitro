@@ -25,9 +25,9 @@
 						<Setter Target="MainNavigation.DisplayMode" Value="CompactOverlay" />
 						<Setter Target="MainNavigation.IsPaneOpen" Value="False" />
 						
-						<Setter Target="MainNavigation_PanelHamburgerButton.Visibility" Value="Collapsed"/>
-						<Setter Target="MainNavigation.CompactPaneLength" Value="0"/>
-						<Setter Target="TopNavigationBar.Visibility" Value="Visible"/>
+						<Setter Target="MainNavigation_PanelHamburgerButton.Visibility" Value="Collapsed"/> <!-- Collapsed -->
+						<Setter Target="MainNavigation.CompactPaneLength" Value="0"/> <!-- 0 -->
+						<Setter Target="TopNavigationBar.Visibility" Value="Visible"/> <!-- Visible -->
 					</VisualState.Setters>
 				</VisualState>
 				<VisualState x:Name="Phone">
@@ -38,9 +38,9 @@
 						<Setter Target="MainNavigation.DisplayMode" Value="CompactOverlay" />
 						<Setter Target="MainNavigation.IsPaneOpen" Value="False" />
 
-						<Setter Target="MainNavigation_PanelHamburgerButton.Visibility" Value="Visible"/>
-						<Setter Target="MainNavigation.CompactPaneLength" Value="48"/>
-						<Setter Target="TopNavigationBar.Visibility" Value="Collapsed"/>
+						<Setter Target="MainNavigation_PanelHamburgerButton.Visibility" Value="Collapsed"/> <!-- Visible -->
+						<Setter Target="MainNavigation.CompactPaneLength" Value="0"/> <!-- 48 -->
+						<Setter Target="TopNavigationBar.Visibility" Value="Visible"/> <!-- Collapsed -->
 					</VisualState.Setters>
 				</VisualState>
 				<VisualState x:Name="Desktop">
@@ -51,9 +51,9 @@
 						<Setter Target="MainNavigation.DisplayMode" Value="CompactInline" />
 						<Setter Target="MainNavigation.IsPaneOpen" Value="True" />
 
-						<Setter Target="MainNavigation_PanelHamburgerButton.Visibility" Value="Visible"/>
-						<Setter Target="MainNavigation.CompactPaneLength" Value="48"/>
-						<Setter Target="TopNavigationBar.Visibility" Value="Collapsed"/>
+						<Setter Target="MainNavigation_PanelHamburgerButton.Visibility" Value="Visible"/> <!-- Visible -->
+						<Setter Target="MainNavigation.CompactPaneLength" Value="48"/> <!-- 48 -->
+						<Setter Target="TopNavigationBar.Visibility" Value="Collapsed"/> <!-- Collapsed -->
 					</VisualState.Setters>
 				</VisualState>
 			</VisualStateGroup>
@@ -93,7 +93,7 @@
 								<StackPanel Orientation="Vertical" Margin="0,20,0,0">
 									<TextBlock Text="Accounts" Style="{ThemeResource SubheaderTextBlockStyle}" Margin="0,0,0,10" />
 
-                                    <appControls:UserAccountButton Header="{Binding HummingbirdUser_LoggedIn.Service, Converter={StaticResource EnumStringConverter}}" Username="{Binding HummingbirdUser_LoggedIn.UserInfo.Username}" Avatar="{Binding HummingbirdUser_LoggedIn.UserInfo.AvatarUrl}" IsSelected="{Binding HummingbirdUser_LoggedIn.Selected}"
+									<appControls:UserAccountButton Header="{Binding HummingbirdUser_LoggedIn.Service, Converter={StaticResource EnumStringConverter}}" Username="{Binding HummingbirdUser_LoggedIn.UserInfo.Username}" Avatar="{Binding HummingbirdUser_LoggedIn.UserInfo.AvatarUrl}" IsSelected="{Binding HummingbirdUser_LoggedIn.Selected}"
 															   SwitchUserCommand="{Binding SwitchUserCommand}" LoginCommand="{Binding LoginCommand}" LogoutCommand="{Binding LogoutCommand}"/>
 								</StackPanel>
 							</StackPanel>
@@ -108,11 +108,17 @@
 			<SplitView.Content>
 				<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" MaxHeight="110"/>
 						<RowDefinition Height="*"/>
+						<RowDefinition Height="Auto" MaxHeight="110"/>
 					</Grid.RowDefinitions>
-					
-					<Grid Grid.Row="0" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
+
+					<Grid Grid.Row="0">
+						<Frame x:Name="MainFrame" Loaded="MainFrame_Loaded" />
+						<appControls:ProgressIndicator x:Name="MainProgressIndicator" Loaded="MainProgressIndicator_Loaded"
+													   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0"
+													   Visibility="Collapsed"/>
+					</Grid>
+					<Grid Grid.Row="1" Visibility="{Binding AnitroLicense.AnitroUnlocked, Converter={StaticResource InverseBooleanToVisibility}}">
 						<adMediator:AdMediatorControl x:Name="adMediator_MainPage_MainTop_One" Id="MainPage_MainTop_One"
 													  HorizontalAlignment="Center" VerticalAlignment="Bottom"
 													  MinWidth="300" Width="320" MaxWidth="640" 
@@ -120,12 +126,6 @@
 													  Loaded="AdMediator_Loaded" 
 													  AdSdkError="AdMediator_AdSdkError" AdSdkEvent="AdMediator_AdSdkEvent"
 													  AdMediatorFilled="AdMediator_AdMediatorFilled" AdMediatorError="AdMediator_AdMediatorError" />
-					</Grid>
-					<Grid Grid.Row="1">
-						<Frame x:Name="MainFrame" Loaded="MainFrame_Loaded" />
-						<appControls:ProgressIndicator x:Name="MainProgressIndicator" Loaded="MainProgressIndicator_Loaded"
-													   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0"
-													   Visibility="Collapsed"/>
 					</Grid>
 				</Grid>
 			</SplitView.Content>

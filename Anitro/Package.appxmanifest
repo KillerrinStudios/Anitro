@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="59141KillerrinStudios.Anitro" Publisher="CN=CB9966B0-97F1-4167-993A-C177C5B8B46A" Version="2.0.12.0" />
+  <Identity Name="59141KillerrinStudios.Anitro" Publisher="CN=CB9966B0-97F1-4167-993A-C177C5B8B46A" Version="2.0.13.0" />
   <mp:PhoneIdentity PhoneProductId="0308975b-ab2b-4eaa-ac89-97cdd32a8086" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Anitro</DisplayName>
@@ -27,9 +27,10 @@
         </uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
+        <uap:Extension Category="windows.search" />
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="anitro">
-            <uap:DisplayName>Anitro</uap:DisplayName>
+          <uap:Protocol Name="manga">
+            <uap:DisplayName>Manga</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
         <uap:Extension Category="windows.protocol">
@@ -38,11 +39,10 @@
           </uap:Protocol>
         </uap:Extension>
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="manga">
-            <uap:DisplayName>Manga</uap:DisplayName>
+          <uap:Protocol Name="anitro">
+            <uap:DisplayName>Anitro</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
-        <uap:Extension Category="windows.search" />
       </Extensions>
     </Application>
   </Applications>

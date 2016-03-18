@@ -219,48 +219,47 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub DefaultSectionIndex="1">
-            <Hub.HeaderTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="VisualStateGroup">
-                                <VisualState x:Name="PhoneSmall">
-                                    <VisualState.StateTriggers>
-                                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneSmallMinimumWidth}"/>
-                                    </VisualState.StateTriggers>
-                                    <VisualState.Setters>
-                                        <Setter Target="coverImage.MaxHeight" Value="100" />
-                                        <Setter Target="coverImage.Stretch" Value="Uniform" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                                <VisualState x:Name="Phone">
-                                    <VisualState.StateTriggers>
-                                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneMinimumWidth}"/>
-                                    </VisualState.StateTriggers>
-                                    <VisualState.Setters>
-                                        <Setter Target="coverImage.MaxHeight" Value="160" />
-                                        <Setter Target="coverImage.Stretch" Value="Fill" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        
-                        <Image x:Name="coverImage" Source="{Binding User.HummingbirdUserInfo.cover_image}" Stretch="Fill" MaxHeight="125"/>
-                        <Rectangle Fill="#3F000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                        
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                            <Image Source="{Binding User.UserInfo.AvatarUrl}" Width="75" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-                            <StackPanel Orientation="Vertical" Margin="5,0,0,0" VerticalAlignment="Center">
-                                <TextBlock Text="{Binding User.UserInfo.Username}" Style="{ThemeResource SubheaderTextBlockStyle}"/>
-                                <TextBlock Text="{Binding User.UserInfo.Location}" Style="{ThemeResource BodyTextBlockStyle}"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </Hub.HeaderTemplate>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="PhoneSmall">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneSmallMinimumWidth}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="coverImage.Height" Value="75" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Phone">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{Binding Source={StaticResource AdaptiveTriggerConsts}, Path=PhoneMinimumWidth}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="coverImage.Height" Value="Auto" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
+        <Grid x:Name="headerGrid" Grid.Row="0" Grid.RowSpan="1" VerticalAlignment="Top">
+            <Image x:Name="coverImage" Source="{Binding User.HummingbirdUserInfo.cover_image}"/>
+            <Rectangle Fill="#3F000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                <Image Source="{Binding User.UserInfo.AvatarUrl}" Width="75" />
+
+                <StackPanel Orientation="Vertical" Margin="5,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding User.UserInfo.Username}" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                    <TextBlock Text="{Binding User.UserInfo.Location}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Hub Grid.Row="1" DefaultSectionIndex="1">
             <HubSection Header="Social" Width="325">
                 <DataTemplate>
                     <Grid>
@@ -277,7 +276,7 @@
                             </Grid.ColumnDefinitions>
                             
                             <TextBox x:Name="socialFeedTextBox" IsEnabled="False"
-                                     PlaceholderText="Disabled until the API Availability" 
+                                     PlaceholderText="Disabled until API Availability" 
                                      HorizontalAlignment="Stretch" Grid.Column="0" 
                                      KeyUp="socialFeedTextBox_KeyUp"/>
                             <Button Content="Send" IsEnabled="False"

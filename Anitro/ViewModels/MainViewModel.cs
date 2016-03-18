@@ -37,7 +37,7 @@ namespace Anitro.ViewModels
 
         #region Properties
         public RelayCommand TogglePaneCommand { get { return new RelayCommand(() => { IsPaneOpen = !IsPaneOpen; }); } }
-        private bool m_isPaneOpen = true;
+        private bool m_isPaneOpen = false;
         public bool IsPaneOpen
         {
             get { return m_isPaneOpen; }
