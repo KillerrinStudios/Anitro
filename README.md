@@ -1,4 +1,4 @@
-# ![Logo](/Promotional/Marketplace%20Info/Icon.png) Anitro | Killerrin Studios
+# ![Logo](/Promotional/Marketplace%20Info/Icon.png|height=50px) Anitro | Killerrin Studios
 ## Description
 Anitro is an Anime management application which utilizes the new and growing in popularity, Hummingbird service, and will allow you to View and Manage your entire profile.
 
