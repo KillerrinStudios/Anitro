@@ -10,22 +10,22 @@ Windows 10, Windows 10 Mobile, Windows Phone 8.1, Windows 8.1
 
 ## Screenshots
 ### Mobile
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Dashboard_Menu.jpg|alt=Dashboard Menu]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Dashboard_Statistics.jpg|alt=Dashboard Statistics]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Search.jpg|alt=Search]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/AnimeLibrary_Library.jpg|alt=Anime Library]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/AnimeLibrary_Favourites.jpg|alt=Anime Library Favourites]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Anime_Description.jpg|alt=Anime Description]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Anime_Update.jpg|alt=Anime Update]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/StartScreen.jpg|alt=Startscreen]]
+![Dashboard Menu](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Dashboard_Menu.jpg)
+![Dashboard Statistics](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Dashboard_Statistics.jpg)
+![Search](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Search.jpg)
+![Anime Library](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/AnimeLibrary_Library.jpg)
+![Anime Library Favourites](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/AnimeLibrary_Favourites.jpg)
+![Anime Description](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Anime_Description.jpg)
+![Anime Update](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Anime_Update.jpg)
+![Startscreen](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/StartScreen.jpg)
 
 ### PC
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Dashbord.jpg|alt=Dashboard]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Search.jpg|alt=Search]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/AnimeLibrary.jpg|alt=Anime Library]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Anime_Details.jpg|alt=Anime Details]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Anime_Update.jpg|alt=Anime Update]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Anime_Details_Resized.jpg|alt=Resized Anime Details]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Cortana.jpg|alt=Cortana]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Lockscreen.png|alt=Lockscreen Image]]
-[[Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/StartMenu.jpg|alt=Start Menu Pins]]
+![Dashboard](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Dashbord.jpg)
+![Search](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Search.jpg)
+![Anime Library](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/AnimeLibrary.jpg)
+![Anime Details](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Anime_Details.jpg)
+![Anime Update](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Anime_Update.jpg)
+![Resized Anime Update](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Anime_Details_Resized.jpg)
+![Cortana](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Cortana.jpg)
+![Lockscreen Image](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Lockscreen.png)
+![Start Menu Pins](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/StartMenu.jpg)
