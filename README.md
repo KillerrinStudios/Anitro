@@ -32,3 +32,6 @@ Anitro is an Anime management application which utilizes the new and growing in 
 ![Cortana](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Cortana.jpg)
 ![Lockscreen Image](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/Lockscreen.png)
 ![Start Menu Pins](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/StartMenu.jpg)
+
+## Privacy
+[Privacy Policy](https://github.com/KillerrinStudios/AdvancedWallpaperManager/blob/master/PrivacyPolicy.md)
