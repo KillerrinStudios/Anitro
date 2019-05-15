@@ -34,4 +34,4 @@ Anitro is an Anime management application which utilizes the new and growing in 
 ![Start Menu Pins](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/PC/StartMenu.jpg)
 
 ## Privacy
-[Privacy Policy](https://github.com/killerrin/Anitro/blob/master/PrivacyPolicy.md)
+[Privacy Policy](https://github.com/killerrin/Anitro/blob/develop/PrivacyPolicy.md)
