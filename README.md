@@ -5,7 +5,10 @@ Anitro is an Anime management application which utilizes the new and growing in 
 [Download at the Microsoft Store](https://www.microsoft.com/en-us/store/p/anitro/9wzdncrdp9c3)
 
 ## Platforms
-Windows 10, Windows 10 Mobile, Windows Phone 8.1, Windows 8.1
+* Windows 10
+* Windows 10 Mobile
+* Windows Phone 8.1
+* Windows 8.1
 
 
 ## Screenshots
