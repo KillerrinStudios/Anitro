@@ -10,7 +10,6 @@ Anitro is an Anime management application which utilizes the new and growing in 
 * Windows Phone 8.1
 * Windows 8.1
 
-
 ## Screenshots
 ### Mobile
 ![Dashboard Menu](/Promotional/Marketplace%20Info/Windows%2010/Screenshots/Mobile/Dashboard_Menu.jpg)
